@@ -4,6 +4,156 @@
   
     
     <entry>
+      <title><![CDATA[前端自动化工程搭建]]></title>
+      <url>http://meiminjun.github.io/2017/01/01/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<p>安装条件：</p>
+<ol>
+<li>首先要安装 Java 7 或更高</li>
+<li>Node.JS , 而且要确保 npm 命令可用，我想应该其实不用提醒的 ~</li>
+</ol>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>找一个目录，起名字为“AutoTest”,然后输入命令<code>npm init -y</code>生成项目文件<code>package.json</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">➜  AutoTest <span class="string">git:</span>(master) npm init -y</div><div class="line">Wrote to <span class="regexp">/Users/</span>apple<span class="regexp">/Documents/</span>github<span class="regexp">/AutoTest/</span><span class="keyword">package</span>.<span class="string">json:</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"AutoTest"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"keywords"</span>: [],</div><div class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>然后我们将安装 Selenium 与 Nightwatch。</p>
+<ul>
+<li>安装 selenium-standalone：<ul>
+<li><code>npm install selenium-standalone --save-dev</code></li>
+</ul>
+</li>
+<li>安装 Nightwatch:<ul>
+<li><code>npm install nightwatch --save-dev</code> </li>
+</ul>
+</li>
+</ul>
+<h3 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h3><p>我们先开始配置 Nightwatch，之前提到这是一款 Test Runner 来着，它负责读取我们的测试脚本，为我们提供 API 来操作浏览器，帮我们控制 Selenium。</p>
+<p><strong>一. 配置 Nightwatch</strong></p>
+<ol>
+<li>首先，在项目根目录建立文件 “nightwatch.json”，这个文件用来存放 Nightwatch 的配置信息。创建完毕之后，在文件内写入以下内容：</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     <span class="attr">"src_folders"</span>: [<span class="string">"tests"</span>],</div><div class="line">     <span class="attr">"output_folder"</span>: <span class="string">"reports"</span>,</div><div class="line">     <span class="attr">"custom_commands_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"custom_assertions_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"page_objects_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"globals_path"</span>: <span class="string">""</span>,</div><div class="line"></div><div class="line">     <span class="attr">"selenium"</span>: &#123;</div><div class="line">       <span class="attr">"start_process"</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">"server_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"log_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">       <span class="attr">"port"</span>: <span class="number">4444</span>,</div><div class="line">       <span class="attr">"cli_args"</span>: &#123;</div><div class="line">         <span class="attr">"webdriver.chrome.driver"</span>: <span class="string">""</span></div><div class="line">       &#125;</div><div class="line">     &#125;,</div><div class="line"></div><div class="line">     <span class="attr">"test_settings"</span>: &#123;</div><div class="line">       <span class="attr">"default"</span>: &#123;</div><div class="line">         <span class="attr">"launch_url"</span>: <span class="string">"http://localhost"</span>,</div><div class="line">         <span class="attr">"selenium_port"</span>: <span class="number">4444</span>,</div><div class="line">         <span class="attr">"selenium_host"</span>: <span class="string">"localhost"</span>,</div><div class="line">         <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">"screenshots"</span>: &#123;</div><div class="line">           <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">           <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">         &#125;,</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"firefox"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line"></div><div class="line">       <span class="attr">"chrome"</span> : &#123;</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>nightwatch.json 的文件名是 不可以 修改的，因为 Nightwatch 每次启动的时候都是从它读取配置喔！这里的配置项很多，不过先不管它，我们接着创建文件。如果您希望查看 Nightwatch 的详细配置，请点 <a href="http://nightwatchjs.org/guide#settings-file" target="_blank" rel="external">这里</a>。</p>
+<ol>
+<li>接着在项目根目录下创建文件 “nightwatch.conf.js” ，同样此文件名也是不可以修改的，因为 Nightwatch 每次启动也会从它这里读取配置喔~ (´･_･`)</li>
+</ol>
+<p>创建完毕后，打开文件，并写入如下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span> (<span class="params">settings</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> settings;</div><div class="line">&#125;)(<span class="built_in">require</span>(<span class="string">'./nightwatch.json'</span>))</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> *  Nightwatch 会从 nightwatch.json 中读取配置。</div><div class="line"> *  不过如果存在 nightwatch.conf.js，将会变为首先从后者中读取配置。</div><div class="line"> *  nightwatch.conf.js 存在的意义是使用 JavaScript 动态生成配置信息。</div><div class="line"> *  如果配置信息是不需要代码修改的，直接使用 nightwatch.json 就可以啦。</div><div class="line"> */</div></pre></td></tr></table></figure>
+<ol>
+<li>再次在项目根目录建立文件 “startup.js”，然后在文件内部写入：</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">require</span><span class="params">(<span class="string">'nightwatch/bin/runner.js'</span>)</span></span></div></pre></td></tr></table></figure>
+<p>这个文件就是我们测试的入口文件，以后我们要执行测试就要运行这个文件，命令为 node ./startup。入口文件的名字是可以按照喜好更改的，只要运行它就好啦。不过每次输入 node ./startup 太麻烦了，所以我们将这条命令写入 npm scripts 中 ~~~ 打开 “package.json”，在 JSON 对象中建立 “script” 属性，并写入内容：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: <span class="string">"node ./startup.js"</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后每次运行测试只要在项目根目录中执行 npm start 就好了！(･∀･)<br>Nightwatch 的配置暂时告一段落（其实马上就会回来………），接下来我们来处理 Selenium.</p>
+<p><strong>二. 配置 Selenium</strong></p>
+<p>Selenium 是自动化测试环境，它提供了测试服务器、启动浏览器、网页自动操作等功能，同时暴露 API 给 Nightwatch 供我们使用。</p>
+<p>我们接下来将要告诉 Nightwatch 我们的 Selenium 安装在哪里，启动浏览器的 Driver 程序在哪里，然后建立 Selenium 的安装脚本与手工启动脚本，以便不时之需 ~~</p>
+<blockquote>
+<p>Driver 是让 Selenium 打开系统上已安装的浏览器的程序。</p>
+</blockquote>
+<ol>
+<li>建立 Selenium 的配置信息</li>
+</ol>
+<p>在项目根目录下建立文件夹 “build”，并在其中创建文件 “selenium-conf.js”，并写入如下信息：</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">const process = require('process')</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">    // <span class="attribute">Selenium 的版本配置信息。请在下方链接查询最新版本。升级版本只需修改版本号即可。</span></div><div class="line">    // https://selenium-release<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>/index<span class="variable">.html</span></div><div class="line">    selenium: &#123;</div><div class="line">        version: '2.53.1',</div><div class="line">        baseURL: 'https://selenium-release<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>'</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    // Driver 用来启动系统中安装的浏览器，Selenium 默认使用 Firefox，如果不需要使用其他浏览器，则不需要额外安装 Driver。</div><div class="line">    // 在此我们安装 Chrome 的 driver 以便使用 Chrome 进行测试。</div><div class="line">    driver: &#123;</div><div class="line">        chrome: &#123;</div><div class="line">            // Chrome 浏览器启动 Driver，请在下方链接查询最新版本。</div><div class="line">            // https://chromedriver<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>/index<span class="variable">.html</span></div><div class="line">            version: '2.25',</div><div class="line">            arch: process<span class="variable">.arch</span>,</div><div class="line">            baseURL: 'https://chromedriver<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>'</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>本配置信息包含 Selenium 本体配置与 Driver 配置。我们将在稍后动态载入这些配置。 本文件的目的是为了更好管理 Selenium 的版本。</p>
+<ol>
+<li>告诉 Nightwatch，我的 Selenium 与 Driver 在哪里。</li>
+</ol>
+<p>再次打开项目根目录下的 “nightwatch.conf.js” 文件，并这样编辑：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> seleniumConfig = <span class="built_in">require</span>(<span class="string">'./build/selenium-conf'</span>)</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span> (<span class="params">settings</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 告诉 Nightwatch 我的 Selenium 在哪里。</span></div><div class="line">    settings.selenium.server_path = <span class="string">`<span class="subst">$&#123;path.resolve()&#125;</span>/node_modules/selenium-standalone/.selenium/selenium-server/<span class="subst">$&#123;seleniumConfig.selenium.version&#125;</span>-server.jar`</span></div><div class="line"></div><div class="line">    <span class="comment">// 设置 Chrome Driver, 让 Selenium 有打开 Chrome 浏览器的能力。</span></div><div class="line">    settings.selenium.cli_args[<span class="string">'webdriver.chrome.driver'</span>] = <span class="string">`<span class="subst">$&#123;path.resolve()&#125;</span>/node_modules/selenium-standalone/.selenium/chromedriver/<span class="subst">$&#123;seleniumConfig.driver.chrome.version&#125;</span>-<span class="subst">$&#123;seleniumConfig.driver.chrome.arch&#125;</span>-chromedriver`</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> settings;</div><div class="line">&#125;)(<span class="built_in">require</span>(<span class="string">'./nightwatch.json'</span>))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>我们新加了两行配置，它们的作用如注释所示。<br>同样的，如果您希望查看更多的配置项，请点击 <a href="http://nightwatchjs.org/guide#settings-file" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<ol>
+<li>建立 Selenium 安装脚本，一键安装 Selenium。</li>
+</ol>
+<p>selenium-standalone 只是用来安装和管理 Selenium 的工具么？所以现在是时候用它来安装 Selenium 了。我们将通过调取 selenium-standalone 的内置方法来实现自动安装。在 “build” 文件夹中建立文件 “selenium-setup.js”，并写入如下信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> selenium = <span class="built_in">require</span>(<span class="string">'selenium-standalone'</span>)</div><div class="line"><span class="keyword">const</span> seleniumConfig = <span class="built_in">require</span>(<span class="string">'./selenium-conf.js'</span>)</div><div class="line"></div><div class="line">selenium.install(&#123;</div><div class="line">    <span class="attr">version</span>: seleniumConfig.selenium.version,</div><div class="line">    <span class="attr">baseURL</span>: seleniumConfig.selenium.baseURL,</div><div class="line">    <span class="attr">drivers</span>: seleniumConfig.driver,</div><div class="line">    <span class="attr">logger</span>: <span class="function"><span class="keyword">function</span> (<span class="params">message</span>) </span>&#123; <span class="built_in">console</span>.log(message) &#125;,</div><div class="line">    <span class="attr">progressCb</span>: <span class="function"><span class="keyword">function</span> (<span class="params">totalLength, progressLength, chunkLength</span>) </span>&#123;&#125;</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Selenium 安装错误: <span class="subst">$&#123;err&#125;</span>`</span>)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Selenium 安装完成.'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>同样为了方便，我们将安装命令写入 npm scripts 中：<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: <span class="string">"node ./startup.js"</span>,</div><div class="line">        <span class="string">"selenium-setup"</span>: <span class="string">"node ./build/selenium-setup.js"</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后在项目根目录执行 npm run selenium-setup 安装 Selenium.<br>当提示安装完成后，一切就绪！(･∀･)</p>
+<blockquote>
+<p>Selenium 与其 Driver 会安装到 “node_modules/selenium-standalone/.selenium” 中。</p>
+</blockquote>
+<ol>
+<li>想要手工启动 Selenium？</li>
+</ol>
+<p>默认情况下，Selenium 是由 Nightwatch 启动的，不需要手工干预，不过如果想要手工启动当然是可以的啦。<br>在 build 文件夹中建立文件 “selenium-start.js”，并写入如下信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> selenium = <span class="built_in">require</span>(<span class="string">'selenium-standalone'</span>)</div><div class="line"><span class="keyword">const</span> seleniumConfig = <span class="built_in">require</span>(<span class="string">'./selenium-conf.js'</span>)</div><div class="line"></div><div class="line">selenium.start(&#123;</div><div class="line">    <span class="attr">drivers</span>: seleniumConfig.driver</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, child</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Selenium 启动失败: <span class="subst">$&#123;err&#125;</span>`</span>)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Selenium 已手工启动，进程 PID: <span class="subst">$&#123;child.pid&#125;</span>`</span>)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'当不再需要运行 Selenium 时可关闭此 PID 进程.'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>然后同样添加启动命令至 npm scripts 中：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: <span class="string">"node ./startup.js"</span>,</div><div class="line">        <span class="string">"selenium-setup"</span>: <span class="string">"node ./build/selenium-setup.js"</span>,</div><div class="line">        <span class="string">"selenium-start"</span>: <span class="string">"node ./build/selenium-start.js"</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后使用命令 npm run selenium-start 就可以手工启动 Selenium 了。</p>
+<h2 id="环境配置完成"><a href="#环境配置完成" class="headerlink" title="环境配置完成"></a>环境配置完成</h2><p>目录如下：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">|<span class="string"> -- build</span></div><div class="line">|<span class="string">      </span>|<span class="string"> -- selenium-conf.js        # Selenium 版本信息配置。</span></div><div class="line">|<span class="string">      </span>|<span class="string"> -- selenium-setup.js       # Selenium 安装命令脚本。</span></div><div class="line">|<span class="string">      </span>|<span class="string"> -- selenium-start.js       # Selenium 启动命令脚本。</span></div><div class="line">|</div><div class="line">|<span class="string"> -- nightwatch.conf.js             # Nightwatch 动态配置文件。</span></div><div class="line">|<span class="string"> -- nightwatch.json                # Nightwatch 配置文件。</span></div><div class="line">|<span class="string"> -- package.json                   # 项目信息配置文件。</span></div><div class="line">|<span class="string"> -- startup.js                     # 测试启动入口文件。</span></div></pre></td></tr></table></figure>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>nightwatch.json文件中</p>
+<ul>
+<li>请注意 “desiredCapabilities” 下的 “browserName” 项，这是测试时将使用的浏览器，您可以修改为 chrome、internet explorer、phantomjs，本文在介绍时只安装了 Chrome 的 Driver，如果您需要使用其他浏览器，要安装相应的 Driver 才可以正常使用。</li>
+<li>默认浏览器为 Firefox，如果您使用 Firefox 的话，不需要额外进行 Driver 的配置。</li>
+<li>所以，如果您需要使用 Chrome 的话请将 “browserName” 修改为 “chrome” 喔！<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     <span class="attr">"src_folders"</span>: [<span class="string">"tests"</span>],</div><div class="line">     <span class="attr">"output_folder"</span>: <span class="string">"reports"</span>,</div><div class="line">     <span class="attr">"custom_commands_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"custom_assertions_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"page_objects_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"globals_path"</span>: <span class="string">""</span>,</div><div class="line"></div><div class="line">     <span class="attr">"selenium"</span>: &#123;</div><div class="line">       <span class="attr">"start_process"</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">"server_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"log_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">       <span class="attr">"port"</span>: <span class="number">4444</span>,</div><div class="line">       <span class="attr">"cli_args"</span>: &#123;</div><div class="line">         <span class="attr">"webdriver.chrome.driver"</span>: <span class="string">""</span></div><div class="line">       &#125;</div><div class="line">     &#125;,</div><div class="line"></div><div class="line">     <span class="attr">"test_settings"</span>: &#123;</div><div class="line">       <span class="attr">"default"</span>: &#123;</div><div class="line">         <span class="attr">"launch_url"</span>: <span class="string">"http://localhost"</span>,</div><div class="line">         <span class="attr">"selenium_port"</span>: <span class="number">4444</span>,</div><div class="line">         <span class="attr">"selenium_host"</span>: <span class="string">"localhost"</span>,</div><div class="line">         <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">"screenshots"</span>: &#123;</div><div class="line">           <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">           <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">         &#125;,</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line"></div><div class="line">       <span class="attr">"chrome"</span> : &#123;</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>Driver 的文档可参考<a href="http://nightwatchjs.org/guide#selenium-settings" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<h2 id="开始编写测试用例"><a href="#开始编写测试用例" class="headerlink" title="开始编写测试用例"></a>开始编写测试用例</h2><h3 id="创建目录存放测试用例"><a href="#创建目录存放测试用例" class="headerlink" title="创建目录存放测试用例"></a>创建目录存放测试用例</h3><p>在项目根目录新建一个名为 “tests” 的目录，然后这里就用来存放我们即将编写的测试用例文件。<br>那么这个文件夹能不能指向到其他地方去呢？当然可以，不过要修改一个小地方。</p>
+<p>还记得 “ nightwatch.json “ 文件么？打开看看，第一项是不是叫 src_folders，然后值为 [“tests”]？<br>我相信您已经懂了，这里就是定义测试用例存放目录的地方，然后改成自己想要的目录吧！</p>
+<blockquote>
+<p>您可以在目录中存放多个测试用例文件，且命名随意，Nightwatch 将读取目录中所有的 JS 文件，如果符合测试用例格式，将会自动执行。</p>
+</blockquote>
+<h3 id="编写一个简单的测试用例"><a href="#编写一个简单的测试用例" class="headerlink" title="编写一个简单的测试用例"></a>编写一个简单的测试用例</h3><p>在 “tests” 目录中建立一个测试用例文件 “demo.js”，然后我们来写一个没什么用的小 demo！</p>
+<p>这个 Demo 将打开 Bing，搜索 “what is microsoft”，然后保存成截图后退出。</p>
+<p>OK，打开 “demo.js”，添加以下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="string">'Find the answer.'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">client</span>) </span>&#123;</div><div class="line">    <span class="comment">// TODO...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>module.exports 导出一个对象，对象的 Key 即为测试用例名称，您可以编写多个测试用例，Nightwatch 将依次执行。</p>
+</blockquote>
+<p>您可以在测试用例中导入其他模块并直接使用在测试逻辑中</p>
+<p>先写到这里，您可能会对 cilent 感到陌生，所以还是要简单介绍一下。</p>
+<p>client 是代码运行时 Nightwatch 提供的对象，所有对浏览器进行的操作都将使用此对象调取，比如 client.click(“CSS Selector”)、client.getCookie(function () {…})，我们第一章说过的 “可以简单理解为 Selenium 的控制软件” 就是通过它体现的喔！</p>
+<blockquote>
+<p>client 的所有 API 详情见 <a href="http://nightwatchjs.org/api#commands" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<p>大致了解这东西的意思之后，就可以接着完善测试逻辑了：</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  '<span class="attribute">Find the answer.'</span>: function (client) &#123;</div><div class="line">    // 定义 Bing 页面中的节点.</div><div class="line">    const searchInput = '#sb_form_q'</div><div class="line">    const searchBtn = '#sb_form_go'</div><div class="line">    const question = 'what is microsoft'</div><div class="line"></div><div class="line">    // 启动浏览器并打开 bing<span class="variable">.com</span>.</div><div class="line">    client<span class="variable">.url</span>('http://bing<span class="variable">.com</span>')<span class="variable">.maximizeWindow</span>()</div><div class="line"></div><div class="line">    // 确保 "body" 和输入框可以使用.</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span></div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>(searchInput)<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line">    client<span class="variable">.pause</span>(2000)  // 稍等两秒.</div><div class="line"></div><div class="line">    // 输入 "what is microsoft" 然后搜索.</div><div class="line">    client<span class="variable">.setValue</span>(searchInput, question)</div><div class="line">    client<span class="variable">.click</span>(searchBtn)</div><div class="line">    client<span class="variable">.pause</span>(2000)</div><div class="line"></div><div class="line">    // 截一张图然后保存到 "reports/answer<span class="variable">.png</span>". </div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span></div><div class="line">    client<span class="variable">.saveScreenshot</span>('reports/answers<span class="variable">.png</span>')</div><div class="line">    client<span class="variable">.end</span>()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>来关注一下 expect ，是不是看起来很像自然语言？这些语句就是测试结果的验证语句，就是我们希望得到的结果。比如 client.expect.element(‘body’).to.be.present.before(3000)，意思就是 “希望 body 元素能在 3000 毫秒内初始化完毕”。</p>
+<blockquote>
+<p>Nightwatch 支持 BDD-Style 与 Assert 断言两种风格，文档可见 <a href="http://nightwatchjs.org/api#expect-api" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<p>是不是确实没什么用？毕竟是个简单的 Demo 而已，哈哈。那么添加一个稍微复杂点的测试用例。</p>
+<h3 id="编写另一个简单的测试用例"><a href="#编写另一个简单的测试用例" class="headerlink" title="编写另一个简单的测试用例"></a>编写另一个简单的测试用例</h3><p>这个 demo 将打开 <a href="http://live.bilibili.com/" target="_blank" rel="external">Bilibili 直播</a> ，然后执行：</p>
+<ul>
+<li>打开首页并等待加载完毕；</li>
+<li>检查登陆按钮是否存在；</li>
+<li>点击登陆按钮；</li>
+<li>填写用户名与密码；</li>
+<li>点击登陆；</li>
+<li>等待页面加载；</li>
+<li>通过 Cookie 检查是否已登陆；</li>
+<li>确保登陆后的用户导航面板存在；</li>
+<li>鼠标移至头像处打开导航面板；</li>
+<li>点击退出登陆；</li>
+<li>等待页面刷新后检查 Cookie 是否已退出登陆；</li>
+<li>结束测试。</li>
+</ul>
+<p>代码：<br><figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">// Account setting.</div><div class="line">const accountConfig = &#123;</div><div class="line">  <span class="attribute">username</span>: 'USERNAME',</div><div class="line">  password: 'PASSWORD',</div><div class="line">  uid: '10000'</div><div class="line">&#125;</div><div class="line"></div><div class="line">module<span class="variable">.exports</span> = &#123;</div><div class="line">  'Bilibili Live Login Test': function (client) &#123;</div><div class="line">    client<span class="variable">.url</span>('http://live<span class="variable">.bilibili</span><span class="variable">.com</span>')<span class="variable">.maximizeWindow</span>()</div><div class="line"></div><div class="line">    // Page Init.</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span><span class="variable">.before</span>(3000)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('<span class="variable">.top-nav-login-btn</span><span class="variable">.last</span>')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line"></div><div class="line">    // Login.</div><div class="line">    client<span class="variable">.click</span>('<span class="variable">.top-nav-login-btn</span><span class="variable">.last</span>')</div><div class="line">    client<span class="variable">.waitForElementVisible</span>('#bilibili-quick-login', 2000)</div><div class="line">    client<span class="variable">.frame</span>(0)</div><div class="line">    client<span class="variable">.pause</span>(2000)</div><div class="line">    client<span class="variable">.setValue</span>('#login-username', accountConfig<span class="variable">.username</span>)</div><div class="line">    client<span class="variable">.setValue</span>('#login-passwd', accountConfig<span class="variable">.password</span>)</div><div class="line">    client<span class="variable">.click</span>('#login-submit')</div><div class="line"></div><div class="line">    // Wait and check page has been reloaded.</div><div class="line">    client<span class="variable">.frameParent</span>()</div><div class="line">    client<span class="variable">.pause</span>(4000)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span><span class="variable">.before</span>(3000)</div><div class="line"></div><div class="line">    // Check cookies to ensure we are signed in.</div><div class="line">    client<span class="variable">.getCookies</span>(function (result) &#123;</div><div class="line">      result<span class="variable">.value</span><span class="variable">.forEach</span>((value, index, array) =&gt; &#123;</div><div class="line">        if (value<span class="variable">.name</span> === 'DedeUserID') client<span class="variable">.assert</span><span class="variable">.equal</span>(parseInt(value<span class="variable">.value</span>, 10), accountConfig<span class="variable">.uid</span>)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    // Move to User Avatar.</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('<span class="variable">.user-avatar-link</span>')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line">    client<span class="variable">.moveToElement</span>('<span class="variable">.user-avatar-link</span>', 5, 5)</div><div class="line">    client<span class="variable">.pause</span>(800)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('#top-nav-user-panel')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line"></div><div class="line">    // Logout.</div><div class="line">    client<span class="variable">.click</span>('#top-nav-logout-link')</div><div class="line">    client<span class="variable">.pause</span>(5000)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span><span class="variable">.before</span>(3000)</div><div class="line"></div><div class="line">    // Check cookies again to ensure we are off.</div><div class="line">    client<span class="variable">.getCookies</span>(function (result) &#123;</div><div class="line">      var logout = true</div><div class="line">      result<span class="variable">.value</span><span class="variable">.forEach</span>((value, index, array) =&gt; &#123;</div><div class="line">        if (value<span class="variable">.name</span> === 'LIVE_LOGIN_DATA') logout = false</div><div class="line">      &#125;)</div><div class="line">      client<span class="variable">.assert</span><span class="variable">.equal</span>(logout, true)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    client<span class="variable">.pause</span>(1000)</div><div class="line">    client<span class="variable">.end</span>()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>您可以新建一个文件，或者在之前的文件中继续编写。</p>
+</blockquote>
+<h3 id="运行测试用例"><a href="#运行测试用例" class="headerlink" title="运行测试用例"></a>运行测试用例</h3><p>回到项目根目录，执行 npm start，然后就可以看到浏览器自己测试了！</p>
+<h3 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h3><ul>
+<li><p>在填写<code>selenium-conf.js</code>的时候不要写最新版本（3.0版本）,不然在跑案例脚本时候会报找不到element的错误</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">selenium</span>: &#123;</div><div class="line">        <span class="attribute">version</span>: <span class="string">'2.53.1'</span>,  </div><div class="line">        baseURL: <span class="string">'https://selenium-release.storage.googleapis.com'</span></div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+</li>
+<li><p>其次，配置chromedriver的时候也不要写最新的版本，在mac中会报找不到mac64的错误，写成如下版本即可：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">driver</span>: &#123;</div><div class="line">        <span class="attribute">chrome</span>: &#123;</div><div class="line">            <span class="comment">// Chrome 浏览器启动 Driver，请在下方链接查询最新版本。</span></div><div class="line">            <span class="comment">// https://chromedriver.storage.googleapis.com/index.html</span></div><div class="line">            <span class="attribute">version</span>: <span class="string">'2.25'</span>,</div><div class="line">            <span class="attribute">arch</span>: process.arch,</div><div class="line">            <span class="attribute">baseURL</span>: <span class="string">'https://chromedriver.storage.googleapis.com'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>源文件项目地址:</em></p>
+<blockquote>
+<p><a href="https://github.com/meiminjun/AutoTest" target="_blank" rel="external">https://github.com/meiminjun/AutoTest</a></p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[git常用操作-回滚代码]]></title>
       <url>http://meiminjun.github.io/2016/12/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<h1 id="git常用操作-回滚代码"><a href="#git常用操作-回滚代码" class="headerlink" title="git常用操作-回滚代码"></a>git常用操作-回滚代码</h1><h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><ul>
@@ -68,7 +218,7 @@
 <p>突然，你发现新增的代码有点问题你想回退到之前版本</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure>
 <p>你可以发现，Git会告诉你，git checkout – file可以丢弃工作区的修改：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- man.js</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
 <p>命令git checkout – man.js意思就是，把man.js文件在工作区的修改全部撤销，这里有两种情况：</p>
 <p>一种是man.js自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
 <p>一种是man.js已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
@@ -80,7 +230,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> man.js</div></pre></td></tr></table></figure>
 <p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
 <p>再用git status查看一下，现在暂存区是干净的，工作区有修改：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure></p>
-<p>如果想丢弃工作区的修改,则继续<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- man.js</span></div></pre></td></tr></table></figure></p>
+<p>如果想丢弃工作区的修改,则继续<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure></p>
 <p>小结：</p>
 <p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
 <p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
@@ -92,32 +242,8 @@
 <p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">rm</span> <span class="keyword">man</span>.js</div><div class="line"><span class="keyword">rm</span> 'git/<span class="keyword">man</span>.js'</div><div class="line">git commit -<span class="keyword">m</span> <span class="string">"remove man.js"</span></div><div class="line">feature/git学习 8a1abac] remove <span class="keyword">man</span>.js</div><div class="line"> 1 <span class="keyword">file</span> changed, 1 deletion(-)</div><div class="line"> delete mode 100644 git/<span class="keyword">man</span>.js</div></pre></td></tr></table></figure></p>
 <p>文件就从版本库中被删除了。</p>
 <p>另一种情况，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- man.js</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
 <p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/2016/08/18/chrome-%E7%BF%BB%E5%A2%99/</url>
-      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
 ]]></content>
     </entry>
     
@@ -155,6 +281,30 @@
 <ul>
 <li>使用方法基本和”简易版”一样</li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[google之翻越长城]]></title>
+      <url>http://meiminjun.github.io/2016/08/18/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
 ]]></content>
     </entry>
     
@@ -562,16 +712,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Chrome常用设置]]></title>
-      <url>http://meiminjun.github.io/2016/07/09/chrome%E5%BC%80%E5%8F%91/</url>
-      <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
-<p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
-<p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
-<p>win7:<br>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</p>
-<h2 id="跨域设置"><a href="#跨域设置" class="headerlink" title="跨域设置"></a>跨域设置</h2><p>老版本：</p>
-<p>–disable-web-security</p>
-<p>chrome49版本以后需加入：</p>
-<p>–disable-web-security –user-data-dir</p>
+      <title><![CDATA[windows常用快捷键]]></title>
+      <url>http://meiminjun.github.io/2016/07/09/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
+<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
 ]]></content>
     </entry>
     
@@ -589,11 +734,16 @@
     </entry>
     
     <entry>
-      <title><![CDATA[windows常用快捷键]]></title>
-      <url>http://meiminjun.github.io/2016/07/09/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
-<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
-<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
+      <title><![CDATA[Chrome常用设置]]></title>
+      <url>http://meiminjun.github.io/2016/07/09/chrome%E5%BC%80%E5%8F%91/</url>
+      <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
+<p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
+<p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
+<p>win7:<br>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</p>
+<h2 id="跨域设置"><a href="#跨域设置" class="headerlink" title="跨域设置"></a>跨域设置</h2><p>老版本：</p>
+<p>–disable-web-security</p>
+<p>chrome49版本以后需加入：</p>
+<p>–disable-web-security –user-data-dir</p>
 ]]></content>
     </entry>
     
@@ -718,123 +868,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[浅谈javacript 笔记系列--- String 之slice]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/javascript-slice%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
-<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
-<p>提示和注释</p>
-<p>注释：您可使用负值从数组的尾部选取元素。</p>
-<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
-<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[浅谈javacript 笔记系列---静态属性和原型方法]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[浅谈javacript 笔记系列--- Array 之splice]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/javascript-Array-splice%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>index</td>
-<td style="text-align:right">必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
-</tr>
-<tr>
-<td>howmany</td>
-<td style="text-align:right">必需。规定应该删除多少元素。必须是数字，但可以是 “0”。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
-</tr>
-<tr>
-<td>element1</td>
-<td style="text-align:right">可选。规定要添加到数组的新元素。从 index 所指的下标处开始插入。</td>
-</tr>
-<tr>
-<td>elementX</td>
-<td style="text-align:right">可选。可向数组添加若干元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果从 arrayObject 中删除了元素，则返回的是含有<strong>被删除</strong>的元素的数组。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
-<li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
-<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
-<li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
-<blockquote>
-<p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
-</blockquote>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---精选插件和UI主题]]></title>
       <url>http://meiminjun.github.io/2016/06/23/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
@@ -904,6 +937,123 @@
 <p>优化后<br><img src="https://segmentfault.com/img/bVsDMr" alt="图片"></p>
 <p><a href="http://frontenddev.org/article/sublime-does-text-three-plug-ins-html-and-css-js-prettify.html" target="_blank" rel="external">sublime text 3 插件：HTML-CSS-JS Prettify</a>文中给出了解决方法，大家可以参考</p>
 <h2 id="我的快捷键配置汇总-首选项-gt-按键绑定-用户"><a href="#我的快捷键配置汇总-首选项-gt-按键绑定-用户" class="headerlink" title="我的快捷键配置汇总:(首选项&gt;按键绑定-用户):"></a>我的快捷键配置汇总:(首选项&gt;按键绑定-用户):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal"</span> &#125;,</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+alt+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal_project_folder"</span> &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"target"</span>: <span class="string">"browser"</span>, <span class="string">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[浅谈javacript 笔记系列---静态属性和原型方法]]></title>
+      <url>http://meiminjun.github.io/2016/06/23/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[浅谈javacript 笔记系列--- String 之slice]]></title>
+      <url>http://meiminjun.github.io/2016/06/23/javascript-slice%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>stringObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
+<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
+<p>提示和注释</p>
+<p>注释：您可使用负值从数组的尾部选取元素。</p>
+<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
+<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[浅谈javacript 笔记系列--- Array 之splice]]></title>
+      <url>http://meiminjun.github.io/2016/06/23/javascript-Array-splice%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td style="text-align:right">必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
+</tr>
+<tr>
+<td>howmany</td>
+<td style="text-align:right">必需。规定应该删除多少元素。必须是数字，但可以是 “0”。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
+</tr>
+<tr>
+<td>element1</td>
+<td style="text-align:right">可选。规定要添加到数组的新元素。从 index 所指的下标处开始插入。</td>
+</tr>
+<tr>
+<td>elementX</td>
+<td style="text-align:right">可选。可向数组添加若干元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果从 arrayObject 中删除了元素，则返回的是含有<strong>被删除</strong>的元素的数组。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
+<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
+<li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
+</blockquote>
 ]]></content>
     </entry>
     
@@ -1247,23 +1397,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[javascript之闭包]]></title>
-      <url>http://meiminjun.github.io/2016/01/05/javascript-%E9%97%AD%E5%8C%85/</url>
-      <content type="html"><![CDATA[<ol>
-<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
-<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
-<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
-<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
-</ol>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
-<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
-<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[javascript之常用DOM操作]]></title>
       <url>http://meiminjun.github.io/2016/01/05/javascript-dom/</url>
       <content type="html"><![CDATA[<p>这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法</p>
@@ -1320,6 +1453,23 @@
 <h2 id="删除和替换节点。"><a href="#删除和替换节点。" class="headerlink" title="删除和替换节点。"></a>删除和替换节点。</h2><h3 id="removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"><a href="#removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。" class="headerlink" title="removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"></a>removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var div1 = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">            div1.removeChild(document.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;    //注意到第二个P元素已经被移除了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
 <h3 id="replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"><a href="#replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点" class="headerlink" title="replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"></a>replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var div1 = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">            var span1 = document.createElement(<span class="string">"span"</span>);</div><div class="line">            span1.textContent = <span class="string">"我是一个新建的span"</span>;</div><div class="line">            div1.replaceChild(span1,document.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;span&gt;我是一个新建的span&lt;/span&gt;    //留意到p2节点已经被替换为span1节点了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
 <h2 id="javascript操作元素CSS"><a href="#javascript操作元素CSS" class="headerlink" title="javascript操作元素CSS"></a>javascript操作元素CSS</h2><p>通过元素的style属性可以随意读取和设置元素的CSS样式，例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            alert(document.getElementById(<span class="string">"div1"</span>).style.backgroundColor);</div><div class="line">            document.getElementById(<span class="string">"div1"</span>).style.backgroundColor = <span class="string">"yellow"</span>;</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span> style=<span class="string">"width:100px; height:100px; background-color:red"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript之闭包]]></title>
+      <url>http://meiminjun.github.io/2016/01/05/javascript-%E9%97%AD%E5%8C%85/</url>
+      <content type="html"><![CDATA[<ol>
+<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
+<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
+<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
+<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
+<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
+<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
 ]]></content>
     </entry>
     
