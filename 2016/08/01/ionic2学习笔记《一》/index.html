@@ -1,0 +1,941 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ionic2,angular2," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr.Jason'Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="ionic2菜鸟学习笔记《一》
+ionic2菜鸟学习笔记《二》
+准备工作环境要求
+nodeV5版本以上(官方推荐)
+cordova
+android 开发环境（jdk,android SDK,eclipse或者android studio）
+
+安装命令
+npm install -g ionic@beta
+
+创建一个项目12345678ionic start MyFirstIonicApp --v2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ionic2菜鸟学习笔记《一》">
+<meta property="og:url" content="http://meiminjun.github.io/2016/08/01/ionic2学习笔记《一》/index.html">
+<meta property="og:site_name" content="Mr.Jason'Blog">
+<meta property="og:description" content="ionic2菜鸟学习笔记《一》
+ionic2菜鸟学习笔记《二》
+准备工作环境要求
+nodeV5版本以上(官方推荐)
+cordova
+android 开发环境（jdk,android SDK,eclipse或者android studio）
+
+安装命令
+npm install -g ionic@beta
+
+创建一个项目12345678ionic start MyFirstIonicApp --v2">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f862gmtxj20av05hq3j.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/69a9ed59gw1f6f89ew5mbj20b20440ta.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f8i8omj1j208g07fglz.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6i5w4qu2hj20fd0d7q5m.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/69a9ed59gw1f6f8kvt5acj20eg09j767.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f8mj6wi2j20hn08waan.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1f6f9a9jv32j20dj03kt8z.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f9ou0tyij207h05j0t0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1f6f9rwt6wnj209r0axwfc.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1f6faetaj5pj20bj077wfi.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1f6fag344v9j20el0bvjtz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1f6faj20um3j20bx0810ta.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6famcp1knj20co098ta9.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fakrgsiej20b006odfv.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fepp1dqgj205k04w74c.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/69a9ed59gw1f6fetuwrufj20ba09vq4a.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6feyqp9e9j20bb0ap40e.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6ff3nnhq3j20ac0c9wfr.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6frhuup6pj20am07rq3p.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1f6frm44yk7j206q08pjs2.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6fs6yoyoqj208l08i3ym.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6fswjsg79j206i05kdg1.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ft1nrnabj20gi06swh7.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fti8h1ukj20i30gntc9.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ftgl1mgbj20em09sgmd.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ftw2nocuj20560fat9j.jpg">
+<meta property="og:updated_time" content="2016-12-19T03:44:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ionic2菜鸟学习笔记《一》">
+<meta name="twitter:description" content="ionic2菜鸟学习笔记《一》
+ionic2菜鸟学习笔记《二》
+准备工作环境要求
+nodeV5版本以上(官方推荐)
+cordova
+android 开发环境（jdk,android SDK,eclipse或者android studio）
+
+安装命令
+npm install -g ionic@beta
+
+创建一个项目12345678ionic start MyFirstIonicApp --v2">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f862gmtxj20av05hq3j.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ionic2菜鸟学习笔记《一》 | Mr.Jason'Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?16d7734da3c8cefabf2b051e78a76266";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mr.Jason'Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">热爱游戏、生活、学习的文艺屌丝青年</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ionic2菜鸟学习笔记《一》
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-01T15:57:13+08:00" content="2016-08-01">
+              2016-08-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/01/ionic2学习笔记《一》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/ionic2学习笔记《一》/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://meiminjun.github.io/2016/08/01/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
+<p><a href="http://meiminjun.github.io/2016/08/03/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>nodeV5版本以上(官方推荐)</li>
+<li>cordova</li>
+<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="external">android 开发环境（jdk,android SDK,eclipse或者android studio）</a></li>
+</ul>
+<h2 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h2><blockquote>
+<p>npm install -g ionic@beta</p>
+</blockquote>
+<h2 id="创建一个项目"><a href="#创建一个项目" class="headerlink" title="创建一个项目"></a>创建一个项目</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ionic <span class="keyword">start</span> MyFirstIonicApp <span class="comment">--v2  //注意，当从github下载的zip下载完成之后一直停留了很久，就停止（可能是国内被墙的缘故）</span></div><div class="line"></div><div class="line">并直接</div><div class="line">cd MyFirstIonicApp </div><div class="line"></div><div class="line">npm <span class="keyword">install</span> </div><div class="line"></div><div class="line">ionic serve</div></pre></td></tr></table></figure>
+<h2 id="在设备中打开"><a href="#在设备中打开" class="headerlink" title="在设备中打开"></a>在设备中打开</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">npm install -g cordova</div><div class="line"></div><div class="line">ionic platform <span class="keyword">add</span><span class="bash"> ios</span></div><div class="line"></div><div class="line">ionic platform <span class="keyword">add</span><span class="bash"> android</span></div><div class="line"></div><div class="line">ionic <span class="keyword">run</span><span class="bash"> android</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="新建一个page"><a href="#新建一个page" class="headerlink" title="新建一个page"></a>新建一个page</h1><p>进入项目目录：<br><figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g page NewPage  <span class="comment">// 新建立一个页面</span></div></pre></td></tr></table></figure></p>
+<p>会出现：</p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f862gmtxj20av05hq3j.jpg" alt=""></p>
+<p>控制台提示一句话：</p>
+<p>Don’t forget to add an import for new-page.scss in app\themes\app.core.scss:</p>
+<p>@import “..\pages\new-page\new-page.scss”;</p>
+<p>在项目中找到:./app/theme/app.core.scss这个文件</p>
+<p>在里面新增加一句：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">"../pages/new-page/new-page.scss"</span>;</div></pre></td></tr></table></figure></p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6f89ew5mbj20b20440ta.jpg" alt=""></p>
+<p>现在，我们就新建了一个页面，在.pages/目录下面会看到new-page文件夹，这个就是新增的页面</p>
+<p>我们找到new-page.html中写一些代码:</p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f8i8omj1j208g07fglz.jpg" alt=""></p>
+<p>找到./app/pages/new-page/new-page.ts文件，将类名NewPagePage改为”NewPage”;</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6i5w4qu2hj20fd0d7q5m.jpg" alt=""></p>
+<p>找到./app/app.ts ，修改app.ts页面的入口文件</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6f8kvt5acj20eg09j767.jpg" alt=""></p>
+<p>命令行输入：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure></p>
+<p>成功了！<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f8mj6wi2j20hn08waan.jpg" alt=""></p>
+<p><strong>恭喜你成功跨入第一步，万事开头难！</strong></p>
+<h1 id="新建自定义组件"><a href="#新建自定义组件" class="headerlink" title="新建自定义组件"></a>新建自定义组件</h1><p>ionic官网有很多组件</p>
+<blockquote>
+<p>地址：<a href="http://ionicframework.com/docs/v2/components/#overview" target="_blank" rel="external">http://ionicframework.com/docs/v2/components/#overview</a></p>
+</blockquote>
+<p>进入项目目录<br><figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g component NewComponent  <span class="comment">// 新建立组件</span></div></pre></td></tr></table></figure></p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6f9a9jv32j20dj03kt8z.jpg" alt=""></p>
+<p>目录中会新增一个components，其中会生成一个new-component的组件目录</p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f9ou0tyij207h05j0t0.jpg" alt=""></p>
+<p>编辑new-component里面的内容，找到../app/components/new-component/new-component.html, 修改其中的内容为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6f9rwt6wnj209r0axwfc.jpg" alt=""></p>
+<p>找到../app/components/new-component/new-component.ts, 修改其中的内容为：<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6faetaj5pj20bj077wfi.jpg" alt=""></p>
+<p>在你需要这个组件的页面中添加组件，这里以之前的new-page页面为例<br>找到./pages/new-page/new-page.ts,在其中添加：</p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6fag344v9j20el0bvjtz.jpg" alt=""></p>
+<p>将组件插入到html中，找到./pages/new-page/new-page.html,添加：</p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6faj20um3j20bx0810ta.jpg" alt=""></p>
+<p><strong>注意：看下./app.ts中是不是</strong><br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6famcp1knj20co098ta9.jpg" alt=""></p>
+<p>启动项目：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure>
+<p>大功告成：</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fakrgsiej20b006odfv.jpg" alt=""></p>
+<h1 id="生成pipe"><a href="#生成pipe" class="headerlink" title="生成pipe"></a>生成pipe</h1><p>pipe类似于一个过滤器，将渲染页面的数据进行过滤，例如：<br>后端传递给我门的数据时{value：”hello”},前端展示的时候要讲hello 转换为HELLO WORLD</p>
+<p>下面是一个生成pipe的例子：</p>
+<p>进入项目，新建一个pipe：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g pipe NewPipe</div></pre></td></tr></table></figure></p>
+<p>之后会生成一个pipes文件目录，如图：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fepp1dqgj205k04w74c.jpg" alt=""></p>
+<p>打开pipes/NewPipes.ts,修改其中的transform方法</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6fetuwrufj20ba09vq4a.jpg" alt=""></p>
+<p>在../app/pages/new-page/new-page.ts中引入这个pipe</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6feyqp9e9j20bb0ap40e.jpg" alt=""></p>
+<p>在./pages/new-page/new-age.html中增加字符显示：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6ff3nnhq3j20ac0c9wfr.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6frhuup6pj20am07rq3p.jpg" alt=""></p>
+<p>注意在./pipes/NewPipe中设置的NewPipe对应的new-page.html中对应的要一致<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6frm44yk7j206q08pjs2.jpg" alt=""></p>
+<p>运行命令：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure></p>
+<p>成功显示：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6fs6yoyoqj208l08i3ym.jpg" alt=""></p>
+<h1 id="号"><a href="#号" class="headerlink" title="*号"></a>*号</h1><p>在ionic2页面中会出现*，如：</p>
+<h2 id="号的第一种情况-if语句-："><a href="#号的第一种情况-if语句-：" class="headerlink" title="*号的第一种情况(if语句)："></a>*号的第一种情况(if语句)：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngIf</span>=<span class="string">"someValue"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>表示的意思指：</p>
+<blockquote>
+<p>如果someValue的值为true,则显示</p><p></p>,否则不显示<p></p><p></p>
+</blockquote>
+<h2 id="号的第二种情况-for循环-："><a href="#号的第二种情况-for循环-：" class="headerlink" title="*号的第二种情况(for循环)："></a>*号的第二种情况(for循环)：</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngFor</span>=<span class="string">"let item of items"</span>&gt;</span></span><span class="template-variable">&#123;&#123;item.value&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>表示的意思指：</p>
+<blockquote>
+<p>获取一个列表items，并遍历其中的元素item，然后显示这个元素的value属性的值</p>
+</blockquote>
+<h2 id="号的第三种情况-switch语句"><a href="#号的第三种情况-switch语句" class="headerlink" title="*号的第三种情况(switch语句)"></a>*号的第三种情况(switch语句)</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngSwitch</span>]=<span class="string">"paragraphNumber"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchWhen</span>=<span class="string">"1"</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchWhen</span>=<span class="string">"2"</span>&gt;</span>Paragraph 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchWhen</span>=<span class="string">"3"</span>&gt;</span>Paragraph 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchDefault</span>&gt;</span>Paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>表示的意思指：</p>
+<p>paragraphNumber=1时，显示: Paragraph 1</p>
+<p>paragraphNumber=2时，显示: Paragraph 2</p>
+<p>依次类推</p>
+<p>默认显示：Paragraph</p>
+<h1 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h1><p>Provider是一种为App提供数据源请求的方式</p>
+<p>举个栗子：</p>
+<p>请求地址：<a href="https://www.reddit.com/r/gifs/top/.json?limit=10&amp;sort=hot" target="_blank" rel="external">https://www.reddit.com/r/gifs/top/.json?limit=10&amp;sort=hot</a> </p>
+<p>获取Json格式的数据，并在程序启动的时候，在控制台打印获取的数据信息：</p>
+<p>进入项目，新建一个provider：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g provider NewProvider</div></pre></td></tr></table></figure></p>
+<p>在目录中会新增一个目录，如下：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6fswjsg79j206i05kdg1.jpg" alt=""></p>
+<p>然后修改.providers/new-provider/new-provider.ts中的代码</p>
+<p>默认接受的是json数据</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ft1nrnabj20gi06swh7.jpg" alt=""></p>
+<p>在需要的页面中调用，这里我们在之前的new-page.ts这个页面渲染时打印出来</p>
+<p>修改代码：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fti8h1ukj20i30gntc9.jpg" alt=""></p>
+<p>启动项目：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure></p>
+<p>成功返回：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ftgl1mgbj20em09sgmd.jpg" alt=""></p>
+<p>最后截一下几个示例写完的整个目录方便大家对照：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ftw2nocuj20560fat9j.jpg" alt=""></p>
+<p>今天先写到这里。。2016-08-02-23-25</p>
+<p>后续会有持续更新，敬请期待！</p>
+<h1 id="ng2权威资料"><a href="#ng2权威资料" class="headerlink" title="ng2权威资料"></a>ng2权威资料</h1><p>中文官方：<a href="https://angular.cn/docs/ts/latest/quickstart.html" target="_blank" rel="external">https://angular.cn/docs/ts/latest/quickstart.html</a></p>
+<p>官方网站：<a href="http://a2.hubwiz.com/docs/ts/latest/" target="_blank" rel="external">http://a2.hubwiz.com/docs/ts/latest/</a></p>
+<h1 id="ionic2权威资料"><a href="#ionic2权威资料" class="headerlink" title="ionic2权威资料"></a>ionic2权威资料</h1><p><a href="https://github.com/driftyco/ionic" target="_blank" rel="external">https://github.com/driftyco/ionic</a></p>
+<p><a href="http://ionicframework.com/docs/v2/getting-started/tutorial/" target="_blank" rel="external">http://ionicframework.com/docs/v2/getting-started/tutorial/</a></p>
+<h3 id="ionic2组件"><a href="#ionic2组件" class="headerlink" title="ionic2组件"></a>ionic2组件</h3><p><a href="http://ionicframework.com/docs/v2/components/#overview" target="_blank" rel="external">http://ionicframework.com/docs/v2/components/#overview</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ionic2/" rel="tag">#ionic2</a>
+          
+            <a href="/tags/angular2/" rel="tag">#angular2</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/31/SublimeText-vim常用命令笔记/" rel="next" title="史上最强Sublime 笔记系列---vim常用命令笔记">
+                <i class="fa fa-chevron-left"></i> 史上最强Sublime 笔记系列---vim常用命令笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/03/ionic2学习笔记《二》/" rel="prev" title="ionic2菜鸟学习笔记《二》">
+                ionic2菜鸟学习笔记《二》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/01/ionic2学习笔记《一》/"
+           data-title="ionic2菜鸟学习笔记《一》" data-url="http://meiminjun.github.io/2016/08/01/ionic2学习笔记《一》/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/jiayou.png"
+               alt="Mr.Jason" />
+          <p class="site-author-name" itemprop="name">Mr.Jason</p>
+          <p class="site-description motion-element" itemprop="description">江西科技学院09级,现就职于平安口袋银行。擅长各项前端技能，目前深入研究移动端html5跨平台开发。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiminjun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境要求"><span class="nav-number">1.1.</span> <span class="nav-text">环境要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装命令"><span class="nav-number">1.2.</span> <span class="nav-text">安装命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个项目"><span class="nav-number">1.3.</span> <span class="nav-text">创建一个项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在设备中打开"><span class="nav-number">1.4.</span> <span class="nav-text">在设备中打开</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建一个page"><span class="nav-number">2.</span> <span class="nav-text">新建一个page</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建自定义组件"><span class="nav-number">3.</span> <span class="nav-text">新建自定义组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成pipe"><span class="nav-number">4.</span> <span class="nav-text">生成pipe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#号"><span class="nav-number">5.</span> <span class="nav-text">*号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#号的第一种情况-if语句-："><span class="nav-number">5.1.</span> <span class="nav-text">*号的第一种情况(if语句)：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#号的第二种情况-for循环-："><span class="nav-number">5.2.</span> <span class="nav-text">*号的第二种情况(for循环)：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#号的第三种情况-switch语句"><span class="nav-number">5.3.</span> <span class="nav-text">*号的第三种情况(switch语句)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Provider"><span class="nav-number">6.</span> <span class="nav-text">Provider</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ng2权威资料"><span class="nav-number">7.</span> <span class="nav-text">ng2权威资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ionic2权威资料"><span class="nav-number">8.</span> <span class="nav-text">ionic2权威资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ionic2组件"><span class="nav-number">8.0.1.</span> <span class="nav-text">ionic2组件</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Jason</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"meiminjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr.Jason'Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Google Developers：移动Web优化指南（原标题：用PageSpeed进行移动页面性能分析）注：由于这篇文章单独拿出来看与PageSpeed几乎无关，故改为更合适的题目
+PageSpeed Insights可以用于分析一个页面是否遵循了我们的建议——“在移动网络下一秒之内渲染完毕”。研究已经显示，超过一秒的渲染时间会打断用户的思绪流，造成糟糕的用户体验。我们的目标是，保持用户停留在页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端优化">
+<meta property="og:url" content="http://meiminjun.github.io/2016/07/08/移动端优化/index.html">
+<meta property="og:site_name" content="Mr.Jason'Blog">
+<meta property="og:description" content="Google Developers：移动Web优化指南（原标题：用PageSpeed进行移动页面性能分析）注：由于这篇文章单独拿出来看与PageSpeed几乎无关，故改为更合适的题目
+PageSpeed Insights可以用于分析一个页面是否遵循了我们的建议——“在移动网络下一秒之内渲染完毕”。研究已经显示，超过一秒的渲染时间会打断用户的思绪流，造成糟糕的用户体验。我们的目标是，保持用户停留在页">
+<meta property="og:image" content="https://developers.google.com/speed/docs/insights/images/1stimeline.png">
+<meta property="og:updated_time" content="2016-12-19T03:44:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端优化">
+<meta name="twitter:description" content="Google Developers：移动Web优化指南（原标题：用PageSpeed进行移动页面性能分析）注：由于这篇文章单独拿出来看与PageSpeed几乎无关，故改为更合适的题目
+PageSpeed Insights可以用于分析一个页面是否遵循了我们的建议——“在移动网络下一秒之内渲染完毕”。研究已经显示，超过一秒的渲染时间会打断用户的思绪流，造成糟糕的用户体验。我们的目标是，保持用户停留在页">
+<meta name="twitter:image" content="https://developers.google.com/speed/docs/insights/images/1stimeline.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 移动端优化 | Mr.Jason'Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?16d7734da3c8cefabf2b051e78a76266";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mr.Jason'Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">热爱游戏、生活、学习的文艺屌丝青年</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                移动端优化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T22:57:13+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/08/移动端优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/移动端优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Google-Developers：移动Web优化指南"><a href="#Google-Developers：移动Web优化指南" class="headerlink" title="Google Developers：移动Web优化指南"></a>Google Developers：移动Web优化指南</h1><h3 id="（原标题：用PageSpeed进行移动页面性能分析）"><a href="#（原标题：用PageSpeed进行移动页面性能分析）" class="headerlink" title="（原标题：用PageSpeed进行移动页面性能分析）"></a>（原标题：用PageSpeed进行移动页面性能分析）</h3><p>注：由于这篇文章单独拿出来看与PageSpeed几乎无关，故改为更合适的题目</p>
+<p>PageSpeed Insights可以用于分析一个页面是否遵循了我们的建议——“在移动网络下一秒之内渲染完毕”。研究已经显示，超过一秒的渲染时间会打断用户的思绪流，造成糟糕的用户体验。我们的目标是，保持用户停留在页面上，并且提供最佳的体验，不管用户使用什么设备，或是在何种网络下浏览页面。</p>
+<p>满足一秒渲染完毕的标准是很难的。但是幸运的是，我们没有必要让整个页面都满足这个条件，换句话说，<strong>我们要首屏（above the fold，ATF）满足一秒渲染的条件，这样可以让用户尽可能快的与页面进行交互</strong>。然后，当用户在阅读第一页的内容时，剩下的页面可在后台逐渐的加载。</p>
+<a id="more"></a>
+<h3 id="适应高延时的移动网络"><a href="#适应高延时的移动网络" class="headerlink" title="适应高延时的移动网络"></a>适应高延时的移动网络</h3><p>在移动设备上满足“一秒首屏渲染标准”（ATF）相对于在其他设备上是一个独特的挑战。用户可能会在2G、3G或4G的不同网络下访问你的网站。与有线网络相比，无线网络延迟可能会非常高，并且消耗掉1秒（1000ms）渲染首屏时间中的相当一部分：</p>
+<ul>
+<li>3G网络会有 200-300ms 的延迟</li>
+<li>4G网络会有 50-100ms 的延迟</li>
+</ul>
+<p>目前3G网络在世界范围内占有统治性地位，虽然4G网络正在全世界部署，但是你仍然应该考虑到大部分的用户会在3G网络下浏览你的页面。所以，我们不得不假设每个请求平均平均会花费200ms。</p>
+<p>考虑到这个因素，让我们反向的思考一下。如果我们看看一个浏览器与服务器之间通信的典型序列（sequence），我们会发现1000ms中的600ms已经被基本的网络开销占用了：DNS服务器查找域名（例如google.com）对应的IP地址的时间、用于完成TCP握手的网络延迟、还有最后发送一整条HTTP请求的网络延迟。我们只剩下了400ms！</p>
+<p><img src="https://developers.google.com/speed/docs/insights/images/1stimeline.png" alt=""></p>
+<h3 id="实现半秒的渲染体验"><a href="#实现半秒的渲染体验" class="headerlink" title="实现半秒的渲染体验"></a>实现半秒的渲染体验</h3><p>在减去网络延迟之后，我们的预算时间只剩下400ms，然而我们仍然有太多的事情要去做：服务器必须要去产生响应，客户端应用的代码必须要去执行，并且浏览器必须要去布局（layout）和渲染（render）内容。再考虑到这些，下面的一些标准将帮助我们在预算时间内完成任务：</p>
+<dl><br><br><dt>(1) 服务器响应时间小于 200 ms </dt><br><dd>服务器响应时间是服务器向浏览器返回一个最初的HTML页面的时间，包括网络传输的用时。由于我们的时间预算非常紧张，这部分时间应该压缩到最小值——理想情况下是小于200ms，越小越好！</dd><br><br><dt>(2) 减少重定向的数量</dt><br><br><dd>额外的HTTP重定向会增加一到两个网络往返（如果需要额外的DNS查找的话就是两个），在3G网络下导致数百毫秒的延迟。因此，我们强烈建议站长减少，甚至理论上完全弃用重定向——这对于HTML文档来说尤其重要（尽可能避免“m.xxx.com”的这种重定向）</dd><br><br><dt>(3)尽可能减少首屏渲染所需要的请求数</dt><br><br><dd><br>由于TCP的慢启动算法(参考<a href="http://en.wikipedia.org/wiki/Slow-start" target="_blank" rel="external">TCP Slow Start</a>)，一个新的TCP连接不能立即使用客户端与服务器之间全部可用的带宽。因此，服务器在一个新连接的第一次数据往返时，最多可以发送10个TCP包（不超过14KB），接着服务器必须在它增加阻塞窗口和继续发送更多数据之前等待客户端确认（ACK）这些数据。<br><br>由于TCP 的这种行为，为了传输必要的数据来渲染首屏优化你的页面内容，减少需要的请求数是很重要的。理想情况下，首屏内容应该小于14KB——这允许了浏览器在第一次数据往返（roundtrip）之后就开始渲染页面。另外，我们也要注意所谓的“第一次数据往返最多10个TCP包”的限制是TCP标准的一次最近的更新：为了利用这个更新，你应该确保你的服务器升级到了最新版本。否则的话，可能受此数据往返的TCP包限制数量只有3-4个！<br></dd><br><br><dt>(4)避免在首屏部分中引入外部的阻塞的JavaScript和CSS</dt><br><br><dd><br><br>在浏览器渲染并展示一个页面给用户之前，它首先要解析这个页面。如果浏览器在解析过程中遇到了一个非异步的（同步的）或者是阻塞的外部脚本，它就不得不停止解析转而去加载这个资源。每次都遇到这种情况，都会增加一次网络往返时间，这会导致页面首次渲染的延迟。<br><br>所以说，首屏渲染所需的JavaScript和CSS需要写成行内（inline）形式，其他的JavaScript和CSS文件应该在首屏内容已经展现给用户之后再加载。<br><br></dd><br><br><dt>(5) 为浏览器的布局（layout）和渲染保留 200 ms 的时间</dt><br><br><dd>解析HTML、CSS和执行JavaScript的过程会耗费时间和客户端资源！取决于移动设备的速度和页面的复杂程度，这个过程可能会花费几百毫秒。我们的建议是为浏览器保留200ms的时间。</dd><br><br><dt>(6) 优化JavaScript的执行过程和渲染时间</dt><br><br><dd><br>复杂的脚本和低效的代码会花费几十甚至几百秒去执行——可以用内置的开发者工具去分析和优化你的代码。为了更好的入门开发者工具，看看我们的<a href="http://discover-devtools.codeschool.com/" target="_blank" rel="external">interactive course for Chrome Developer Tools.</a>吧！</dd><br><br></dl>
+
+<aside><br><br><br><strong>注: </strong>以上并不是所有的优化手段——这只是一个实现移动端半秒渲染的最高级别标准——你也应该继续使用所有其他的优化技巧<a href="https://developers.google.com/speed/docs/insights/rules" target="_blank" rel="external">web performance best practices</a>。来<a href="https://developers.google.com/speed/pagespeed/insights" target="_blank" rel="external">PageSpeed Insights</a>去发现更进一步的优化建议吧。<br><br><br>为了更深层次的了解以上的移动端优化标准，你也可以阅读：<br><br><em> <a href="https://developers.google.com/web/fundamentals/documentation/performance/critical-rendering-path/index" target="_blank" rel="external">Web Fundamentals: Critical Rendering Path</a>.
+
+</em> 优化关键渲染路径，打造极速移动站点 (<a href="http://bit.ly/mobilecrp" target="_blank" rel="external">slides</a>, <a href="http://www.youtube.com/watch?v=YV1nKLWoARQ" target="_blank" rel="external">video</a>).<br><br>* 极速移动站点: 技巧和最佳实践 (<a href="http://storage.googleapis.com/io-2013/presentations/239-%20Instant%20Mobile%20Websites-%20Techniques%20and%20Best%20Practices.pdf" target="_blank" rel="external">slides</a>, <a href="https://www.youtube.com/watch?v=Bzw8-ZLpwtw" target="_blank" rel="external">video</a>)<br><br></aside>
+
+
+<h3 id="常见问题（FAQ）"><a href="#常见问题（FAQ）" class="headerlink" title="常见问题（FAQ）"></a>常见问题（FAQ）</h3><dl><br><br><dt>4G网络会如何影响以上的移动优化标准?</dt><br><br><dd>4G网络主要的进步之一就是更低的网络延迟。这降低了总的网络开销时间，对我们有巨大的帮助，要知道，在3G网络中，网络延迟几乎占我们“1秒钟”时间预算的一半。然而，3G目前仍然是全世界范围内主要的网络类型，并且这种情况仍然会持续几年时间——你必须用心去为3G用户优化你的页面。</dd><br><br><dt>我使用JavaScript库，比如JQuery，对此有什么建议吗？</dt><br><br><dd>许多JS库，例如JQuery，都被用来为页面添加附加的交互、动画和特效。但是，大部分的这些行为本可以在首屏内容渲染完毕之后再加入页面。可以考虑把这些JavaScript的执行和加载放在页面加载完毕之后。</dd><br><br><dt>我用JavaScript框架去构建页面，对此有什么建议吗？</dt><br><br><dd>如果页面的内容是由客户端JavaScript构建的，你应该考虑直接在页面中插入（inlining）相关的JavaScript模块，以避免额外的网络往返。类似的，使用服务端渲染可以显著提高首页（first page）的加载表现：在服务端渲染JS模板，在HTML中插入结果，然后当应用一加载完毕，就在客户端渲染模板。</dd><br><br><dt>SPDY和HTTP 2.0 会对此有什么帮助吗?</dt><br><br><dd>SPDY 和 HTTP 2.0 都旨在通过更有效的利用底层的TCP通信（多路复用、报头压缩、优先级请求）来降低页面加载的延迟时间。而且，服务端推送可以通过消除额外的网络延迟，大大地改善页面的表现。我们鼓励你考虑在你的服务器上增加对SPDY的支持，并且等标准一定稿，就切换到HTTP 2.0协议。<br>（译者注：谷歌目前已经宣布Chrome将不会继续支持SPDY协议，但是会加强支持HTTP/2。实际上，HTTP/2的内容受到SPDY极大的影响。）</dd><br><br><dt>我应该如何去找到那些关键的CSS代码?</dt><br><br><dd><br>在Chrome开发者工具中，打开“Audits”面板，运行“Web页面表现报告”（Web Page Performance report），在生成的报告中，找到“移除无效CSS规则”（Remove unused CSS rules）。或者使用任何其他的第三方工具或者脚本，去确定每个页面上应用了哪些CSS选择器。</dd><br><br><dt>这些最佳实践可以实现自动化吗?</dt><br><br><dd><br>当然可以。有许多商业的或是开源的Web性能优化产品能帮助你实现以上部分或是全部的优化标准。想找到开源的解决方案，不妨看看<a href="https://developers.google.com/speed/pagespeed/optimization" target="_blank" rel="external">PageSpeed optimization tools</a>。</dd><br><br><dt>我该如何调整我的服务器去适应这些优化标准呢？</dt><br><br><dd><br>首先，确保你的服务器运行了最新版的操作系统。为了从TCP协议的最初拥塞窗口数量的增加中获益，你需要Linux kernel 2.6.39+。对于其他的操作系统，请查阅文档。<br>为了优化服务器响应时间，审查（instrument）你的代码，或是使用一个应用监测方案去确定你的瓶颈——比如，脚本运行时、数据库调用、RPC请求、渲染等等。我们的目标是在200ms内渲染出HTML响应。</dd><br><br><dt>内容安全策略（Content Security Policy）怎么样？</dt><br><br><dd><br>如果你使用CSP，那么你需要更新你的默认策略。<br>首先，应该尽可能的在任何地方禁止行内的在HTML元素上的CSS特性（例如“&lt; p style=…&gt;”），因为这可能会导致不必要的代码重复，并且会被CSP默认屏蔽（通过”style-src”中的”unsafe inline”选项取消）。如果CSP是有效的，他将会默认屏蔽任何的行内脚本标签。如果你有行内脚本，那么你需要更新CSP策略，用<a href="http://www.w3.org/TR/CSP11/#script-src" target="_blank" rel="external">script hashes or nonces</a>或者是用”unsafe-inline”去使你所有的行内脚本可以执行。如果你有行内样式，那么你需要用<a href="http://www.w3.org/TR/CSP11/#style-src" target="_blank" rel="external">style hashes or nonces</a>或者还是用”unsafe-inline”去使你的行内样式可以使用。</dd><br><br></dl>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/24/SublimeText-常用快捷键/" rel="next" title="史上最强Sublime 笔记系列---常用快捷键">
+                <i class="fa fa-chevron-left"></i> 史上最强Sublime 笔记系列---常用快捷键
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/09/window快捷键/" rel="prev" title="windows常用快捷键">
+                windows常用快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/08/移动端优化/"
+           data-title="移动端优化" data-url="http://meiminjun.github.io/2016/07/08/移动端优化/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/jiayou.png"
+               alt="Mr.Jason" />
+          <p class="site-author-name" itemprop="name">Mr.Jason</p>
+          <p class="site-description motion-element" itemprop="description">江西科技学院09级,现就职于平安口袋银行。擅长各项前端技能，目前深入研究移动端html5跨平台开发。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiminjun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Google-Developers：移动Web优化指南"><span class="nav-number">1.</span> <span class="nav-text">Google Developers：移动Web优化指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（原标题：用PageSpeed进行移动页面性能分析）"><span class="nav-number">1.0.1.</span> <span class="nav-text">（原标题：用PageSpeed进行移动页面性能分析）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适应高延时的移动网络"><span class="nav-number">1.0.2.</span> <span class="nav-text">适应高延时的移动网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现半秒的渲染体验"><span class="nav-number">1.0.3.</span> <span class="nav-text">实现半秒的渲染体验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题（FAQ）"><span class="nav-number">1.0.4.</span> <span class="nav-text">常见问题（FAQ）</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Jason</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"meiminjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
