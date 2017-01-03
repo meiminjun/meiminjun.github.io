@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-01-01T16:08:17.000Z</updated>
+  <updated>2017-01-03T02:42:29.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端自动化工程搭建</title>
+    <link href="http://meiminjun.github.io/2017/01/02/%E6%88%91%E7%9A%84Mac%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+    <id>http://meiminjun.github.io/2017/01/02/我的Mac工具集/</id>
+    <published>2017-01-02T01:57:13.000Z</published>
+    <updated>2017-01-03T02:42:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="精选Mac工具"><a href="#精选Mac工具" class="headerlink" title="精选Mac工具"></a>精选Mac工具</h1><h2 id="工作类"><a href="#工作类" class="headerlink" title="工作类"></a>工作类</h2><ul>
+<li>有道云笔记</li>
+<li>Alfred 3(必备)</li>
+<li>UnRaR Unarchiver : 解压软件</li>
+<li>Tickeys : 键盘特效</li>
+<li>Word : Window文档编辑工具</li>
+<li>Chrome : 浏览器软件</li>
+<li>ShadowsocksX ：翻墙工具</li>
+<li>沟通工具<ul>
+<li>微信</li>
+<li>钉钉</li>
+<li>Outlook</li>
+</ul>
+</li>
+</ul>
+<h2 id="开发类"><a href="#开发类" class="headerlink" title="开发类"></a>开发类</h2><ul>
+<li>brew : 包管理工具</li>
+<li>node : Node 环境工具</li>
+<li>Dash : 库提示工具</li>
+<li>iTerm : 命令行工具</li>
+<li>CleanMyMac : 垃圾文件清理工具</li>
+<li>编辑器<ul>
+<li>Visual Studio Code</li>
+<li>Sublime Text</li>
+</ul>
+</li>
+<li>SourceTree</li>
+<li>图形编辑工具<ul>
+<li>Sketch</li>
+<li>licecap : gif生成工具</li>
+</ul>
+</li>
+<li>Android Studio : 安卓开发工具</li>
+<li>Chrome 插件工具<ul>
+<li>Vimium : Chrome 操作神器</li>
+<li>Adblock Plus : 禁用广告插件</li>
+<li>谷歌翻译</li>
+<li>Cloud9 : 云编辑环境</li>
+<li>番茄计时器</li>
+<li>EnjoyCSS : 按钮生产工具</li>
+<li>下载+</li>
+<li>OneTab : 浏览管理工具</li>
+<li>Gliffy Diagrams : 流程工具</li>
+<li>Pocket : 离线阅读工具</li>
+<li>微博图床</li>
+<li>Octotree : github树</li>
+<li>PostMan : 接口请求工具</li>
+</ul>
+</li>
+<li>Charies : 抓包工具</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><p><a href="https://github.com/jaywcjlove/awesome-mac" target="_blank" rel="external">Mac 软件精选</a></p>
+</li>
+<li><p><a href="http://xclient.info/" target="_blank" rel="external">Mac 工具下载</a></p>
+</li>
+<li><p><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">Mac 常用快捷键</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;精选Mac工具&quot;&gt;&lt;a href=&quot;#精选Mac工具&quot; class=&quot;headerlink&quot; title=&quot;精选Mac工具&quot;&gt;&lt;/a&gt;精选Mac工具&lt;/h1&gt;&lt;h2 id=&quot;工作类&quot;&gt;&lt;a href=&quot;#工作类&quot; class=&quot;headerlink&quot; title=
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://meiminjun.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>前端自动化工程搭建</title>
@@ -1023,36 +1102,6 @@
   </entry>
   
   <entry>
-    <title>Chrome神器Vimium快捷键学习记录</title>
-    <link href="http://meiminjun.github.io/2016/07/09/Chrome%E7%A5%9E%E5%99%A8Vimium%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://meiminjun.github.io/2016/07/09/Chrome神器Vimium快捷键学习记录/</id>
-    <published>2016-07-09T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg" alt=""></p>
-<h1 id="Vimium使用快捷键总结"><a href="#Vimium使用快捷键总结" class="headerlink" title="Vimium使用快捷键总结"></a>Vimium使用快捷键总结</h1><h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>F6 ：在当前的标签页直接输入一个新的网址</p>
-<p><strong>o：打开 URl、书签或历史记录 </strong><br><strong> O：在新标签页中打开 URl、书签或历史记录</strong></p>
-<p><strong> b：在当前页打开一个书签。（只会查找书签）</strong><br><strong> B：在新的标签页打开一个书签 </strong></p>
-<p>F：在新的页面打开一个新的链接。<br>f：在当前的页面打开一个新的链接。</p>
-<h2 id="标签页操作"><a href="#标签页操作" class="headerlink" title="标签页操作"></a>标签页操作</h2><p>K，gt：跳转到右边的一个标签页<br>J，gT：跳转到左边的一个标签页<br>x：关闭当前的标签页<br>X：恢复刚刚关闭的标签页<br>t：创建一个新的标签页<br>？：显示命令的帮助提示（再按一次关闭）</p>
-<h2 id="页面浏览"><a href="#页面浏览" class="headerlink" title="页面浏览"></a>页面浏览</h2><p>r：重新刷新<br>j、k、h、l：向下/上/左/右滚动<br>gg 和 G：移至页顶/页底<br>H：后退<br>L：前进<br>d：向下滚动（相当于pageDown）<br>u：向上滚动（相当于pageUp）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Vimium使用快捷键总结&quot;&gt;&lt;a href=&quot;#Vimium使用快捷键总结&quot; c
-    
-    </summary>
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/categories/chrome/"/>
-    
-    
-      <category term="Vimium" scheme="http://meiminjun.github.io/tags/Vimium/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Chrome常用设置</title>
     <link href="http://meiminjun.github.io/2016/07/09/chrome%E5%BC%80%E5%8F%91/"/>
     <id>http://meiminjun.github.io/2016/07/09/chrome开发/</id>
@@ -1079,6 +1128,36 @@
     
     
       <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome神器Vimium快捷键学习记录</title>
+    <link href="http://meiminjun.github.io/2016/07/09/Chrome%E7%A5%9E%E5%99%A8Vimium%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://meiminjun.github.io/2016/07/09/Chrome神器Vimium快捷键学习记录/</id>
+    <published>2016-07-09T13:57:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg" alt=""></p>
+<h1 id="Vimium使用快捷键总结"><a href="#Vimium使用快捷键总结" class="headerlink" title="Vimium使用快捷键总结"></a>Vimium使用快捷键总结</h1><h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>F6 ：在当前的标签页直接输入一个新的网址</p>
+<p><strong>o：打开 URl、书签或历史记录 </strong><br><strong> O：在新标签页中打开 URl、书签或历史记录</strong></p>
+<p><strong> b：在当前页打开一个书签。（只会查找书签）</strong><br><strong> B：在新的标签页打开一个书签 </strong></p>
+<p>F：在新的页面打开一个新的链接。<br>f：在当前的页面打开一个新的链接。</p>
+<h2 id="标签页操作"><a href="#标签页操作" class="headerlink" title="标签页操作"></a>标签页操作</h2><p>K，gt：跳转到右边的一个标签页<br>J，gT：跳转到左边的一个标签页<br>x：关闭当前的标签页<br>X：恢复刚刚关闭的标签页<br>t：创建一个新的标签页<br>？：显示命令的帮助提示（再按一次关闭）</p>
+<h2 id="页面浏览"><a href="#页面浏览" class="headerlink" title="页面浏览"></a>页面浏览</h2><p>r：重新刷新<br>j、k、h、l：向下/上/左/右滚动<br>gg 和 G：移至页顶/页底<br>H：后退<br>L：前进<br>d：向下滚动（相当于pageDown）<br>u：向上滚动（相当于pageUp）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Vimium使用快捷键总结&quot;&gt;&lt;a href=&quot;#Vimium使用快捷键总结&quot; c
+    
+    </summary>
+    
+      <category term="chrome" scheme="http://meiminjun.github.io/categories/chrome/"/>
+    
+    
+      <category term="Vimium" scheme="http://meiminjun.github.io/tags/Vimium/"/>
     
   </entry>
   
@@ -1252,6 +1331,84 @@
   </entry>
   
   <entry>
+    <title>浅谈javacript 笔记系列--- String 之slice</title>
+    <link href="http://meiminjun.github.io/2016/06/23/javascript-slice%E6%96%B9%E6%B3%95/"/>
+    <id>http://meiminjun.github.io/2016/06/23/javascript-slice方法/</id>
+    <published>2016-06-23T13:57:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>stringObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
+<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
+<p>提示和注释</p>
+<p>注释：您可使用负值从数组的尾部选取元素。</p>
+<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
+<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;javascript-字符串中的slice-方法介绍和示例&quot;&gt;&lt;a href=&quot;#javascript-字符串中的slice-方法介绍和示例&quot; class=&quot;headerlink&quot; title=&quot;javascript 字符串中的slice 方法介绍和示例&quot;&gt;&lt;/a
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://meiminjun.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>史上最强Sublime 笔记系列---精选插件和UI主题</title>
     <link href="http://meiminjun.github.io/2016/06/23/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/"/>
     <id>http://meiminjun.github.io/2016/06/23/SublimeText-常用插件和主题/</id>
@@ -1349,106 +1506,6 @@
       <category term="工具" scheme="http://meiminjun.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
       <category term="sublime" scheme="http://meiminjun.github.io/tags/sublime/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈javacript 笔记系列---静态属性和原型方法</title>
-    <link href="http://meiminjun.github.io/2016/06/23/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/"/>
-    <id>http://meiminjun.github.io/2016/06/23/javacript的静态方法/</id>
-    <published>2016-06-23T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;静态属性和原型方法&quot;&gt;&lt;a href=&quot;#静态属性和原型方法&quot; class=&quot;headerlink&quot; title=&quot;静态属性和原型方法&quot;&gt;&lt;/a&gt;静态属性和原型方法&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-    
-    </summary>
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/categories/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈javacript 笔记系列--- String 之slice</title>
-    <link href="http://meiminjun.github.io/2016/06/23/javascript-slice%E6%96%B9%E6%B3%95/"/>
-    <id>http://meiminjun.github.io/2016/06/23/javascript-slice方法/</id>
-    <published>2016-06-23T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
-<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
-<p>提示和注释</p>
-<p>注释：您可使用负值从数组的尾部选取元素。</p>
-<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
-<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;javascript-字符串中的slice-方法介绍和示例&quot;&gt;&lt;a href=&quot;#javascript-字符串中的slice-方法介绍和示例&quot; class=&quot;headerlink&quot; title=&quot;javascript 字符串中的slice 方法介绍和示例&quot;&gt;&lt;/a
-    
-    </summary>
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/categories/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
     
   </entry>
   
