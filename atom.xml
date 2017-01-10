@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-01-03T02:42:29.000Z</updated>
+  <updated>2017-01-10T05:10:46.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sourcetree的安装</title>
+    <link href="http://meiminjun.github.io/2017/01/09/Sourcetree%E5%AE%89%E8%A3%85/"/>
+    <id>http://meiminjun.github.io/2017/01/09/Sourcetree安装/</id>
+    <published>2017-01-09T14:57:13.000Z</published>
+    <updated>2017-01-10T05:10:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Sourcetree"><a href="#Sourcetree" class="headerlink" title="Sourcetree"></a>Sourcetree</h2><p>SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的Git操作方式，这对于开发者来说非常实用。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
+<li><p>安装git 终端</p>
+<p>  <a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a> </p>
+</li>
+<li><p>下载sourcetree </p>
+<p>  <a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">https://www.sourcetreeapp.com/</a></p>
+</li>
+</ul>
+<p>在安装sourcetree的时候是需要注册的，网站是用了Google的CDN服务，所以必须翻墙</p>
+<h2 id="翻墙"><a href="#翻墙" class="headerlink" title="翻墙"></a>翻墙</h2><ol>
+<li><p>下载hosts</p>
+<p> <a href="http://pan.baidu.com/s/1jHVgwNs" target="_blank" rel="external">下载链接</a>  密码: 7v2q</p>
+</li>
+<li><p>替换hosts(mac)</p>
+<p> hosts所在文件夹：</p>
+</li>
+</ol>
+<ul>
+<li>Windows 系统hosts位于 C:\Windows\System32\drivers\etc\hosts</li>
+<li>Android（安卓）系统hosts位于 /system/etc/hosts</li>
+<li>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts</li>
+<li>iPhone（iOS）系统hosts跟Linux Mac一样位于 /etc/hosts</li>
+<li>Linux系统hosts位于 /etc/hosts</li>
+</ul>
+<p>以mac系统为例，打开Finder,快捷键输入“command+shift+G”,后输入“/etc”,进入之后替换hosts文件</p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59jw1fbladzbym1j20i209bwev.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fblafnf1i7j20di09mjsf.jpg" alt=""></p>
+<h2 id="Mac系统安装SourceTree步骤"><a href="#Mac系统安装SourceTree步骤" class="headerlink" title="Mac系统安装SourceTree步骤"></a>Mac系统安装SourceTree步骤</h2><p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1fblb7lyicgj20ld0bqac4.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fblbe9g43pj20jm0ce406.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fblbntahngj20qq0ivmzs.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1fblbwkm3l4j20cj0h2405.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1fblbyjn4l7j20ht0dt3zx.jpg" alt=""></p>
+<p>最后一步，在你刚刚填写的注册邮箱中会收到验证邮件，点击一下就ok了</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1fblc0did51j20or0fxq4x.jpg" alt=""></p>
+<p>这时候回到这个界面用你刚刚注册的账号登录即可</p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1fblcy1m32cj214u0nogps.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fblfcg5cu9j209u0fxab5.jpg" alt=""></p>
+<blockquote>
+<p>这里不知道是不是网络原因，似乎不用勾选“Stay logged in”才有可能跳转到下面页面</p>
+</blockquote>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fblfbk0gvyj20k10bi0u6.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fblfixppd1j20kr0cq76k.jpg" alt=""></p>
+<p>大功告成</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1fblfl86jmwj20df0ahaaj.jpg" alt=""></p>
+<h2 id="Windows安装SourceTree步骤"><a href="#Windows安装SourceTree步骤" class="headerlink" title="Windows安装SourceTree步骤"></a>Windows安装SourceTree步骤</h2><p>详见：<a href="http://jingyan.baidu.com/article/3c48dd3465636be10ae3584a.html" target="_blank" rel="external">http://jingyan.baidu.com/article/3c48dd3465636be10ae3584a.html</a></p>
+<h2 id="clone项目到本地"><a href="#clone项目到本地" class="headerlink" title="clone项目到本地"></a>clone项目到本地</h2><p>以克隆gitLab为例：</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1fblfnk02tqj20db0btgme.jpg" alt=""></p>
+<p>拷贝项目路径<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fblfprbzecj20v40hcgoz.jpg" alt=""></p>
+<p>粘贴到sourcetree,这时候会让你输入你的内网gitLab 的登录账号和密码</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fblfs1qx01j20j10fstau.jpg" alt=""></p>
+<p>完成之后,如图</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fblfxu4j8fj20dv068q3b.jpg" alt=""></p>
+<p>成功下载后项目如图：</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fblfzd2jhbj20t90dcte4.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Sourcetree&quot;&gt;&lt;a href=&quot;#Sourcetree&quot; class=&quot;headerlink&quot; title=&quot;Sourcetree&quot;&gt;&lt;/a&gt;Sourcetree&lt;/h2&gt;&lt;p&gt;SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的G
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://meiminjun.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>前端自动化工程搭建</title>
@@ -264,11 +339,81 @@
   </entry>
   
   <entry>
-    <title>git常用操作-回滚代码</title>
-    <link href="http://meiminjun.github.io/2016/12/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"/>
-    <id>http://meiminjun.github.io/2016/12/01/git常用操作/</id>
+    <title>git常用操作-远程管理与分支管理</title>
+    <link href="http://meiminjun.github.io/2016/12/21/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/"/>
+    <id>http://meiminjun.github.io/2016/12/21/git常用操作-远程管理/</id>
+    <published>2016-12-21T03:57:13.000Z</published>
+    <updated>2017-01-04T01:53:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="git常用操作之远程管理与分支管理"><a href="#git常用操作之远程管理与分支管理" class="headerlink" title="git常用操作之远程管理与分支管理"></a>git常用操作之远程管理与分支管理</h1><h2 id="远程管理"><a href="#远程管理" class="headerlink" title="远程管理"></a>远程管理</h2><ul>
+<li><p>克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git</p>
+</li>
+<li><p>要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
+</li>
+<li><p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
+</li>
+<li><p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
+</li>
+</ul>
+<blockquote>
+<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+</blockquote>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+<p>一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fb1upo5iqkj208d047q2w.jpg" alt=""></p>
+<p>每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长,</p>
+<p>当我们创建新的分支，例如dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上：</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1fb1uriy9a3j20a706h74a.jpg" alt=""></p>
+<p>Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！</p>
+<p>不过，从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：</p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1fb1ut2uf8qj20dq06hmx7.jpg" alt=""></p>
+<p>假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：</p>
+<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1fb1utvdg4ij20br0660st.jpg" alt=""></p>
+<p>所以Git合并分支也很快！就改改指针，工作区内容也不变！</p>
+<p>合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：</p>
+<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1fb1uvckv5pj20br04fdfu.jpg" alt=""></p>
+<p>举个例子：</p>
+<p>首先，我们创建dev分支，然后切换到dev分支：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git checkout -<span class="selector-tag">b</span> test</div><div class="line">Switched to <span class="selector-tag">a</span> new branch <span class="string">'test'</span></div></pre></td></tr></table></figure>
+<p>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git branch <span class="built_in">test</span></div><div class="line">git checkout <span class="built_in">test</span></div><div class="line">Switched to branch <span class="string">'test'</span></div></pre></td></tr></table></figure></p>
+<p>然后，用git branch命令查看当前分支：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git branch</div><div class="line">  develop</div><div class="line">  feature/mysql</div><div class="line">  <span class="keyword">master</span></div><div class="line"><span class="title">* test</span></div></pre></td></tr></table></figure></p>
+<p>git branch命令会列出所有分支，当前分支前面会标一个*号。</p>
+<p>然后，我们就可以在test分支上正常提交，比如添加一个branch.js文件<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">"添加文件"</span></div></pre></td></tr></table></figure></p>
+<p>这时，我们切换到master分支<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="literal">master</span></div></pre></td></tr></table></figure></p>
+<p>切换回master分支后，刚才添加branch.js文件不见了，因为那个提交是在test分支上，而master分支此刻的提交点并没有变：<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1fb1vqyzyh0j20bd066aa3.jpg" alt=""></p>
+<p>现在，我们把test分支的工作成果合并到master分支上：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">merge</span> <span class="keyword">test</span></div><div class="line">Updating <span class="number">967984</span>f..ecc13e5</div><div class="line"><span class="keyword">Fast</span>-forward</div><div class="line"> git/branch.js           | <span class="number">1</span> +</div></pre></td></tr></table></figure>
+<p>git merge命令用于合并指定分支到当前分支。合并后，再查看里面的内容，就可以看到，和test分支的最新提交是完全一样的。</p>
+<p>合并完成后，就可以放心地删除dev分支了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="_">-d</span> <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意删除只能删除其他分支，不能删除当前分支</p>
+</blockquote>
+<p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全</p>
+<p>小结:</p>
+<p>查看分支：git branch</p>
+<p>创建分支：git branch <name></name></p>
+<p>切换分支：git checkout <name></name></p>
+<p>创建+切换分支：git checkout -b <name></name></p>
+<p>合并某分支到当前分支：git merge <name></name></p>
+<p>删除分支：git branch -d <name></name></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;git常用操作之远程管理与分支管理&quot;&gt;&lt;a href=&quot;#git常用操作之远程管理与分支管理&quot; class=&quot;headerlink&quot; title=&quot;git常用操作之远程管理与分支管理&quot;&gt;&lt;/a&gt;git常用操作之远程管理与分支管理&lt;/h1&gt;&lt;h2 id=&quot;远程管理&quot;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://meiminjun.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git常用操作-回滚操作</title>
+    <link href="http://meiminjun.github.io/2016/12/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C/"/>
+    <id>http://meiminjun.github.io/2016/12/01/git常用操作-回滚操作/</id>
     <published>2016-12-01T04:57:13.000Z</published>
-    <updated>2016-12-21T06:44:30.000Z</updated>
+    <updated>2017-01-04T01:54:26.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="git常用操作-回滚代码"><a href="#git常用操作-回滚代码" class="headerlink" title="git常用操作-回滚代码"></a>git常用操作-回滚代码</h1><h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><ul>
 <li>git init 初始化一个git仓库</li>
@@ -1318,185 +1463,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;熟练俺所罗列的这些快捷键操作后，开发效率至少提升&lt;/strong&gt;一至两倍&lt;strong&gt;(&lt;code&gt;平时2个小时的项目,1小时就可以搞定了,嗨不嗨？&lt;/code&gt;) &lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="工具" scheme="http://meiminjun.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="http://meiminjun.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="sublime" scheme="http://meiminjun.github.io/tags/sublime/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈javacript 笔记系列--- String 之slice</title>
-    <link href="http://meiminjun.github.io/2016/06/23/javascript-slice%E6%96%B9%E6%B3%95/"/>
-    <id>http://meiminjun.github.io/2016/06/23/javascript-slice方法/</id>
-    <published>2016-06-23T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
-<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
-<p>提示和注释</p>
-<p>注释：您可使用负值从数组的尾部选取元素。</p>
-<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
-<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;javascript-字符串中的slice-方法介绍和示例&quot;&gt;&lt;a href=&quot;#javascript-字符串中的slice-方法介绍和示例&quot; class=&quot;headerlink&quot; title=&quot;javascript 字符串中的slice 方法介绍和示例&quot;&gt;&lt;/a
-    
-    </summary>
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/categories/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>史上最强Sublime 笔记系列---精选插件和UI主题</title>
-    <link href="http://meiminjun.github.io/2016/06/23/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/"/>
-    <id>http://meiminjun.github.io/2016/06/23/SublimeText-常用插件和主题/</id>
-    <published>2016-06-23T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
-<p>这篇文章主要讲的是Sublime Text 3一些<code>高效率的插件</code>和<code>漂亮的主题</code>。</p>
-<ol>
-<li><p><strong> <a href="/2016/06/24/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
-</li>
-<li><p><strong> <a href="/2016/06/23/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
-</li>
-<li><p><strong> <a href="/2016/06/22/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
-</li>
-</ol>
-<p><strong>各位小伙伴们，还有没有你心目中<code>酷炫时尚</code>的插件呢？有的请留言哦！谢谢。。O(∩_∩)O</strong></p>
-<a id="more"></a>
-<hr>
-<h1 id="安装package-control插件-安装之后才能安装其他插件"><a href="#安装package-control插件-安装之后才能安装其他插件" class="headerlink" title="安装package control插件(安装之后才能安装其他插件)"></a>安装package control插件(安装之后才能安装其他插件)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), <span class="string">'wb'</span>).write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())</div></pre></td></tr></table></figure>
-<p>打开sublime text 3，按 ctrl+~或者菜单 View &gt; Show Console打开命令窗口，粘贴以上代码并回车即可。</p>
-<p>然后，<strong>ctrl + shift + p</strong>  下载相关插件<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f568lvwdzug20b606o40a.gif" alt=""></p>
-<h1 id="推荐插件-基本上都是插件官网前100名以内的插件"><a href="#推荐插件-基本上都是插件官网前100名以内的插件" class="headerlink" title="推荐插件(基本上都是插件官网前100名以内的插件)"></a>推荐插件(基本上都是插件官网前100名以内的插件)</h1><h2 id="1-JsFormat-javascript代码格式化"><a href="#1-JsFormat-javascript代码格式化" class="headerlink" title="1. JsFormat (javascript代码格式化)"></a>1. JsFormat (javascript代码格式化)</h2><blockquote>
-<p><strong> 默认快捷键：ctrl + shift + f </strong></p>
-</blockquote>
-<h2 id="2-Terminal-快速打开cmd"><a href="#2-Terminal-快速打开cmd" class="headerlink" title="2. Terminal (快速打开cmd)"></a>2. Terminal (快速打开cmd)</h2><h3 id="由于默认快捷键-ctrl-shift-t-会发生冲突-替换为：ctrl-shift-c"><a href="#由于默认快捷键-ctrl-shift-t-会发生冲突-替换为：ctrl-shift-c" class="headerlink" title="由于默认快捷键 ctrl + shift + t 会发生冲突,替换为：ctrl + shift + c"></a>由于默认快捷键 <code>ctrl + shift + t</code> 会发生冲突,替换为：ctrl + shift + c</h3><p>添加快捷键，如下:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="attr">"args"</span>: &#123;<span class="attr">"target"</span>: <span class="string">"browser"</span>, <span class="attr">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-docblockr-代码注释"><a href="#3-docblockr-代码注释" class="headerlink" title="3. docblockr(代码注释)"></a>3. <a href="https://packagecontrol.io/packages/DocBlockr" target="_blank" rel="external">docblockr</a>(代码注释)</h2><p><img src="/images/blogImg/2016/06/2016-06-22-01.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-02.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-03.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-04.gif" alt="docblockr"></p>
-<h2 id="4-SublimeTmpl-快速构建模板"><a href="#4-SublimeTmpl-快速构建模板" class="headerlink" title="4. SublimeTmpl(快速构建模板)"></a>4. <a href="https://packagecontrol.io/packages/SublimeTmpl" target="_blank" rel="external">SublimeTmpl</a>(快速构建模板)</h2><blockquote>
-<p><strong> 默认快捷键：</strong>   </p>
-<ul>
-<li><strong>ctrl+alt+h 生成html </strong> </li>
-<li><strong>ctrl+alt+j 生成javascript </strong></li>
-<li><strong>ctrl+alt+c 生成css </strong></li>
-<li><strong>ctrl+alt+p 生成php </strong></li>
-<li><strong>ctrl+alt+r 生成ruby </strong></li>
-<li><strong>ctrl+alt+shift+p 生成python </strong></li>
-</ul>
-</blockquote>
-<p>中文文档地址:<strong><a href="http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/" target="_blank" rel="external">http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/</a></strong></p>
-<h3 id="由于ctrl-alt-p-会发生冲突-暂时禁止"><a href="#由于ctrl-alt-p-会发生冲突-暂时禁止" class="headerlink" title="由于ctrl + alt + p 会发生冲突,暂时禁止"></a>由于<code>ctrl + alt + p</code> 会发生冲突,暂时禁止</h3><p>配置如下(首选项&gt;插件设置&gt;SublimeTmpl&gt;Settings-User):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"disable_keymap_actions"</span>: <span class="string">"php"</span>, // <span class="string">"all"</span>; <span class="string">"html,css"</span></div><div class="line">    <span class="string">"date_format"</span> : <span class="string">"%Y-%m-%d %H:%M:%S"</span>,</div><div class="line">    <span class="string">"attr"</span>: &#123;</div><div class="line">        <span class="string">"author"</span>: <span class="string">"Meiminjun"</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">"251222845@qq.com"</span>,</div><div class="line">        <span class="string">"link"</span>: <span class="string">"http://example.org"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="ctrl-alt-j-有可能会发生失效-所以我就切换成另外的快捷键"><a href="#ctrl-alt-j-有可能会发生失效-所以我就切换成另外的快捷键" class="headerlink" title="ctrl + alt + j 有可能会发生失效,所以我就切换成另外的快捷键"></a>ctrl + alt + j 有可能会发生失效,所以我就切换成另外的快捷键</h3><p>添加配置如下(首选项&gt;插件配置&gt;SublimeTmpl&gt;Key Bindings-User):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="5-BracketHighlighter-语法高亮"><a href="#5-BracketHighlighter-语法高亮" class="headerlink" title="5. BracketHighlighter(语法高亮)"></a>5. <a href="https://packagecontrol.io/packages/BracketHighlighter" target="_blank" rel="external">BracketHighlighter</a>(语法高亮)</h2><p><img src="/images/blogImg/2016/06/2016-06-22-05.png" alt="图片"></p>
-<h2 id="6-Markdown-Preview-Markdown-预览"><a href="#6-Markdown-Preview-Markdown-预览" class="headerlink" title="6. Markdown Preview(Markdown 预览)"></a>6. <a href="https://packagecontrol.io/packages/Markdown%20Preview" target="_blank" rel="external">Markdown Preview</a>(Markdown 预览)</h2><p>添加快捷键配置：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="attr">"args"</span>: &#123;<span class="attr">"target"</span>: <span class="string">"browser"</span>, <span class="attr">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="sublimeLinter-jshint-语法校验"><a href="#sublimeLinter-jshint-语法校验" class="headerlink" title="[sublimeLinter-jshint]:语法校验"></a>[sublimeLinter-jshint]:语法校验</h2><ul>
-<li>需先安装SublimeLinter</li>
-<li>安装Node.js </li>
-<li>在cmd中输入 npm install -g jshint,等待安装就好了</li>
-</ul>
-<p>安装成功后，重启就可以检测代码风格了</p>
-<p>当然还可以自定义校验规则，在项目目录下新建一个.jshintrc的配置文件<br>在其中使用JSON格式配置校验风格。</p>
-<p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//建议使用===，不使用时会有提示。</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"eqeqeq"</span>:<span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="sublimeLinter-elint"><a href="#sublimeLinter-elint" class="headerlink" title="sublimeLinter-elint"></a><a href="https://github.com/roadhump/SublimeLinter-eslint" target="_blank" rel="external">sublimeLinter-elint</a></h2><p>让sublime-text 支持es6和react</p>
-<p>详细说明：<a href="http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint" target="_blank" rel="external">http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint</a></p>
-<h2 id="HTML-CSS-JS-Prettify-代码格式化插件"><a href="#HTML-CSS-JS-Prettify-代码格式化插件" class="headerlink" title="HTML-CSS-JS Prettify(代码格式化插件)"></a><a href="https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify" target="_blank" rel="external">HTML-CSS-JS Prettify</a>(代码格式化插件)</h2><p>HTML-CSSS-JS Prettify插件使用的是node版的js-beautify，因此需要首先安装node，node的安装请自行搜索。<br>在node安装完成后，使用npm安装js-beautify，命令 npm install -g js-beautify<br>最后Ctrl+Shift+P输入Install Package，然后输入HTML-CSS-JS Prettify进行安装</p>
-<h3 id="HTML-CSS-JS-Prettify配置"><a href="#HTML-CSS-JS-Prettify配置" class="headerlink" title="HTML-CSS-JS Prettify配置"></a>HTML-CSS-JS Prettify配置</h3><p>HTML-CSS-JS Prettify配置可使用.jsbeautifyrc文件，js-beautify会在被优化代码文件的当前目录查找，如果找不到会向上级目录查找。<br>因此，可以在项目的根目录新建.jsbeautifyrc文件来配置js-beautify<br>贴一下我的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  // Details: https://github.com/victorporof/Sublime-HTMLPrettify<span class="comment">#using-your-own-jsbeautifyrc-options</span></div><div class="line">  // Documentation: https://github.com/einars/js-beautify/</div><div class="line">  <span class="string">"html"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"htm"</span>, <span class="string">"html"</span>, <span class="string">"xhtml"</span>, <span class="string">"shtml"</span>, <span class="string">"xml"</span>, <span class="string">"svg"</span>,<span class="string">"aspx"</span>,<span class="string">"jsp"</span>],</div><div class="line">    <span class="string">"brace_style"</span>: <span class="string">"collapse"</span>, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them <span class="built_in">where</span> they are</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_handlebars"</span>: <span class="literal">false</span>, // e.g. &#123;&#123;<span class="comment">#foo&#125;&#125;, &#123;&#123;/foo&#125;&#125;</span></div><div class="line">    <span class="string">"indent_inner_html"</span>: <span class="literal">false</span>, // Indent &lt;head&gt; and &lt;body&gt; sections</div><div class="line">    <span class="string">"indent_scripts"</span>: <span class="string">"keep"</span>, // [keep|separate|normal]</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"max_preserve_newlines"</span>: 0, // Maximum number of line breaks to be preserved <span class="keyword">in</span> one chunk (0 disables)</div><div class="line">    <span class="string">"preserve_newlines"</span>: <span class="literal">true</span>, // Whether existing line breaks before elements should be preserved (only works before elements, not inside tags or <span class="keyword">for</span> text)</div><div class="line">    <span class="string">"unformatted"</span>: [<span class="string">"a"</span>, <span class="string">"span"</span>, <span class="string">"img"</span>, <span class="string">"code"</span>, <span class="string">"pre"</span>, <span class="string">"sub"</span>, <span class="string">"sup"</span>, <span class="string">"em"</span>, <span class="string">"strong"</span>, <span class="string">"b"</span>, <span class="string">"i"</span>, <span class="string">"u"</span>, <span class="string">"strike"</span>, <span class="string">"big"</span>, <span class="string">"small"</span>, <span class="string">"pre"</span>, <span class="string">"h1"</span>, <span class="string">"h2"</span>, <span class="string">"h3"</span>, <span class="string">"h4"</span>, <span class="string">"h5"</span>, <span class="string">"h6"</span>], // List of tags that should not be reformatted</div><div class="line">    <span class="string">"wrap_line_length"</span>: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"css"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"css"</span>, <span class="string">"scss"</span>, <span class="string">"sass"</span>, <span class="string">"less"</span>],</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"newline_between_rules"</span>: <span class="literal">true</span>, // Add a new line after every css rule</div><div class="line">    <span class="string">"selector_separator"</span>: <span class="string">" "</span>,</div><div class="line">    <span class="string">"selector_separator_newline"</span>: <span class="literal">false</span> // Separate selectors with newline or not (e.g. <span class="string">"a,\nbr"</span> or <span class="string">"a, br"</span>)</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"js"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"js"</span>, <span class="string">"json"</span>, <span class="string">"jshintrc"</span>, <span class="string">"jsbeautifyrc"</span>, <span class="string">"csslintrc"</span>],</div><div class="line">    <span class="string">"brace_style"</span>: <span class="string">"collapse"</span>, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them <span class="built_in">where</span> they are</div><div class="line">    <span class="string">"break_chained_methods"</span>: <span class="literal">false</span>, // Break chained method calls across subsequent lines</div><div class="line">    <span class="string">"e4x"</span>: <span class="literal">false</span>, // Pass E4X xml literals through untouched</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_level"</span>: 0, // Initial indentation level</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"indent_with_tabs"</span>: <span class="literal">false</span>, // Indent with tabs, overrides `indent_size` and `indent_char`</div><div class="line">    <span class="string">"jslint_happy"</span>: <span class="literal">false</span>, // If <span class="literal">true</span>, <span class="keyword">then</span> jslint-stricter mode is enforced</div><div class="line">    <span class="string">"keep_array_indentation"</span>: <span class="literal">false</span>, // Preserve array indentation</div><div class="line">    <span class="string">"keep_function_indentation"</span>: <span class="literal">false</span>, // Preserve <span class="keyword">function</span> indentation</div><div class="line">    <span class="string">"max_preserve_newlines"</span>: 0, // Maximum number of line breaks to be preserved <span class="keyword">in</span> one chunk (0 disables)</div><div class="line">    <span class="string">"preserve_newlines"</span>: <span class="literal">true</span>, // Whether existing line breaks should be preserved</div><div class="line">    <span class="string">"space_after_anon_function"</span>: <span class="literal">false</span>, // Should the space before an anonymous <span class="keyword">function</span><span class="string">'s parens be added, "function()" vs "function ()"</span></div><div class="line">    "space_before_conditional": true, // Should the space before conditional statement be added, "if(true)" vs "if (true)"</div><div class="line">    "space_in_empty_paren": false, // Add padding spaces within empty paren, "f()" vs "f( )"</div><div class="line">    "space_in_paren": false, // Add padding spaces within paren, ie. f( a, b )</div><div class="line">    "unescape_strings": false, // Should printable characters in strings encoded in \xNN notation be unescaped, "example" vs "\x65\x78\x61\x6d\x70\x6c\x65"</div><div class="line">    "wrap_line_length": 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>主要的改动就是</p>
-<ul>
-<li>修改了”html”的”allowed_file_extensions”，增加了aspx和jsp的支持</li>
-<li>修改了”css”的”selector_separator_newline”，个人觉得没必要每个选择器都要占一行</li>
-<li>修改了”js”的”allowed_file_extensions”，增加了.csslintrc文件的支持</li>
-<li>修改了”html”、”css”、”js”的”indent_size”，我的代码缩进为2个空格</li>
-</ul>
-<h3 id="HTML-CSS-JS-Prettify使用"><a href="#HTML-CSS-JS-Prettify使用" class="headerlink" title="HTML-CSS-JS Prettify使用"></a>HTML-CSS-JS Prettify使用</h3><p>使用Ctrl+Shift+H，优化当前代码文件。<br>使用js文件测试一下，优化前<br><img src="https://segmentfault.com/img/bVsDMo" alt="图片"></p>
-<p>优化后<br><img src="https://segmentfault.com/img/bVsDMp" alt="图片"></p>
-<p>js-beautify对css的格式化，有个问题是，会在注释下面插入一行空白字符</p>
-<p>如下图，优化前<br><img src="https://segmentfault.com/img/bVsDMq" alt="图片"></p>
-<p>优化后<br><img src="https://segmentfault.com/img/bVsDMr" alt="图片"></p>
-<p><a href="http://frontenddev.org/article/sublime-does-text-three-plug-ins-html-and-css-js-prettify.html" target="_blank" rel="external">sublime text 3 插件：HTML-CSS-JS Prettify</a>文中给出了解决方法，大家可以参考</p>
-<h2 id="我的快捷键配置汇总-首选项-gt-按键绑定-用户"><a href="#我的快捷键配置汇总-首选项-gt-按键绑定-用户" class="headerlink" title="我的快捷键配置汇总:(首选项&gt;按键绑定-用户):"></a>我的快捷键配置汇总:(首选项&gt;按键绑定-用户):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal"</span> &#125;,</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+alt+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal_project_folder"</span> &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"target"</span>: <span class="string">"browser"</span>, <span class="string">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这篇文章主要讲的是Sublime Text 3一些&lt;code&gt;高效率的插件&lt;/code&gt;和&lt;code&gt;漂亮的主题&lt;/code&gt;。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt; &lt;a href=&quot;/2016/06/24/SublimeText-常用快捷键/&quot;&gt;史上最强Sublime 笔记系列—常用快捷键&lt;/a&gt;(持续更新中。。。) &lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt; &lt;a href=&quot;/2016/06/23/SublimeText-常用插件和主题/&quot;&gt;史上最强Sublime 笔记系列—精选插件和UI主题&lt;/a&gt;(持续更新中。。。) &lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt; &lt;a href=&quot;/2016/06/22/SublimeText-我的常用配置/&quot;&gt;史上最强Sublime 笔记系列—我的常用配置&lt;/a&gt;(持续更新中。。。)  &lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;各位小伙伴们，还有没有你心目中&lt;code&gt;酷炫时尚&lt;/code&gt;的插件呢？有的请留言哦！谢谢。。O(∩_∩)O&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     

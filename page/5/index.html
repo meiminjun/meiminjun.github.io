@@ -270,6 +270,138 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/23/SublimeText-常用插件和主题/" itemprop="url">
+                  史上最强Sublime 笔记系列---精选插件和UI主题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-23T21:57:13+08:00" content="2016-06-23">
+              2016-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/23/SublimeText-常用插件和主题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/SublimeText-常用插件和主题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
+<p>这篇文章主要讲的是Sublime Text 3一些<code>高效率的插件</code>和<code>漂亮的主题</code>。</p>
+<ol>
+<li><p><strong> <a href="/2016/06/24/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+</li>
+<li><p><strong> <a href="/2016/06/23/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+</li>
+<li><p><strong> <a href="/2016/06/22/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+</ol>
+<p><strong>各位小伙伴们，还有没有你心目中<code>酷炫时尚</code>的插件呢？有的请留言哦！谢谢。。O(∩_∩)O</strong></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/23/SublimeText-常用插件和主题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/23/javacript的静态方法/" itemprop="url">
                   浅谈javacript 笔记系列---静态属性和原型方法
                 </a>
@@ -341,6 +473,181 @@
         
           
             <h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/23/javascript-slice方法/" itemprop="url">
+                  浅谈javacript 笔记系列--- String 之slice
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-23T21:57:13+08:00" content="2016-06-23">
+              2016-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/23/javascript-slice方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/javascript-slice方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>stringObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
+<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
+<p>提示和注释</p>
+<p>注释：您可使用负值从数组的尾部选取元素。</p>
+<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
+<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>
           
         
       
@@ -661,259 +968,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/22/7月份-TODO/" itemprop="url">
-                  7月份要做的事情
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-22T15:57:13+08:00" content="2016-06-22">
-              2016-06-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/22/7月份-TODO/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/7月份-TODO/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="react-redux-的学习-4-10"><a href="#react-redux-的学习-4-10" class="headerlink" title="react + redux 的学习(4-10)"></a>react + redux 的学习(4-10)</h2><p>新建一个纯净的react+redux 环境<br><a href="https://github.com/chenbin92/react-redux-webpack-starter/issues/1?mType=Group" target="_blank" rel="external">https://github.com/chenbin92/react-redux-webpack-starter/issues/1?mType=Group</a></p>
-<h3 id="入门"><a href="#入门" class="headerlink" title="入门:"></a>入门:</h3><p><a href="http://www.alloyteam.com/2015/09/react-redux/" target="_blank" rel="external">http://www.alloyteam.com/2015/09/react-redux/</a></p>
-<h3 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h3><p><a href="http://www.cnblogs.com/lewis617/tag/redux/" target="_blank" rel="external">http://www.cnblogs.com/lewis617/tag/redux/</a></p>
-<p><a href="http://cn.redux.js.org/docs/react-redux/quick-start.html" target="_blank" rel="external">http://cn.redux.js.org/docs/react-redux/quick-start.html</a></p>
-<p><a href="https://github.com/1340641314/react-cnode" target="_blank" rel="external">https://github.com/1340641314/react-cnode</a></p>
-<h2 id="新建一个论坛系统"><a href="#新建一个论坛系统" class="headerlink" title="新建一个论坛系统"></a>新建一个论坛系统</h2><p><a href="https://nswbmw.github.io/N-club/1/README.html" target="_blank" rel="external">https://nswbmw.github.io/N-club/1/README.html</a></p>
-<h2 id="深入了解javascript-11-17"><a href="#深入了解javascript-11-17" class="headerlink" title="深入了解javascript (11-17)"></a>深入了解javascript (11-17)</h2><ul>
-<li><p><a href="http://wiki.jikexueyuan.com/project/brief-talk-js/static-attributes-and-prototype-properties.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/brief-talk-js/static-attributes-and-prototype-properties.html</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects</a></p>
-</li>
-</ul>
-<p><a href="http://hao.jser.com/" target="_blank" rel="external">http://hao.jser.com/</a></p>
-<h2 id="计划用做一个关于sublimeText的PPT分享-18-24"><a href="#计划用做一个关于sublimeText的PPT分享-18-24" class="headerlink" title="计划用做一个关于sublimeText的PPT分享(18-24)"></a>计划用做一个关于sublimeText的PPT分享(18-24)</h2><p>利用<a href="https://github.com/ksky521/nodePPT" target="_blank" rel="external">nodePPT</a>制作</p>
-<h2 id="gulp以及-webpack-gulp-整合"><a href="#gulp以及-webpack-gulp-整合" class="headerlink" title="gulp以及 webpack+gulp 整合"></a>gulp以及 webpack+gulp 整合</h2><p><a href="http://spencerdixon.com/blog/test-driven-react-tutorial.html" target="_blank" rel="external">http://spencerdixon.com/blog/test-driven-react-tutorial.html</a></p>
-<h2 id="前端拓展"><a href="#前端拓展" class="headerlink" title="前端拓展"></a>前端拓展</h2><p><a href="https://segmentfault.com/a/1190000005875954" target="_blank" rel="external">https://segmentfault.com/a/1190000005875954</a></p>
-<h2 id="react-router学习"><a href="#react-router学习" class="headerlink" title="react-router学习"></a>react-router学习</h2><p><a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/05/react_router.html</a></p>
-<p><a href="https://react-guide.github.io/react-router-cn/" target="_blank" rel="external">https://react-guide.github.io/react-router-cn/</a></p>
-<p><a href="https://github.com/davezuko/react-redux-starter-kit" target="_blank" rel="external">https://github.com/davezuko/react-redux-starter-kit</a></p>
-<h2 id="editor-config介绍"><a href="#editor-config介绍" class="headerlink" title="editor config介绍"></a>editor config介绍</h2><p><a href="http://www.alloyteam.com/2014/12/editor-config/" target="_blank" rel="external">http://www.alloyteam.com/2014/12/editor-config/</a></p>
-<p>应用了editorconfig 的项目<br><a href="https://github.com/editorconfig/editorconfig/wiki/Projects-Using-EditorConfig" target="_blank" rel="external">https://github.com/editorconfig/editorconfig/wiki/Projects-Using-EditorConfig</a></p>
-<h2 id="eslint-配置说明"><a href="#eslint-配置说明" class="headerlink" title="eslint 配置说明"></a>eslint 配置说明</h2><p><a href="https://github.com/y8n/ESLint-rules-docs-cn" target="_blank" rel="external">https://github.com/y8n/ESLint-rules-docs-cn</a></p>
-<p><a href="http://eslint.cn/docs/rules/semi" target="_blank" rel="external">http://eslint.cn/docs/rules/semi</a></p>
-<p><a href="http://ilioner.github.io/2016/05/21/%E5%A6%82%E4%BD%95%E6%84%89%E5%BF%AB%E7%9A%84%E4%BD%BF%E7%94%A8ESLint%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%A0%A1%E9%AA%8C.html" target="_blank" rel="external">http://ilioner.github.io/2016/05/21/%E5%A6%82%E4%BD%95%E6%84%89%E5%BF%AB%E7%9A%84%E4%BD%BF%E7%94%A8ESLint%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%A0%A1%E9%AA%8C.html</a></p>
-<h2 id="doctoc"><a href="#doctoc" class="headerlink" title="doctoc"></a>doctoc</h2><p>这是一个markdown生成目录的小工具</p>
-<blockquote>
-<p>doctoc test.md</p>
-</blockquote>
-<p>详情：<a href="https://github.com/thlorenz/doctoc#examples" target="_blank" rel="external">https://github.com/thlorenz/doctoc#examples</a></p>
-<h2 id="进度详情："><a href="#进度详情：" class="headerlink" title="进度详情："></a>进度详情：</h2><ul>
-<li>[x] react + redux + koa + webpack</li>
-<li>[x] editor config</li>
-<li>[x] eslint 配置说明</li>
-<li>[x] doctoc生成目录</li>
-<li>[ ] 计划用做nodePPT一个关于sublimeText的PPT分享</li>
-<li>[ ] gulp以及 webpack+gulp 整合</li>
-<li>[ ] 新建一个论坛系统</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/21/Markdown语法/" itemprop="url">
-                  Markdown 笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T19:57:13+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/21/Markdown语法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/Markdown语法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="优秀的在线MarkDown-网站"><a href="#优秀的在线MarkDown-网站" class="headerlink" title="优秀的在线MarkDown 网站"></a>优秀的在线MarkDown 网站</h1><h2 id="1-https-www-zybuluo-com-mdeditor"><a href="#1-https-www-zybuluo-com-mdeditor" class="headerlink" title="1. https://www.zybuluo.com/mdeditor"></a>1. <a href="https://www.zybuluo.com/mdeditor">https://www.zybuluo.com/mdeditor</a></h2><h2 id="2-http-mahua-jser-me"><a href="#2-http-mahua-jser-me" class="headerlink" title="2. http://mahua.jser.me/"></a>2. <a href="http://mahua.jser.me/">http://mahua.jser.me/</a></h2><h1 id="什么是Markdown"><a href="#什么是Markdown" class="headerlink" title="什么是Markdown"></a>什么是Markdown</h1><p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> </p>
-<p>在此，我们总结 Markdown 的优点如下：</p>
-<ul>
-<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
-<li>让你专注于文字而不是排版。</li>
-<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
-<li>Markdown 的标记语法有极好的可读性</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/21/Markdown语法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -954,7 +1013,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

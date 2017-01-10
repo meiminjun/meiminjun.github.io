@@ -258,6 +258,259 @@
   
   
 
+  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/javascript-call-apply/" itemprop="url">
+                  javascript之call、apply的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T16:10:00+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/18/javascript-call-apply/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/javascript-call-apply/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="call与apply的区别"><a href="#call与apply的区别" class="headerlink" title="call与apply的区别"></a>call与apply的区别</h2><hr>
+<p>call 与 apply 的用法是基本一致,只是调用是不一样:<br>call的第二个参数为”字符串”<br>apply 的第二个参数为”数组”</p>
+<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">  &lt;title&gt;<span class="built_in">test</span>&lt;/title&gt;</div><div class="line">  &lt;script&gt;</div><div class="line">    <span class="keyword">function</span> <span class="function"><span class="title">Animal</span></span>()&#123;</div><div class="line">        this.name = <span class="string">"Animal"</span>;</div><div class="line">        this.showName = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            alert(this.name);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">function</span> <span class="function"><span class="title">Cat</span></span>()&#123;</div><div class="line">        this.name = <span class="string">"Cat"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var animal = new Animal();</div><div class="line">    var cat = new Cat();</div><div class="line"></div><div class="line">    //通过call或apply方法，将原本属于Animal对象的showName()方法交给对象cat来使用了。</div><div class="line">    //输入结果为<span class="string">"Cat"</span></div><div class="line">    animal.showName.call(cat,<span class="string">""</span>);</div><div class="line">    //animal.showName.apply(cat,[]);</div><div class="line">  &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>call 的意思是把 animal 的方法放到cat上执行，原来cat是没有showName() 方法，现在是把animal 的showName()方法放到 cat上来执行，所以this.name 应该是 Cat</p>
+</blockquote>
+<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">  &lt;title&gt;<span class="built_in">test</span>&lt;/title&gt;</div><div class="line">  &lt;script&gt;</div><div class="line">    <span class="keyword">function</span> Person(name)&#123;</div><div class="line">        this.name = name;</div><div class="line">        this.showName = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            alert(this.name);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">function</span> Student(name)&#123;</div><div class="line">        // 简单继承</div><div class="line">        Person.call(this, name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var student = new Student(<span class="string">"学生"</span>);</div><div class="line">    student.showName();</div><div class="line">  &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p> Person.call(this) 的意思就是使用 Person对象代替this对象，那么 Student中不就有Person的所有属性和方法了吗，Student对象就能够直接调用Person的方法以及属性了.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/05/javascript-dom/" itemprop="url">
+                  javascript之常用DOM操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-05T15:57:13+08:00" content="2016-01-05">
+              2016-01-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/05/javascript-dom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/javascript-dom/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/05/javascript-dom/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -625,156 +878,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/20/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-20T01:55:53+08:00" content="2015-11-20">
-              2015-11-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/20/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="为什么我要开一个博客？"><a href="#为什么我要开一个博客？" class="headerlink" title="为什么我要开一个博客？"></a>为什么我要开一个博客？</h1><p>浑浑噩噩、起起伏伏毕业快三年了！<br>我的主要目的是“<strong>记录一些生活中、学习中所总结的一些经验与大家分享一下</strong>” ,还一个目的就是“<strong>抑制一下自己玩游戏(撸啊撸)和玩手机的冲动，让自己整理一下思绪</strong>(<code>给自己打打鸡血</code>)”</p>
-<blockquote>
-<p>还有一个目的：“成为一个万人敬仰的技术大神，哈哈！”</p>
-</blockquote>
-<h1 id="大概多久会更新一次-这次我他妈，要认认真真的先写三年-怀孕怀久了肯定都知道我是个人才的，哈哈-？"><a href="#大概多久会更新一次-这次我他妈，要认认真真的先写三年-怀孕怀久了肯定都知道我是个人才的，哈哈-？" class="headerlink" title="大概多久会更新一次(这次我他妈，要认认真真的先写三年,怀孕怀久了肯定都知道我是个人才的，哈哈)？"></a>大概多久会更新一次(这次我他妈，要认认真真的先写三年,<code>怀孕怀久了肯定都知道我是个人才的，哈哈</code>)？</h1><p>我今年给自己设定的目标是每周写两篇，在我自己的技术和经验范围内，每篇尽量都会保持一下“<a href="http://baike.baidu.com/link?url=GccLM3cJvlY-gbSVfZzFf_MbuxrbhFMfGutrnYGLMK7CzXae1IAN20BiVGXEjcXsvYCGXIpEOGSgygh3lZAcEq" target="_blank" rel="external">高逼格</a>，幽默有趣”<br>前面几个月，我可能会相对比较“<strong>闷</strong>”(<code>我是个慢热型选手</code>)，但是，随着时间推移，写的多了，我相信自己会写的越来越<strong>好</strong>滴！</p>
-<h1 id="博客内容大概会写一些什么内容呢？"><a href="#博客内容大概会写一些什么内容呢？" class="headerlink" title="博客内容大概会写一些什么内容呢？"></a>博客内容大概会写一些什么内容呢？</h1><p>大家都知道，哥是个技术出身的(<code>估计能看到我博客的，估计都是搞技术的</code>)，博客内容肯定不会排除自身技术领域，我X(操)，突然脑子里想了好多想跟大家分享的内容。<br>大方向：<strong>“技术”、“经济”、“爱好”、“生活”</strong></p>
-<blockquote>
-<ul>
-<li><p>技术（程序开发领域）</p>
-<ul>
-<li>javascript(重点)</li>
-<li>javascript-es6(持续跟进)</li>
-<li>各种类似webapp开发领域<ul>
-<li>基于cordova混合开发</li>
-<li>基于react的app开发</li>
-<li>基于senchatouch的app开发</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>各种自己的采坑之旅(自己遇到过bug的解决方式)</p>
-<ul>
-<li>后端开发领域</li>
-<li>nodejs开发</li>
-</ul>
-</li>
-<li><p>经济(个人的理财相关)</p>
-<ul>
-<li>基金(目前有一些投资，微赚中。。)</li>
-</ul>
-</li>
-<li><p>爱好</p>
-<ul>
-<li>游戏</li>
-</ul>
-</li>
-<li><p>生活</p>
-<ul>
-<li>生活常识</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p><strong>Tips:</strong><code>暂时先安排这么多，后期可能随时会增加</code></p>
-<p>好了，打完收工！(一位同事的口头禅)</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -815,7 +923,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
