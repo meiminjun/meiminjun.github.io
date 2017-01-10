@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-01-10T05:10:46.000Z</updated>
+  <updated>2017-01-10T05:27:14.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -16,13 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Sourcetree的安装</title>
+    <title>Sourcetree安装</title>
     <link href="http://meiminjun.github.io/2017/01/09/Sourcetree%E5%AE%89%E8%A3%85/"/>
     <id>http://meiminjun.github.io/2017/01/09/Sourcetree安装/</id>
     <published>2017-01-09T14:57:13.000Z</published>
-    <updated>2017-01-10T05:10:46.000Z</updated>
+    <updated>2017-01-10T05:27:14.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Sourcetree"><a href="#Sourcetree" class="headerlink" title="Sourcetree"></a>Sourcetree</h2><p>SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的Git操作方式，这对于开发者来说非常实用。</p>
+    <content type="html"><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fblgt1gz3bj20t70ha44y.jpg" alt=""></p>
+<p>SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的Git操作方式，这对于开发者来说非常实用。</p>
 <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
 <li><p>安装git 终端</p>
 <p>  <a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a> </p>
@@ -81,7 +82,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Sourcetree&quot;&gt;&lt;a href=&quot;#Sourcetree&quot; class=&quot;headerlink&quot; title=&quot;Sourcetree&quot;&gt;&lt;/a&gt;Sourcetree&lt;/h2&gt;&lt;p&gt;SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的G
+      &lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/69a9ed59gw1fblgt1gz3bj20t70ha44y.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的Git操作方式，这
     
     </summary>
     
