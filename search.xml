@@ -4,8 +4,8 @@
   
     
     <entry>
-      <title><![CDATA[oh-my-zsh插件集合]]></title>
-      <url>http://meiminjun.github.io/2017/01/10/oh-my-zsh%E6%8F%92%E4%BB%B6/</url>
+      <title><![CDATA[精选oh-my-zsh插件集合]]></title>
+      <url>http://meiminjun.github.io/2017/01/11/oh-my-zsh%E6%8F%92%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h2 id="配置地址"><a href="#配置地址" class="headerlink" title="配置地址"></a>配置地址</h2><p>打开文件~/.zshrc，其中有如下行：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">plugins</span>=(git)</div></pre></td></tr></table></figure>
 <p>将需要的插件按空格分开，放于此处即可。我的配置如下：</p>
