@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[精选oh-my-zsh插件集合]]></title>
       <url>http://meiminjun.github.io/2017/01/11/oh-my-zsh%E6%8F%92%E4%BB%B6/</url>
-      <content type="html"><![CDATA[<h2 id="配置地址"><a href="#配置地址" class="headerlink" title="配置地址"></a>配置地址</h2><p>打开文件~/.zshrc，其中有如下行：</p>
+      <content type="html"><![CDATA[<h2 id="oh-my-zsh-安装说明"><a href="#oh-my-zsh-安装说明" class="headerlink" title="oh-my-zsh 安装说明"></a>oh-my-zsh 安装说明</h2><p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh</a></p>
+<h2 id="插件配置地址"><a href="#插件配置地址" class="headerlink" title="插件配置地址"></a>插件配置地址</h2><p>打开文件~/.zshrc，其中有如下行：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">plugins</span>=(git)</div></pre></td></tr></table></figure>
 <p>将需要的插件按空格分开，放于此处即可。我的配置如下：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">plugins</span>=(git extract z sublime)</div></pre></td></tr></table></figure>
@@ -24,6 +25,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>g</td>
+<td>git</td>
+</tr>
 <tr>
 <td>gst</td>
 <td>git status</td>
@@ -171,7 +176,6 @@
       <url>http://meiminjun.github.io/2017/01/02/%E6%88%91%E7%9A%84Mac%E5%B7%A5%E5%85%B7%E9%9B%86/</url>
       <content type="html"><![CDATA[<h1 id="精选Mac工具"><a href="#精选Mac工具" class="headerlink" title="精选Mac工具"></a>精选Mac工具</h1><h2 id="工作类"><a href="#工作类" class="headerlink" title="工作类"></a>工作类</h2><ul>
 <li>有道云笔记</li>
-<li>Alfred 3(必备)</li>
 <li>UnRaR Unarchiver : 解压软件</li>
 <li>Tickeys : 键盘特效</li>
 <li>Word : Window文档编辑工具</li>
@@ -182,6 +186,10 @@
 <li>微信</li>
 <li>钉钉</li>
 <li>Outlook</li>
+</ul>
+</li>
+<li>阅读工具<ul>
+<li>Reeder : 一款支持rss订阅客户端</li>
 </ul>
 </li>
 </ul>
@@ -225,6 +233,10 @@
 </ul>
 </li>
 <li>Charies : 抓包工具</li>
+</ul>
+<h2 id="高级类"><a href="#高级类" class="headerlink" title="高级类"></a>高级类</h2><ul>
+<li>Alfred 3(必备): 一款workflow效率软件</li>
+<li><a href="http://sspai.com/36442" target="_blank" rel="external">Keyboard Maestro</a> :一款超级牛逼的效率软件</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li><p><a href="https://github.com/jaywcjlove/awesome-mac" target="_blank" rel="external">Mac 软件精选</a></p>
