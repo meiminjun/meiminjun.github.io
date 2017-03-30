@@ -270,6 +270,181 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/23/javascript-slice方法/" itemprop="url">
+                  浅谈javacript 笔记系列--- String 之slice
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-23T21:57:13+08:00" content="2016-06-23">
+              2016-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/23/javascript-slice方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/javascript-slice方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>stringObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
+<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
+<p>提示和注释</p>
+<p>注释：您可使用负值从数组的尾部选取元素。</p>
+<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
+<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/22/SublimeText-我的常用配置/" itemprop="url">
                   史上最强Sublime 笔记系列---我的常用配置
                 </a>
@@ -766,110 +941,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/05/webpack教程/" itemprop="url">
-                  webpack 开发笔记---傻瓜式入门教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-05T15:57:13+08:00" content="2016-05-05">
-              2016-05-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/05/webpack教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/webpack教程/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Webpack傻瓜式指南"><a href="#Webpack傻瓜式指南" class="headerlink" title="Webpack傻瓜式指南"></a>Webpack傻瓜式指南</h1><p><img src="/images/blogImg/524ee3f84a1742cbc4de3e2ff95ce983_b.png" alt="图片"></p>
-<p>Webpack最近很热，满屏幕都是React＋Webpack，官方文档写的不太好，好多点都没有解释的详细，所以我参考了几篇文章，写一篇傻瓜式指南。本文适合第一次接触webpack的朋友，如果是老鸟，就不用看了。这是系列的第一篇，主要讲他最基本的用法。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/05/webpack教程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -915,7 +986,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -932,7 +1003,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
