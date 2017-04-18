@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-03-30T03:00:34.000Z</updated>
+  <updated>2017-04-18T06:17:34.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -14,6 +14,173 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack</title>
+    <link href="http://meiminjun.github.io/2017/04/11/webpack/"/>
+    <id>http://meiminjun.github.io/2017/04/11/webpack/</id>
+    <published>2017-04-11T13:57:13.000Z</published>
+    <updated>2017-04-18T06:17:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="常用配置解析（这里以vue脚手架生成为例）"><a href="#常用配置解析（这里以vue脚手架生成为例）" class="headerlink" title="常用配置解析（这里以vue脚手架生成为例）"></a>常用配置解析（这里以vue脚手架生成为例）</h1><h2 id="输入-entry"><a href="#输入-entry" class="headerlink" title="输入(entry)"></a>输入(entry)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">entry</span>: &#123;</div><div class="line">  <span class="attribute">app</span>: <span class="string">'./src/main.js'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="输出-output"><a href="#输出-output" class="headerlink" title="输出(output)"></a>输出(output)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">output</span>: &#123;</div><div class="line">  <span class="attribute">path</span>: path.<span class="built_in">resolve</span>(__dirname, <span class="string">'./dist'</span>),  // 文件构建完成后的生成目录</div><div class="line">  publicPath: <span class="string">'/dist/'</span>,	// build.js相对于服务器环境的哪层目录</div><div class="line">  filename: <span class="string">'build.js'</span> // 代码生成的文件名</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="devtool-开发工具"><a href="#devtool-开发工具" class="headerlink" title="devtool(开发工具)"></a>devtool(开发工具)</h2><table>
+<thead>
+<tr>
+<th>devtool</th>
+<th style="text-align:right">构建</th>
+<th style="text-align:right">重构建</th>
+<th style="text-align:right">生产环境</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eval</td>
+<td style="text-align:right">+++</td>
+<td style="text-align:right">+++</td>
+<td style="text-align:right">no</td>
+<td>生成后的代码</td>
+</tr>
+<tr>
+<td>cheap-eval-source-map</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">++</td>
+<td style="text-align:right">no</td>
+<td>转换过的代码（仅限行）</td>
+</tr>
+<tr>
+<td>cheap-source-map</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">o</td>
+<td style="text-align:right">yes</td>
+<td>转换过的代码（仅限行）</td>
+</tr>
+<tr>
+<td>cheap-module-eval-source-map</td>
+<td style="text-align:right">o</td>
+<td style="text-align:right">++</td>
+<td style="text-align:right">no</td>
+<td>原始源码（仅限行）</td>
+</tr>
+<tr>
+<td>cheap-module-source-map</td>
+<td style="text-align:right">o</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">yes</td>
+<td>原始源码（仅限行）</td>
+</tr>
+<tr>
+<td>eval-source-map</td>
+<td style="text-align:right">–</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">no</td>
+<td>原始源码</td>
+</tr>
+<tr>
+<td>source-map</td>
+<td style="text-align:right">–</td>
+<td style="text-align:right">–</td>
+<td style="text-align:right">yes</td>
+<td>原始源码</td>
+</tr>
+<tr>
+<td>nosources-source-map</td>
+<td style="text-align:right">–</td>
+<td style="text-align:right">–</td>
+<td style="text-align:right">yes</td>
+<td>无源码内容</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>表示较快，- 表示较慢，o 表示时间相同</li>
+</ul>
+</blockquote>
+<p>其中一些值适用于开发环境，一些适用于生产环境。对于开发环境，通常希望更快速的 Source Map，需要添加到 bundle 中以增加体积为代价，但是对于生产环境，则希望更精准的 Source Map，需要从 bundle 中分离并独立存在。</p>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// cheap-module-<span class="built_in">eval</span>-<span class="keyword">source</span>-<span class="keyword">map</span> <span class="keyword">is</span> faster <span class="keyword">for</span> development</div><div class="line">devtoo<span class="variable">l:</span> <span class="string">'#cheap-module-eval-source-map'</span>,</div></pre></td></tr></table></figure>
+<p>cheap-module-eval-source-map - 就像 eval-source-map，每个模块使用 eval() 执行，并且 SourceMap 转换为 DataUrl 后添加到 eval() 中。”低开销”是因为它没有生成列映射(column map)，只是映射行数。</p>
+<h3 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">devtool:</span> <span class="string">'#source-map'</span></div></pre></td></tr></table></figure>
+<p>source-map - 生成完整的 SourceMap，输出为独立文件。由于在 bundle 中添加了引用注释，所以开发工具可以知道在哪里去找到 SourceMap。</p>
+<h2 id="模块-module"><a href="#模块-module" class="headerlink" title="模块(module)"></a>模块(module)</h2><p>设置需要处理的模块</p>
+<h3 id="rules"><a href="#rules" class="headerlink" title="rules"></a>rules</h3><p>设置如何处理项目不同类型的模块的规则</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.vue$/</span>, <span class="comment">// 匹配处理.vue文件</span></div><div class="line">        loader: <span class="string">'vue-loader'</span>, <span class="comment">//使用vue-loader处理,`npm install vue-loader`</span></div><div class="line">        <span class="keyword">options</span>: &#123;	<span class="comment">//options是对vue-loader的额外选项配置</span></div><div class="line">          loaders: &#123;</div><div class="line">            <span class="comment">// 由于sass-loader将SCSS作为默认解析模式，因此将lang属性的“scss”和“sass”值映射到这里的正确配置。</span></div><div class="line">            <span class="string">'scss'</span>: <span class="string">'vue-style-loader!css-loader!sass-loader'</span>,</div><div class="line">            <span class="string">'sass'</span>: <span class="string">'vue-style-loader!css-loader!sass-loader?indentedSyntax'</span>,</div><div class="line">          &#125;</div><div class="line">        &#125;，</div><div class="line">        <span class="keyword">exclude</span>: <span class="regexp">/node_modules/</span>	<span class="comment">// 排除需要处理的目录（不推荐使用exclude）</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.js$/</span>,	<span class="comment">// 匹配处理.js文件</span></div><div class="line">        loader: <span class="string">'babel-loader'</span>,	<span class="comment">//使用babel-loader处理,这个作用就是将es6转化成es5</span></div><div class="line">     		<span class="keyword">include</span>: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)] <span class="comment">// 必须处理包含src和test文件夹</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.(eot|ttf|woff|woff2|png|jpg|gif|svg)$/</span>,	<span class="comment">// 匹配相关图片类型文件</span></div><div class="line">        loader: <span class="string">'file-loader'</span>, <span class="comment">// 使用url-loader处理</span></div><div class="line">        query: &#123;  <span class="comment">// query是对loader做额外的选项配置</span></div><div class="line">	        limit: <span class="number">10000</span>, <span class="comment">//图片小于10000字节时以base64的方式引用</span></div><div class="line">	        name: utils.assetsPath(<span class="string">'img/[name].[hash:7].[ext]'</span>) <span class="comment">//文件名为name.7位hash值.拓展名</span></div><div class="line">	      &#125;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">	      test: <span class="regexp">/\.(woff2?|eot|ttf|otf)(\?.*)?$/</span>, <span class="comment">//字体文件</span></div><div class="line">	      loader: <span class="string">'url-loader'</span>, <span class="comment">//使用url-loader处理</span></div><div class="line">	      query: &#123;</div><div class="line">	        limit: <span class="number">10000</span>,  <span class="comment">//字体文件小于1000字节的时候处理方式</span></div><div class="line">	        name: utils.assetsPath(<span class="string">'fonts/[name].[hash:7].[ext]'</span>) <span class="comment">//文件名为name.7位hash值.拓展名</span></div><div class="line">	      &#125;</div><div class="line">	    &#125;,</div><div class="line">      &#123;</div><div class="line">        test: <span class="regexp">/\.css$/</span>,</div><div class="line">        loader: <span class="string">'style-loader!css-loader'</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<p><code>注: 关于query 仅由于兼容性原因而存在。请使用 options 代替。</code></p>
+<h3 id="noParse"><a href="#noParse" class="headerlink" title="noParse"></a>noParse</h3><p>不处理的模块</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">noParse:</span> /src\/assets\/<span class="class"><span class="keyword">lib</span>\/(<span class="title">zepto</span>|<span class="title">runtime</span>-<span class="title">check</span>|<span class="title">add</span>-<span class="title">assets</span>|<span class="title">aladdin</span>.<span class="title">loading</span>|<span class="title">aladdin</span>.<span class="title">dialog</span>|<span class="title">aladdin</span>.<span class="title">toast</span>|<span class="title">aladdin</span>|<span class="title">bow</span>|<span class="title">dante</span>|<span class="title">flexible</span>|\.<span class="title">js</span>)/,</span></div></pre></td></tr></table></figure>
+<h2 id="解析-resolve"><a href="#解析-resolve" class="headerlink" title="解析(resolve)"></a>解析(resolve)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">modules</span>: [path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src'</span>), <span class="string">'node_modules'</span>],  // 只解析的目录</div><div class="line">  extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>, <span class="string">'.scss'</span>],  // 解析的文件扩展名</div><div class="line">  alias: &#123;  // 设置引入模块的别名</div><div class="line">    <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.esm.js'</span>,</div><div class="line">    <span class="string">'@'</span>: <span class="built_in">resolve</span>(<span class="string">'src'</span>),</div><div class="line">    <span class="string">'utils'</span>: <span class="built_in">resolve</span>(<span class="string">'src/utils'</span>),</div><div class="line">    <span class="string">'assets'</span>: <span class="built_in">resolve</span>(<span class="string">'src/assets'</span>),</div><div class="line">    <span class="string">'components'</span>: <span class="built_in">resolve</span>(<span class="string">'src/components'</span>),</div><div class="line">    <span class="string">'flexible'</span>: <span class="built_in">resolve</span>(<span class="string">'src/assets/lib/flexible.js'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="外部扩展-externals"><a href="#外部扩展-externals" class="headerlink" title="外部扩展(externals)"></a>外部扩展(externals)</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 加载外部lib</span></div><div class="line"><span class="attribute">externals</span>: &#123;</div><div class="line">  <span class="attribute">aladdin</span>: <span class="string">'aladdin'</span>,</div><div class="line">  <span class="attribute">bow</span>: <span class="string">'bow'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="常用插件-plugins"><a href="#常用插件-plugins" class="headerlink" title="常用插件(plugins)"></a>常用插件(plugins)</h2><p>webpack插件分为两种，一种是原生插件，就是说不需要安装和引用可直接使用，另一种是第三方插件，需要npm安装，引用后才可使用。</p>
+<p>先讲一下常用原生插件</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="string">plugins:</span> [</div><div class="line">  <span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line">    <span class="string">'process.env'</span>: &#123;</div><div class="line"><span class="symbol">      NODE_ENV:</span> <span class="string">'"production"'</span></div><div class="line">    &#125;</div><div class="line">  &#125;),</div><div class="line">  <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(),</div><div class="line">  <span class="keyword">new</span> webpack.NoEmitOnErrorsPlugin(),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="webpack-DefinePlugin"><a href="#webpack-DefinePlugin" class="headerlink" title="webpack.DefinePlugin"></a>webpack.DefinePlugin</h3><p>设置全局变量</p>
+<h3 id="webpack-HotModuleReplacementPlugin"><a href="#webpack-HotModuleReplacementPlugin" class="headerlink" title="webpack.HotModuleReplacementPlugin"></a>webpack.HotModuleReplacementPlugin</h3><p>热更新插件</p>
+<h3 id="webpack-NoEmitOnErrorsPlugin"><a href="#webpack-NoEmitOnErrorsPlugin" class="headerlink" title="webpack.NoEmitOnErrorsPlugin"></a>webpack.NoEmitOnErrorsPlugin</h3><p>跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误。</p>
+<h3 id="webpack-optimize-UglifyJsPlugin"><a href="#webpack-optimize-UglifyJsPlugin" class="headerlink" title="webpack.optimize.UglifyJsPlugin"></a>webpack.optimize.UglifyJsPlugin</h3><p>解析/压缩/美化所有的js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">  <span class="attr">sourceMap</span>: <span class="literal">true</span></div><div class="line">  mangle: &#123;</div><div class="line">      <span class="attr">except</span>: [<span class="string">'$super'</span>, <span class="string">'$'</span>, <span class="string">'exports'</span>, <span class="string">'require'</span>]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">compressor</span>: &#123; <span class="comment">// 压缩配置</span></div><div class="line">    <span class="comment">// 在UglifyJs删除没有用到的代码时不输出警告</span></div><div class="line">    warnings: <span class="literal">false</span>,</div><div class="line">    <span class="comment">// 删除所有的 `console` 语句，可以兼容ie浏览器</span></div><div class="line">    drop_console: deployEnv === <span class="string">'prd'</span>,</div><div class="line">    <span class="comment">// 删除所有的 `debugger`语句</span></div><div class="line">    drop_debugger: <span class="literal">true</span>,</div><div class="line">    <span class="comment">// 内嵌定义了但是只用到一次的变量</span></div><div class="line">    collapse_vars: deployEnv === <span class="string">'prd'</span>,</div><div class="line">    <span class="comment">// 提取出出现多次但是没有定义成变量去引用的静态值</span></div><div class="line">    reduce_vars: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>ps: 这个插件一般在生产环境配置中才会用到</p>
+</blockquote>
+<p>参数说明：</p>
+<p>mangle: 通过设置except数组来防止指定变量被改变<br>sourceMap: 生成SourceMap文件，会导致编译过程变慢，默认true<br>test/include/exclude: 使用一个或多个正则表达式来过滤要处理的文件<br>compressor: 压缩配置项</p>
+<h3 id="webpack-ProvidePlugin"><a href="#webpack-ProvidePlugin" class="headerlink" title="webpack.ProvidePlugin"></a>webpack.ProvidePlugin</h3><p>定义标识符，当遇到指定标识符的时候，自动加载模块。</p>
+<p>在下面例子中，无需在module中引入jquery，即可使用$方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.ProvidePlugin(&#123;</div><div class="line">  <span class="attr">$</span>: <span class="string">"jquery"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="webpack-optimize-CommonsChunkPlugin"><a href="#webpack-optimize-CommonsChunkPlugin" class="headerlink" title="webpack.optimize.CommonsChunkPlugin"></a>webpack.optimize.CommonsChunkPlugin</h3><p>提取代码中的公共模块，然后将公共模块打包到一个独立的文件中，以便在其他的入口和模块中使用。</p>
+<blockquote>
+<p>不要忘记在html中单独引入抽离出来的公共模块。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">webpack</span><span class="selector-class">.optimize</span><span class="selector-class">.CommonsChunkPlugin</span>(&#123;</div><div class="line">  <span class="attribute">name</span>: <span class="string">'vendor'</span>,</div><div class="line">  minChunks: <span class="number">3</span>,</div><div class="line">  chunks: [<span class="string">"pageA"</span>, <span class="string">"pageB"</span>],</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p>name: 生成的公共模块的文件名<br>minChunks: 至少要多少个引用的模块才能分离出来<br>chunks: 只应用这些模块</p>
+<p>在vue-cli生成的项目工程的webpack配置中会new 两次，请看下面说明<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//分离公共js到vendor中</span></div><div class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'vendor'</span>,  <span class="comment">//文件名</span></div><div class="line">  minChunks: functions(<span class="built_in">module</span>, count) &#123; <span class="comment">// 声明公共的模块来自node_modules文件夹</span></div><div class="line">    <span class="keyword">return</span> (<span class="built_in">module</span>.resource &amp;&amp; <span class="regexp">/\.js$/</span>.test(<span class="built_in">module</span>.resource) &amp;&amp; <span class="built_in">module</span>,resource.indexOf(path.join(__dirname, <span class="string">'../node_modules'</span>)) === <span class="number">0</span>)</div><div class="line">  &#125;</div><div class="line">&#125;),</div><div class="line"><span class="comment">//上面虽然已经分离了第三方库,每次修改编译都会改变vendor的hash值，导致浏览器缓存失效。原因是vendor包含了webpack在打包过程中会产生一些运行时代码，运行时代码中实际上保存了打包后的文件名。当修改业务代码时,业务代码的js文件的hash值会改变。一旦改变必然会导致vendor变化。vendor变化会导致其hash值变化。</span></div><div class="line"><span class="comment">//下面主要是将运行时代码提取到单独的manifest文件中，防止其影响vendor.js</span></div><div class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'mainifest'</span>,</div><div class="line">  <span class="attr">chunks</span>: [<span class="string">'vendor'</span>]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="webpack-DllReferencePlugin"><a href="#webpack-DllReferencePlugin" class="headerlink" title="webpack.DllReferencePlugin"></a>webpack.DllReferencePlugin</h3><p>把常用的库并且不会改变的库进行分离，加速构建的作用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">webpack</span><span class="selector-class">.DllReferencePlugin</span>(&#123;</div><div class="line">  <span class="attribute">context</span>: __dirname,  // 作用于哪个环境</div><div class="line">  manifest: <span class="built_in">require</span>(./manifest.json)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>context: 执行上下文<br>manifest: manifest文件路径</p>
+<p>接下来，讲常用第三方插件</p>
+<h3 id="friendly-errors-webpack-plugin"><a href="#friendly-errors-webpack-plugin" class="headerlink" title="friendly-errors-webpack-plugin"></a>friendly-errors-webpack-plugin</h3><p>友好错误提示插件</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">plugins:</span> [</div><div class="line">  <span class="keyword">new</span> FriendlyErrorsPlugin()  </div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><p>自动生成html文件的插件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">HtmlWebpackPlugin</span>(&#123;</div><div class="line">   <span class="attribute">filename</span>: <span class="string">'index.html'</span>,</div><div class="line">   template: <span class="string">'index.html'</span>,</div><div class="line">   inject: true</div><div class="line"> &#125;),</div></pre></td></tr></table></figure>
+<p><code>参数说明：</code></p>
+<ul>
+<li>title: 用来生成页面的 title 元素</li>
+<li>filename: 输出的 HTML 文件名，默认是 index.html, 也可以直接配置带有子目录。</li>
+<li>template: 模板文件路径，支持加载器，比如 html!./index.html</li>
+<li>inject: true | ‘head’ | ‘body’ | false  ,注入所有的资源到特定的 template 或者 templateContent 中，如果设置为 true 或者 body，所有的 javascript 资源将被放置到 body 元素的底部，’head’ 将放置到 head 元素中。</li>
+<li>favicon: 添加特定的 favicon 路径到输出的 HTML 文件中。</li>
+<li>minify: {} | false , 传递 html-minifier 选项给 minify 输出</li>
+<li>hash: true | false, 如果为 true, 将添加一个唯一的 webpack 编译 hash 到所有包含的脚本和 CSS 文件，对于解除 cache 很有用。</li>
+<li>cache: true | false，如果为 true, 这是默认值，仅仅在文件修改之后才会发布文件。</li>
+<li>showErrors: true | false, 如果为 true, 这是默认值，错误信息会写入到 HTML 页面中</li>
+<li>chunks: 允许只添加某些块 (比如，仅仅 unit test 块)</li>
+<li>chunksSortMode: 允许控制块在添加到页面之前的排序方式，支持的值：’none’ | ‘default’ | {function}-default:’auto’|’dependency’</li>
+<li>excludeChunks: 允许跳过某些块，(比如，跳过单元测试的块) </li>
+</ul>
+<h3 id="extract-text-webpack-plugin"><a href="#extract-text-webpack-plugin" class="headerlink" title="extract-text-webpack-plugin"></a>extract-text-webpack-plugin</h3><p>将js中引入的css分离的插件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">ExtractTextPlugin</span>(&#123;</div><div class="line">  <span class="attribute">filename</span>: utils.<span class="built_in">assetsPath</span>(<span class="string">'css/[name].[contenthash].css'</span>) //分离出的css文件名</div><div class="line">  allChunks: true // 分离所有的模块</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="optimize-css-assets-webpack-plugin"><a href="#optimize-css-assets-webpack-plugin" class="headerlink" title="optimize-css-assets-webpack-plugin"></a>optimize-css-assets-webpack-plugin</h3><p>压缩提取出的css，并解决ExtractTextPlugin分离出的css重复问题(多个文件引入同一css文件)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">OptimizeCSSPlugin</span>(&#123;</div><div class="line">  <span class="attribute">cssProcessorOptions</span>: &#123;</div><div class="line">    safe: true</div><div class="line">  &#125;</div><div class="line">&#125;),</div></pre></td></tr></table></figure>
+<h3 id="copy-webpack-plugin"><a href="#copy-webpack-plugin" class="headerlink" title="copy-webpack-plugin"></a>copy-webpack-plugin</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 复制静态资源,将static文件内的内容复制到指定文件夹</span></div><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">CopyWebpackPlugin</span>([&#123;</div><div class="line">  <span class="attribute">from</span>: path.resolve(__dirname, <span class="string">'../static'</span>), <span class="comment">// 从哪个路径复制</span></div><div class="line">  <span class="attribute">to</span>: config.build.assetsSubDirectory,  <span class="comment">// 复制到的路径</span></div><div class="line">  <span class="attribute">ignore</span>: [<span class="string">'.*'</span>]  <span class="comment">//过滤规则</span></div><div class="line">&#125;])</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p>from: 从哪个路径复制或则是文件<br>to: 复制到指定目录<br>ignore: 过滤文件的类型</p>
+<h3 id="add-asset-html-webpack-plugin"><a href="#add-asset-html-webpack-plugin" class="headerlink" title="add-asset-html-webpack-plugin"></a>add-asset-html-webpack-plugin</h3><p>在你的模板文件中添加静态资源</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">AddAssetHtmlPlugin</span>(&#123;</div><div class="line">  <span class="attribute">filepath</span>: require.<span class="built_in">resolve</span>(config.build.dll.fileName),  // 要添加的文件</div><div class="line">  outputPath: utils.<span class="built_in">assetsPath</span>(config.build.dll.outputPath),</div><div class="line">  publicPath: utils.<span class="built_in">assetsPath</span>(config.build.dll.publicPath),</div><div class="line">  hash: true</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>参数说明</p>
+<p>filepath：要添加的文件<br>outputPath: // 输出生成目录<br>publicPath: // 注入地址</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;常用配置解析（这里以vue脚手架生成为例）&quot;&gt;&lt;a href=&quot;#常用配置解析（这里以vue脚手架生成为例）&quot; class=&quot;headerlink&quot; title=&quot;常用配置解析（这里以vue脚手架生成为例）&quot;&gt;&lt;/a&gt;常用配置解析（这里以vue脚手架生成为例）&lt;/
+    
+    </summary>
+    
+    
+      <category term="webpack" scheme="http://meiminjun.github.io/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>Vysor最新版本破解</title>
@@ -1405,63 +1572,6 @@
   </entry>
   
   <entry>
-    <title>windows常用快捷键</title>
-    <link href="http://meiminjun.github.io/2016/07/09/window%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    <id>http://meiminjun.github.io/2016/07/09/window快捷键/</id>
-    <published>2016-07-09T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
-<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
-<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;windows-常用快捷键&quot;&gt;&lt;a href=&quot;#windows-常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;windows 常用快捷键&quot;&gt;&lt;/a&gt;windows 常用快捷键&lt;/h1&gt;&lt;h2 id=&quot;文件操作&quot;&gt;&lt;a href=&quot;#文件操作&quot;
-    
-    </summary>
-    
-      <category term="tool" scheme="http://meiminjun.github.io/categories/tool/"/>
-    
-    
-      <category term="快捷键" scheme="http://meiminjun.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-      <category term="windows" scheme="http://meiminjun.github.io/tags/windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Chrome神器Vimium快捷键学习记录</title>
-    <link href="http://meiminjun.github.io/2016/07/09/Chrome%E7%A5%9E%E5%99%A8Vimium%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://meiminjun.github.io/2016/07/09/Chrome神器Vimium快捷键学习记录/</id>
-    <published>2016-07-09T13:57:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg" alt=""></p>
-<h1 id="Vimium使用快捷键总结"><a href="#Vimium使用快捷键总结" class="headerlink" title="Vimium使用快捷键总结"></a>Vimium使用快捷键总结</h1><h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>F6 ：在当前的标签页直接输入一个新的网址</p>
-<p><strong>o：打开 URl、书签或历史记录 </strong><br><strong> O：在新标签页中打开 URl、书签或历史记录</strong></p>
-<p><strong> b：在当前页打开一个书签。（只会查找书签）</strong><br><strong> B：在新的标签页打开一个书签 </strong></p>
-<p>F：在新的页面打开一个新的链接。<br>f：在当前的页面打开一个新的链接。</p>
-<h2 id="标签页操作"><a href="#标签页操作" class="headerlink" title="标签页操作"></a>标签页操作</h2><p>K，gt：跳转到右边的一个标签页<br>J，gT：跳转到左边的一个标签页<br>x：关闭当前的标签页<br>X：恢复刚刚关闭的标签页<br>t：创建一个新的标签页<br>？：显示命令的帮助提示（再按一次关闭）</p>
-<h2 id="页面浏览"><a href="#页面浏览" class="headerlink" title="页面浏览"></a>页面浏览</h2><p>r：重新刷新<br>j、k、h、l：向下/上/左/右滚动<br>gg 和 G：移至页顶/页底<br>H：后退<br>L：前进<br>d：向下滚动（相当于pageDown）<br>u：向上滚动（相当于pageUp）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Vimium使用快捷键总结&quot;&gt;&lt;a href=&quot;#Vimium使用快捷键总结&quot; c
-    
-    </summary>
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/categories/chrome/"/>
-    
-    
-      <category term="Vimium" scheme="http://meiminjun.github.io/tags/Vimium/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Chrome常用设置</title>
     <link href="http://meiminjun.github.io/2016/07/09/chrome%E5%BC%80%E5%8F%91/"/>
     <id>http://meiminjun.github.io/2016/07/09/chrome开发/</id>
@@ -1488,6 +1598,33 @@
     
     
       <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows常用快捷键</title>
+    <link href="http://meiminjun.github.io/2016/07/09/window%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://meiminjun.github.io/2016/07/09/window快捷键/</id>
+    <published>2016-07-09T13:57:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
+<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;windows-常用快捷键&quot;&gt;&lt;a href=&quot;#windows-常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;windows 常用快捷键&quot;&gt;&lt;/a&gt;windows 常用快捷键&lt;/h1&gt;&lt;h2 id=&quot;文件操作&quot;&gt;&lt;a href=&quot;#文件操作&quot;
+    
+    </summary>
+    
+      <category term="tool" scheme="http://meiminjun.github.io/categories/tool/"/>
+    
+    
+      <category term="快捷键" scheme="http://meiminjun.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+      <category term="windows" scheme="http://meiminjun.github.io/tags/windows/"/>
     
   </entry>
   
