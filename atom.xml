@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-05-02T07:25:56.000Z</updated>
+  <updated>2017-05-02T07:41:07.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -20,19 +20,19 @@
     <link href="http://meiminjun.github.io/standard%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/"/>
     <id>http://meiminjun.github.io/standard代码规范/</id>
     <published>2017-04-20T13:57:13.000Z</published>
-    <updated>2017-05-02T07:25:56.000Z</updated>
+    <updated>2017-05-02T07:41:07.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1ff6vedjfw7j30kz0o7t9v.jpg" alt=""></p>
 <h1 id="使用standard代码风格规则说明（116条）"><a href="#使用standard代码风格规则说明（116条）" class="headerlink" title="使用standard代码风格规则说明（116条）"></a>使用standard代码风格规则说明（116条）</h1><ul>
 <li><strong>使用两个空格进行缩进</strong></li>
 </ul>
 <p>eslint: indent</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hi'</span>, name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span></span> hello (<span class="keyword">name</span>) &#123;</div><div class="line">  console.<span class="built_in">log</span>(<span class="string">'hi'</span>, <span class="keyword">name</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>除需要转义的情况外，字符串统一使用单引号</strong></li>
 </ul>
 <p>eslint: quotes</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'测试'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.<span class="built_in">log</span>(<span class="string">'测试'</span>)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要定义未使用的变量</strong></li>
 </ul>
@@ -46,7 +46,7 @@
 <li><strong>函数声明时括号与函数名间加空格</strong></li>
 </ul>
 <p>eslint: space-before-function-paren</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> (<span class="params">arg</span>) </span>&#123; ... &#125;   <span class="comment">// ✓ ok </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">arg</span>) </span>&#123; ... &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">run(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;)      <span class="comment">// ✓ ok </span></div><div class="line">run(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; ... &#125;)       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> <span class="params">(arg)</span> </span>&#123; ... &#125;   <span class="comment">// ✓ ok </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span><span class="params">(arg)</span> </span>&#123; ... &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; ... &#125;)      <span class="comment">// ✓ ok </span></div><div class="line">run(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; ... &#125;)       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>始终使用 === 替代 ==</strong></li>
 </ul>
@@ -75,9 +75,9 @@
 <li><strong>多行 if 语句的的括号不能省</strong></li>
 </ul>
 <p>eslint: curly</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (options.quiet !== <span class="literal">true</span>) <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (options.quiet !== <span class="literal">true</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (options.quiet !== <span class="literal">true</span>)</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true) console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true) &#123;</div><div class="line">  console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true)</div><div class="line">  console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要丢掉异常处理中err参数</strong></li>
 </ul>
@@ -88,7 +88,7 @@
 <li><strong>使用浏览器全局变量时加上 window. 前缀</strong></li>
 </ul>
 <p>eslint: no-undef</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不允许有连续多行空行</strong></li>
 </ul>
@@ -99,12 +99,12 @@
 <li><strong>对于三元运算符 ? 和 : 与他们所负责的代码处于同一行</strong></li>
 </ul>
 <p>eslint: operator-linebreak</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development ? <span class="string">'localhost'</span> : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development</div><div class="line">  ? <span class="string">'localhost'</span></div><div class="line">  : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> location = env.development ?</div><div class="line">  <span class="string">'localhost'</span> :</div><div class="line">  <span class="string">'www.api.com'</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development ? <span class="string">'localhost'</span> : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development</div><div class="line">  ? <span class="string">'localhost'</span></div><div class="line">  : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> location = env.development ?</div><div class="line">  <span class="string">'localhost'</span> :</div><div class="line">  <span class="string">'www.api.com'</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>每个 var 关键字单独声明一个变量</strong></li>
 </ul>
 <p>eslint: one-var</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>, verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>,</div><div class="line">    verbose = <span class="literal">true</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>, verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>,</div><div class="line">    verbose = <span class="literal">true</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>条件语句中赋值语句使用括号包起来。这样使得代码更加清晰可读，而不会认为是将条件判断语句的全等号（===）错写成了等号（=）</strong></li>
 </ul>
@@ -114,12 +114,12 @@
 <li><strong>单行代码块两边加空格</strong></li>
 </ul>
 <p>eslint: block-spacing</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> <span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> <span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>对于变量和函数名统一使用驼峰命名法</strong></li>
 </ul>
 <p>eslint: camelcase</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_function</span> (<span class="params"></span>) </span>&#123; &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span> (<span class="params"></span>) </span>&#123; &#125;     <span class="comment">// ✓ ok </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> my_var = <span class="string">'hello'</span>           <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> myVar = <span class="string">'hello'</span>            <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_function</span> <span class="params">()</span> </span>&#123; &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span> <span class="params">()</span> </span>&#123; &#125;     <span class="comment">// ✓ ok </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> my_var = <span class="string">'hello'</span>           <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> myVar = <span class="string">'hello'</span>            <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不允许有多余的行末逗号</strong></li>
 </ul>
@@ -134,7 +134,7 @@
 <li><strong>点号操作符须与属性需在同一行</strong></li>
 </ul>
 <p>eslint: dot-location</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.</div><div class="line">    log(<span class="string">'hello'</span>)  <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="built_in">console</span></div><div class="line">.log(<span class="string">'hello'</span>) <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.</div><div class="line">    <span class="built-in">log</span>(<span class="string">'hello'</span>)  <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">console</div><div class="line">.<span class="built-in">log</span>(<span class="string">'hello'</span>) <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>文件末尾留一空行</strong></li>
 </ul>
@@ -143,7 +143,7 @@
 <li><strong>函数调用时标识符与括号间不留间隔</strong></li>
 </ul>
 <p>eslint: func-call-spacing</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log (<span class="string">'hello'</span>) <span class="comment">// ✗ avoid </span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.<span class="built-in">log</span> (<span class="string">'hello'</span>) <span class="comment">// ✗ avoid </span></div><div class="line">console.<span class="built-in">log</span>(<span class="string">'hello'</span>)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>键值对当中冒号与值之间要留空白</strong></li>
 </ul>
@@ -153,7 +153,7 @@
 <li><strong>构造函数要以大写字母开头</strong></li>
 </ul>
 <p>eslint: new-cap</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animal</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> animal()    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal()    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animal</span> <span class="params">()</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> animal()    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> <span class="params">()</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal()    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>无参的构造函数调用时要带上括号</strong></li>
 </ul>
@@ -183,7 +183,7 @@
 <li>避免对类名重新赋值</li>
 </ul>
 <p>eslint: no-class-assign</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;&#125;</div><div class="line">Dog = <span class="string">'Fido'</span>    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;&#125;</div><div class="line">Dog = <span class="string">'Fido'</span>    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>避免修改使用 const 声明的变量</strong></li>
 </ul>
@@ -218,7 +218,7 @@
 <li>类中不要定义冗余的属性。</li>
 </ul>
 <p>eslint: no-dupe-class-members</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">  bark () &#123;&#125;</div><div class="line">  bark () &#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">  bark () &#123;&#125;</div><div class="line">  bark () &#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>对象字面量中不要定义重复的属性。</li>
 </ul>
@@ -233,7 +233,7 @@
 <li><strong>同一模块有多个导入时一次性写完</strong></li>
 </ul>
 <p>eslint: no-duplicate-imports</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; myFunc1 &#125; <span class="keyword">from</span> <span class="string">'module'</span></div><div class="line"><span class="keyword">import</span> &#123; myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span>          <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> &#123; myFunc1, myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span> <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; myFunc1 &#125; <span class="keyword">from</span> <span class="string">'module'</span></div><div class="line"><span class="keyword">import</span> &#123; myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span>          <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> &#123; myFunc1, myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span> <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>正则中不要使用空字符</strong></li>
 </ul>
@@ -263,17 +263,17 @@
 <li>避免多余的函数上下文绑定</li>
 </ul>
 <p>eslint: no-extra-bind</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>避免不必要的布尔转换</li>
 </ul>
 <p>eslint: no-extra-boolean-cast</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (!!result) &#123;   <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (result) &#123;     <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (!!result) &#123;   <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (result) &#123;     <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>不要使用多余的括号包裹函数</li>
 </ul>
 <p>eslint: no-extra-parens</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myFunc = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;)   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myFunc = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;)   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>switch 一定要使用 break 来将条件分支正常中断</strong></li>
 </ul>
@@ -283,17 +283,17 @@
 <li><strong>不要省去小数点前面的0</strong></li>
 </ul>
 <p>eslint: no-floating-decimal</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> discount = <span class="number">.5</span>      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> discount = <span class="number">0.5</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> discount = <span class="number">.5</span>      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> discount = <span class="number">0.5</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>避免对声明过的函数重新赋值</li>
 </ul>
 <p>eslint: no-func-assign</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) </span>&#123; &#125;</div><div class="line">myFunc = myOtherFunc    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123; &#125;</div><div class="line">myFunc = myOtherFunc    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要对全局只读对象重新赋值</strong></li>
 </ul>
 <p>eslint: no-global-assign</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span> = &#123;&#125;     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span> = &#123;&#125;     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>注意隐式的 eval()</li>
 </ul>
@@ -303,7 +303,7 @@
 <li><strong>嵌套的代码块中禁止再定义函数</strong></li>
 </ul>
 <p>eslint: no-inner-declarations</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (authenticated) &#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setAuthUser</span> (<span class="params"></span>) </span>&#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (authenticated) &#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setAuthUser</span> <span class="params">()</span> </span>&#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>不要向 RegExp 构造器传入非法的正则表达式</li>
 </ul>
@@ -313,17 +313,17 @@
 <li>不要使用非法的空白符</li>
 </ul>
 <p>eslint: no-irregular-whitespace</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) /*&lt;<span class="title">NBSP</span>&gt;*/</span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> </span>() <span class="comment">/*&lt;NBSP&gt;*/</span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止使用 <strong>iterator</strong></li>
 </ul>
 <p>eslint: no-iterator</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo.prototype.__iterator__ = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo.prototype.__iterator__ = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>外部变量不要与对象属性重名</strong></li>
 </ul>
 <p>eslint: no-label-var</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> score = <span class="number">100</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  score: <span class="number">50</span>         <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> score = <span class="number">100</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span> <span class="params">()</span> </span>&#123;</div><div class="line">  score: <span class="number">50</span>         <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>不要使用标签语句</li>
 </ul>
@@ -333,7 +333,7 @@
 <li>不要书写不必要的嵌套代码块。</li>
 </ul>
 <p>eslint: no-lone-blocks</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  &#123;                   <span class="comment">// ✗ avoid </span></div><div class="line">    myOtherFunc()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  myOtherFunc()       <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123;</div><div class="line">  &#123;                   <span class="comment">// ✗ avoid </span></div><div class="line">    myOtherFunc()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123;</div><div class="line">  myOtherFunc()       <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要混合使用空格与制表符作为缩进</strong></li>
 </ul>
@@ -357,7 +357,7 @@
 <li>禁止使用 Function 构造器。</li>
 </ul>
 <p>eslint: no-new-func</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'return a + b'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'return a + b'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止使用 Object 构造器。</li>
 </ul>
@@ -372,12 +372,12 @@
 <li>禁止使用 Symbol 构造器</li>
 </ul>
 <p>eslint: no-new-symbol</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> <span class="built_in">Symbol</span>(<span class="string">'foo'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> <span class="built_in">Symbol</span>(<span class="string">'foo'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止使用原始包装器</li>
 </ul>
 <p>eslint: no-new-wrappers</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">'hello'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>不要将全局对象的属性作为函数调用</li>
 </ul>
@@ -402,7 +402,7 @@
 <li>使用 getPrototypeOf 来替代 <strong>proto</strong></li>
 </ul>
 <p>eslint: no-proto</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = obj.__proto__               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.getPrototypeOf(obj)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = obj.__proto__               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.getPrototypeOf(obj)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要重复声明变量</strong></li>
 </ul>
@@ -412,7 +412,7 @@
 <li>正则中避免使用多个空格</li>
 </ul>
 <p>eslint: no-regex-spaces</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regexp = <span class="regexp">/test   value/</span>   <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> regexp = <span class="regexp">/test &#123;3&#125;value/</span>  <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> regexp = <span class="regexp">/test value/</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regexp = /test   <span class="keyword">value</span>/   <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> regexp = /test &#123;<span class="number">3</span>&#125;<span class="keyword">value</span>/  <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> regexp = /test <span class="keyword">value</span>/     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>return 语句中的赋值必需有括号包裹</strong></li>
 </ul>
@@ -442,7 +442,7 @@
 <li>禁止使用稀疏数组（Sparse arrays）</li>
 </ul>
 <p>eslint: no-sparse-arrays</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fruits = [<span class="string">'apple'</span>,, <span class="string">'orange'</span>]       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fruits = [<span class="string">'apple'</span>,, <span class="string">'orange'</span>]       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要使用制表符</strong></li>
 </ul>
@@ -461,7 +461,7 @@
 <li>用 throw 抛错时，抛出 Error 对象而不是字符串</li>
 </ul>
 <p>eslint: no-throw-literal</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="string">'error'</span>               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="string">'error'</span>               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>(<span class="string">'error'</span>)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>行末不留空格</strong></li>
 </ul>
@@ -470,7 +470,7 @@
 <li><strong>不要使用 undefined 来初始化变量</strong></li>
 </ul>
 <p>eslint: no-undef-init</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="literal">undefined</span>    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> name</div><div class="line">name = <span class="string">'value'</span>          <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let <span class="keyword">name</span> = undefined    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">let <span class="keyword">name</span></div><div class="line"><span class="keyword">name</span> = <span class="string">'value'</span>          <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>循环语句中注意更新循环变量</li>
 </ul>
@@ -495,7 +495,7 @@
 <li>关系运算符的左值不要做取反操作</li>
 </ul>
 <p>eslint: no-unsafe-negation</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!key <span class="keyword">in</span> obj) &#123;&#125;       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!key <span class="keyword">in</span> obj) &#123;&#125;       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>避免不必要的 .call() 和 .apply()</li>
 </ul>
@@ -505,7 +505,7 @@
 <li>避免使用不必要的计算值作对象属性。</li>
 </ul>
 <p>eslint: no-useless-computed-key</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123; [<span class="string">'name'</span>]: <span class="string">'John Doe'</span> &#125;   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> user = &#123; <span class="attr">name</span>: <span class="string">'John Doe'</span> &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123; [<span class="string">'name'</span>]: <span class="string">'John Doe'</span> &#125;   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> user = &#123; name: <span class="string">'John Doe'</span> &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止多余的构造器</li>
 </ul>
@@ -515,12 +515,12 @@
 <li>禁止不必要的转义</li>
 </ul>
 <p>eslint: no-useless-escape</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message = <span class="string">'Hell\o'</span>  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message = <span class="string">'Hell\o'</span>  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>import, export 和解构操作中，禁止赋值到同名变量</strong></li>
 </ul>
 <p>eslint: no-useless-rename</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; config <span class="keyword">as</span> config &#125; <span class="keyword">from</span> <span class="string">'./config'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">import</span> &#123; config &#125; <span class="keyword">from</span> <span class="string">'./config'</span>               <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; <span class="built_in">config</span> as <span class="built_in">config</span> &#125; from <span class="string">'./config'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">import</span> &#123; <span class="built_in">config</span> &#125; from <span class="string">'./config'</span>               <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>属性前面不要加空格</li>
 </ul>
@@ -540,7 +540,7 @@
 <li><strong>代码块中避免多余留白</strong></li>
 </ul>
 <p>eslint: padded-blocks</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">                            <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="keyword">const</span> name = getName()</div><div class="line"> </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">  <span class="keyword">const</span> name = getName()    <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">                            <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="keyword">const</span> name = getName()</div><div class="line"> </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">  <span class="keyword">const</span> name = getName()    <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>展开运算符与它的表达式间不要留空白</li>
 </ul>
@@ -565,7 +565,7 @@
 <li><strong>一元运算符后面跟一个空格</strong></li>
 </ul>
 <p>eslint: space-unary-ops</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span>!admin        <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">typeof</span> !admin        <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span>!admin        <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">typeof</span> !admin        <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>注释首尾留空格</strong></li>
 </ul>
@@ -580,7 +580,7 @@
 <li>检查 NaN 的正确姿势是使用 isNaN()</li>
 </ul>
 <p>eslint: use-isnan</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (price === <span class="literal">NaN</span>) &#123; &#125;      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">isNaN</span>(price)) &#123; &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="comment">(price === NaN)</span> &#123; &#125;      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> <span class="comment">(isNaN(price)</span>) &#123; &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>用合法的字符串跟 typeof 进行比较操作</li>
 </ul>
@@ -590,12 +590,12 @@
 <li><strong>自执行匿名函数 (IIFEs) 使用括号包裹</strong></li>
 </ul>
 <p>eslint: wrap-iife</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;()     <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;())   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;)()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;()     <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;())   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;)()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>yield <em> 中的 </em> 前后都要有空格</li>
 </ul>
 <p>eslint: yield-star-spacing</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">yield</span>* increment()    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">yield</span> * increment()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">yield</span>* increment()    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="built_in">yield</span> * increment()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>请书写优雅的条件语句（avoid Yoda conditions）。</li>
 </ul>
@@ -606,7 +606,7 @@
 <li>不要使用分号</li>
 </ul>
 <p>eslint: semi</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>);  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>);  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要使用 (, [, or ` 等作为一行的开始。在没有分号的情况下代码压缩后会导致报错，而坚持这一规范则可避免出错</strong></li>
 </ul>
@@ -625,6 +625,9 @@
 <p>安装 vscode-standardjs-snippets 以获得 JS snippets。</p>
 <p>安装 vscode-react-standard 以获得 React snippets。</p>
 <h2 id="WebStorm-PhpStorm-IntelliJ-RubyMine-JetBrains-等-jetbrains-全家桶系列"><a href="#WebStorm-PhpStorm-IntelliJ-RubyMine-JetBrains-等-jetbrains-全家桶系列" class="headerlink" title="WebStorm (PhpStorm, IntelliJ, RubyMine, JetBrains 等 jetbrains 全家桶系列)"></a>WebStorm (PhpStorm, IntelliJ, RubyMine, JetBrains 等 jetbrains 全家桶系列)</h2><p>WebStorm 在其 IDE 中 自带 standard 规范。</p>
+<blockquote>
+<p>原 文:<br><a href="http://meiminjun.github.io/standard%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">http://meiminjun.github.io/standard%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</a></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
