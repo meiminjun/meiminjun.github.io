@@ -1,0 +1,942 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="自动化测试," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr.Jason'Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="安装条件：
+
+首先要安装 Java 7 或更高
+Node.JS , 而且要确保 npm 命令可用，我想应该其实不用提醒的 ~
+
+开始搭建创建项目找一个目录，起名字为“AutoTest”,然后输入命令npm init -y生成项目文件package.json
+123456789101112131415➜  AutoTest git:(master) npm init -yWrote to /User">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端自动化测试工程">
+<meta property="og:url" content="http://meiminjun.github.io/前端自动化工程搭建/index.html">
+<meta property="og:site_name" content="Mr.Jason'Blog">
+<meta property="og:description" content="安装条件：
+
+首先要安装 Java 7 或更高
+Node.JS , 而且要确保 npm 命令可用，我想应该其实不用提醒的 ~
+
+开始搭建创建项目找一个目录，起名字为“AutoTest”,然后输入命令npm init -y生成项目文件package.json
+123456789101112131415➜  AutoTest git:(master) npm init -yWrote to /User">
+<meta property="og:updated_time" content="2017-01-10T06:01:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端自动化测试工程">
+<meta name="twitter:description" content="安装条件：
+
+首先要安装 Java 7 或更高
+Node.JS , 而且要确保 npm 命令可用，我想应该其实不用提醒的 ~
+
+开始搭建创建项目找一个目录，起名字为“AutoTest”,然后输入命令npm init -y生成项目文件package.json
+123456789101112131415➜  AutoTest git:(master) npm init -yWrote to /User">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端自动化测试工程 | Mr.Jason'Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?16d7734da3c8cefabf2b051e78a76266";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mr.Jason'Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">热爱游戏、生活、学习的知识青年</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端自动化测试工程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-01T11:57:13+08:00" content="2017-01-01">
+              2017-01-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/前端自动化工程搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="前端自动化工程搭建/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>安装条件：</p>
+<ol>
+<li>首先要安装 Java 7 或更高</li>
+<li>Node.JS , 而且要确保 npm 命令可用，我想应该其实不用提醒的 ~</li>
+</ol>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>找一个目录，起名字为“AutoTest”,然后输入命令<code>npm init -y</code>生成项目文件<code>package.json</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">➜  AutoTest <span class="string">git:</span>(master) npm init -y</div><div class="line">Wrote to <span class="regexp">/Users/</span>apple<span class="regexp">/Documents/</span>github<span class="regexp">/AutoTest/</span><span class="keyword">package</span>.<span class="string">json:</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"AutoTest"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"keywords"</span>: [],</div><div class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>然后我们将安装 Selenium 与 Nightwatch。</p>
+<ul>
+<li>安装 selenium-standalone：<ul>
+<li><code>npm install selenium-standalone --save-dev</code></li>
+</ul>
+</li>
+<li>安装 Nightwatch:<ul>
+<li><code>npm install nightwatch --save-dev</code> </li>
+</ul>
+</li>
+</ul>
+<h3 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h3><p>我们先开始配置 Nightwatch，之前提到这是一款 Test Runner 来着，它负责读取我们的测试脚本，为我们提供 API 来操作浏览器，帮我们控制 Selenium。</p>
+<p><strong>一. 配置 Nightwatch</strong></p>
+<ol>
+<li>首先，在项目根目录建立文件 “nightwatch.json”，这个文件用来存放 Nightwatch 的配置信息。创建完毕之后，在文件内写入以下内容：</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     <span class="attr">"src_folders"</span>: [<span class="string">"tests"</span>],</div><div class="line">     <span class="attr">"output_folder"</span>: <span class="string">"reports"</span>,</div><div class="line">     <span class="attr">"custom_commands_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"custom_assertions_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"page_objects_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"globals_path"</span>: <span class="string">""</span>,</div><div class="line"></div><div class="line">     <span class="attr">"selenium"</span>: &#123;</div><div class="line">       <span class="attr">"start_process"</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">"server_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"log_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">       <span class="attr">"port"</span>: <span class="number">4444</span>,</div><div class="line">       <span class="attr">"cli_args"</span>: &#123;</div><div class="line">         <span class="attr">"webdriver.chrome.driver"</span>: <span class="string">""</span></div><div class="line">       &#125;</div><div class="line">     &#125;,</div><div class="line"></div><div class="line">     <span class="attr">"test_settings"</span>: &#123;</div><div class="line">       <span class="attr">"default"</span>: &#123;</div><div class="line">         <span class="attr">"launch_url"</span>: <span class="string">"http://localhost"</span>,</div><div class="line">         <span class="attr">"selenium_port"</span>: <span class="number">4444</span>,</div><div class="line">         <span class="attr">"selenium_host"</span>: <span class="string">"localhost"</span>,</div><div class="line">         <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">"screenshots"</span>: &#123;</div><div class="line">           <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">           <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">         &#125;,</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"firefox"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line"></div><div class="line">       <span class="attr">"chrome"</span> : &#123;</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>nightwatch.json 的文件名是 不可以 修改的，因为 Nightwatch 每次启动的时候都是从它读取配置喔！这里的配置项很多，不过先不管它，我们接着创建文件。如果您希望查看 Nightwatch 的详细配置，请点 <a href="http://nightwatchjs.org/guide#settings-file" target="_blank" rel="external">这里</a>。</p>
+<ol>
+<li>接着在项目根目录下创建文件 “nightwatch.conf.js” ，同样此文件名也是不可以修改的，因为 Nightwatch 每次启动也会从它这里读取配置喔~ (´･_･`)</li>
+</ol>
+<p>创建完毕后，打开文件，并写入如下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span> (<span class="params">settings</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> settings;</div><div class="line">&#125;)(<span class="built_in">require</span>(<span class="string">'./nightwatch.json'</span>))</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> *  Nightwatch 会从 nightwatch.json 中读取配置。</div><div class="line"> *  不过如果存在 nightwatch.conf.js，将会变为首先从后者中读取配置。</div><div class="line"> *  nightwatch.conf.js 存在的意义是使用 JavaScript 动态生成配置信息。</div><div class="line"> *  如果配置信息是不需要代码修改的，直接使用 nightwatch.json 就可以啦。</div><div class="line"> */</div></pre></td></tr></table></figure>
+<ol>
+<li>再次在项目根目录建立文件 “startup.js”，然后在文件内部写入：</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">require</span><span class="params">(<span class="string">'nightwatch/bin/runner.js'</span>)</span></span></div></pre></td></tr></table></figure>
+<p>这个文件就是我们测试的入口文件，以后我们要执行测试就要运行这个文件，命令为 node ./startup。入口文件的名字是可以按照喜好更改的，只要运行它就好啦。不过每次输入 node ./startup 太麻烦了，所以我们将这条命令写入 npm scripts 中 ~~~ 打开 “package.json”，在 JSON 对象中建立 “script” 属性，并写入内容：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: <span class="string">"node ./startup.js"</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后每次运行测试只要在项目根目录中执行 npm start 就好了！(･∀･)<br>Nightwatch 的配置暂时告一段落（其实马上就会回来………），接下来我们来处理 Selenium.</p>
+<p><strong>二. 配置 Selenium</strong></p>
+<p>Selenium 是自动化测试环境，它提供了测试服务器、启动浏览器、网页自动操作等功能，同时暴露 API 给 Nightwatch 供我们使用。</p>
+<p>我们接下来将要告诉 Nightwatch 我们的 Selenium 安装在哪里，启动浏览器的 Driver 程序在哪里，然后建立 Selenium 的安装脚本与手工启动脚本，以便不时之需 ~~</p>
+<blockquote>
+<p>Driver 是让 Selenium 打开系统上已安装的浏览器的程序。</p>
+</blockquote>
+<ol>
+<li>建立 Selenium 的配置信息</li>
+</ol>
+<p>在项目根目录下建立文件夹 “build”，并在其中创建文件 “selenium-conf.js”，并写入如下信息：</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">const process = require('process')</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">    // <span class="attribute">Selenium 的版本配置信息。请在下方链接查询最新版本。升级版本只需修改版本号即可。</span></div><div class="line">    // https://selenium-release<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>/index<span class="variable">.html</span></div><div class="line">    selenium: &#123;</div><div class="line">        version: '2.53.1',</div><div class="line">        baseURL: 'https://selenium-release<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>'</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    // Driver 用来启动系统中安装的浏览器，Selenium 默认使用 Firefox，如果不需要使用其他浏览器，则不需要额外安装 Driver。</div><div class="line">    // 在此我们安装 Chrome 的 driver 以便使用 Chrome 进行测试。</div><div class="line">    driver: &#123;</div><div class="line">        chrome: &#123;</div><div class="line">            // Chrome 浏览器启动 Driver，请在下方链接查询最新版本。</div><div class="line">            // https://chromedriver<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>/index<span class="variable">.html</span></div><div class="line">            version: '2.25',</div><div class="line">            arch: process<span class="variable">.arch</span>,</div><div class="line">            baseURL: 'https://chromedriver<span class="variable">.storage</span><span class="variable">.googleapis</span><span class="variable">.com</span>'</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>本配置信息包含 Selenium 本体配置与 Driver 配置。我们将在稍后动态载入这些配置。 本文件的目的是为了更好管理 Selenium 的版本。</p>
+<ol>
+<li>告诉 Nightwatch，我的 Selenium 与 Driver 在哪里。</li>
+</ol>
+<p>再次打开项目根目录下的 “nightwatch.conf.js” 文件，并这样编辑：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> seleniumConfig = <span class="built_in">require</span>(<span class="string">'./build/selenium-conf'</span>)</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span> (<span class="params">settings</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 告诉 Nightwatch 我的 Selenium 在哪里。</span></div><div class="line">    settings.selenium.server_path = <span class="string">`<span class="subst">$&#123;path.resolve()&#125;</span>/node_modules/selenium-standalone/.selenium/selenium-server/<span class="subst">$&#123;seleniumConfig.selenium.version&#125;</span>-server.jar`</span></div><div class="line"></div><div class="line">    <span class="comment">// 设置 Chrome Driver, 让 Selenium 有打开 Chrome 浏览器的能力。</span></div><div class="line">    settings.selenium.cli_args[<span class="string">'webdriver.chrome.driver'</span>] = <span class="string">`<span class="subst">$&#123;path.resolve()&#125;</span>/node_modules/selenium-standalone/.selenium/chromedriver/<span class="subst">$&#123;seleniumConfig.driver.chrome.version&#125;</span>-<span class="subst">$&#123;seleniumConfig.driver.chrome.arch&#125;</span>-chromedriver`</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> settings;</div><div class="line">&#125;)(<span class="built_in">require</span>(<span class="string">'./nightwatch.json'</span>))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>我们新加了两行配置，它们的作用如注释所示。<br>同样的，如果您希望查看更多的配置项，请点击 <a href="http://nightwatchjs.org/guide#settings-file" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<ol>
+<li>建立 Selenium 安装脚本，一键安装 Selenium。</li>
+</ol>
+<p>selenium-standalone 只是用来安装和管理 Selenium 的工具么？所以现在是时候用它来安装 Selenium 了。我们将通过调取 selenium-standalone 的内置方法来实现自动安装。在 “build” 文件夹中建立文件 “selenium-setup.js”，并写入如下信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> selenium = <span class="built_in">require</span>(<span class="string">'selenium-standalone'</span>)</div><div class="line"><span class="keyword">const</span> seleniumConfig = <span class="built_in">require</span>(<span class="string">'./selenium-conf.js'</span>)</div><div class="line"></div><div class="line">selenium.install(&#123;</div><div class="line">    <span class="attr">version</span>: seleniumConfig.selenium.version,</div><div class="line">    <span class="attr">baseURL</span>: seleniumConfig.selenium.baseURL,</div><div class="line">    <span class="attr">drivers</span>: seleniumConfig.driver,</div><div class="line">    <span class="attr">logger</span>: <span class="function"><span class="keyword">function</span> (<span class="params">message</span>) </span>&#123; <span class="built_in">console</span>.log(message) &#125;,</div><div class="line">    <span class="attr">progressCb</span>: <span class="function"><span class="keyword">function</span> (<span class="params">totalLength, progressLength, chunkLength</span>) </span>&#123;&#125;</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Selenium 安装错误: <span class="subst">$&#123;err&#125;</span>`</span>)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Selenium 安装完成.'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>同样为了方便，我们将安装命令写入 npm scripts 中：<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: <span class="string">"node ./startup.js"</span>,</div><div class="line">        <span class="string">"selenium-setup"</span>: <span class="string">"node ./build/selenium-setup.js"</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后在项目根目录执行 npm run selenium-setup 安装 Selenium.<br>当提示安装完成后，一切就绪！(･∀･)</p>
+<blockquote>
+<p>Selenium 与其 Driver 会安装到 “node_modules/selenium-standalone/.selenium” 中。</p>
+</blockquote>
+<ol>
+<li>想要手工启动 Selenium？</li>
+</ol>
+<p>默认情况下，Selenium 是由 Nightwatch 启动的，不需要手工干预，不过如果想要手工启动当然是可以的啦。<br>在 build 文件夹中建立文件 “selenium-start.js”，并写入如下信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> selenium = <span class="built_in">require</span>(<span class="string">'selenium-standalone'</span>)</div><div class="line"><span class="keyword">const</span> seleniumConfig = <span class="built_in">require</span>(<span class="string">'./selenium-conf.js'</span>)</div><div class="line"></div><div class="line">selenium.start(&#123;</div><div class="line">    <span class="attr">drivers</span>: seleniumConfig.driver</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, child</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Selenium 启动失败: <span class="subst">$&#123;err&#125;</span>`</span>)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Selenium 已手工启动，进程 PID: <span class="subst">$&#123;child.pid&#125;</span>`</span>)</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'当不再需要运行 Selenium 时可关闭此 PID 进程.'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>然后同样添加启动命令至 npm scripts 中：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    <span class="string">"scripts"</span>: &#123;</div><div class="line">        <span class="string">"start"</span>: <span class="string">"node ./startup.js"</span>,</div><div class="line">        <span class="string">"selenium-setup"</span>: <span class="string">"node ./build/selenium-setup.js"</span>,</div><div class="line">        <span class="string">"selenium-start"</span>: <span class="string">"node ./build/selenium-start.js"</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以后使用命令 npm run selenium-start 就可以手工启动 Selenium 了。</p>
+<h2 id="环境配置完成"><a href="#环境配置完成" class="headerlink" title="环境配置完成"></a>环境配置完成</h2><p>目录如下：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">|<span class="string"> -- build</span></div><div class="line">|<span class="string">      </span>|<span class="string"> -- selenium-conf.js        # Selenium 版本信息配置。</span></div><div class="line">|<span class="string">      </span>|<span class="string"> -- selenium-setup.js       # Selenium 安装命令脚本。</span></div><div class="line">|<span class="string">      </span>|<span class="string"> -- selenium-start.js       # Selenium 启动命令脚本。</span></div><div class="line">|</div><div class="line">|<span class="string"> -- nightwatch.conf.js             # Nightwatch 动态配置文件。</span></div><div class="line">|<span class="string"> -- nightwatch.json                # Nightwatch 配置文件。</span></div><div class="line">|<span class="string"> -- package.json                   # 项目信息配置文件。</span></div><div class="line">|<span class="string"> -- startup.js                     # 测试启动入口文件。</span></div></pre></td></tr></table></figure>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>nightwatch.json文件中</p>
+<ul>
+<li>请注意 “desiredCapabilities” 下的 “browserName” 项，这是测试时将使用的浏览器，您可以修改为 chrome、internet explorer、phantomjs，本文在介绍时只安装了 Chrome 的 Driver，如果您需要使用其他浏览器，要安装相应的 Driver 才可以正常使用。</li>
+<li>默认浏览器为 Firefox，如果您使用 Firefox 的话，不需要额外进行 Driver 的配置。</li>
+<li>所以，如果您需要使用 Chrome 的话请将 “browserName” 修改为 “chrome” 喔！<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     <span class="attr">"src_folders"</span>: [<span class="string">"tests"</span>],</div><div class="line">     <span class="attr">"output_folder"</span>: <span class="string">"reports"</span>,</div><div class="line">     <span class="attr">"custom_commands_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"custom_assertions_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"page_objects_path"</span>: <span class="string">""</span>,</div><div class="line">     <span class="attr">"globals_path"</span>: <span class="string">""</span>,</div><div class="line"></div><div class="line">     <span class="attr">"selenium"</span>: &#123;</div><div class="line">       <span class="attr">"start_process"</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">"server_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"log_path"</span>: <span class="string">""</span>,</div><div class="line">       <span class="attr">"host"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">       <span class="attr">"port"</span>: <span class="number">4444</span>,</div><div class="line">       <span class="attr">"cli_args"</span>: &#123;</div><div class="line">         <span class="attr">"webdriver.chrome.driver"</span>: <span class="string">""</span></div><div class="line">       &#125;</div><div class="line">     &#125;,</div><div class="line"></div><div class="line">     <span class="attr">"test_settings"</span>: &#123;</div><div class="line">       <span class="attr">"default"</span>: &#123;</div><div class="line">         <span class="attr">"launch_url"</span>: <span class="string">"http://localhost"</span>,</div><div class="line">         <span class="attr">"selenium_port"</span>: <span class="number">4444</span>,</div><div class="line">         <span class="attr">"selenium_host"</span>: <span class="string">"localhost"</span>,</div><div class="line">         <span class="attr">"silent"</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">"screenshots"</span>: &#123;</div><div class="line">           <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">           <span class="attr">"path"</span>: <span class="string">""</span></div><div class="line">         &#125;,</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;,</div><div class="line"></div><div class="line">       <span class="attr">"chrome"</span> : &#123;</div><div class="line">         <span class="attr">"desiredCapabilities"</span>: &#123;</div><div class="line">           <span class="attr">"browserName"</span>: <span class="string">"chrome"</span>,</div><div class="line">           <span class="attr">"javascriptEnabled"</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">"acceptSslCerts"</span>: <span class="literal">true</span></div><div class="line">         &#125;</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>Driver 的文档可参考<a href="http://nightwatchjs.org/guide#selenium-settings" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<h2 id="开始编写测试用例"><a href="#开始编写测试用例" class="headerlink" title="开始编写测试用例"></a>开始编写测试用例</h2><h3 id="创建目录存放测试用例"><a href="#创建目录存放测试用例" class="headerlink" title="创建目录存放测试用例"></a>创建目录存放测试用例</h3><p>在项目根目录新建一个名为 “tests” 的目录，然后这里就用来存放我们即将编写的测试用例文件。<br>那么这个文件夹能不能指向到其他地方去呢？当然可以，不过要修改一个小地方。</p>
+<p>还记得 “ nightwatch.json “ 文件么？打开看看，第一项是不是叫 src_folders，然后值为 [“tests”]？<br>我相信您已经懂了，这里就是定义测试用例存放目录的地方，然后改成自己想要的目录吧！</p>
+<blockquote>
+<p>您可以在目录中存放多个测试用例文件，且命名随意，Nightwatch 将读取目录中所有的 JS 文件，如果符合测试用例格式，将会自动执行。</p>
+</blockquote>
+<h3 id="编写一个简单的测试用例"><a href="#编写一个简单的测试用例" class="headerlink" title="编写一个简单的测试用例"></a>编写一个简单的测试用例</h3><p>在 “tests” 目录中建立一个测试用例文件 “demo.js”，然后我们来写一个没什么用的小 demo！</p>
+<p>这个 Demo 将打开 Bing，搜索 “what is microsoft”，然后保存成截图后退出。</p>
+<p>OK，打开 “demo.js”，添加以下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="string">'Find the answer.'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">client</span>) </span>&#123;</div><div class="line">    <span class="comment">// TODO...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>module.exports 导出一个对象，对象的 Key 即为测试用例名称，您可以编写多个测试用例，Nightwatch 将依次执行。</p>
+</blockquote>
+<p>您可以在测试用例中导入其他模块并直接使用在测试逻辑中</p>
+<p>先写到这里，您可能会对 cilent 感到陌生，所以还是要简单介绍一下。</p>
+<p>client 是代码运行时 Nightwatch 提供的对象，所有对浏览器进行的操作都将使用此对象调取，比如 client.click(“CSS Selector”)、client.getCookie(function () {…})，我们第一章说过的 “可以简单理解为 Selenium 的控制软件” 就是通过它体现的喔！</p>
+<blockquote>
+<p>client 的所有 API 详情见 <a href="http://nightwatchjs.org/api#commands" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<p>大致了解这东西的意思之后，就可以接着完善测试逻辑了：</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  '<span class="attribute">Find the answer.'</span>: function (client) &#123;</div><div class="line">    // 定义 Bing 页面中的节点.</div><div class="line">    const searchInput = '#sb_form_q'</div><div class="line">    const searchBtn = '#sb_form_go'</div><div class="line">    const question = 'what is microsoft'</div><div class="line"></div><div class="line">    // 启动浏览器并打开 bing<span class="variable">.com</span>.</div><div class="line">    client<span class="variable">.url</span>('http://bing<span class="variable">.com</span>')<span class="variable">.maximizeWindow</span>()</div><div class="line"></div><div class="line">    // 确保 "body" 和输入框可以使用.</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span></div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>(searchInput)<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line">    client<span class="variable">.pause</span>(2000)  // 稍等两秒.</div><div class="line"></div><div class="line">    // 输入 "what is microsoft" 然后搜索.</div><div class="line">    client<span class="variable">.setValue</span>(searchInput, question)</div><div class="line">    client<span class="variable">.click</span>(searchBtn)</div><div class="line">    client<span class="variable">.pause</span>(2000)</div><div class="line"></div><div class="line">    // 截一张图然后保存到 "reports/answer<span class="variable">.png</span>". </div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span></div><div class="line">    client<span class="variable">.saveScreenshot</span>('reports/answers<span class="variable">.png</span>')</div><div class="line">    client<span class="variable">.end</span>()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>来关注一下 expect ，是不是看起来很像自然语言？这些语句就是测试结果的验证语句，就是我们希望得到的结果。比如 client.expect.element(‘body’).to.be.present.before(3000)，意思就是 “希望 body 元素能在 3000 毫秒内初始化完毕”。</p>
+<blockquote>
+<p>Nightwatch 支持 BDD-Style 与 Assert 断言两种风格，文档可见 <a href="http://nightwatchjs.org/api#expect-api" target="_blank" rel="external">这里</a>。</p>
+</blockquote>
+<p>是不是确实没什么用？毕竟是个简单的 Demo 而已，哈哈。那么添加一个稍微复杂点的测试用例。</p>
+<h3 id="编写另一个简单的测试用例"><a href="#编写另一个简单的测试用例" class="headerlink" title="编写另一个简单的测试用例"></a>编写另一个简单的测试用例</h3><p>这个 demo 将打开 <a href="http://live.bilibili.com/" target="_blank" rel="external">Bilibili 直播</a> ，然后执行：</p>
+<ul>
+<li>打开首页并等待加载完毕；</li>
+<li>检查登陆按钮是否存在；</li>
+<li>点击登陆按钮；</li>
+<li>填写用户名与密码；</li>
+<li>点击登陆；</li>
+<li>等待页面加载；</li>
+<li>通过 Cookie 检查是否已登陆；</li>
+<li>确保登陆后的用户导航面板存在；</li>
+<li>鼠标移至头像处打开导航面板；</li>
+<li>点击退出登陆；</li>
+<li>等待页面刷新后检查 Cookie 是否已退出登陆；</li>
+<li>结束测试。</li>
+</ul>
+<p>代码：<br><figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">// Account setting.</div><div class="line">const accountConfig = &#123;</div><div class="line">  <span class="attribute">username</span>: 'USERNAME',</div><div class="line">  password: 'PASSWORD',</div><div class="line">  uid: '10000'</div><div class="line">&#125;</div><div class="line"></div><div class="line">module<span class="variable">.exports</span> = &#123;</div><div class="line">  'Bilibili Live Login Test': function (client) &#123;</div><div class="line">    client<span class="variable">.url</span>('http://live<span class="variable">.bilibili</span><span class="variable">.com</span>')<span class="variable">.maximizeWindow</span>()</div><div class="line"></div><div class="line">    // Page Init.</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span><span class="variable">.before</span>(3000)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('<span class="variable">.top-nav-login-btn</span><span class="variable">.last</span>')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line"></div><div class="line">    // Login.</div><div class="line">    client<span class="variable">.click</span>('<span class="variable">.top-nav-login-btn</span><span class="variable">.last</span>')</div><div class="line">    client<span class="variable">.waitForElementVisible</span>('#bilibili-quick-login', 2000)</div><div class="line">    client<span class="variable">.frame</span>(0)</div><div class="line">    client<span class="variable">.pause</span>(2000)</div><div class="line">    client<span class="variable">.setValue</span>('#login-username', accountConfig<span class="variable">.username</span>)</div><div class="line">    client<span class="variable">.setValue</span>('#login-passwd', accountConfig<span class="variable">.password</span>)</div><div class="line">    client<span class="variable">.click</span>('#login-submit')</div><div class="line"></div><div class="line">    // Wait and check page has been reloaded.</div><div class="line">    client<span class="variable">.frameParent</span>()</div><div class="line">    client<span class="variable">.pause</span>(4000)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span><span class="variable">.before</span>(3000)</div><div class="line"></div><div class="line">    // Check cookies to ensure we are signed in.</div><div class="line">    client<span class="variable">.getCookies</span>(function (result) &#123;</div><div class="line">      result<span class="variable">.value</span><span class="variable">.forEach</span>((value, index, array) =&gt; &#123;</div><div class="line">        if (value<span class="variable">.name</span> === 'DedeUserID') client<span class="variable">.assert</span><span class="variable">.equal</span>(parseInt(value<span class="variable">.value</span>, 10), accountConfig<span class="variable">.uid</span>)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    // Move to User Avatar.</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('<span class="variable">.user-avatar-link</span>')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line">    client<span class="variable">.moveToElement</span>('<span class="variable">.user-avatar-link</span>', 5, 5)</div><div class="line">    client<span class="variable">.pause</span>(800)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('#top-nav-user-panel')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.visible</span></div><div class="line"></div><div class="line">    // Logout.</div><div class="line">    client<span class="variable">.click</span>('#top-nav-logout-link')</div><div class="line">    client<span class="variable">.pause</span>(5000)</div><div class="line">    client<span class="variable">.expect</span><span class="variable">.element</span>('body')<span class="variable">.to</span><span class="variable">.be</span><span class="variable">.present</span><span class="variable">.before</span>(3000)</div><div class="line"></div><div class="line">    // Check cookies again to ensure we are off.</div><div class="line">    client<span class="variable">.getCookies</span>(function (result) &#123;</div><div class="line">      var logout = true</div><div class="line">      result<span class="variable">.value</span><span class="variable">.forEach</span>((value, index, array) =&gt; &#123;</div><div class="line">        if (value<span class="variable">.name</span> === 'LIVE_LOGIN_DATA') logout = false</div><div class="line">      &#125;)</div><div class="line">      client<span class="variable">.assert</span><span class="variable">.equal</span>(logout, true)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    client<span class="variable">.pause</span>(1000)</div><div class="line">    client<span class="variable">.end</span>()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>您可以新建一个文件，或者在之前的文件中继续编写。</p>
+</blockquote>
+<h3 id="运行测试用例"><a href="#运行测试用例" class="headerlink" title="运行测试用例"></a>运行测试用例</h3><p>回到项目根目录，执行 npm start，然后就可以看到浏览器自己测试了！</p>
+<h3 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h3><ul>
+<li><p>在填写<code>selenium-conf.js</code>的时候不要写最新版本（3.0版本）,不然在跑案例脚本时候会报找不到element的错误</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">selenium</span>: &#123;</div><div class="line">        <span class="attribute">version</span>: <span class="string">'2.53.1'</span>,  </div><div class="line">        baseURL: <span class="string">'https://selenium-release.storage.googleapis.com'</span></div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+</li>
+<li><p>其次，配置chromedriver的时候也不要写最新的版本，在mac中会报找不到mac64的错误，写成如下版本即可：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">driver</span>: &#123;</div><div class="line">        <span class="attribute">chrome</span>: &#123;</div><div class="line">            <span class="comment">// Chrome 浏览器启动 Driver，请在下方链接查询最新版本。</span></div><div class="line">            <span class="comment">// https://chromedriver.storage.googleapis.com/index.html</span></div><div class="line">            <span class="attribute">version</span>: <span class="string">'2.25'</span>,</div><div class="line">            <span class="attribute">arch</span>: process.arch,</div><div class="line">            <span class="attribute">baseURL</span>: <span class="string">'https://chromedriver.storage.googleapis.com'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>源文件项目地址:</em></p>
+<blockquote>
+<p><a href="https://github.com/meiminjun/AutoTest" target="_blank" rel="external">https://github.com/meiminjun/AutoTest</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自动化测试/" rel="tag">#自动化测试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/git常用操作-远程管理/" rel="next" title="git常用操作-远程管理与分支管理">
+                <i class="fa fa-chevron-left"></i> git常用操作-远程管理与分支管理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/我的Mac工具集/" rel="prev" title="我的Mac工具精选">
+                我的Mac工具精选 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="前端自动化工程搭建/"
+           data-title="前端自动化测试工程" data-url="http://meiminjun.github.io/前端自动化工程搭建/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/jiayou.png"
+               alt="Mr.Jason" />
+          <p class="site-author-name" itemprop="name">Mr.Jason</p>
+          <p class="site-description motion-element" itemprop="description">现就职于平安银行、致力于全栈开发方向。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiminjun" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始搭建"><span class="nav-number">1.</span> <span class="nav-text">开始搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">1.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装工具"><span class="nav-number">1.2.</span> <span class="nav-text">安装工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目配置"><span class="nav-number">1.3.</span> <span class="nav-text">项目配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置完成"><span class="nav-number">2.</span> <span class="nav-text">环境配置完成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">2.1.</span> <span class="nav-text">说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始编写测试用例"><span class="nav-number">3.</span> <span class="nav-text">开始编写测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录存放测试用例"><span class="nav-number">3.1.</span> <span class="nav-text">创建目录存放测试用例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写一个简单的测试用例"><span class="nav-number">3.2.</span> <span class="nav-text">编写一个简单的测试用例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写另一个简单的测试用例"><span class="nav-number">3.3.</span> <span class="nav-text">编写另一个简单的测试用例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行测试用例"><span class="nav-number">3.4.</span> <span class="nav-text">运行测试用例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坑点"><span class="nav-number">3.5.</span> <span class="nav-text">坑点</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Jason</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"meiminjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

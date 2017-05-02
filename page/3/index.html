@@ -98,15 +98,15 @@
 
 
 
-<meta name="description" content="江西科技学院09级,现就职于平安口袋银行。擅长各项前端技能，目前深入研究移动端html5跨平台开发。">
+<meta name="description" content="现就职于平安银行、致力于全栈开发方向。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mr.Jason'Blog">
 <meta property="og:url" content="http://meiminjun.github.io/page/3/index.html">
 <meta property="og:site_name" content="Mr.Jason'Blog">
-<meta property="og:description" content="江西科技学院09级,现就职于平安口袋银行。擅长各项前端技能，目前深入研究移动端html5跨平台开发。">
+<meta property="og:description" content="现就职于平安银行、致力于全栈开发方向。">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mr.Jason'Blog">
-<meta name="twitter:description" content="江西科技学院09级,现就职于平安口袋银行。擅长各项前端技能，目前深入研究移动端html5跨平台开发。">
+<meta name="twitter:description" content="现就职于平安银行、致力于全栈开发方向。">
 
 
 
@@ -171,7 +171,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">热爱游戏、生活、学习的文艺屌丝青年</p>
+  <p class="site-subtitle">热爱游戏、生活、学习的知识青年</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -270,8 +270,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/03/ionic2学习笔记《二》/" itemprop="url">
-                  ionic2菜鸟学习笔记《二》
+                <a class="post-title-link" href="/git常用操作-回滚操作/" itemprop="url">
+                  git常用操作-回滚操作
                 </a>
               
             
@@ -284,8 +284,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-03T23:57:13+08:00" content="2016-08-03">
-              2016-08-03
+            <time itemprop="dateCreated" datetime="2016-12-01T12:57:13+08:00" content="2016-12-01">
+              2016-12-01
             </time>
           </span>
 
@@ -295,8 +295,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/03/ionic2学习笔记《二》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/ionic2学习笔记《二》/" itemprop="commentsCount"></span>
+                <a href="/git常用操作-回滚操作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="git常用操作-回滚操作/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -321,8 +321,412 @@
       
         
           
-            <p><a href="http://meiminjun.github.io/2016/08/01/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
-<p><a href="http://meiminjun.github.io/2016/08/03/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
+            <h1 id="git常用操作-回滚代码"><a href="#git常用操作-回滚代码" class="headerlink" title="git常用操作-回滚代码"></a>git常用操作-回滚代码</h1><h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><ul>
+<li>git init 初始化一个git仓库</li>
+<li>git add readme.txt 把文件添加到仓库(可以后面添加多个文件)</li>
+<li>git add . 提交当前目录到缓存区</li>
+<li>git commit -m “wrote a readme file” 把文件提交到仓库：</li>
+<li>git status命令可以让我们时刻掌握仓库当前的状态</li>
+<li>git diff 查看修改记录(按q退出)</li>
+<li>git diff test.js 查看test.js修改记录(按q退出)</li>
+<li>git checkout – file 在add之前修改过的记录撤销到与仓库一致</li>
+<li>git reset HEAD file 把你add到缓存区的文件撤销到add之前</li>
+<li>git diff HEAD – file 查看当前文件与仓库文件的区别</li>
+</ul>
+<h2 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h2><p>你不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
+<p>在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用git log命令查看：</p>
+<p>打印日志：</p>
+<p>git log 显示从最近到最远的提交日志</p>
+<p>git log –pretty=oneline 显示简要版本</p>
+<p>git reflog 显示所有分支的<strong>全部提交记录</strong> </p>
+<p>开始穿梭到之前存盘（commit）的版本</p>
+<p>git reset –hard HEAD^ </p>
+<p>Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交3628164…882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
+<p>git reset –hard d50672e 回滚到特定版本</p>
+<p>总结：</p>
+<ul>
+<li><p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。</p>
+</li>
+<li><p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
+</li>
+<li><p>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+</li>
+</ul>
+<h2 id="工作区与缓存区"><a href="#工作区与缓存区" class="headerlink" title="工作区与缓存区"></a>工作区与缓存区</h2><p>工作区：就是你电脑里看到的目录,也就是你的项目目录</p>
+<p>版本库（Repository）:工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
+<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1faxekavuo1j20cq06iaa8.jpg" alt="缓存区"></p>
+<p>前面我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
+<p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
+<p>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
+<p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+<h2 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h2><p>为什么Git比其他版本控制系统设计得优秀，因为Git跟踪并管理的是修改，而非文件。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">touch <span class="keyword">man</span>.js</div><div class="line"></div><div class="line"><span class="keyword">cat</span> &gt; <span class="keyword">man</span>.js</div><div class="line">输入管理</div><div class="line"></div><div class="line"><span class="keyword">cat</span> <span class="keyword">man</span>.js</div></pre></td></tr></table></figure>
+<p>然后，<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">add</span> man.js</div><div class="line">git status</div><div class="line">Changes <span class="keyword">to</span> <span class="keyword">be</span> committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)</div><div class="line"></div><div class="line">        <span class="keyword">new</span> <span class="keyword">file</span>:   man.js</div></pre></td></tr></table></figure></p>
+<p>然后再次修改man.js，<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cat</span> <span class="keyword">man</span>.js</div><div class="line">测试一个内容</div><div class="line">测试</div><div class="line">新增修改</div></pre></td></tr></table></figure></p>
+<p>提交：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">"新增修改"</span></div><div class="line">[feature/git学习 <span class="number">4</span>f8114c] 新增修改</div><div class="line"> <span class="number">1</span> file <span class="section">changed</span>, <span class="number">2</span> insertions(+)</div><div class="line"> create mode <span class="number">100644</span> git/man.js</div></pre></td></tr></table></figure></p>
+<p>提交后，再看看状态：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure></p>
+<p>咦，怎么第二次的修改没有被提交？</p>
+<p>我们回顾一下操作过程：</p>
+<p>第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit</p>
+<blockquote>
+<p>Git管理的是修改，当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
+</blockquote>
+<p>提交后，用git diff HEAD – readme.txt命令可以查看工作区和版本库里面最新版本的区别：<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">git diff HEAD --man.js</div><div class="line"></div><div class="line">diff --git a/git/man.js b/git/man.js</div><div class="line">index 5884356..f434b08 100644</div><div class="line"><span class="comment">--- a/git/man.js</span></div><div class="line"><span class="comment">+++ b/git/man.js</span></div><div class="line"><span class="meta">@@ -1,2 +1,3 @@</span></div><div class="line"> 测试一个内容</div><div class="line"> 测试</div><div class="line"><span class="addition">+新增修改</span></div></pre></td></tr></table></figure></p>
+<p>可见，第二次修改确实没有被提交。<br>如果提交完毕了则显示的是：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nothing <span class="built_in">to</span> commit, working <span class="built_in">directory</span> clean</div></pre></td></tr></table></figure></p>
+<p>总结：<br>Git是如何跟踪修改的？每次修改，如果不add到暂存区，那就不会加入到commit中</p>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><p>举例说明：</p>
+<p>目前的最新文件：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cat</span> <span class="keyword">man</span>.js</div><div class="line">测试一个内容</div><div class="line">测试</div><div class="line">新增修改</div></pre></td></tr></table></figure></p>
+<p>这时候你新增了一行</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cat</span> <span class="keyword">man</span>.js</div><div class="line">测试一个内容</div><div class="line">测试</div><div class="line">新增修改</div><div class="line">新增一行代码</div></pre></td></tr></table></figure>
+<p>突然，你发现新增的代码有点问题你想回退到之前版本</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure>
+<p>你可以发现，Git会告诉你，git checkout – file可以丢弃工作区的修改：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
+<p>命令git checkout – man.js意思就是，把man.js文件在工作区的修改全部撤销，这里有两种情况：</p>
+<p>一种是man.js自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
+<p>一种是man.js已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
+<blockquote>
+<p>git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令</p>
+</blockquote>
+<p>下面一种情况是当你已经add到缓存区了，你想撤销<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">add</span> man.js</div><div class="line">git status</div><div class="line">Changes <span class="keyword">to</span> <span class="keyword">be</span> committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)</div><div class="line"></div><div class="line">        modified:   man.js</div></pre></td></tr></table></figure></p>
+<p>Git同样告诉我们，用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> man.js</div></pre></td></tr></table></figure>
+<p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
+<p>再用git status查看一下，现在暂存区是干净的，工作区有修改：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure></p>
+<p>如果想丢弃工作区的修改,则继续<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure></p>
+<p>小结：</p>
+<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><p>场景说明：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git add man.js</div><div class="line">git commit -m <span class="string">"测试删除"</span></div><div class="line">[feature/git学习 fe3e350] 测试删除</div><div class="line"> <span class="number">1</span> file <span class="section">changed</span>, <span class="number">1</span> insertion(+), <span class="number">3</span> deletions(-)</div></pre></td></tr></table></figure></p>
+<p>一般情况下如果你删除文件的时候，就直接把文件给删了，或者rm 命令删除了</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">rm</span> <span class="keyword">man</span>.js</div></pre></td></tr></table></figure>
+<p>这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">On branch feature/git学习</div><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add/rm &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        deleted:    man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure></p>
+<p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">rm</span> <span class="keyword">man</span>.js</div><div class="line"><span class="keyword">rm</span> 'git/<span class="keyword">man</span>.js'</div><div class="line">git commit -<span class="keyword">m</span> <span class="string">"remove man.js"</span></div><div class="line">feature/git学习 8a1abac] remove <span class="keyword">man</span>.js</div><div class="line"> 1 <span class="keyword">file</span> changed, 1 deletion(-)</div><div class="line"> delete mode 100644 git/<span class="keyword">man</span>.js</div></pre></td></tr></table></figure></p>
+<p>文件就从版本库中被删除了。</p>
+<p>另一种情况，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
+<p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/chrome-postman/" itemprop="url">
+                  chrome神器之postman
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T15:54:13+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/chrome-postman/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="chrome-postman/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
+<p>##离线安装(简易版)</p>
+<p>内部地址：<br>\10.14.47.51\share\临时存放\梅敏君\tool\Postman-REST-Client_v0.8.1</p>
+<p>外部地址：<br>链接：<a href="http://share.weiyun.com/6d9d61e3c3ec595f61ab58886e14c280">http://share.weiyun.com/6d9d61e3c3ec595f61ab58886e14c280</a> （密码：9rFJ）<br>链接: <a href="http://pan.baidu.com/s/1o7BTKt8">http://pan.baidu.com/s/1o7BTKt8</a> 密码: h6t6</p>
+<p>安装方法如下：</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/chrome-postman/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/chrome-翻墙/" itemprop="url">
+                  google之翻越长城
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T15:54:13+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/chrome-翻墙/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="chrome-翻墙/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/chrome-翻墙/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/ionic2学习笔记《二》/" itemprop="url">
+                  ionic2菜鸟学习笔记《二》
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T23:57:13+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/ionic2学习笔记《二》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="ionic2学习笔记《二》/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
+<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
 <h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><p>在ionic2中相互跳转就要用到navigation,<br>下面我们在主页添加一个按钮，点击按钮跳转到一个新的页面，然后将一个页面中的数据传递到另外一个页面。</p>
 <p>进入项目，并创建一个新的页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g page SecondPage</div></pre></td></tr></table></figure></p>
 <p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6gxeqo0s3j20hp052gmb.jpg" alt=""></p>
@@ -403,7 +807,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/01/ionic2学习笔记《一》/" itemprop="url">
+                <a class="post-title-link" href="/ionic2学习笔记《一》/" itemprop="url">
                   ionic2菜鸟学习笔记《一》
                 </a>
               
@@ -428,8 +832,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/01/ionic2学习笔记《一》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/ionic2学习笔记《一》/" itemprop="commentsCount"></span>
+                <a href="/ionic2学习笔记《一》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="ionic2学习笔记《一》/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -453,8 +857,8 @@
 
       
         
-          <p><a href="http://meiminjun.github.io/2016/08/01/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
-<p><a href="http://meiminjun.github.io/2016/08/03/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
+          <p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
+<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
 <li>nodeV5版本以上(官方推荐)</li>
 <li>cordova</li>
@@ -466,388 +870,7 @@
 <h2 id="创建一个项目"><a href="#创建一个项目" class="headerlink" title="创建一个项目"></a>创建一个项目</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ionic <span class="keyword">start</span> MyFirstIonicApp <span class="comment">--v2  //注意，当从github下载的zip下载完成之后一直停留了很久，就停止（可能是国内被墙的缘故）</span></div><div class="line"></div><div class="line">并直接</div><div class="line">cd MyFirstIonicApp </div><div class="line"></div><div class="line">npm <span class="keyword">install</span> </div><div class="line"></div><div class="line">ionic serve</div></pre></td></tr></table></figure>
 <h2 id="在设备中打开"><a href="#在设备中打开" class="headerlink" title="在设备中打开"></a>在设备中打开</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">npm install -g cordova</div><div class="line"></div><div class="line">ionic platform <span class="keyword">add</span><span class="bash"> ios</div><div class="line"></span></div><div class="line">ionic platform <span class="keyword">add</span><span class="bash"> android</div><div class="line"></span></div><div class="line">ionic <span class="keyword">run</span><span class="bash"> android</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/01/ionic2学习笔记《一》/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/31/SublimeText-vim常用命令笔记/" itemprop="url">
-                  史上最强Sublime 笔记系列---vim常用命令笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-31T11:30:13+08:00" content="2016-07-31">
-              2016-07-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/31/SublimeText-vim常用命令笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/SublimeText-vim常用命令笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg" alt=""></p>
-<p>这篇文章主要讲的Sublime Text 3 的<strong>vim</strong>命令说明，勤加练习之后，方可解放你的双手</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/31/SublimeText-vim常用命令笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/26/javascript-两种继承方式/" itemprop="url">
-                  浅谈javacript 笔记系列--- 继承与原型链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-26T18:57:13+08:00" content="2016-07-26">
-              2016-07-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/26/javascript-两种继承方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/javascript-两种继承方式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#使用_class_关键字">继承与原型链</a></h1><p>对于那些熟悉基于类的面向对象语言（Java 或者 C++）的开发者来说，JavaScript 的语法是比较怪异的，这是由于 JavaScript 是一门动态语言，而且它没有类的概念（ ES6 新增了class 关键字，但只是语法糖，JavaScript 仍旧是基于原型）。</p>
-<p>涉及到继承这一块，Javascript 只有一种结构，那就是：对象。在 javaScript 中，每个对象都有一个指向它的原型（prototype）对象的内部链接。这个原型对象又有自己的原型，直到某个对象的原型为 null 为止（也就是不再有原型指向），组成这条链的最后一环。这种一级一级的链结构就称为原型链（prototype chain）。</p>
-<p>虽然，原型继承经常被视作 JavaScript 的一个弱点，但事实上，原型继承模型比经典的继承模型更强大。尽管在原型模型上构建一个标准的类模型是相当琐碎的，但如果采取其他方式实现的话会更加困难。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/26/javascript-两种继承方式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/26/javascript-object-assign方法/" itemprop="url">
-                  浅谈javacript 笔记系列--- object-assign方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-26T09:57:14+08:00" content="2016-07-26">
-              2016-07-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/26/javascript-object-assign方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/javascript-object-assign方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="javascript-之-object-assign-的方法介绍和示例"><a href="#javascript-之-object-assign-的方法介绍和示例" class="headerlink" title="javascript 之 object-assign 的方法介绍和示例"></a>javascript 之 object-assign 的方法介绍和示例</h1><h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign()</a></h2><p>Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
-<p>Object.assign(target, …sources)</p>
-</blockquote>
-<p>target：目标对象。</p>
-<p>sources：任意多个对象</p>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>目标对象会被返回。</p>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象身上。该方法使用源对象的 [ [ Get ] ] 和目标对象的 [ [ Set ] ]，所以它会调用相关 getter 和 setter。因此，它分配属性不仅仅是复制或定义新的属性。如果合并源包含了 getter，那么该方法就不适合将新属性合并到原型里。假如是拷贝属性定义到原型里，包括它们的可枚举性，那么应该使用 Object.getOwnPropertyDescriptor() 和 Object.defineProperty() 。</p>
-<p>String类型和 Symbol 类型的属性都会被拷贝。</p>
-<p>注意，在属性拷贝过程中可能会产生异常，比如目标对象的某个只读属性和源对象的某个属性同名，这时该方法会抛出一个 TypeError 异常，拷贝过程中断，已经拷贝成功的属性不会受到影响，还未拷贝的属性将不会再被拷贝。</p>
-<blockquote>
-<p>注意， Object.assign 会跳过那些值为 null 或 undefined 的源对象。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/26/javascript-object-assign方法/#more" rel="contents">
+            <a class="btn" href="/ionic2学习笔记《一》/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -881,7 +904,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -917,12 +940,12 @@
                src="/images/jiayou.png"
                alt="Mr.Jason" />
           <p class="site-author-name" itemprop="name">Mr.Jason</p>
-          <p class="site-description motion-element" itemprop="description">江西科技学院09级,现就职于平安口袋银行。擅长各项前端技能，目前深入研究移动端html5跨平台开发。</p>
+          <p class="site-description motion-element" itemprop="description">现就职于平安银行、致力于全栈开发方向。</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -939,7 +962,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -960,7 +983,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/meiminjun" target="_blank" title="GitHub">
+                <a href="https://github.com/meiminjun" target="_blank" title="GitHub" rel="external nofollow">
                   
                     <i class="fa fa-fw fa-github"></i>
                   
@@ -969,7 +992,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎">
+                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎" rel="external nofollow">
                   
                     <i class="fa fa-fw fa-globe"></i>
                   
@@ -1011,12 +1034,12 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" rel="external nofollow" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
 </div>

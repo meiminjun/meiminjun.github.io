@@ -1,0 +1,836 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具,sublime,vim," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr.Jason'Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章主要讲的Sublime Text 3 的vim命令说明，勤加练习之后，方可解放你的双手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="史上最强Sublime 笔记系列---vim常用命令笔记">
+<meta property="og:url" content="http://meiminjun.github.io/SublimeText-vim常用命令笔记/index.html">
+<meta property="og:site_name" content="Mr.Jason'Blog">
+<meta property="og:description" content="这篇文章主要讲的Sublime Text 3 的vim命令说明，勤加练习之后，方可解放你的双手">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/69a9ed59gw1f6kg9eegv9j20e703w74s.jpg">
+<meta property="og:updated_time" content="2017-04-28T10:55:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="史上最强Sublime 笔记系列---vim常用命令笔记">
+<meta name="twitter:description" content="这篇文章主要讲的Sublime Text 3 的vim命令说明，勤加练习之后，方可解放你的双手">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 史上最强Sublime 笔记系列---vim常用命令笔记 | Mr.Jason'Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?16d7734da3c8cefabf2b051e78a76266";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mr.Jason'Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">热爱游戏、生活、学习的知识青年</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                史上最强Sublime 笔记系列---vim常用命令笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-31T11:30:13+08:00" content="2016-07-31">
+              2016-07-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/SublimeText-vim常用命令笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="SublimeText-vim常用命令笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg" alt=""></p>
+<p>这篇文章主要讲的Sublime Text 3 的<strong>vim</strong>命令说明，勤加练习之后，方可解放你的双手</p>
+<a id="more"></a>
+<ol>
+<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
+</li>
+</ol>
+<h2 id="sulimeText-的vim模式"><a href="#sulimeText-的vim模式" class="headerlink" title="sulimeText 的vim模式"></a>sulimeText 的vim模式</h2><p>sublime 默认是禁用vim模式的</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>: [<span class="string">"Vintage"</span>]</div></pre></td></tr></table></figure>
+<p>开启vim模式要配置成：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>: [<span class="string">""</span>]</div></pre></td></tr></table></figure>
+<p>在用户配置中：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"vintage_start_in_command_mode"</span>: <span class="literal">true</span> <span class="comment">//启动时，开启vim命令模式</span></div></pre></td></tr></table></figure>
+<p>在用户快捷键中添加配置(进入vim模式)：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"j"</span>, <span class="string">"j"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"exit_insert_mode"</span>,</div><div class="line">    <span class="attr">"context"</span>:</div><div class="line">    [</div><div class="line">        &#123; <span class="attr">"key"</span>: <span class="string">"setting.command_mode"</span>, <span class="attr">"operand"</span>: <span class="literal">false</span> &#125;,</div><div class="line">        &#123; <span class="attr">"key"</span>: <span class="string">"setting.is_widget"</span>, <span class="attr">"operand"</span>: <span class="literal">false</span> &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="vim-sublime命令（必记）"><a href="#vim-sublime命令（必记）" class="headerlink" title="vim-sublime命令（必记）"></a>vim-sublime命令（必记）</h2><p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6kg9eegv9j20e703w74s.jpg" alt=""></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">// 启动命令</div><div class="line">jj → 进入命令行模式(必须配置好上面的操作)</div><div class="line">i → <span class="symbol">Insert</span> 模式</div><div class="line"></div><div class="line">//选取</div><div class="line">v 开启选取模式，关闭选取模式</div><div class="line"></div><div class="line"></div><div class="line">// 简单的移动光标</div><div class="line">w →移动光标到下一个单词的词首</div><div class="line">e →移动光标到下一个单词结尾</div><div class="line">b →移动光标到上一个单词的词首</div><div class="line">k 向上移动</div><div class="line">j 向下移动</div><div class="line">h 向左移动光标</div><div class="line">l 向右移动光标</div><div class="line"><span class="number">10</span>l 向右移动<span class="number">10</span>个字符（依此类推）</div><div class="line"><span class="number">0</span> → 数字零，到行头</div><div class="line">$ → 到本行行尾</div><div class="line">gg → 到顶部</div><div class="line"><span class="symbol">G</span>  → 到尾部</div><div class="line"><span class="symbol">H</span> →移动光标到屏幕的首行.</div><div class="line"><span class="symbol">M</span> →移动光标到屏幕的中间一行.</div><div class="line"><span class="symbol">L</span> → 移动光标到屏幕的尾行.</div><div class="line"></div><div class="line"></div><div class="line">n空格(n代表数字) → 光标向右移动n个字符</div><div class="line"></div><div class="line"><span class="symbol">H</span>/<span class="symbol">M</span>/<span class="symbol">L</span>:分别顶部、中间、和底部</div><div class="line"></div><div class="line">[相对于光标滚屏]</div><div class="line">”zt“、”zz“和”zb“:把光标所在行移动窗口的顶端、中间或底部</div><div class="line"></div><div class="line">// 各种插入 </div><div class="line">i → 在光标前输入</div><div class="line"><span class="symbol">I</span> → 在当前行首插入</div><div class="line">a → 在光标后插入</div><div class="line"><span class="symbol">A</span> → 在当前行尾插入</div><div class="line">o → 在当前行后插入一个新行</div><div class="line"><span class="symbol">O</span> → 在当前行前插入一个新行</div><div class="line">cw → 替换从光标所在位置后到一个单词结尾的字符</div><div class="line"></div><div class="line">// 删除</div><div class="line">x →删除当前光标所在的一个字符。</div><div class="line"><span class="symbol">X</span> →删除前一个字符</div><div class="line">nx(n代表数字) → 向后删除n个字符</div><div class="line">cc → 删除一行并进入插入模式。(更常用一些)</div><div class="line">dd → 删除当前行（还有剪切功能）</div><div class="line"><span class="symbol">D</span> → 删除当前字符到后面的所有字符(如果后面没有字符，则向前删除)</div><div class="line">ndd(n代表数字) → 删除n行</div><div class="line">d1G → 删除光标所在行到第一行的所有数据</div><div class="line">dG → 删除光标以后所有行数据</div><div class="line"></div><div class="line">// 拷贝、粘贴</div><div class="line"><span class="symbol">P</span> → 粘贴(p/<span class="symbol">P</span>都可以，p是表示在当前位置之后，<span class="symbol">P</span>表示在当前位置之前)</div><div class="line">yw  → 表示拷贝从当前光标到光标所在单词结尾的内容.</div><div class="line">dw  → 表示删除从当前光标到光标所在单词结尾的内容.</div><div class="line">y0  → 表示拷贝从当前光标到光标所在行首的内容.</div><div class="line">d0  → 表示删除从当前光标到光标所在行首的内容.</div><div class="line">y$  → 表示拷贝从当前光标到光标所在行尾的内容.</div><div class="line">d$/<span class="symbol">D</span>  → 表示删除从当前光标到光标所在行尾的内容.</div><div class="line">yfa → 表示拷贝从当前光标到光标后面的第一个a字符之间的内容.</div><div class="line">dfa → 表示删除从当前光标到光标后面的第一个a字符之间的内容.</div><div class="line">yy → 拷贝当前行当行</div><div class="line">dd → 表示删除光标所在行.</div><div class="line"></div><div class="line">yG →复制光标所在行到最后一行的所有数据</div><div class="line">yj →复制光标当前行和其下一行，共两行</div><div class="line">yk →复制光标当前行和其上一行，共两行</div><div class="line"><span class="symbol">J</span> →将光标所在行与下一行的数据结合成一行 </div><div class="line"><span class="number">3</span>p → 粘贴文本<span class="number">3</span>次</div><div class="line">. → 重复上一个命令—— <span class="number">100</span> “desu “.</div><div class="line"><span class="number">3.</span> → 重复 <span class="number">3</span> 次 “desu” (注意：不是 <span class="number">300</span>，你看，<span class="symbol">VIM</span>多聪明啊).</div><div class="line"></div><div class="line">//匹配括号移动</div><div class="line"><span class="comment">% → 匹配括号移动，包括 (, &#123;, [. （陈皓注：你需要把光标先移到括号上）</span></div><div class="line">* 和 # → 匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）</div><div class="line">/word → 在光标之后查找word字符串  word的字符串（陈皓注：如果搜索出多个匹配，可按n键到下一个，按shift+n到上一个）</div><div class="line">?word → 在光标之前查找word字符串   </div><div class="line"></div><div class="line">// 回退</div><div class="line">u → 回退</div><div class="line"></div><div class="line">// 打开/保存/退出/改变文件</div><div class="line">:w → 存盘</div><div class="line"><span class="symbol">ZZ</span> → 快速保存退出</div></pre></td></tr></table></figure>
+<h2 id="移动到指定字符"><a href="#移动到指定字符" class="headerlink" title="[ 移动到指定字符 ]"></a>[ 移动到指定字符 ]</h2><p>上面的命令都是行间移动(除h, l外)，也就是从当前行移动到另外一行。如果我们想在当前行内快速移动，可以使用f, t, F, T命令。</p>
+<p>“f“命令移动到光标右边的指定字符上，例如，”fx“，会把移动到光标右边的第一个’x’字符上。”F“命令则反方向查找，也就是移动到光标左边的指定字符上。(<strong>这个更常用</strong>)</p>
+<p>“t“命令和”f“命令的区别在于，它移动到光标右边的指定字符之前。例如，”tx“会移动到光标右边第一个’x’字符的前面。”T“命令是”t“命令的反向版本，它移动到光标右边的指定字符之后。</p>
+<p>这四个命令只在当前行中移动光标，光标不会跨越回车换行符。</p>
+<p>可以在命令前面使用数字，表示倍数。例如，”3fx“表示移动到光标右边的第3个’x’字符上。</p>
+<p>“;“命令重复前一次输入的f, t, F, T命令，而”,“命令会反方向重复前一次输入的f, t, F, T命令。这两个命令前也可以使用数字来表示倍数。</p>
+<p>更多请参考：<br><a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="external">http://coolshell.cn/articles/5426.html</a><br><a href="http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html" target="_blank" rel="external">http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html</a><br><a href="http://easwy.com/blog/archives/advanced-vim-skills-basic-move-method/" target="_blank" rel="external">http://easwy.com/blog/archives/advanced-vim-skills-basic-move-method/</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag">#工具</a>
+          
+            <a href="/tags/sublime/" rel="tag">#sublime</a>
+          
+            <a href="/tags/vim/" rel="tag">#vim</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/javascript-两种继承方式/" rel="next" title="浅谈javacript 笔记系列--- 继承与原型链">
+                <i class="fa fa-chevron-left"></i> 浅谈javacript 笔记系列--- 继承与原型链
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ionic2学习笔记《一》/" rel="prev" title="ionic2菜鸟学习笔记《一》">
+                ionic2菜鸟学习笔记《一》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="SublimeText-vim常用命令笔记/"
+           data-title="史上最强Sublime 笔记系列---vim常用命令笔记" data-url="http://meiminjun.github.io/SublimeText-vim常用命令笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/jiayou.png"
+               alt="Mr.Jason" />
+          <p class="site-author-name" itemprop="name">Mr.Jason</p>
+          <p class="site-description motion-element" itemprop="description">现就职于平安银行、致力于全栈开发方向。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiminjun" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sulimeText-的vim模式"><span class="nav-number">1.</span> <span class="nav-text">sulimeText 的vim模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-sublime命令（必记）"><span class="nav-number">2.</span> <span class="nav-text">vim-sublime命令（必记）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动到指定字符"><span class="nav-number">3.</span> <span class="nav-text">[ 移动到指定字符 ]</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Jason</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"meiminjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

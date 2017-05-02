@@ -1,0 +1,853 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr.Jason'Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript之常用DOM操作">
+<meta property="og:url" content="http://meiminjun.github.io/javascript-dom/index.html">
+<meta property="og:site_name" content="Mr.Jason'Blog">
+<meta property="og:description" content="这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法">
+<meta property="og:updated_time" content="2016-12-19T03:44:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript之常用DOM操作">
+<meta name="twitter:description" content="这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> javascript之常用DOM操作 | Mr.Jason'Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?16d7734da3c8cefabf2b051e78a76266";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mr.Jason'Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">热爱游戏、生活、学习的知识青年</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript之常用DOM操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-05T15:57:13+08:00" content="2016-01-05">
+              2016-01-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/javascript-dom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="javascript-dom/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      <span class="keyword">function</span> <span class="function"><span class="title">fun1</span></span>() &#123;</div><div class="line">          var str = document.getElementById(<span class="string">"p1"</span>).innerHTML;</div><div class="line">          alert(str);        //弹出    我是第一个P</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">         &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">         &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="document-getElementsByName-根据name获取元素节点"><a href="#document-getElementsByName-根据name获取元素节点" class="headerlink" title="document.getElementsByName()    根据name获取元素节点"></a>document.getElementsByName()    根据name获取元素节点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      <span class="keyword">function</span> <span class="function"><span class="title">fun1</span></span>() &#123;</div><div class="line">          var username = document.getElementsByName(<span class="string">"userName"</span>)[0].value;</div><div class="line">          alert(username);    //输出userName里输入的值</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;</div><div class="line">            我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;</div><div class="line">            我是第二个P&lt;/p&gt;</div><div class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> value=<span class="string">"请输入值"</span> name=<span class="string">"userName"</span> /&gt;</div><div class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"确定"</span> onclick=<span class="string">"fun1()"</span>&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="document-getElementsByTagName-根据HTML标签名获取元素节点，注意getElements-的选择器返回的是一个NodeList对象，能根据索引号选择其中1个，可以遍历输出。"><a href="#document-getElementsByTagName-根据HTML标签名获取元素节点，注意getElements-的选择器返回的是一个NodeList对象，能根据索引号选择其中1个，可以遍历输出。" class="headerlink" title="document.getElementsByTagName()    根据HTML标签名获取元素节点，注意getElements*的选择器返回的是一个NodeList对象，能根据索引号选择其中1个，可以遍历输出。"></a>document.getElementsByTagName()    根据HTML标签名获取元素节点，注意getElements<em>*</em>的选择器返回的是一个NodeList对象，能根据索引号选择其中1个，可以遍历输出。</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        var str = document.getElementsByTagName(<span class="string">"p"</span>)[1].innerHTML;</div><div class="line">        alert(str);        //输出  我是第二个P，因为获取的是索引为1的P，索引从0开始</div><div class="line"></div><div class="line">        var arr = document.getElementsByTagName(<span class="string">"p"</span>);</div><div class="line">        <span class="keyword">for</span> (var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">            alert(arr[i].innerHTML);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        var node = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">        var node1 = document.getElementsByTagName(<span class="string">"p"</span>)[1];    //从获取到的元素再获取</div><div class="line">           alert(node1.innerHTML);</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">       &lt;p id=<span class="string">"p1"</span>&gt;</div><div class="line">           我是第一个P&lt;/p&gt;</div><div class="line">       &lt;p id=<span class="string">"p2"</span>&gt;</div><div class="line">           我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="document-getElementsByClassName-根据class获取元素节点"><a href="#document-getElementsByClassName-根据class获取元素节点" class="headerlink" title="document.getElementsByClassName()    根据class获取元素节点"></a>document.getElementsByClassName()    根据class获取元素节点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        var node = document.getElementsByClassName(<span class="string">"class1"</span>)[0];</div><div class="line">        alert(node.innerHTML);</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt;</div><div class="line">                我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span> class=<span class="string">"class2"</span>&gt;</div><div class="line">                我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="javascript中的CSS选择器"><a href="#javascript中的CSS选择器" class="headerlink" title="javascript中的CSS选择器"></a>javascript中的CSS选择器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">document.querySelector()    //根据CSS选择器的规则，返回第一个匹配到的元素</div><div class="line">document.querySelectorAll()    //根据CSS选择器的规则，返回所有匹配到的元素</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        var node = document.querySelector(<span class="string">"#div1 &gt; p"</span>);</div><div class="line">        alert(node.innerHTML);                //输出  我是第一个P</div><div class="line"></div><div class="line">        var node1 = document.querySelector(<span class="string">".class2"</span>);</div><div class="line">        alert(node1.innerHTML);                //输出  我是第二个P</div><div class="line"></div><div class="line">        var nodelist = document.querySelectorAll(<span class="string">"p"</span>);</div><div class="line">        alert(nodelist[0].innerHTML + <span class="string">" - "</span> + nodelist[1].innerHTML);    //输出  我是第一个P - 我是第二个P</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt;</div><div class="line">                我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span> class=<span class="string">"class2"</span>&gt;</div><div class="line">                我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="文档结构和遍历"><a href="#文档结构和遍历" class="headerlink" title="文档结构和遍历"></a>文档结构和遍历</h2><ul>
+<li>作为节点数的文档</li>
+</ul>
+<ol>
+<li>parentNode    获取该节点的父节点</li>
+<li>childNodes    获取该节点的子节点数组</li>
+<li>firstChild    获取该节点的第一个子节点</li>
+<li>lastChild    获取该节点的最后一个子节点</li>
+<li>nextSibling    获取该节点的下一个兄弟元素</li>
+<li>previoursSibling    获取该节点的上一个兄弟元素</li>
+<li>nodeType    节点的类型，9代表Document节点，1代表Element节点，3代表Text节点，8代表Comment节点，11代表DocumentFragment节点</li>
+<li>nodeVlue    Text节点或Comment节点的文本内容</li>
+<li>nodeName    元素的标签名(如P,SPAN,#text(文本节点),DIV)，以大写形式表示</li>
+</ol>
+<blockquote>
+<p><strong>注意，以上6个方法连元素节点也算一个节点。</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">         var node1 = document.querySelector(<span class="string">".class2"</span>);</div><div class="line">         alert(node1.parentNode.innerHTML); //输出  &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt;我是第一个P&lt;/p&gt;&lt;p id=<span class="string">"p2"</span> class=<span class="string">"class2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line"></div><div class="line">         var nodelist = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">         var arr = nodelist.childNodes;</div><div class="line">         alert(arr[1].innerHTML + <span class="string">" - "</span> + arr[3].innerHTML); //输出    我是第一个P - 我是第二个P 为什么是1，3呢？因为本方法文本节点也会获取，也就是说0,2,4是文本节点</div><div class="line"></div><div class="line">         var node = document.getElementById(<span class="string">"div2"</span>);</div><div class="line">         <span class="keyword">for</span> (var i = 0; i &lt; node.childNodes.length; i++) &#123;</div><div class="line">             <span class="keyword">if</span> (node.childNodes[i].nodeType == 1) &#123;</div><div class="line">                 alert(node.childNodes[i].innerHTML);</div><div class="line">             &#125;</div><div class="line">             <span class="keyword">else</span> <span class="keyword">if</span> (node.childNodes[i].nodeType == 3) &#123;</div><div class="line">                 alert(node.childNodes[i].nodeValue);</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt;</div><div class="line">                我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span> class=<span class="string">"class2"</span>&gt;</div><div class="line">                我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div id=<span class="string">"div2"</span>&gt;</div><div class="line">          文本1</div><div class="line">          &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt;</div><div class="line">              我是第一个P&lt;/p&gt;</div><div class="line">          文本2</div><div class="line">          &lt;p id=<span class="string">"p2"</span> class=<span class="string">"class2"</span>&gt;</div><div class="line">              我是第二个P&lt;/p&gt;</div><div class="line">          文本3</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>作为元素树的文档    </li>
+</ul>
+<ol>
+<li>firstElementChild        第一个子元素节点</li>
+<li>lastElementChild        最后一个子元素节点</li>
+<li>nextElementSibling        下一个兄弟元素节点</li>
+<li>previousElementSibling    前一个兄弟元素节点</li>
+<li>childElementCount        子元素节点个数量</li>
+</ol>
+<blockquote>
+<p><strong>注意，此5个方法文本节点不算进去</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">         var node = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">         var node1 = node.firstElementChild;</div><div class="line">         var node2 = node.lastElementChild;</div><div class="line"></div><div class="line">         alert(node.childElementCount);  //输出2，div1一共有两个非文档子元素节点</div><div class="line">         alert(node1.innerHTML);         //输出 我是第一个P</div><div class="line">         alert(node2.innerHTML);         //输出 我是第二个P</div><div class="line">         alert(node2.previousElementSibling.innerHTML);  //输出 我是第一个P(第二个元素节点的上一个非文本元素节点是P1)</div><div class="line">         alert(node1.nextElementSibling.innerHTML);      //输出 我是第二个P(第一个元素节点的下一个兄弟非文本节点是P2)</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt;</div><div class="line">          我是第一个P&lt;/p&gt;</div><div class="line">      &lt;p id=<span class="string">"p2"</span> class=<span class="string">"class2"</span>&gt;</div><div class="line">          我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="javascript操作HTML属性"><a href="#javascript操作HTML属性" class="headerlink" title="javascript操作HTML属性"></a>javascript操作HTML属性</h2><h3 id="属性的读取，此处要注意的是，某些HTML属性名称在javascript之中是保留字，因此会有些许不同，如class-lable中的for在javascript中变为htmlFor-className。"><a href="#属性的读取，此处要注意的是，某些HTML属性名称在javascript之中是保留字，因此会有些许不同，如class-lable中的for在javascript中变为htmlFor-className。" class="headerlink" title="属性的读取，此处要注意的是，某些HTML属性名称在javascript之中是保留字，因此会有些许不同，如class,lable中的for在javascript中变为htmlFor,className。"></a>属性的读取，此处要注意的是，某些HTML属性名称在javascript之中是保留字，因此会有些许不同，如class,lable中的for在javascript中变为htmlFor,className。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">          var nodeText = document.getElementById(<span class="string">"input1"</span>);</div><div class="line">          alert(nodeText.value);        //输出 我是一个文本框</div><div class="line">          var nodeImg = document.getElementById(<span class="string">"img1"</span>);</div><div class="line">          alert(nodeImg.alt);            //输出 我是一张图片</div><div class="line">          var nodeP = document.getElementById(<span class="string">"p1"</span>);</div><div class="line">          alert(nodeP.className);        //输出 class1    注意获取class是className，如果写成nodeP.class则输出undefined</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span> class=<span class="string">"class1"</span>&gt; 我是第一个P&lt;/p&gt;</div><div class="line">        &lt;img src=<span class="string">"123.jpg"</span> alt=<span class="string">"我是一张图片"</span> id=<span class="string">"img1"</span> /&gt;</div><div class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> value=<span class="string">"我是一个文本框"</span> id=<span class="string">"input1"</span> /&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="属性的设置，此处同样要注意的是保留字"><a href="#属性的设置，此处同样要注意的是保留字" class="headerlink" title="属性的设置，此处同样要注意的是保留字"></a>属性的设置，此处同样要注意的是保留字</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      <span class="keyword">function</span> <span class="function"><span class="title">fun1</span></span>() &#123;</div><div class="line">          document.getElementById(<span class="string">"img1"</span>).src = <span class="string">"1small.jpg"</span>;        //改变图片的路径属性。实现的效果为，当点击图片时，大图变小图。</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;img src=<span class="string">"1big.jpg"</span> alt=<span class="string">"我是一张图片"</span> class=<span class="string">"imgClass"</span> id=<span class="string">"img1"</span> onclick=<span class="string">"fun1()"</span> /&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="非标准HTML属性"><a href="#非标准HTML属性" class="headerlink" title="非标准HTML属性"></a>非标准HTML属性</h3><p>getAttribute();    // 注意这两个方法是不必理会javascript保留字的，HTML属性是什么就怎么写。<br>setAttribute();</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">fun1</span></span>() &#123;</div><div class="line">            document.getElementById(<span class="string">"img1"</span>).setAttribute(<span class="string">"src"</span>, <span class="string">"1small.jpg"</span>);</div><div class="line">            alert(document.getElementById(<span class="string">"img1"</span>).getAttribute(<span class="string">"class"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;img src=<span class="string">"1big.jpg"</span> alt=<span class="string">"我是一张图片"</span> class=<span class="string">"imgClass"</span> id=<span class="string">"img1"</span> onclick=<span class="string">"fun1()"</span> /&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="Attr节点的属性"><a href="#Attr节点的属性" class="headerlink" title="Attr节点的属性"></a>Attr节点的属性</h3><p>attributes属性  非Element对象返回null，Element一半返回Attr对象。Attr对象是一个特殊的Node,通过name与value获取属性名称与值。<br>如:document.getElementById(“img1”)[0];<br>   document.getElementById(“img1”).src;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">fun1</span></span>() &#123;</div><div class="line">            alert(document.getElementById(<span class="string">"img1"</span>).attributes[0].name);    //输出  onclick    注意，通过索引器访问是写在右面在排前面，从0开始</div><div class="line">            alert(document.getElementById(<span class="string">"img1"</span>).attributes.src.value);    //输出1big.jpg</div><div class="line">            document.getElementById(<span class="string">"img1"</span>).attributes.src.value = <span class="string">"1small.jpg"</span>;    //点击后改变src属性，实现了点击大图变小图效果</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;img src=<span class="string">"1big.jpg"</span> alt=<span class="string">"我是一张图片"</span> class=<span class="string">"imgClass"</span> id=<span class="string">"img1"</span> onclick=<span class="string">"fun1()"</span> /&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="元素的内容"><a href="#元素的内容" class="headerlink" title="元素的内容"></a>元素的内容</h2><h3 id="innerText、textContent"><a href="#innerText、textContent" class="headerlink" title="innerText、textContent"></a>innerText、textContent</h3><p>innerText与textContent的区别，当文本为空时，innerText是””，而textContent是undefined</p>
+<h3 id="innerHTML"><a href="#innerHTML" class="headerlink" title="innerHTML"></a>innerHTML</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">          alert(document.getElementById(<span class="string">"p1"</span>).innerText);  //注意火狐浏览器不支持innerText</div><div class="line">          alert(document.getElementById(<span class="string">"p1"</span>).textContent);    //基本都支持textContent</div><div class="line">          document.getElementById(<span class="string">"p1"</span>).textContent = <span class="string">"我是p1，javascript改变了我"</span>;    //设置文档Text</div><div class="line">          alert(document.getElementById(<span class="string">"p2"</span>).textContent);</div><div class="line">          alert(document.getElementById(<span class="string">"p2"</span>).innerHTML); //innerHTML与innerText的区别，就是对HTML代码的输出方式Text不会输出HTML代码</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第&lt;b&gt;二&lt;/b&gt;个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="创建，插入，删除节点"><a href="#创建，插入，删除节点" class="headerlink" title="创建，插入，删除节点"></a>创建，插入，删除节点</h2><h3 id="document-createTextNode-创建一个文本节点"><a href="#document-createTextNode-创建一个文本节点" class="headerlink" title="document.createTextNode()    创建一个文本节点"></a>document.createTextNode()    创建一个文本节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">          var textNode = document.createTextNode(<span class="string">"&lt;p&gt;我是一个javascript新建的节点&lt;/p&gt;"</span>);</div><div class="line">          document.getElementById(<span class="string">"div1"</span>).appendChild(textNode);</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">      我是一个javascript新建的节点</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
+<h3 id="document-createElement-创建一个元素节点"><a href="#document-createElement-创建一个元素节点" class="headerlink" title="document.createElement()    创建一个元素节点"></a>document.createElement()    创建一个元素节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">          var pNode = document.createElement(<span class="string">"p"</span>);</div><div class="line">          pNode.textContent = <span class="string">"新建一个P节点"</span>;</div><div class="line">          document.getElementById(<span class="string">"div1"</span>).appendChild(pNode);</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">      &lt;p&gt;新建一个P节点&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
+<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><p> appendChild()    //将一个节点插入到调用节点的最后面<br> insertBefore()    //接受两个参数，第一个为待插入的节点，第二个指明在哪个节点前面，如果不传入第二个参数，则跟appendChild一样，放在最后。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var pNode1 = document.createElement(<span class="string">"p"</span>);</div><div class="line">            pNode1.textContent = <span class="string">"insertBefore插入的节点"</span>;</div><div class="line">            var pNode2 = document.createElement(<span class="string">"p"</span>);</div><div class="line">            pNode2.textContent = <span class="string">"appendChild插入的节点"</span>;</div><div class="line">            document.getElementById(<span class="string">"div1"</span>).appendChild(pNode2);</div><div class="line">            document.getElementById(<span class="string">"div1"</span>).insertBefore(pNode1,document.getElementById(<span class="string">"p1"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">       &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">       &lt;p&gt;insertBefore插入的节点&lt;/p&gt;</div><div class="line">       &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">       &lt;p&gt;appendChild插入的节点&lt;/p&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
+<h2 id="删除和替换节点。"><a href="#删除和替换节点。" class="headerlink" title="删除和替换节点。"></a>删除和替换节点。</h2><h3 id="removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"><a href="#removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。" class="headerlink" title="removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"></a>removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var div1 = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">            div1.removeChild(document.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;    //注意到第二个P元素已经被移除了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
+<h3 id="replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"><a href="#replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点" class="headerlink" title="replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"></a>replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var div1 = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">            var span1 = document.createElement(<span class="string">"span"</span>);</div><div class="line">            span1.textContent = <span class="string">"我是一个新建的span"</span>;</div><div class="line">            div1.replaceChild(span1,document.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;span&gt;我是一个新建的span&lt;/span&gt;    //留意到p2节点已经被替换为span1节点了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
+<h2 id="javascript操作元素CSS"><a href="#javascript操作元素CSS" class="headerlink" title="javascript操作元素CSS"></a>javascript操作元素CSS</h2><p>通过元素的style属性可以随意读取和设置元素的CSS样式，例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            alert(document.getElementById(<span class="string">"div1"</span>).style.backgroundColor);</div><div class="line">            document.getElementById(<span class="string">"div1"</span>).style.backgroundColor = <span class="string">"yellow"</span>;</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span> style=<span class="string">"width:100px; height:100px; background-color:red"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/javascript-闭包/" rel="next" title="javascript之闭包">
+                <i class="fa fa-chevron-left"></i> javascript之闭包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/javascript-call-apply/" rel="prev" title="javascript之call、apply的使用">
+                javascript之call、apply的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="javascript-dom/"
+           data-title="javascript之常用DOM操作" data-url="http://meiminjun.github.io/javascript-dom/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/jiayou.png"
+               alt="Mr.Jason" />
+          <p class="site-author-name" itemprop="name">Mr.Jason</p>
+          <p class="site-description motion-element" itemprop="description">现就职于平安银行、致力于全栈开发方向。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiminjun" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mei-min-jun" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-getElementsByName-根据name获取元素节点"><span class="nav-number">1.</span> <span class="nav-text">document.getElementsByName()    根据name获取元素节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document-getElementsByTagName-根据HTML标签名获取元素节点，注意getElements-的选择器返回的是一个NodeList对象，能根据索引号选择其中1个，可以遍历输出。"><span class="nav-number">2.</span> <span class="nav-text">document.getElementsByTagName()    根据HTML标签名获取元素节点，注意getElements*的选择器返回的是一个NodeList对象，能根据索引号选择其中1个，可以遍历输出。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document-getElementsByClassName-根据class获取元素节点"><span class="nav-number">3.</span> <span class="nav-text">document.getElementsByClassName()    根据class获取元素节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript中的CSS选择器"><span class="nav-number">4.</span> <span class="nav-text">javascript中的CSS选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档结构和遍历"><span class="nav-number">5.</span> <span class="nav-text">文档结构和遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript操作HTML属性"><span class="nav-number">6.</span> <span class="nav-text">javascript操作HTML属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的读取，此处要注意的是，某些HTML属性名称在javascript之中是保留字，因此会有些许不同，如class-lable中的for在javascript中变为htmlFor-className。"><span class="nav-number">6.1.</span> <span class="nav-text">属性的读取，此处要注意的是，某些HTML属性名称在javascript之中是保留字，因此会有些许不同，如class,lable中的for在javascript中变为htmlFor,className。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性的设置，此处同样要注意的是保留字"><span class="nav-number">6.2.</span> <span class="nav-text">属性的设置，此处同样要注意的是保留字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非标准HTML属性"><span class="nav-number">6.3.</span> <span class="nav-text">非标准HTML属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attr节点的属性"><span class="nav-number">6.4.</span> <span class="nav-text">Attr节点的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素的内容"><span class="nav-number">7.</span> <span class="nav-text">元素的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerText、textContent"><span class="nav-number">7.1.</span> <span class="nav-text">innerText、textContent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTML"><span class="nav-number">7.2.</span> <span class="nav-text">innerHTML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建，插入，删除节点"><span class="nav-number">8.</span> <span class="nav-text">创建，插入，删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#document-createTextNode-创建一个文本节点"><span class="nav-number">8.1.</span> <span class="nav-text">document.createTextNode()    创建一个文本节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-createElement-创建一个元素节点"><span class="nav-number">8.2.</span> <span class="nav-text">document.createElement()    创建一个元素节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入节点"><span class="nav-number">8.3.</span> <span class="nav-text">插入节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除和替换节点。"><span class="nav-number">9.</span> <span class="nav-text">删除和替换节点。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"><span class="nav-number">9.1.</span> <span class="nav-text">removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"><span class="nav-number">9.2.</span> <span class="nav-text">replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript操作元素CSS"><span class="nav-number">10.</span> <span class="nav-text">javascript操作元素CSS</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Jason</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"meiminjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -4,8 +4,751 @@
   
     
     <entry>
-      <title><![CDATA[webpack]]></title>
-      <url>http://meiminjun.github.io/2017/04/11/webpack/</url>
+      <title><![CDATA[standard代码规范指南]]></title>
+      <url>http://meiminjun.github.io/standard%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
+      <content type="html"><![CDATA[<p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1ff6vedjfw7j30kz0o7t9v.jpg" alt=""></p>
+<h1 id="使用standard代码风格规则说明（116条）"><a href="#使用standard代码风格规则说明（116条）" class="headerlink" title="使用standard代码风格规则说明（116条）"></a>使用standard代码风格规则说明（116条）</h1><ul>
+<li><strong>使用两个空格进行缩进</strong></li>
+</ul>
+<p>eslint: indent</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span></span> hello (<span class="keyword">name</span>) &#123;</div><div class="line">  console.<span class="built_in">log</span>(<span class="string">'hi'</span>, <span class="keyword">name</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>除需要转义的情况外，字符串统一使用单引号</strong></li>
+</ul>
+<p>eslint: quotes</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.<span class="built_in">log</span>(<span class="string">'测试'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要定义未使用的变量</strong></li>
+</ul>
+<p>eslint: no-unused-vars</p>
+<ul>
+<li><strong>关键字后面加空格</strong></li>
+</ul>
+<p>eslint: keyword-spacing</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">name</span>) <span class="comment">&#123;&#125;</span>   <span class="comment">// ✗ avoid </span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="keyword">name</span>) <span class="comment">&#123;&#125;</span>  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>函数声明时括号与函数名间加空格</strong></li>
+</ul>
+<p>eslint: space-before-function-paren</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> <span class="params">(arg)</span> </span>&#123; ... &#125;   <span class="comment">// ✓ ok </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span><span class="params">(arg)</span> </span>&#123; ... &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; ... &#125;)      <span class="comment">// ✓ ok </span></div><div class="line">run(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; ... &#125;)       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>始终使用 === 替代 ==</strong></li>
+</ul>
+<p>eslint: eqeqeq</p>
+<p>例外： obj == null 可以用来检查 null || undefined。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (obj == null) <span class="comment">&#123; &#125;</span> <span class="comment">// ✓ ok </span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="keyword">name</span> === <span class="string">'John'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">name</span> == <span class="string">'John'</span>)    <span class="comment">// ✗ avoid </span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="keyword">name</span> !== <span class="string">'John'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">name</span> != <span class="string">'John'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>字符串拼接操作符之间要留空格</strong></li>
+</ul>
+<p>eslint: space-infix-ops</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> x = <span class="number">2</span></div><div class="line"><span class="keyword">var</span> <span class="keyword">message</span> = <span class="string">'hello, '</span> + <span class="keyword">name</span> + <span class="string">'!'</span></div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> x=<span class="number">2</span></div><div class="line"><span class="keyword">var</span> <span class="keyword">message</span> = <span class="string">'hello, '</span>+<span class="keyword">name</span>+<span class="string">'!'</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>逗号后面加空格</strong></li>
+</ul>
+<p>eslint: comma-spacing</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line">var <span class="type">list</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line">function greet (name, options) &#123; ... &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line">var <span class="type">list</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">function greet (name,options) &#123; ... &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>else 关键字要与花括号保持在同一行</strong></li>
+</ul>
+<p>eslint: brace-style</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">condition</span>) &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">condition</span>) &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>多行 if 语句的的括号不能省</strong></li>
+</ul>
+<p>eslint: curly</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true) console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true) &#123;</div><div class="line">  console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true)</div><div class="line">  console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要丢掉异常处理中err参数</strong></li>
+</ul>
+<p>eslint: handle-callback-err</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line">run(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</div><div class="line">  <span class="built_in">window</span>.alert(<span class="string">'done'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line">run(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="built_in">window</span>.alert(<span class="string">'done'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>使用浏览器全局变量时加上 window. 前缀</strong></li>
+</ul>
+<p>eslint: no-undef</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不允许有连续多行空行</strong></li>
+</ul>
+<p>eslint: no-multiple-empty-lines</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> <span class="keyword">value</span> = <span class="string">'hello world'</span></div><div class="line">console.log(<span class="keyword">value</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> <span class="keyword">value</span> = <span class="string">'hello world'</span></div><div class="line"> </div><div class="line"> </div><div class="line">console.log(<span class="keyword">value</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>对于三元运算符 ? 和 : 与他们所负责的代码处于同一行</strong></li>
+</ul>
+<p>eslint: operator-linebreak</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development ? <span class="string">'localhost'</span> : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development</div><div class="line">  ? <span class="string">'localhost'</span></div><div class="line">  : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> location = env.development ?</div><div class="line">  <span class="string">'localhost'</span> :</div><div class="line">  <span class="string">'www.api.com'</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>每个 var 关键字单独声明一个变量</strong></li>
+</ul>
+<p>eslint: one-var</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>, verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>,</div><div class="line">    verbose = <span class="literal">true</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>条件语句中赋值语句使用括号包起来。这样使得代码更加清晰可读，而不会认为是将条件判断语句的全等号（===）错写成了等号（=）</strong></li>
+</ul>
+<p>eslint: no-cond-assign</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">while</span> ((m = <span class="keyword">text</span>.<span class="keyword">match</span>(expr))) &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">while</span> (m = <span class="keyword">text</span>.<span class="keyword">match</span>(expr)) &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>单行代码块两边加空格</strong></li>
+</ul>
+<p>eslint: block-spacing</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> <span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> <span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>对于变量和函数名统一使用驼峰命名法</strong></li>
+</ul>
+<p>eslint: camelcase</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_function</span> <span class="params">()</span> </span>&#123; &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span> <span class="params">()</span> </span>&#123; &#125;     <span class="comment">// ✓ ok </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> my_var = <span class="string">'hello'</span>           <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> myVar = <span class="string">'hello'</span>            <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不允许有多余的行末逗号</strong></li>
+</ul>
+<p>eslint: comma-dangle</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> obj = &#123;</div><div class="line">  message: <span class="string">'hello'</span>,   <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>始终将逗号置于行末</strong></li>
+</ul>
+<p>eslint: comma-style</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> obj = &#123;</div><div class="line">  foo: <span class="string">'foo'</span></div><div class="line">  ,bar: <span class="string">'bar'</span>   <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-tag">var</span> obj = &#123;</div><div class="line">  foo: <span class="string">'foo'</span>,</div><div class="line">  bar: <span class="string">'bar'</span>   <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>点号操作符须与属性需在同一行</strong></li>
+</ul>
+<p>eslint: dot-location</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.</div><div class="line">    <span class="built-in">log</span>(<span class="string">'hello'</span>)  <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">console</div><div class="line">.<span class="built-in">log</span>(<span class="string">'hello'</span>) <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>文件末尾留一空行</strong></li>
+</ul>
+<p>elint: eol-last</p>
+<ul>
+<li><strong>函数调用时标识符与括号间不留间隔</strong></li>
+</ul>
+<p>eslint: func-call-spacing</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.<span class="built-in">log</span> (<span class="string">'hello'</span>) <span class="comment">// ✗ avoid </span></div><div class="line">console.<span class="built-in">log</span>(<span class="string">'hello'</span>)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>键值对当中冒号与值之间要留空白</strong></li>
+</ul>
+<p>eslint: key-spacing</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> obj = &#123; <span class="string">'key'</span> : <span class="string">'value'</span> &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="selector-tag">var</span> obj = &#123; <span class="string">'key'</span> :<span class="string">'value'</span> &#125;     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="selector-tag">var</span> obj = &#123; <span class="string">'key'</span>:<span class="string">'value'</span> &#125;      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="selector-tag">var</span> obj = &#123; <span class="string">'key'</span>: <span class="string">'value'</span> &#125;     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>构造函数要以大写字母开头</strong></li>
+</ul>
+<p>eslint: new-cap</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animal</span> <span class="params">()</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> animal()    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> <span class="params">()</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal()    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>无参的构造函数调用时要带上括号</strong></li>
+</ul>
+<p>eslint: new-parens</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> </span>() &#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> <span class="type">Animal</span>    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> <span class="type">Animal</span>()  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>对象中定义了存值器，一定要对应的定义取值器。</li>
+</ul>
+<p>eslint: accessor-pairs</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">  <span class="function"><span class="keyword">set</span> <span class="title">name</span> (<span class="params"><span class="keyword">value</span></span>) </span>&#123;    <span class="comment">// ✗ avoid </span></div><div class="line">    <span class="keyword">this</span>.name = <span class="keyword">value</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">  <span class="function"><span class="keyword">set</span> <span class="title">name</span> (<span class="params"><span class="keyword">value</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="keyword">value</span></div><div class="line">  &#125;,</div><div class="line">  <span class="function"><span class="keyword">get</span> <span class="title">name</span> (<span class="params"></span>) </span>&#123;         <span class="comment">// ✓ ok </span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>子类的构造器中一定要调用 super</li>
+</ul>
+<p>eslint: constructor-super</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">  constructor () &#123;</div><div class="line">    <span class="keyword">super</span>()   <span class="comment">// ✗ avoid </span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Mammal</span> </span>&#123;</div><div class="line">  constructor () &#123;</div><div class="line">    <span class="keyword">super</span>()   <span class="comment">// ✓ ok </span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>使用数组字面量而不是构造器</strong></li>
+</ul>
+<p>eslint: no-array-constructor</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var nums = new Array(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)   <span class="comment">// ✗ avoid </span></div><div class="line">var nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]            <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免使用 arguments.callee 和 arguments.caller。</li>
+</ul>
+<p>eslint: no-caller</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span></div><div class="line"> </div><div class="line">  <span class="built_in">arguments</span>.callee(n - <span class="number">1</span>)   <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) <span class="keyword">return</span></div><div class="line"> </div><div class="line">  foo(n - <span class="number">1</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>避免对类名重新赋值</li>
+</ul>
+<p>eslint: no-class-assign</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;&#125;</div><div class="line">Dog = <span class="string">'Fido'</span>    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>避免修改使用 const 声明的变量</strong></li>
+</ul>
+<p>eslint: no-const-assign</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">score</span> = 100</div><div class="line"><span class="keyword">score</span> = 125       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免使用常量作为条件表达式的条件（循环语句除外）。</li>
+</ul>
+<p>eslint: no-constant-condition</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="comment">(false)</span> &#123;    <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> <span class="comment">(x === 0)</span> &#123;  <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">while</span> <span class="comment">(true)</span> &#123;  <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>正则中不要使用控制符</strong></li>
+</ul>
+<p>eslint: no-control-regex</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pattern = <span class="regexp">/\x1f/</span>    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> pattern = <span class="regexp">/\x20/</span>    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要使用 debugger</strong></li>
+</ul>
+<p>eslint: no-debugger</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sum (<span class="selector-tag">a</span>, b) &#123;</div><div class="line">  debugger      <span class="comment">// ✗ avoid </span></div><div class="line">  return <span class="selector-tag">a</span> + <span class="selector-tag">b</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要对变量使用 delete 操作</strong></li>
+</ul>
+<p>eslint: no-delete-var</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">name</span></div><div class="line">delete <span class="keyword">name</span>     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>不要定义冗余的函数参数。</li>
+</ul>
+<p>eslint: no-dupe-args</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function sum (<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, a) &#123;  <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line">function sum (<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123;  <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>类中不要定义冗余的属性。</li>
+</ul>
+<p>eslint: no-dupe-class-members</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">  bark () &#123;&#125;</div><div class="line">  bark () &#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>对象字面量中不要定义重复的属性。</li>
+</ul>
+<p>eslint: no-dupe-keys</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var user = &#123;</div><div class="line">  <span class="built_in">name</span>: <span class="string">'Jane Doe'</span>,</div><div class="line">  <span class="built_in">name</span>: <span class="string">'John Doe'</span>    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>switch 语句中不要定义重复的 case 分支。</li>
+</ul>
+<p>eslint: no-duplicate-case</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> (<span class="keyword">id</span>) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    <span class="comment">// ... </span></div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>:     <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>同一模块有多个导入时一次性写完</strong></li>
+</ul>
+<p>eslint: no-duplicate-imports</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; myFunc1 &#125; <span class="keyword">from</span> <span class="string">'module'</span></div><div class="line"><span class="keyword">import</span> &#123; myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span>          <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> &#123; myFunc1, myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span> <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>正则中不要使用空字符</strong></li>
+</ul>
+<p>eslint: no-empty-character-class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myRegex = <span class="regexp">/^abc[]/</span>      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> myRegex = <span class="regexp">/^abc[a-z]/</span>   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>不要解构空值</li>
+</ul>
+<p>eslint: no-empty-pattern</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const &#123; <span class="selector-tag">a</span>: &#123;&#125; &#125; = foo         <span class="comment">// ✗ avoid </span></div><div class="line">const &#123; <span class="selector-tag">a</span>: &#123; <span class="selector-tag">b</span> &#125; &#125; = foo      <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>不要使用 eval()。</li>
+</ul>
+<p>eslint: no-eval</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">eval</span><span class="params">( <span class="string">"var result = user."</span> + propName )</span></span> <span class="comment">// ✗ avoid </span></div><div class="line"><span class="selector-tag">var</span> result = user[propName]             <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>catch 中不要对错误重新赋值</li>
+</ul>
+<p>eslint: no-ex-assign</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">  e = <span class="string">'new value'</span>             <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">  const <span class="keyword">new</span><span class="type">Val</span> = <span class="string">'new value'</span>  <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不要扩展原生对象</li>
+</ul>
+<p>eslint: no-extend-native</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Object<span class="selector-class">.prototype</span><span class="selector-class">.age</span> = <span class="number">21</span>     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免多余的函数上下文绑定</li>
+</ul>
+<p>eslint: no-extra-bind</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免不必要的布尔转换</li>
+</ul>
+<p>eslint: no-extra-boolean-cast</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (!!result) &#123;   <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (result) &#123;     <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不要使用多余的括号包裹函数</li>
+</ul>
+<p>eslint: no-extra-parens</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myFunc = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;)   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>switch 一定要使用 break 来将条件分支正常中断</strong></li>
+</ul>
+<p>eslint: no-fallthrough</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> (filter) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    doSomething()    // ✗ avoid </div><div class="line">  <span class="keyword">case</span> 2:</div><div class="line">    doSomethingElse()</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">switch</span> (filter) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    doSomething()</div><div class="line">    <span class="keyword">break</span>           // ✓ ok </div><div class="line">  <span class="keyword">case</span> 2:</div><div class="line">    doSomethingElse()</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">switch</span> (filter) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    doSomething()</div><div class="line">    // fallthrough  // ✓ ok </div><div class="line">  <span class="keyword">case</span> 2:</div><div class="line">    doSomethingElse()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要省去小数点前面的0</strong></li>
+</ul>
+<p>eslint: no-floating-decimal</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> discount = <span class="number">.5</span>      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> discount = <span class="number">0.5</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免对声明过的函数重新赋值</li>
+</ul>
+<p>eslint: no-func-assign</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123; &#125;</div><div class="line">myFunc = myOtherFunc    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要对全局只读对象重新赋值</strong></li>
+</ul>
+<p>eslint: no-global-assign</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span> = &#123;&#125;     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>注意隐式的 eval()</li>
+</ul>
+<p>eslint: no-implied-eval</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">setTimeout</span><span class="params">(<span class="string">"alert('Hello world')"</span>)</span></span>                   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="title">setTimeout</span><span class="params">(function ()</span></span> &#123; alert(<span class="string">'Hello world'</span>) &#125;)     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>嵌套的代码块中禁止再定义函数</strong></li>
+</ul>
+<p>eslint: no-inner-declarations</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (authenticated) &#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setAuthUser</span> <span class="params">()</span> </span>&#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不要向 RegExp 构造器传入非法的正则表达式</li>
+</ul>
+<p>eslint: no-invalid-regexp</p>
+<p>RegExp(‘[a-z’)    // ✗ avoid<br>RegExp(‘[a-z]’)   // ✓ ok </p>
+<ul>
+<li>不要使用非法的空白符</li>
+</ul>
+<p>eslint: no-irregular-whitespace</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> </span>() <span class="comment">/*&lt;NBSP&gt;*/</span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 <strong>iterator</strong></li>
+</ul>
+<p>eslint: no-iterator</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo.prototype.__iterator__ = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>外部变量不要与对象属性重名</strong></li>
+</ul>
+<p>eslint: no-label-var</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> score = <span class="number">100</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span> <span class="params">()</span> </span>&#123;</div><div class="line">  score: <span class="number">50</span>         <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不要使用标签语句</li>
+</ul>
+<p>eslint: no-labels</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">label</span><span class="bash">:</span></div><div class="line">  while (true) &#123;</div><div class="line">    break <span class="keyword">label</span><span class="bash">     // ✗ avoid </span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不要书写不必要的嵌套代码块。</li>
+</ul>
+<p>eslint: no-lone-blocks</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123;</div><div class="line">  &#123;                   <span class="comment">// ✗ avoid </span></div><div class="line">    myOtherFunc()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123;</div><div class="line">  myOtherFunc()       <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要混合使用空格与制表符作为缩进</strong></li>
+</ul>
+<p>eslint: no-mixed-spaces-and-tabs</p>
+<ul>
+<li><strong>除了缩进，不要使用多个空格</strong></li>
+</ul>
+<p>eslint: no-multi-spaces</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">id</span> =    <span class="number">1234</span>    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> <span class="keyword">id</span> = <span class="number">1234</span>       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>不要使用多行字符串。</li>
+</ul>
+<p>eslint: no-multi-str</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">message</span> = <span class="string">'Hello \</span></div><div class="line">                 world'     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>new 创建对象实例后需要赋值给变量</strong></li>
+</ul>
+<p>eslint: no-new</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="type">Character</span>()                     <span class="comment">// ✗ avoid </span></div><div class="line">const character = <span class="keyword">new</span> <span class="type">Character</span>()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 Function 构造器。</li>
+</ul>
+<p>eslint: no-new-func</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'return a + b'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 Object 构造器。</li>
+</ul>
+<p>eslint: no-new-object</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> config = <span class="keyword">new</span> <span class="built_in">Object</span>()   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 new require</li>
+</ul>
+<p>eslint: no-new-require</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myModule = <span class="keyword">new</span> <span class="built_in">require</span>(<span class="string">'my-module'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 Symbol 构造器</li>
+</ul>
+<p>eslint: no-new-symbol</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> <span class="built_in">Symbol</span>(<span class="string">'foo'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用原始包装器</li>
+</ul>
+<p>eslint: no-new-wrappers</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">'hello'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>不要将全局对象的属性作为函数调用</li>
+</ul>
+<p>eslint: no-obj-calls</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> math = <span class="built_in">Math</span>()   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>不要使用八进制字面量。</li>
+</ul>
+<p>eslint: no-octal</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">num</span> = <span class="number">042</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> <span class="built_in">num</span> = <span class="string">'042'</span>   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>字符串字面量中也不要使用八进制转义字符。</li>
+</ul>
+<p>eslint: no-octal-escape</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">copyright</span> = '<span class="keyword">Copyright</span> \251'  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>使用 <strong>dirname 和 </strong>filename 时尽量避免使用字符串拼接</strong></li>
+</ul>
+<p>eslint: no-path-concat</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> pathToFile = __dirname + <span class="string">'/app.js'</span>            <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> pathToFile = path.<span class="keyword">join</span>(__dirname, <span class="string">'app.js'</span>)   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>使用 getPrototypeOf 来替代 <strong>proto</strong></li>
+</ul>
+<p>eslint: no-proto</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = obj.__proto__               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.getPrototypeOf(obj)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要重复声明变量</strong></li>
+</ul>
+<p>eslint: no-redeclare</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let <span class="keyword">name</span> = <span class="string">'John'</span></div><div class="line">let <span class="keyword">name</span> = <span class="string">'Jane'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">let <span class="keyword">name</span> = <span class="string">'John'</span></div><div class="line"><span class="keyword">name</span> = <span class="string">'Jane'</span>         <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>正则中避免使用多个空格</li>
+</ul>
+<p>eslint: no-regex-spaces</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regexp = /test   <span class="keyword">value</span>/   <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> regexp = /test &#123;<span class="number">3</span>&#125;<span class="keyword">value</span>/  <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> regexp = /test <span class="keyword">value</span>/     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>return 语句中的赋值必需有括号包裹</strong></li>
+</ul>
+<p>eslint: no-return-assign</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="title">a</span>, <span class="title">b</span>) &#123;</span></div><div class="line">  <span class="literal">return</span> <span class="built_in">result</span> = <span class="keyword">a</span> + b    <span class="comment"> // ✗ avoid </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="title">a</span>, <span class="title">b</span>) &#123;</span></div><div class="line">  <span class="literal">return</span> (<span class="built_in">result</span> = <span class="keyword">a</span> + b)  <span class="comment"> // ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>避免将变量赋值给自己</li>
+</ul>
+<p>eslint: no-self-assign</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">name</span> = <span class="keyword">name</span>   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免将变量与自己进行比较操作。</li>
+</ul>
+<p>esint: no-self-compare</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">score</span> === <span class="built_in">score</span>) &#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免使用逗号操作符</li>
+</ul>
+<p>eslint: no-sequences</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">do</span>Something(), !!<span class="built_in">test</span>) &#123;&#125;   // ✗ avoid</div></pre></td></tr></table></figure>
+<ul>
+<li>不要随意更改关键字的值</li>
+</ul>
+<p>eslint: no-shadow-restricted-names</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="literal">undefined</span> = <span class="string">'value'</span>     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用稀疏数组（Sparse arrays）</li>
+</ul>
+<p>eslint: no-sparse-arrays</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fruits = [<span class="string">'apple'</span>,, <span class="string">'orange'</span>]       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要使用制表符</strong></li>
+</ul>
+<p>eslint: no-tabs</p>
+<ul>
+<li>正确使用 ES6 中的字符串模板</li>
+</ul>
+<p>eslint: no-template-curly-in-string</p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const <span class="class"><span class="keyword">message</span> = '<span class="title">Hello</span> $</span>&#123;name&#125;'   <span class="comment">// ✗ avoid </span></div><div class="line">const <span class="class"><span class="keyword">message</span> = `<span class="title">Hello</span> $</span>&#123;name&#125;`   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>使用 this 前请确保 super() 已调用</li>
+</ul>
+<p>eslint: no-this-before-super</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  constructor () &#123;</div><div class="line">    <span class="keyword">this</span>.legs = <span class="number">4</span>     <span class="comment">// ✗ avoid </span></div><div class="line">    <span class="keyword">super</span>()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>用 throw 抛错时，抛出 Error 对象而不是字符串</li>
+</ul>
+<p>eslint: no-throw-literal</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="string">'error'</span>               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>(<span class="string">'error'</span>)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>行末不留空格</strong></li>
+</ul>
+<p>eslint: no-trailing-spaces</p>
+<ul>
+<li><strong>不要使用 undefined 来初始化变量</strong></li>
+</ul>
+<p>eslint: no-undef-init</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let <span class="keyword">name</span> = undefined    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">let <span class="keyword">name</span></div><div class="line"><span class="keyword">name</span> = <span class="string">'value'</span>          <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>循环语句中注意更新循环变量</li>
+</ul>
+<p>eslint: no-unmodified-loop-condition</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; j++) <span class="meta">&#123;...&#125;</span>    // ✗ avoid </div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) <span class="meta">&#123;...&#125;</span>    // ✓ ok</div></pre></td></tr></table></figure>
+<ul>
+<li>如果有更好的实现，尽量不要使用三元表达式</li>
+</ul>
+<p>eslint: no-unneeded-ternary</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> score = <span class="keyword">val</span> ? <span class="keyword">val</span> : <span class="number">0</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">let</span> score = <span class="keyword">val</span> || <span class="number">0</span>          <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>return，throw，continue 和 break 后不要再跟代码</strong></li>
+</ul>
+<p>eslint: no-unreachable</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'never called'</span>)     <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>finally 代码块中不要再改变程序执行流程</li>
+</ul>
+<p>eslint: no-unsafe-finally</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125; <span class="keyword">finally</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="number">42</span>     <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>关系运算符的左值不要做取反操作</li>
+</ul>
+<p>eslint: no-unsafe-negation</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!key <span class="keyword">in</span> obj) &#123;&#125;       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免不必要的 .call() 和 .apply()</li>
+</ul>
+<p>eslint: no-useless-call</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sum.call(null, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li>避免使用不必要的计算值作对象属性。</li>
+</ul>
+<p>eslint: no-useless-computed-key</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123; [<span class="string">'name'</span>]: <span class="string">'John Doe'</span> &#125;   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> user = &#123; name: <span class="string">'John Doe'</span> &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止多余的构造器</li>
+</ul>
+<p>eslint: no-useless-constructor</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span> () &#123;      <span class="comment">// ✗ avoid </span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>禁止不必要的转义</li>
+</ul>
+<p>eslint: no-useless-escape</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message = <span class="string">'Hell\o'</span>  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>import, export 和解构操作中，禁止赋值到同名变量</strong></li>
+</ul>
+<p>eslint: no-useless-rename</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; <span class="built_in">config</span> as <span class="built_in">config</span> &#125; from <span class="string">'./config'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">import</span> &#123; <span class="built_in">config</span> &#125; from <span class="string">'./config'</span>               <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>属性前面不要加空格</li>
+</ul>
+<p>eslint: no-whitespace-before-property</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">user <span class="selector-class">.name</span>      <span class="comment">// ✗ avoid </span></div><div class="line">user<span class="selector-class">.name</span>       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 with。</li>
+</ul>
+<p>eslint: no-with</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> (val) <span class="meta">&#123;...&#125;</span>    // ✗ avoid</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>对象属性换行时注意统一代码风格</strong></li>
+</ul>
+<p>eslint: object-property-newline</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const user = &#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">'Jane Doe'</span>, <span class="string">age:</span> <span class="number">30</span>,</div><div class="line"><span class="symbol">  username:</span> <span class="string">'jdoe86'</span>            <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div><div class="line"></div><div class="line">const user = &#123; <span class="string">name:</span> <span class="string">'Jane Doe'</span>, <span class="string">age:</span> <span class="number">30</span>, <span class="string">username:</span> <span class="string">'jdoe86'</span> &#125;    <span class="comment">// ✓ ok </span></div><div class="line"> </div><div class="line">const user = &#123;</div><div class="line"><span class="symbol">  name:</span> <span class="string">'Jane Doe'</span>,</div><div class="line"><span class="symbol">  age:</span> <span class="number">30</span>,</div><div class="line"><span class="symbol">  username:</span> <span class="string">'jdoe86'</span></div><div class="line">&#125;                                                                 <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>代码块中避免多余留白</strong></li>
+</ul>
+<p>eslint: padded-blocks</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">                            <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="keyword">const</span> name = getName()</div><div class="line"> </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">  <span class="keyword">const</span> name = getName()    <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>展开运算符与它的表达式间不要留空白</li>
+</ul>
+<p>eslint: rest-spread-spacing</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">fn</span>(<span class="params">... args</span>)</span>    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="title">fn</span>(<span class="params">...args</span>)</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>遇到分号时空格要留后不留前</strong></li>
+</ul>
+<p>eslint: semi-spacing</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span> ;i &lt; items.length ;i++) <span class="meta">&#123;...&#125;</span>    // ✗ avoid </div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) <span class="meta">&#123;...&#125;</span>    // ✓ ok</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>代码块首尾留空格</strong></li>
+</ul>
+<p>eslint: space-before-blocks</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (admin)<span class="meta">&#123;...&#125;</span>     // ✗ avoid </div><div class="line"><span class="keyword">if</span> (admin) <span class="meta">&#123;...&#125;</span>    // ✓ ok</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>圆括号间不留空格</strong> </li>
+</ul>
+<p>eslint: space-in-parens</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">getName</span><span class="params">( name )</span></span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="title">getName</span><span class="params">(name)</span></span>       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>一元运算符后面跟一个空格</strong></li>
+</ul>
+<p>eslint: space-unary-ops</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span>!admin        <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">typeof</span> !admin        <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>注释首尾留空格</strong></li>
+</ul>
+<p>eslint: spaced-comment</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span>comment           <span class="regexp">//</span> ✗ avoid </div><div class="line"><span class="regexp">//</span> comment          <span class="regexp">//</span> ✓ ok </div><div class="line"> </div><div class="line"><span class="regexp">/*comment*/</span>         <span class="regexp">//</span> ✗ avoid </div><div class="line"><span class="regexp">/* comment */</span>       <span class="regexp">//</span> ✓ ok</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>模板字符串中变量前后不加空格</strong></li>
+</ul>
+<p>eslint: template-curly-spacing</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> message = <span class="string">`Hello, <span class="subst">$&#123; name &#125;</span>`</span>    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> message = <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>`</span>      <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>检查 NaN 的正确姿势是使用 isNaN()</li>
+</ul>
+<p>eslint: use-isnan</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="comment">(price === NaN)</span> &#123; &#125;      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> <span class="comment">(isNaN(price)</span>) &#123; &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>用合法的字符串跟 typeof 进行比较操作</li>
+</ul>
+<p>eslint: valid-typeof</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">typeof</span> <span class="built_in">name</span> === <span class="string">'undefimed'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="built_in">typeof</span> <span class="built_in">name</span> === <span class="string">'undefined'</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>自执行匿名函数 (IIFEs) 使用括号包裹</strong></li>
+</ul>
+<p>eslint: wrap-iife</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;()     <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;())   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;)()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>yield <em> 中的 </em> 前后都要有空格</li>
+</ul>
+<p>eslint: yield-star-spacing</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">yield</span>* increment()    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="built_in">yield</span> * increment()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<ul>
+<li>请书写优雅的条件语句（avoid Yoda conditions）。</li>
+</ul>
+<p>eslint: yoda</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="comment">(42 === age)</span> &#123; &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> <span class="comment">(age === 42)</span> &#123; &#125;    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<p>ps: 关于分号</p>
+<ul>
+<li>不要使用分号</li>
+</ul>
+<p>eslint: semi</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>);  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>不要使用 (, [, or ` 等作为一行的开始。在没有分号的情况下代码压缩后会导致报错，而坚持这一规范则可避免出错</strong></li>
+</ul>
+<p>eslint: no-unexpected-multiline</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">window</span>.alert(<span class="string">'ok'</span>)</div><div class="line">&#125;())</div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">window</span>.alert(<span class="string">'ok'</span>)</div><div class="line">&#125;())</div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line">;[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].forEach(bar)</div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].forEach(bar)</div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line">;<span class="string">`hello`</span>.indexOf(<span class="string">'o'</span>)</div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="string">`hello`</span>.indexOf(<span class="string">'o'</span>)</div></pre></td></tr></table></figure>
+<p>有时候也不一定要这么写，譬如：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">;[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].forEach(bar)</div></pre></td></tr></table></figure>
+<p>建议的写法是:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">nums.forEach(bar)</div></pre></td></tr></table></figure>
+<h1 id="omm-mobile-中添加的规则"><a href="#omm-mobile-中添加的规则" class="headerlink" title="omm-mobile 中添加的规则"></a>omm-mobile 中添加的规则</h1><p>eslint 规则文件: .eslintrc<br>eslint 忽略规则: .eslintignore</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="string">"globals"</span>: &#123;  <span class="regexp">//</span> 脚本在执行期间访问的额外全局变量,设置每个变量等于 <span class="keyword">true</span> 允许变量被重写，或 <span class="keyword">false</span> 不允许被重写</div><div class="line">  <span class="string">"aladdin"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"bow"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"window"</span>: <span class="keyword">true</span>,</div><div class="line">  <span class="string">"risk"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"location"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"BETA"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"VERSION"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"history"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"ENV"</span>: <span class="keyword">false</span>,</div><div class="line">  <span class="string">"Swiper"</span>: <span class="keyword">false</span></div><div class="line">&#125;,</div><div class="line"><span class="string">"rules"</span>: &#123;</div><div class="line">    <span class="string">"indent"</span>: [<span class="number">2</span>,<span class="number">4</span>],  <span class="regexp">//</span> 强制使用<span class="number">4</span>个空格为缩进风格</div><div class="line">    <span class="string">"linebreak-style"</span>: [<span class="number">2</span>,<span class="string">"unix"</span>],  <span class="regexp">//</span> 强制使用unix换行风格</div><div class="line">    <span class="string">"quotes"</span>: [<span class="number">2</span>,<span class="string">"single"</span>], <span class="regexp">//</span> 强制使用单引号类型</div><div class="line">    <span class="string">"semi"</span>: [<span class="number">2</span>,<span class="string">"always"</span>], <span class="regexp">//</span> 强制分号结尾</div><div class="line">    <span class="string">"one-var"</span>: [<span class="number">0</span>,<span class="string">"always"</span>],  <span class="regexp">//</span> 关闭连续声明规则</div><div class="line">    <span class="string">"no-new"</span>: [<span class="number">0</span>] /<span class="regexp">/ 关闭'创建对象实例后需要赋值给变量'的规则</span></div></pre></td></tr></table></figure>
+<p>“off”或0 -关闭规则<br>“warn” 或1 - 开启规则, 使用警告 程序不会退出<br>“error”或2 - 开启规则, 使用错误 程序退出</p>
+<h1 id="各个编辑器的standard相关插件"><a href="#各个编辑器的standard相关插件" class="headerlink" title="各个编辑器的standard相关插件"></a>各个编辑器的standard相关插件</h1><h2 id="Sublime-Text"><a href="#Sublime-Text" class="headerlink" title="Sublime Text"></a>Sublime Text</h2><p>通过 Package Control，安装 SublimeLinter 和 SublimeLinter-contrib-standard。</p>
+<p>如果想要保存时自动格式化，还需安装 StandardFormat</p>
+<h2 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h2><p>安装 vscode-standardjs（已经包含了自动格式化）。</p>
+<p>安装 vscode-standardjs-snippets 以获得 JS snippets。</p>
+<p>安装 vscode-react-standard 以获得 React snippets。</p>
+<h2 id="WebStorm-PhpStorm-IntelliJ-RubyMine-JetBrains-等-jetbrains-全家桶系列"><a href="#WebStorm-PhpStorm-IntelliJ-RubyMine-JetBrains-等-jetbrains-全家桶系列" class="headerlink" title="WebStorm (PhpStorm, IntelliJ, RubyMine, JetBrains 等 jetbrains 全家桶系列)"></a>WebStorm (PhpStorm, IntelliJ, RubyMine, JetBrains 等 jetbrains 全家桶系列)</h2><p>WebStorm 在其 IDE 中 自带 standard 规范。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[vue-router 三种加载方式速度评测]]></title>
+      <url>http://meiminjun.github.io/vue-router/</url>
+      <content type="html"><![CDATA[<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1feuj2phraug30gn0c1qv7.gif" alt=""></p>
+<h2 id="ensure-方式"><a href="#ensure-方式" class="headerlink" title="ensure 方式"></a><a href="https://github.com/vuejs/vue-router/blob/next/examples/lazy-loading/app.js" target="_blank" rel="external">ensure 方式</a></h2><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> const Index = r =&gt; <span class="built_in">require</span>.ensure([], <span class="function"><span class="params">()</span> =&gt;</span> r(<span class="built_in">require</span>(<span class="string">'@/views/deposit/deposit_index'</span>)), <span class="string">'Index'</span>)</div><div class="line"><span class="regexp">//</span> const Product = r =&gt; <span class="built_in">require</span>.ensure([], <span class="function"><span class="params">()</span> =&gt;</span> r(<span class="built_in">require</span>(<span class="string">'@/views/deposit/deposit_product'</span>)), <span class="string">'Product'</span>)</div><div class="line"><span class="regexp">//</span> const ProductSave = r =&gt; <span class="built_in">require</span>.ensure([], <span class="function"><span class="params">()</span> =&gt;</span> r(<span class="built_in">require</span>(<span class="string">'@/views/deposit/deposit_product_save'</span>)), <span class="string">'ProductSave'</span>)</div><div class="line"><span class="regexp">//</span> const My = r =&gt; <span class="built_in">require</span>.ensure([], <span class="function"><span class="params">()</span> =&gt;</span> r(<span class="built_in">require</span>(<span class="string">'@/views/deposit/deposit_my'</span>)), <span class="string">'My'</span>)</div><div class="line"><span class="regexp">//</span> const MyDetail = r =&gt; <span class="built_in">require</span>.ensure([], <span class="function"><span class="params">()</span> =&gt;</span> r(<span class="built_in">require</span>(<span class="string">'@/views/deposit/deposit_my_detail'</span>)), <span class="string">'MyDetail'</span>)</div><div class="line"><span class="regexp">//</span> const MyTransDetail = r =&gt; <span class="built_in">require</span>.ensure([], <span class="function"><span class="params">()</span> =&gt;</span> r(<span class="built_in">require</span>(<span class="string">'@/views/deposit/deposit_my_transdetail'</span>)), <span class="string">'MyTransDetail'</span>)</div></pre></td></tr></table></figure>
+<p>全部采用ensure的方式运行,首屏时间则会慢很多，每次打开的时间记录<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">首屏时间: 324ms</div><div class="line">首屏时间: 552ms</div><div class="line">首屏时间: 457ms</div><div class="line">首屏时间: 275ms</div><div class="line">首屏时间: 250ms</div><div class="line">首屏时间: 330ms</div><div class="line">首屏时间: 395ms</div><div class="line">首屏时间: 314ms</div><div class="line">首屏时间: 276ms</div><div class="line">首屏时间: 314ms</div></pre></td></tr></table></figure></p>
+<p><strong>平均时间：348.7ms</strong></p>
+<p>下面测试跳转时的时间如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">首页跳转测试: 212<span class="selector-tag">ms</span></div><div class="line">首页跳转测试: 161<span class="selector-tag">ms</span></div><div class="line">首页跳转测试: 161<span class="selector-tag">ms</span></div><div class="line">首页跳转测试: 54<span class="selector-class">.8ms</span></div><div class="line">首页跳转测试: 156<span class="selector-tag">ms</span></div><div class="line">首页跳转测试: 58<span class="selector-class">.3ms</span></div><div class="line">首页跳转测试: 52<span class="selector-class">.3ms</span></div><div class="line">首页跳转测试: 84<span class="selector-class">.2ms</span></div><div class="line">首页跳转测试: 150<span class="selector-tag">ms</span></div><div class="line">首页跳转测试: 168<span class="selector-tag">ms</span></div></pre></td></tr></table></figure></p>
+<p><strong>平均时间：125.76ms</strong></p>
+<h2 id="amd-方式"><a href="#amd-方式" class="headerlink" title="amd 方式"></a>amd 方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Index = <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/views/deposit/deposit_index'</span>], resolve)</div><div class="line"><span class="keyword">const</span> Product = <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/views/deposit/deposit_product'</span>], resolve)</div><div class="line"><span class="keyword">const</span> ProductSave = <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/views/deposit/deposit_product_save'</span>], resolve)</div><div class="line"><span class="keyword">const</span> My = <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/views/deposit/deposit_my'</span>], resolve)</div><div class="line"><span class="keyword">const</span> MyDetail = <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/views/deposit/deposit_my_detail'</span>], resolve)</div><div class="line"><span class="keyword">const</span> MyTransDetail = <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">'@/views/deposit/deposit_my_transdetail'</span>], resolve)</div></pre></td></tr></table></figure>
+<p>如果是webpack2 可以使用<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> const Index = <span class="function"><span class="params">()</span> =&gt;</span> System.<span class="keyword">import</span>(<span class="string">'@/views/deposit/deposit_index'</span>)</div></pre></td></tr></table></figure></p>
+<p>首屏时间如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">首屏时间: 480ms</div><div class="line">首屏时间: 425ms</div><div class="line">首屏时间: 310ms</div><div class="line">首屏时间: 360ms</div><div class="line">首屏时间: 318ms</div><div class="line">首屏时间: 328ms</div><div class="line">首屏时间: 502ms</div><div class="line">首屏时间: 324ms</div><div class="line">首屏时间: 313ms</div><div class="line">首屏时间: 505ms</div></pre></td></tr></table></figure>
+<p><strong>平均时间：386.5ms</strong></p>
+<p>下面测试按照amd方式跳转时的时间如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">首页跳转测试: 50<span class="selector-class">.6ms</span></div><div class="line">首页跳转测试: 48<span class="selector-class">.2ms</span></div><div class="line">首页跳转测试: 51<span class="selector-class">.2ms</span></div><div class="line">首页跳转测试: 54<span class="selector-class">.0ms</span></div><div class="line">首页跳转测试: 48<span class="selector-class">.5ms</span></div><div class="line">首页跳转测试: 49<span class="selector-class">.1ms</span></div><div class="line">首页跳转测试: 48<span class="selector-class">.4ms</span></div><div class="line">首页跳转测试: 41<span class="selector-class">.9ms</span></div><div class="line">首页跳转测试: 46<span class="selector-class">.2ms</span></div><div class="line">首页跳转测试: 47<span class="selector-class">.4ms</span></div></pre></td></tr></table></figure></p>
+<p>平均时间：48.55ms</p>
+<h2 id="常规加载方式"><a href="#常规加载方式" class="headerlink" title="常规加载方式"></a>常规加载方式</h2><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Index <span class="keyword">from</span> <span class="string">'@/views/deposit/deposit_index'</span></div><div class="line"><span class="keyword">import</span> Product <span class="keyword">from</span> <span class="string">'@/views/deposit/deposit_product'</span></div><div class="line"><span class="keyword">import</span> ProductSave <span class="keyword">from</span> <span class="string">'@/views/deposit/deposit_product_save'</span></div><div class="line"><span class="keyword">import</span> My <span class="keyword">from</span> <span class="string">'@/views/deposit/deposit_my'</span></div><div class="line"><span class="keyword">import</span> MyDetail <span class="keyword">from</span> <span class="string">'@/views/deposit/deposit_my_detail'</span></div><div class="line"><span class="keyword">import</span> MyTransDetail <span class="keyword">from</span> <span class="string">'@/views/deposit/deposit_my_transdetail'</span></div></pre></td></tr></table></figure>
+<p>全部采用这种方式，速度会要快很多，首屏时间如下<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">首屏时间: 111<span class="selector-tag">ms</span></div><div class="line">首屏时间: 119<span class="selector-tag">ms</span></div><div class="line">首屏时间: 76<span class="selector-class">.6ms</span></div><div class="line">首屏时间: 76<span class="selector-class">.5ms</span></div><div class="line">首屏时间: 72<span class="selector-class">.8ms</span></div><div class="line">首屏时间: 108<span class="selector-tag">ms</span></div><div class="line">首屏时间: 122<span class="selector-tag">ms</span></div><div class="line">首屏时间: 84<span class="selector-class">.3ms</span></div><div class="line">首屏时间: 123<span class="selector-tag">ms</span></div><div class="line">首屏时间: 113<span class="selector-tag">ms</span></div></pre></td></tr></table></figure></p>
+<p><strong>平均时间：100.62ms</strong></p>
+<p>采用此方式做跳转测试，如下<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">首页跳转测试: 26<span class="selector-class">.9ms</span></div><div class="line">首页跳转测试: 25<span class="selector-class">.0ms</span></div><div class="line">首页跳转测试: 31<span class="selector-class">.2ms</span></div><div class="line">首页跳转测试: 31<span class="selector-class">.1ms</span></div><div class="line">首页跳转测试: 23<span class="selector-class">.7ms</span></div><div class="line">首页跳转测试: 26<span class="selector-class">.6ms</span></div><div class="line">首页跳转测试: 29<span class="selector-class">.4ms</span></div><div class="line">首页跳转测试: 27<span class="selector-class">.6ms</span></div><div class="line">首页跳转测试: 30<span class="selector-class">.2ms</span></div><div class="line">首页跳转测试: 24<span class="selector-class">.2ms</span></div></pre></td></tr></table></figure></p>
+<p><strong>平均时间为：27.59ms</strong></p>
+<p>总结：</p>
+<table>
+<thead>
+<tr>
+<th>加载方式</th>
+<th>首屏平均时间</th>
+<th>跳转页面平均时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>常规加载</td>
+<td>100.62ms</td>
+<td>27.59ms</td>
+</tr>
+<tr>
+<td>amd加载</td>
+<td>386.5ms</td>
+<td>48.55ms</td>
+</tr>
+<tr>
+<td>ensure加载</td>
+<td>348.7ms</td>
+<td>125.76ms</td>
+</tr>
+</tbody>
+</table>
+<h2 id="amd-与-ensure-区别"><a href="#amd-与-ensure-区别" class="headerlink" title="amd 与 ensure 区别"></a>amd 与 ensure 区别</h2><ul>
+<li>require-amd </li>
+</ul>
+<p>说明: 同AMD规范的require函数，使用时传递一个模块数组和回调函数，模块都被下载下来且都被执行后才执行回调函数</p>
+<p>语法: require(dependencies: String[], [callback: function(…)])<br>参数<br>dependencies: 模块依赖数组<br>callback: 回调函数</p>
+<ul>
+<li>require-ensure </li>
+</ul>
+<p>说明: require.ensure在需要的时候才下载依赖的模块，当参数指定的模块都下载下来了（下载下来的模块还没执行），便执行参数指定的回调函数。require.ensure会创建一个chunk，且可以指定该chunk的名称，如果这个chunk名已经存在了，则将本次依赖的模块合并到已经存在的chunk中，最后这个chunk在webpack构建的时候会单独生成一个文件。</p>
+<p>语法: require.ensure(dependencies: String[], callback: function([require]), [chunkName: String])<br>dependencies: 依赖的模块数组<br>callback: 回调函数，该函数调用时会传一个require参数<br>chunkName: 模块名，用于构建时生成文件时命名使用</p>
+<p>注意点：requi.ensure的模块只会被下载下来，不会被执行，只有在回调函数使用require(模块名)后，这个模块才会被执行。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[vue-vuex 上手]]></title>
+      <url>http://meiminjun.github.io/vuex/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg" alt=""></p>
+<h2 id="Vuex-理解"><a href="#Vuex-理解" class="headerlink" title="Vuex 理解"></a>Vuex 理解</h2><h3 id="简单解释下："><a href="#简单解释下：" class="headerlink" title="简单解释下："></a>简单解释下：</h3><p>Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作</p>
+<p>Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。</p>
+<p>从左到又，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
+<p>注意事项</p>
+<ul>
+<li><p>数据流都是单向的</p>
+</li>
+<li><p>组件能够调用 action</p>
+</li>
+<li><p>action 用来派发 Mutation</p>
+</li>
+<li><p>只有 mutation 可以改变状态</p>
+</li>
+<li><p>store 是响应式的，无论 state 什么时候更新，组件都将同步更新</p>
+</li>
+</ul>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>在 store 中的 state 对象，可以理解为 Vue 实例中的 data 对象，它用来保存最基本的数据。</p>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import Vue <span class="keyword">from</span> 'Vue';</div><div class="line">import Vuex <span class="keyword">from</span> 'Vuex';</div><div class="line"></div><div class="line">Vue.use(Vuex);</div><div class="line"></div><div class="line">let store = new Vuex.Store(&#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        <span class="keyword">state</span>A: 'a',</div><div class="line">        <span class="keyword">state</span>B: 'b',</div><div class="line">        <span class="keyword">state</span>C: 'c'</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">console.<span class="keyword">log</span>(store.<span class="keyword">state</span>.<span class="keyword">state</span>A); // a</div></pre></td></tr></table></figure>
+<p>在 Vue 中获取 store 中的状态</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">let app = new Vue(&#123;</div><div class="line">　　 el: '<span class="comment">#demo',</span></div><div class="line">    template: `<span class="variable">&lt;h1&gt;</span>&#123;&#123;myState&#125;&#125;&lt;/h1&gt;`,</div><div class="line">    computed: &#123;</div><div class="line">         myState() &#123;</div><div class="line">            return store.<span class="keyword">state</span>.<span class="keyword">state</span>A;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>最简单的方式就是通过 Vue 中的计算属性(computed) 来将 store 中的状态映射为 Vue 的数据。但是当数据多时这种方法明显效率过低，所以 Vuex 中提供了 mapState 方法用于批量映射 store 中的状态。</p>
+<h3 id="mapState映射"><a href="#mapState映射" class="headerlink" title="mapState映射"></a>mapState映射</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import &#123; mapState &#125; <span class="keyword">from</span> 'Vuex';</div><div class="line"></div><div class="line">let app = new Vue(&#123;</div><div class="line">    el: '<span class="comment">#demo',</span></div><div class="line">    store,</div><div class="line">    data: &#123;</div><div class="line">        local: 'L'</div><div class="line">    &#125;,</div><div class="line">    computed: mapState(&#123;</div><div class="line">        <span class="keyword">state</span>A: <span class="keyword">state</span> =&gt; <span class="keyword">state</span>.<span class="keyword">state</span>A,</div><div class="line">        <span class="keyword">state</span>B: '<span class="keyword">state</span>B',</div><div class="line">        <span class="keyword">state</span>C(<span class="keyword">state</span>) &#123;</div><div class="line">            return <span class="keyword">state</span>.<span class="keyword">state</span>C + this.local;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上例中，a. 可以通过 ES6 中的箭头函数进行数据的映射，b. 当计算属性的名称与 state 的属性名一致时可能直接通过字符串赋值，c. 当需要引用上下文中的 data 属性实，只能通过常规函数来使 this 生效。</p>
+<p>如果所有计算属性的名称都与 state 一致，可以在 mapState 中以数组的方式进行映射。如果 Vue 中已经存在计算属性，可以通过 ES6 的展开操作符 (…) 进行组合。</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let app = new Vue(&#123;</div><div class="line">    el: '<span class="comment">#demo',</span></div><div class="line">    store,</div><div class="line">    computed: &#123;</div><div class="line">        local() &#123;</div><div class="line">             return 'Local';</div><div class="line">        &#125;,</div><div class="line">        ...mapState(['<span class="keyword">state</span>A', '<span class="keyword">state</span>B', '<span class="keyword">state</span>C'])</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><strong> 在 Vuex 模块化中，state 是唯一会根据组合时模块的别名来添加层级的，后面的 getters、mutations 以及 actions 都是直接合并在 store 下。</strong></p>
+<p>例如，访问模块 a 中的 state，要通过 store.state.a，访问根 store 上申明的 state，依然是通过 store.state.xxx 直接访问。</p>
+<h2 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a>Mutations</h2><p>在vuex中，更改state 的方式只有提交mutation.大家可以把他就想象成vue中methods 中的一个方法。</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let store = new Vuex.Store(&#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        count: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    mutations: &#123;</div><div class="line">        addCount(<span class="keyword">state</span>) &#123;</div><div class="line">            <span class="keyword">state</span>.count ++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">store.commit('addCount');</div><div class="line"></div><div class="line">console.<span class="keyword">log</span>(store.<span class="keyword">state</span>.count); // <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>想要改变状态的时候都是用store.commit的方式</p>
+<h3 id="传参方式"><a href="#传参方式" class="headerlink" title="传参方式"></a>传参方式</h3><blockquote>
+<p>每一个 mutation 都有一个字符串的事件类型和一个回调函数,每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：</p>
+</blockquote>
+<p>第一种方式：提交载荷（Payload）</p>
+<p>你可以向 store.commit 传入额外的参数，即 mutation 的 载荷（payload）：</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">mutations: &#123;</div><div class="line">    addCount(<span class="keyword">state</span>, n) &#123;</div><div class="line">        <span class="keyword">state</span>.count += n;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">store.commit('addCount', <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p><strong> 官方推荐，载荷应该是一个对象，这样可以包含多个字段并且记录的 mutation 会更易读： </strong></p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// ...</div><div class="line">mutations: &#123;</div><div class="line">  increment (<span class="keyword">state</span>, payload) &#123;</div><div class="line">    <span class="keyword">state</span>.count += payload.amount</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">store.commit('increment', &#123;</div><div class="line">  amount: <span class="number">10</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>第二种方式：对象风格的传参方式</p>
+<p>提交 mutation 的另一种方式是直接使用包含 type 属性的对象：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">store</span><span class="selector-class">.commit</span>(&#123;</div><div class="line">  <span class="attribute">type</span>: <span class="string">'increment'</span>,	// 事件名</div><div class="line">  amount: <span class="number">10</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="Mutations-需遵守-Vue-的响应规则"><a href="#Mutations-需遵守-Vue-的响应规则" class="headerlink" title="Mutations 需遵守 Vue 的响应规则"></a>Mutations 需遵守 Vue 的响应规则</h2><p>在 mutation 中更改 state 应该以新对象替换老对象，不要在直接原对象上直接修改。</p>
+<ul>
+<li>最好提前在你的 store 中初始化好所有所需属性。</li>
+<li>当需要在对象上添加新属性时，你应该<ul>
+<li>使用 Vue.set(obj, ‘newProp’, 123),或者</li>
+<li>以新对象替换老对象。例如，利用 stage-3 的对象展开运算符我们可以这样写：<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">state</span>.obj = &#123; ...<span class="keyword">state</span>.obj, newProp: <span class="number">123</span> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="mutation-必须是同步函数"><a href="#mutation-必须是同步函数" class="headerlink" title="mutation 必须是同步函数"></a>mutation 必须是同步函数</h2><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mutations: &#123;</div><div class="line">  someMutation (<span class="keyword">state</span>) &#123;</div><div class="line">    api.callAsyncMethod(() =&gt; &#123;</div><div class="line">      <span class="keyword">state</span>.count++</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面的例子中 mutation 中的异步函数中的回调让这不可能完成：因为当 mutation 触发的时候，回调函数还没有被调用，devtools 不知道什么时候回调函数实际上被调用 —— 实质上任何在回调函数中进行的的状态的改变都是不可追踪的。</p>
+<h2 id="在组件中提交-Mutations"><a href="#在组件中提交-Mutations" class="headerlink" title="在组件中提交 Mutations"></a>在组件中提交 Mutations</h2><p>你可以在组件中使用 this.$store.commit(‘xxx’) 提交 mutation，或者使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用（需要在根节点注入 store）。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="regexp">//</span> ...</div><div class="line">  methods: &#123;</div><div class="line">    ...mapMutations([</div><div class="line">      <span class="string">'increment'</span> <span class="regexp">//</span> 映射 <span class="keyword">this</span>.increment() 为 <span class="keyword">this</span>.$store.commit(<span class="string">'increment'</span>)</div><div class="line">    ]),</div><div class="line">    ...mapMutations(&#123;</div><div class="line">      add: <span class="string">'increment'</span> <span class="regexp">//</span> 映射 <span class="keyword">this</span>.add() 为 <span class="keyword">this</span>.$store.commit(<span class="string">'increment'</span>)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在 mutation 中混合异步调用会导致你的程序很难调试。例如，当你能调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？这就是为什么我们要区分这两个概念。在 Vuex 中，mutation 都是同步事务：</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">store.commit(<span class="string">'increment'</span>)</div><div class="line"><span class="regexp">//</span> 任何由 <span class="string">"increment"</span> 导致的状态变更都应该在此刻完成。</div></pre></td></tr></table></figure>
+<h2 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>与 mutations 类似，不同模块的 actions 均可以通过 store.dispatch 直接触发。</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">const moduleA = &#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        count: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    mutations: &#123;</div><div class="line">        sayCountA(<span class="keyword">state</span>) &#123;</div><div class="line">            console.<span class="keyword">log</span>('Module A count: ', <span class="keyword">state</span>.count);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    actions: &#123;</div><div class="line">        maAction(context) &#123;</div><div class="line">            context.dispatch('mbAction');</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const moduleB = &#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        count: <span class="number">2</span></div><div class="line">    &#125;,</div><div class="line">    mutations: &#123;</div><div class="line">        sayCountB(<span class="keyword">state</span>, num) &#123;</div><div class="line">            console.<span class="keyword">log</span>('Module B count: ', <span class="keyword">state</span>.count+num);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    action: &#123;</div><div class="line">        mbAction(&#123; commit, rootState &#125;) &#123;</div><div class="line">            commit('sayCountA');</div><div class="line">            commit('sayCountB', rootState.a.count);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const store = &#123;</div><div class="line">    modules: &#123;</div><div class="line">        a: moduleA,</div><div class="line">        b: moduleB</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">store.dispatch('maAction'); // Module A count: <span class="number">1</span>、Module B count: <span class="number">3</span></div></pre></td></tr></table></figure>
+<p>action 的回调函数接收一个 context 上下文参数，context 包含：1. state、2. rootState、3. getters、4. mutations、5. actions 五个属性，</p>
+<blockquote>
+<p>有一点要注意的是，将 store 中的 state 绑定到 Vue 组件中的 computed 计算属性后，对 state 进行更改需要通过 mutation 或者 action，在 Vue 组件中直接进行赋值 (this.myState = ‘ABC’) 是不会生效的。</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[webpack配置解析]]></title>
+      <url>http://meiminjun.github.io/webpack/</url>
       <content type="html"><![CDATA[<h1 id="常用配置解析（这里以vue脚手架生成为例）"><a href="#常用配置解析（这里以vue脚手架生成为例）" class="headerlink" title="常用配置解析（这里以vue脚手架生成为例）"></a>常用配置解析（这里以vue脚手架生成为例）</h1><h2 id="输入-entry"><a href="#输入-entry" class="headerlink" title="输入(entry)"></a>输入(entry)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">entry</span>: &#123;</div><div class="line">  <span class="attribute">app</span>: <span class="string">'./src/main.js'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="输出-output"><a href="#输出-output" class="headerlink" title="输出(output)"></a>输出(output)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">output</span>: &#123;</div><div class="line">  <span class="attribute">path</span>: path.<span class="built_in">resolve</span>(__dirname, <span class="string">'./dist'</span>),  // 文件构建完成后的生成目录</div><div class="line">  publicPath: <span class="string">'/dist/'</span>,	// build.js相对于服务器环境的哪层目录</div><div class="line">  filename: <span class="string">'build.js'</span> // 代码生成的文件名</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="devtool-开发工具"><a href="#devtool-开发工具" class="headerlink" title="devtool(开发工具)"></a>devtool(开发工具)</h2><table>
@@ -102,7 +845,7 @@
 <h3 id="webpack-HotModuleReplacementPlugin"><a href="#webpack-HotModuleReplacementPlugin" class="headerlink" title="webpack.HotModuleReplacementPlugin"></a>webpack.HotModuleReplacementPlugin</h3><p>热更新插件</p>
 <h3 id="webpack-NoEmitOnErrorsPlugin"><a href="#webpack-NoEmitOnErrorsPlugin" class="headerlink" title="webpack.NoEmitOnErrorsPlugin"></a>webpack.NoEmitOnErrorsPlugin</h3><p>跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误。</p>
 <h3 id="webpack-optimize-UglifyJsPlugin"><a href="#webpack-optimize-UglifyJsPlugin" class="headerlink" title="webpack.optimize.UglifyJsPlugin"></a>webpack.optimize.UglifyJsPlugin</h3><p>解析/压缩/美化所有的js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">  <span class="attr">sourceMap</span>: <span class="literal">true</span></div><div class="line">  mangle: &#123;</div><div class="line">      <span class="attr">except</span>: [<span class="string">'$super'</span>, <span class="string">'$'</span>, <span class="string">'exports'</span>, <span class="string">'require'</span>]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">compressor</span>: &#123; <span class="comment">// 压缩配置</span></div><div class="line">    <span class="comment">// 在UglifyJs删除没有用到的代码时不输出警告</span></div><div class="line">    warnings: <span class="literal">false</span>,</div><div class="line">    <span class="comment">// 删除所有的 `console` 语句，可以兼容ie浏览器</span></div><div class="line">    drop_console: deployEnv === <span class="string">'prd'</span>,</div><div class="line">    <span class="comment">// 删除所有的 `debugger`语句</span></div><div class="line">    drop_debugger: <span class="literal">true</span>,</div><div class="line">    <span class="comment">// 内嵌定义了但是只用到一次的变量</span></div><div class="line">    collapse_vars: deployEnv === <span class="string">'prd'</span>,</div><div class="line">    <span class="comment">// 提取出出现多次但是没有定义成变量去引用的静态值</span></div><div class="line">    reduce_vars: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">  sourceMap: <span class="literal">true</span></div><div class="line">  mangle: &#123;</div><div class="line">      except: [<span class="string">'$super'</span>, <span class="string">'$'</span>, <span class="string">'exports'</span>, <span class="string">'require'</span>]</div><div class="line">  &#125;,</div><div class="line">  compressor: &#123; <span class="comment">// 压缩配置</span></div><div class="line">    <span class="comment">// 在UglifyJs删除没有用到的代码时不输出警告</span></div><div class="line">    warnings: <span class="literal">false</span>,</div><div class="line">    <span class="comment">// 删除所有的 `console` 语句，可以兼容ie浏览器</span></div><div class="line">    drop_console: deployEnv === <span class="string">'prd'</span>,</div><div class="line">    <span class="comment">// 删除所有的 `debugger`语句</span></div><div class="line">    drop_debugger: <span class="literal">true</span>,</div><div class="line">    <span class="comment">// 内嵌定义了但是只用到一次的变量</span></div><div class="line">    collapse_vars: deployEnv === <span class="string">'prd'</span>,</div><div class="line">    <span class="comment">// 提取出出现多次但是没有定义成变量去引用的静态值</span></div><div class="line">    reduce_vars: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>ps: 这个插件一般在生产环境配置中才会用到</p>
 </blockquote>
@@ -110,7 +853,7 @@
 <p>mangle: 通过设置except数组来防止指定变量被改变<br>sourceMap: 生成SourceMap文件，会导致编译过程变慢，默认true<br>test/include/exclude: 使用一个或多个正则表达式来过滤要处理的文件<br>compressor: 压缩配置项</p>
 <h3 id="webpack-ProvidePlugin"><a href="#webpack-ProvidePlugin" class="headerlink" title="webpack.ProvidePlugin"></a>webpack.ProvidePlugin</h3><p>定义标识符，当遇到指定标识符的时候，自动加载模块。</p>
 <p>在下面例子中，无需在module中引入jquery，即可使用$方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.ProvidePlugin(&#123;</div><div class="line">  <span class="attr">$</span>: <span class="string">"jquery"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.ProvidePlugin(&#123;</div><div class="line">  $: <span class="string">"jquery"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="webpack-optimize-CommonsChunkPlugin"><a href="#webpack-optimize-CommonsChunkPlugin" class="headerlink" title="webpack.optimize.CommonsChunkPlugin"></a>webpack.optimize.CommonsChunkPlugin</h3><p>提取代码中的公共模块，然后将公共模块打包到一个独立的文件中，以便在其他的入口和模块中使用。</p>
 <blockquote>
 <p>不要忘记在html中单独引入抽离出来的公共模块。</p>
@@ -158,7 +901,7 @@
     
     <entry>
       <title><![CDATA[Vysor最新版本破解]]></title>
-      <url>http://meiminjun.github.io/2017/03/30/vysor/</url>
+      <url>http://meiminjun.github.io/vysor/</url>
       <content type="html"><![CDATA[<h2 id="Vysor最新版本破解"><a href="#Vysor最新版本破解" class="headerlink" title="Vysor最新版本破解"></a>Vysor最新版本破解</h2><p>Vysor是一个Chrome插件, 他 可以把android手机屏幕投影到电脑上方便操作. 操作方便个人感觉是目前最好的了.</p>
 <p>Vysor普通版相对专业版多了一些限制, 例如无法最大化. 但是专业版要收费, 点支付宝支付这边一直卡住, 没法, 只能翻开源码研究一下.</p>
 <p>网上说了一堆说只能破解1.6.6以前版本，于是我自己就研究了一下，截止目前来说，我正在使用的当前版本1.7.2(最新版本)也是可以破解的</p>
@@ -176,7 +919,7 @@
     
     <entry>
       <title><![CDATA[精选oh-my-zsh插件集合]]></title>
-      <url>http://meiminjun.github.io/2017/01/11/oh-my-zsh%E6%8F%92%E4%BB%B6/</url>
+      <url>http://meiminjun.github.io/oh-my-zsh%E6%8F%92%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h2 id="oh-my-zsh-安装说明"><a href="#oh-my-zsh-安装说明" class="headerlink" title="oh-my-zsh 安装说明"></a>oh-my-zsh 安装说明</h2><p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">https://github.com/robbyrussell/oh-my-zsh</a></p>
 <h2 id="插件配置地址"><a href="#插件配置地址" class="headerlink" title="插件配置地址"></a>插件配置地址</h2><p>打开文件~/.zshrc，其中有如下行：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">plugins</span>=(git)</div></pre></td></tr></table></figure>
@@ -277,7 +1020,7 @@
     
     <entry>
       <title><![CDATA[Sourcetree安装]]></title>
-      <url>http://meiminjun.github.io/2017/01/09/Sourcetree%E5%AE%89%E8%A3%85/</url>
+      <url>http://meiminjun.github.io/Sourcetree%E5%AE%89%E8%A3%85/</url>
       <content type="html"><![CDATA[<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1fblgt1gz3bj20t70ha44y.jpg" alt=""></p>
 <p>SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的Git操作方式，这对于开发者来说非常实用。</p>
 <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
@@ -344,7 +1087,7 @@
     
     <entry>
       <title><![CDATA[我的Mac工具精选]]></title>
-      <url>http://meiminjun.github.io/2017/01/02/%E6%88%91%E7%9A%84Mac%E5%B7%A5%E5%85%B7%E9%9B%86/</url>
+      <url>http://meiminjun.github.io/%E6%88%91%E7%9A%84Mac%E5%B7%A5%E5%85%B7%E9%9B%86/</url>
       <content type="html"><![CDATA[<h1 id="精选Mac工具"><a href="#精选Mac工具" class="headerlink" title="精选Mac工具"></a>精选Mac工具</h1><h2 id="工作类"><a href="#工作类" class="headerlink" title="工作类"></a>工作类</h2><ul>
 <li>有道云笔记</li>
 <li>UnRaR Unarchiver : 解压软件</li>
@@ -436,7 +1179,7 @@
     
     <entry>
       <title><![CDATA[前端自动化测试工程]]></title>
-      <url>http://meiminjun.github.io/2017/01/01/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA/</url>
+      <url>http://meiminjun.github.io/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA/</url>
       <content type="html"><![CDATA[<p>安装条件：</p>
 <ol>
 <li>首先要安装 Java 7 或更高</li>
@@ -586,7 +1329,7 @@
     
     <entry>
       <title><![CDATA[git常用操作-远程管理与分支管理]]></title>
-      <url>http://meiminjun.github.io/2016/12/21/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
+      <url>http://meiminjun.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86/</url>
       <content type="html"><![CDATA[<h1 id="git常用操作之远程管理与分支管理"><a href="#git常用操作之远程管理与分支管理" class="headerlink" title="git常用操作之远程管理与分支管理"></a>git常用操作之远程管理与分支管理</h1><h2 id="远程管理"><a href="#远程管理" class="headerlink" title="远程管理"></a>远程管理</h2><ul>
 <li><p>克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git</p>
 </li>
@@ -642,7 +1385,7 @@
     
     <entry>
       <title><![CDATA[git常用操作-回滚操作]]></title>
-      <url>http://meiminjun.github.io/2016/12/01/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C/</url>
+      <url>http://meiminjun.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<h1 id="git常用操作-回滚代码"><a href="#git常用操作-回滚代码" class="headerlink" title="git常用操作-回滚代码"></a>git常用操作-回滚代码</h1><h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><ul>
 <li>git init 初始化一个git仓库</li>
 <li>git add readme.txt 把文件添加到仓库(可以后面添加多个文件)</li>
@@ -736,7 +1479,7 @@
     
     <entry>
       <title><![CDATA[chrome神器之postman]]></title>
-      <url>http://meiminjun.github.io/2016/08/18/chrome-postman/</url>
+      <url>http://meiminjun.github.io/chrome-postman/</url>
       <content type="html"><![CDATA[<h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
 <p>##离线安装(简易版)</p>
 <p>内部地址：<br>\10.14.47.51\share\临时存放\梅敏君\tool\Postman-REST-Client_v0.8.1</p>
@@ -773,7 +1516,7 @@
     
     <entry>
       <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/2016/08/18/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
       <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
 <h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
 <li>查询到最优质的知识和技能（比百度强大的多）</li>
@@ -797,9 +1540,9 @@
     
     <entry>
       <title><![CDATA[ionic2菜鸟学习笔记《二》]]></title>
-      <url>http://meiminjun.github.io/2016/08/03/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/</url>
-      <content type="html"><![CDATA[<p><a href="http://meiminjun.github.io/2016/08/01/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
-<p><a href="http://meiminjun.github.io/2016/08/03/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
+      <url>http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/</url>
+      <content type="html"><![CDATA[<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
+<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
 <h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><p>在ionic2中相互跳转就要用到navigation,<br>下面我们在主页添加一个按钮，点击按钮跳转到一个新的页面，然后将一个页面中的数据传递到另外一个页面。</p>
 <p>进入项目，并创建一个新的页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g page SecondPage</div></pre></td></tr></table></figure></p>
 <p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6gxeqo0s3j20hp052gmb.jpg" alt=""></p>
@@ -836,9 +1579,9 @@
     
     <entry>
       <title><![CDATA[ionic2菜鸟学习笔记《一》]]></title>
-      <url>http://meiminjun.github.io/2016/08/01/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/</url>
-      <content type="html"><![CDATA[<p><a href="http://meiminjun.github.io/2016/08/01/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
-<p><a href="http://meiminjun.github.io/2016/08/03/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
+      <url>http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/</url>
+      <content type="html"><![CDATA[<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
+<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
 <li>nodeV5版本以上(官方推荐)</li>
 <li>cordova</li>
@@ -944,16 +1687,18 @@
     
     <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---vim常用命令笔记]]></title>
-      <url>http://meiminjun.github.io/2016/07/31/SublimeText-vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/</url>
+      <url>http://meiminjun.github.io/SublimeText-vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg" alt=""></p>
 <p>这篇文章主要讲的Sublime Text 3 的<strong>vim</strong>命令说明，勤加练习之后，方可解放你的双手</p>
 <a id="more"></a>
 <ol>
-<li><p><strong> <a href="/2016/06/24/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/23/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/22/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
 </li>
 </ol>
 <h2 id="sulimeText-的vim模式"><a href="#sulimeText-的vim模式" class="headerlink" title="sulimeText 的vim模式"></a>sulimeText 的vim模式</h2><p>sublime 默认是禁用vim模式的</p>
@@ -961,7 +1706,7 @@
 <p>开启vim模式要配置成：</p>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>: [<span class="string">""</span>]</div></pre></td></tr></table></figure>
 <p>在用户配置中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"vintage_start_in_command_mode"</span>: <span class="literal">true</span> <span class="comment">//启动时，开启vim命令模式</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"vintage_start_in_command_mode"</span>: <span class="literal">true</span> <span class="comment">//启动时，开启vim命令模式</span></div></pre></td></tr></table></figure>
 <p>在用户快捷键中添加配置(进入vim模式)：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"j"</span>, <span class="string">"j"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"exit_insert_mode"</span>,</div><div class="line">    <span class="attr">"context"</span>:</div><div class="line">    [</div><div class="line">        &#123; <span class="attr">"key"</span>: <span class="string">"setting.command_mode"</span>, <span class="attr">"operand"</span>: <span class="literal">false</span> &#125;,</div><div class="line">        &#123; <span class="attr">"key"</span>: <span class="string">"setting.is_widget"</span>, <span class="attr">"operand"</span>: <span class="literal">false</span> &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="vim-sublime命令（必记）"><a href="#vim-sublime命令（必记）" class="headerlink" title="vim-sublime命令（必记）"></a>vim-sublime命令（必记）</h2><p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6kg9eegv9j20e703w74s.jpg" alt=""></p>
@@ -978,7 +1723,7 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- 继承与原型链]]></title>
-      <url>http://meiminjun.github.io/2016/07/26/javascript-%E4%B8%A4%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/</url>
+      <url>http://meiminjun.github.io/javascript-%E4%B8%A4%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#使用_class_关键字" target="_blank" rel="external">继承与原型链</a></h1><p>对于那些熟悉基于类的面向对象语言（Java 或者 C++）的开发者来说，JavaScript 的语法是比较怪异的，这是由于 JavaScript 是一门动态语言，而且它没有类的概念（ ES6 新增了class 关键字，但只是语法糖，JavaScript 仍旧是基于原型）。</p>
 <p>涉及到继承这一块，Javascript 只有一种结构，那就是：对象。在 javaScript 中，每个对象都有一个指向它的原型（prototype）对象的内部链接。这个原型对象又有自己的原型，直到某个对象的原型为 null 为止（也就是不再有原型指向），组成这条链的最后一环。这种一级一级的链结构就称为原型链（prototype chain）。</p>
 <p>虽然，原型继承经常被视作 JavaScript 的一个弱点，但事实上，原型继承模型比经典的继承模型更强大。尽管在原型模型上构建一个标准的类模型是相当琐碎的，但如果采取其他方式实现的话会更加困难。</p>
@@ -1008,7 +1753,7 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- object-assign方法]]></title>
-      <url>http://meiminjun.github.io/2016/07/26/javascript-object-assign%E6%96%B9%E6%B3%95/</url>
+      <url>http://meiminjun.github.io/javascript-object-assign%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="javascript-之-object-assign-的方法介绍和示例"><a href="#javascript-之-object-assign-的方法介绍和示例" class="headerlink" title="javascript 之 object-assign 的方法介绍和示例"></a>javascript 之 object-assign 的方法介绍和示例</h1><h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="external">Object.assign()</a></h2><p>Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。</p>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
 <p>Object.assign(target, …sources)</p>
@@ -1034,7 +1779,7 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- object-create方法]]></title>
-      <url>http://meiminjun.github.io/2016/07/26/javascript-object-create%E6%96%B9%E6%B3%95/</url>
+      <url>http://meiminjun.github.io/javascript-object-create%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="javascript-之-object-create的方法介绍和示例"><a href="#javascript-之-object-create的方法介绍和示例" class="headerlink" title="javascript 之 object-create的方法介绍和示例"></a>javascript 之 object-create的方法介绍和示例</h1><h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="external">Object.create()</a></h2><p>Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。</p>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
 <p>Object.create(proto, [ propertiesObject ])</p>
@@ -1056,7 +1801,7 @@
     
     <entry>
       <title><![CDATA[git常用命令清单]]></title>
-      <url>http://meiminjun.github.io/2016/07/24/%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</url>
+      <url>http://meiminjun.github.io/%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</url>
       <content type="html"><![CDATA[<p>一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。</p>
 <p><img src="http://image.beekka.com/blog/2014/bg2014061202.jpg" alt=""></p>
 <ul>
@@ -1090,7 +1835,7 @@
     
     <entry>
       <title><![CDATA[npm 模块管理器]]></title>
-      <url>http://meiminjun.github.io/2016/07/13/npm%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+      <url>http://meiminjun.github.io/npm%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
       <content type="html"><![CDATA[<h1 id="npm-模块管理器"><a href="#npm-模块管理器" class="headerlink" title="npm 模块管理器"></a>npm 模块管理器</h1><p>NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：</p>
 <ul>
 <li>允许用户从NPM服务器下载别人编写的第三方包到本地使用。</li>
@@ -1199,8 +1944,17 @@
     </entry>
     
     <entry>
+      <title><![CDATA[windows常用快捷键]]></title>
+      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
+<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Chrome常用设置]]></title>
-      <url>http://meiminjun.github.io/2016/07/09/chrome%E5%BC%80%E5%8F%91/</url>
+      <url>http://meiminjun.github.io/chrome%E5%BC%80%E5%8F%91/</url>
       <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
 <p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
 <p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
@@ -1213,17 +1967,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[windows常用快捷键]]></title>
-      <url>http://meiminjun.github.io/2016/07/09/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
-<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
-<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Chrome神器Vimium快捷键学习记录]]></title>
-      <url>http://meiminjun.github.io/2016/07/09/Chrome%E7%A5%9E%E5%99%A8Vimium%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+      <url>http://meiminjun.github.io/Chrome%E7%A5%9E%E5%99%A8Vimium%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg" alt=""></p>
 <h1 id="Vimium使用快捷键总结"><a href="#Vimium使用快捷键总结" class="headerlink" title="Vimium使用快捷键总结"></a>Vimium使用快捷键总结</h1><h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>F6 ：在当前的标签页直接输入一个新的网址</p>
 <p><strong>o：打开 URl、书签或历史记录 </strong><br><strong> O：在新标签页中打开 URl、书签或历史记录</strong></p>
@@ -1236,7 +1981,7 @@
     
     <entry>
       <title><![CDATA[移动端优化]]></title>
-      <url>http://meiminjun.github.io/2016/07/08/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BC%98%E5%8C%96/</url>
+      <url>http://meiminjun.github.io/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BC%98%E5%8C%96/</url>
       <content type="html"><![CDATA[<h1 id="Google-Developers：移动Web优化指南"><a href="#Google-Developers：移动Web优化指南" class="headerlink" title="Google Developers：移动Web优化指南"></a>Google Developers：移动Web优化指南</h1><h3 id="（原标题：用PageSpeed进行移动页面性能分析）"><a href="#（原标题：用PageSpeed进行移动页面性能分析）" class="headerlink" title="（原标题：用PageSpeed进行移动页面性能分析）"></a>（原标题：用PageSpeed进行移动页面性能分析）</h3><p>注：由于这篇文章单独拿出来看与PageSpeed几乎无关，故改为更合适的题目</p>
 <p>PageSpeed Insights可以用于分析一个页面是否遵循了我们的建议——“在移动网络下一秒之内渲染完毕”。研究已经显示，超过一秒的渲染时间会打断用户的思绪流，造成糟糕的用户体验。我们的目标是，保持用户停留在页面上，并且提供最佳的体验，不管用户使用什么设备，或是在何种网络下浏览页面。</p>
 <p>满足一秒渲染完毕的标准是很难的。但是幸运的是，我们没有必要让整个页面都满足这个条件，换句话说，<strong>我们要首屏（above the fold，ATF）满足一秒渲染的条件，这样可以让用户尽可能快的与页面进行交互</strong>。然后，当用户在阅读第一页的内容时，剩下的页面可在后台逐渐的加载。</p>
@@ -1262,15 +2007,17 @@
     
     <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---常用快捷键]]></title>
-      <url>http://meiminjun.github.io/2016/06/24/SublimeText-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <url>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
 <p>本人很喜欢折腾工具，所以下面罗列一下自己长期以来用Sublime Text 3 的一些<strong>精选的快捷键</strong>，<strong>非常高效率</strong>的一些插件、还有<strong>时尚精美</strong>的主题,分以下三篇:</p>
 <ol>
-<li><p><strong> <a href="/2016/06/24/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/23/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/22/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
 </li>
 </ol>
 <p><strong>各位小伙伴们，还有没有<code>高效率</code>快捷键呢？有的请留言哦！谢谢。。O(∩_∩)O</strong></p>
@@ -1356,13 +2103,13 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列---静态属性和原型方法]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
+      <url>http://meiminjun.github.io/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- Array 之splice]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/javascript-Array-splice%E6%96%B9%E6%B3%95/</url>
+      <url>http://meiminjun.github.io/javascript-Array-splice%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
 <p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
@@ -1411,7 +2158,7 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- String 之slice]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/javascript-slice%E6%96%B9%E6%B3%95/</url>
+      <url>http://meiminjun.github.io/javascript-slice%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
 <p>stringObject.slice(start,end)</p>
@@ -1473,15 +2220,17 @@
     
     <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---精选插件和UI主题]]></title>
-      <url>http://meiminjun.github.io/2016/06/23/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
+      <url>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
 <p>这篇文章主要讲的是Sublime Text 3一些<code>高效率的插件</code>和<code>漂亮的主题</code>。</p>
 <ol>
-<li><p><strong> <a href="/2016/06/24/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/23/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/22/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
 </li>
 </ol>
 <p><strong>各位小伙伴们，还有没有你心目中<code>酷炫时尚</code>的插件呢？有的请留言哦！谢谢。。O(∩_∩)O</strong></p>
@@ -1522,7 +2271,7 @@
 </ul>
 <p>安装成功后，重启就可以检测代码风格了</p>
 <p>当然还可以自定义校验规则，在项目目录下新建一个.jshintrc的配置文件<br>在其中使用JSON格式配置校验风格。</p>
-<p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//建议使用===，不使用时会有提示。</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"eqeqeq"</span>:<span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//建议使用===，不使用时会有提示。</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"eqeqeq"</span>:<span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="sublimeLinter-elint"><a href="#sublimeLinter-elint" class="headerlink" title="sublimeLinter-elint"></a><a href="https://github.com/roadhump/SublimeLinter-eslint" target="_blank" rel="external">sublimeLinter-elint</a></h2><p>让sublime-text 支持es6和react</p>
 <p>详细说明：<a href="http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint" target="_blank" rel="external">http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint</a></p>
 <h2 id="HTML-CSS-JS-Prettify-代码格式化插件"><a href="#HTML-CSS-JS-Prettify-代码格式化插件" class="headerlink" title="HTML-CSS-JS Prettify(代码格式化插件)"></a><a href="https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify" target="_blank" rel="external">HTML-CSS-JS Prettify</a>(代码格式化插件)</h2><p>HTML-CSSS-JS Prettify插件使用的是node版的js-beautify，因此需要首先安装node，node的安装请自行搜索。<br>在node安装完成后，使用npm安装js-beautify，命令 npm install -g js-beautify<br>最后Ctrl+Shift+P输入Install Package，然后输入HTML-CSS-JS Prettify进行安装</p>
@@ -1546,15 +2295,17 @@
     
     <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---我的常用配置]]></title>
-      <url>http://meiminjun.github.io/2016/06/22/SublimeText-%E6%88%91%E7%9A%84%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</url>
+      <url>http://meiminjun.github.io/SublimeText-%E6%88%91%E7%9A%84%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
 <p>这篇文章主要讲的Sublime Text 3 的一些用户配置说明，方便使用者的个性化使用</p>
 <ol>
-<li><p><strong> <a href="/2016/06/24/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/23/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
 </li>
-<li><p><strong> <a href="/2016/06/22/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
 </li>
 </ol>
 <a id="more"></a>
@@ -1592,7 +2343,7 @@
     
     <entry>
       <title><![CDATA[7月份要做的事情]]></title>
-      <url>http://meiminjun.github.io/2016/06/22/7%E6%9C%88%E4%BB%BD-TODO/</url>
+      <url>http://meiminjun.github.io/7%E6%9C%88%E4%BB%BD-TODO/</url>
       <content type="html"><![CDATA[<h2 id="react-redux-的学习-4-10"><a href="#react-redux-的学习-4-10" class="headerlink" title="react + redux 的学习(4-10)"></a>react + redux 的学习(4-10)</h2><p>新建一个纯净的react+redux 环境<br><a href="https://github.com/chenbin92/react-redux-webpack-starter/issues/1?mType=Group" target="_blank" rel="external">https://github.com/chenbin92/react-redux-webpack-starter/issues/1?mType=Group</a></p>
 <h3 id="入门"><a href="#入门" class="headerlink" title="入门:"></a>入门:</h3><p><a href="http://www.alloyteam.com/2015/09/react-redux/" target="_blank" rel="external">http://www.alloyteam.com/2015/09/react-redux/</a></p>
 <h3 id="参考教程："><a href="#参考教程：" class="headerlink" title="参考教程："></a>参考教程：</h3><p><a href="http://www.cnblogs.com/lewis617/tag/redux/" target="_blank" rel="external">http://www.cnblogs.com/lewis617/tag/redux/</a></p>
@@ -1636,7 +2387,7 @@
     
     <entry>
       <title><![CDATA[Markdown 笔记]]></title>
-      <url>http://meiminjun.github.io/2016/06/21/Markdown%E8%AF%AD%E6%B3%95/</url>
+      <url>http://meiminjun.github.io/Markdown%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="优秀的在线MarkDown-网站"><a href="#优秀的在线MarkDown-网站" class="headerlink" title="优秀的在线MarkDown 网站"></a>优秀的在线MarkDown 网站</h1><h2 id="1-https-www-zybuluo-com-mdeditor"><a href="#1-https-www-zybuluo-com-mdeditor" class="headerlink" title="1. https://www.zybuluo.com/mdeditor"></a>1. <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">https://www.zybuluo.com/mdeditor</a></h2><h2 id="2-http-mahua-jser-me"><a href="#2-http-mahua-jser-me" class="headerlink" title="2. http://mahua.jser.me/"></a>2. <a href="http://mahua.jser.me/" target="_blank" rel="external">http://mahua.jser.me/</a></h2><h1 id="什么是Markdown"><a href="#什么是Markdown" class="headerlink" title="什么是Markdown"></a>什么是Markdown</h1><p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> </p>
 <p>在此，我们总结 Markdown 的优点如下：</p>
 <ul>
@@ -1692,7 +2443,7 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- 设计模式 之单例模式]]></title>
-      <url>http://meiminjun.github.io/2016/06/11/javascript-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://meiminjun.github.io/javascript-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="javascript设计模式之单例模式"><a href="#javascript设计模式之单例模式" class="headerlink" title="javascript设计模式之单例模式"></a>javascript设计模式之单例模式</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>在传统开发工程师眼里，单例就是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>在JavaScript里，实现单例的方式有很多种，其中最简单的一个方式是使用对象字面量的方法，其字面量里可以包含大量的属性和方法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var mySingleton = &#123;    </div><div class="line">  property1: <span class="string">"something"</span>,</div><div class="line">  property2: <span class="string">"something else"</span>,</div><div class="line">  method1: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">      console.log(<span class="string">'hello world'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -1717,7 +2468,7 @@
     
     <entry>
       <title><![CDATA[webpack 开发笔记---傻瓜式入门教程]]></title>
-      <url>http://meiminjun.github.io/2016/05/05/webpack%E6%95%99%E7%A8%8B/</url>
+      <url>http://meiminjun.github.io/webpack%E6%95%99%E7%A8%8B/</url>
       <content type="html"><![CDATA[<h1 id="Webpack傻瓜式指南"><a href="#Webpack傻瓜式指南" class="headerlink" title="Webpack傻瓜式指南"></a>Webpack傻瓜式指南</h1><p><img src="/images/blogImg/524ee3f84a1742cbc4de3e2ff95ce983_b.png" alt="图片"></p>
 <p>Webpack最近很热，满屏幕都是React＋Webpack，官方文档写的不太好，好多点都没有解释的详细，所以我参考了几篇文章，写一篇傻瓜式指南。本文适合第一次接触webpack的朋友，如果是老鸟，就不用看了。这是系列的第一篇，主要讲他最基本的用法。</p>
 <a id="more"></a>
@@ -1856,7 +2607,7 @@
     
     <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- 代码规范]]></title>
-      <url>http://meiminjun.github.io/2016/04/01/%E5%89%8D%E7%AB%AF%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/</url>
+      <url>http://meiminjun.github.io/%E5%89%8D%E7%AB%AF%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/</url>
       <content type="html"><![CDATA[<h1 id="前端代码规范"><a href="#前端代码规范" class="headerlink" title="前端代码规范"></a>前端代码规范</h1><h2 id="es5"><a href="#es5" class="headerlink" title="es5"></a>es5</h2><p><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html</a></p>
 <h2 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h2><p>各国外国大厂用的es6规范：</p>
 <p><a href="https://github.com/niubai/javascript" target="_blank" rel="external">https://github.com/niubai/javascript</a></p>
@@ -1867,7 +2618,7 @@
     
     <entry>
       <title><![CDATA[javascript之call、apply的使用]]></title>
-      <url>http://meiminjun.github.io/2016/03/18/javascript-call-apply/</url>
+      <url>http://meiminjun.github.io/javascript-call-apply/</url>
       <content type="html"><![CDATA[<h2 id="call与apply的区别"><a href="#call与apply的区别" class="headerlink" title="call与apply的区别"></a>call与apply的区别</h2><hr>
 <p>call 与 apply 的用法是基本一致,只是调用是不一样:<br>call的第二个参数为”字符串”<br>apply 的第二个参数为”数组”</p>
 <h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><hr>
@@ -1885,7 +2636,7 @@
     
     <entry>
       <title><![CDATA[javascript之常用DOM操作]]></title>
-      <url>http://meiminjun.github.io/2016/01/05/javascript-dom/</url>
+      <url>http://meiminjun.github.io/javascript-dom/</url>
       <content type="html"><![CDATA[<p>这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">      <span class="keyword">function</span> <span class="function"><span class="title">fun1</span></span>() &#123;</div><div class="line">          var str = document.getElementById(<span class="string">"p1"</span>).innerHTML;</div><div class="line">          alert(str);        //弹出    我是第一个P</div><div class="line">      &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">         &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">         &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
@@ -1945,7 +2696,7 @@
     
     <entry>
       <title><![CDATA[javascript之闭包]]></title>
-      <url>http://meiminjun.github.io/2016/01/05/javascript-%E9%97%AD%E5%8C%85/</url>
+      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
       <content type="html"><![CDATA[<ol>
 <li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
 <li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
@@ -1962,7 +2713,7 @@
     
     <entry>
       <title><![CDATA[微信开发-朋友、朋友圈分享]]></title>
-      <url>http://meiminjun.github.io/2015/12/27/wxProject/</url>
+      <url>http://meiminjun.github.io/wxProject/</url>
       <content type="html"><![CDATA[<p>先看个效果图：<br><img src="/images/blogImg/weixin1227_1.jpg" alt="微信分享"></p>
 <p>目前来说，对于前端开发者来说想要自定义来让分享出去的文章有图标和标题有两种方式，一种是通过微信提供的sdk进行开发，另外一种是通过一些小方法来达到同样目的，下面就向大家介绍一下：</p>
 <a id="more"></a>
@@ -2015,7 +2766,7 @@
     
     <entry>
       <title><![CDATA[Hexo博客搭建]]></title>
-      <url>http://meiminjun.github.io/2015/12/20/My-New-test/</url>
+      <url>http://meiminjun.github.io/My-New-test/</url>
       <content type="html"><![CDATA[<p>作为第一篇博客，我就写一些这个博客是怎么制作的吧！<br><img src="/images/blogImg/hexo-github.png" alt="这个是个图片"></p>
 <h2 id="Hexo是什么"><a href="#Hexo是什么" class="headerlink" title="Hexo是什么?"></a><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是什么?</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
 <blockquote>
@@ -2085,7 +2836,7 @@
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>http://meiminjun.github.io/2015/11/20/hello-world/</url>
+      <url>http://meiminjun.github.io/hello-world/</url>
       <content type="html"><![CDATA[<h1 id="为什么我要开一个博客？"><a href="#为什么我要开一个博客？" class="headerlink" title="为什么我要开一个博客？"></a>为什么我要开一个博客？</h1><p>浑浑噩噩、起起伏伏毕业快三年了！<br>我的主要目的是“<strong>记录一些生活中、学习中所总结的一些经验与大家分享一下</strong>” ,还一个目的就是“<strong>抑制一下自己玩游戏(撸啊撸)和玩手机的冲动，让自己整理一下思绪</strong>(<code>给自己打打鸡血</code>)”</p>
 <blockquote>
 <p>还有一个目的：“成为一个万人敬仰的技术大神，哈哈！”</p>
