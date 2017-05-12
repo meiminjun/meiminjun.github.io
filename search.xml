@@ -7,7 +7,8 @@
       <title><![CDATA[standard代码规范指南]]></title>
       <url>http://meiminjun.github.io/standard%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
       <content type="html"><![CDATA[<p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1ff6vedjfw7j30kz0o7t9v.jpg" alt=""></p>
-<h1 id="使用standard代码风格规则说明（116条）"><a href="#使用standard代码风格规则说明（116条）" class="headerlink" title="使用standard代码风格规则说明（116条）"></a>使用standard代码风格规则说明（116条）</h1><ul>
+<h1 id="使用standard代码风格规则说明（116条）"><a href="#使用standard代码风格规则说明（116条）" class="headerlink" title="使用standard代码风格规则说明（116条）"></a>使用standard代码风格规则说明（116条）</h1><a id="more"></a>
+<ul>
 <li><strong>使用两个空格进行缩进</strong></li>
 </ul>
 <p>eslint: indent</p>
