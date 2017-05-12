@@ -100,21 +100,21 @@
 
 <meta name="description" content="Vuex 理解简单解释下：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
 Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。
-从左到又，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
+从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-vuex 上手">
 <meta property="og:url" content="http://meiminjun.github.io/vuex/index.html">
 <meta property="og:site_name" content="Mr.Jason'Blog">
 <meta property="og:description" content="Vuex 理解简单解释下：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
 Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。
-从左到又，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
+从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg">
-<meta property="og:updated_time" content="2017-04-28T10:55:37.000Z">
+<meta property="og:updated_time" content="2017-05-12T02:14:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-vuex 上手">
 <meta name="twitter:description" content="Vuex 理解简单解释下：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
 Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。
-从左到又，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
+从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg">
 
 
@@ -310,6 +310,15 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
 
           
           
+             <span id="/vuex/" class="leancloud_visitors" data-flag-title="vue-vuex 上手">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">热度 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -326,7 +335,7 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
         <p><img src="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg" alt=""></p>
 <h2 id="Vuex-理解"><a href="#Vuex-理解" class="headerlink" title="Vuex 理解"></a>Vuex 理解</h2><h3 id="简单解释下："><a href="#简单解释下：" class="headerlink" title="简单解释下："></a>简单解释下：</h3><p>Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作</p>
 <p>Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。</p>
-<p>从左到又，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
+<p>从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
 <p>注意事项</p>
 <ul>
 <li><p>数据流都是单向的</p>
@@ -343,7 +352,7 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
 <h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>在 store 中的 state 对象，可以理解为 Vue 实例中的 data 对象，它用来保存最基本的数据。</p>
 <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import Vue <span class="keyword">from</span> 'Vue';</div><div class="line">import Vuex <span class="keyword">from</span> 'Vuex';</div><div class="line"></div><div class="line">Vue.use(Vuex);</div><div class="line"></div><div class="line">let store = new Vuex.Store(&#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        <span class="keyword">state</span>A: 'a',</div><div class="line">        <span class="keyword">state</span>B: 'b',</div><div class="line">        <span class="keyword">state</span>C: 'c'</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">console.<span class="keyword">log</span>(store.<span class="keyword">state</span>.<span class="keyword">state</span>A); // a</div></pre></td></tr></table></figure>
 <p>在 Vue 中获取 store 中的状态</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">let app = new Vue(&#123;</div><div class="line">　　 el: '<span class="comment">#demo',</span></div><div class="line">    template: `<span class="variable">&lt;h1&gt;</span>&#123;&#123;myState&#125;&#125;&lt;/h1&gt;`,</div><div class="line">    computed: &#123;</div><div class="line">         myState() &#123;</div><div class="line">            return store.<span class="keyword">state</span>.<span class="keyword">state</span>A;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">let app = new Vue(&#123;</div><div class="line">　　 el: '<span class="comment">#demo',</span></div><div class="line">    template: '<span class="variable">&lt;h1&gt;</span>&#123;&#123;myState&#125;&#125;&lt;/h1&gt;',</div><div class="line">    computed: &#123;</div><div class="line">         myState() &#123;</div><div class="line">            return store.<span class="keyword">state</span>.<span class="keyword">state</span>A;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>最简单的方式就是通过 Vue 中的计算属性(computed) 来将 store 中的状态映射为 Vue 的数据。但是当数据多时这种方法明显效率过低，所以 Vuex 中提供了 mapState 方法用于批量映射 store 中的状态。</p>
 <h3 id="mapState映射"><a href="#mapState映射" class="headerlink" title="mapState映射"></a>mapState映射</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import &#123; mapState &#125; <span class="keyword">from</span> 'Vuex';</div><div class="line"></div><div class="line">let app = new Vue(&#123;</div><div class="line">    el: '<span class="comment">#demo',</span></div><div class="line">    store,</div><div class="line">    data: &#123;</div><div class="line">        local: 'L'</div><div class="line">    &#125;,</div><div class="line">    computed: mapState(&#123;</div><div class="line">        <span class="keyword">state</span>A: <span class="keyword">state</span> =&gt; <span class="keyword">state</span>.<span class="keyword">state</span>A,</div><div class="line">        <span class="keyword">state</span>B: '<span class="keyword">state</span>B',</div><div class="line">        <span class="keyword">state</span>C(<span class="keyword">state</span>) &#123;</div><div class="line">            return <span class="keyword">state</span>.<span class="keyword">state</span>C + this.local;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>上例中，a. 可以通过 ES6 中的箭头函数进行数据的映射，b. 当计算属性的名称与 state 的属性名一致时可能直接通过字符串赋值，c. 当需要引用上下文中的 data 属性实，只能通过常规函数来使 this 生效。</p>
@@ -851,6 +860,105 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("dAoNCHYeCKYEe9P8LUbPiU5L-gzGzoHsz", "E9unpmdc4mXYKdBvxEej7PPi");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0+"°C");
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time+"°C");
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time')+"°C");
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time')+"°C");
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
