@@ -98,23 +98,47 @@
 
 
 
-<meta name="description" content="Vuex 理解简单解释下：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
-Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。
-从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
+<meta name="description" content="Vuex概要简单解释：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
+Vuex分成四个部分：
+
+State：单一状态树
+Getters：状态获取
+Mutations：触发同步事件
+Actions：提交mutation，可以包含异步操作
+
+正如上图所示，Vuex的数据总是“单向流动”
+
+用户访问页面并触发acti">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-vuex 上手">
 <meta property="og:url" content="http://meiminjun.github.io/vuex/index.html">
 <meta property="og:site_name" content="Mr.Jason'Blog">
-<meta property="og:description" content="Vuex 理解简单解释下：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
-Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。
-从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
+<meta property="og:description" content="Vuex概要简单解释：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
+Vuex分成四个部分：
+
+State：单一状态树
+Getters：状态获取
+Mutations：触发同步事件
+Actions：提交mutation，可以包含异步操作
+
+正如上图所示，Vuex的数据总是“单向流动”
+
+用户访问页面并触发acti">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg">
-<meta property="og:updated_time" content="2017-05-12T02:14:17.000Z">
+<meta property="og:updated_time" content="2017-05-16T07:45:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-vuex 上手">
-<meta name="twitter:description" content="Vuex 理解简单解释下：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
-Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。
-从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比">
+<meta name="twitter:description" content="Vuex概要简单解释：Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作
+Vuex分成四个部分：
+
+State：单一状态树
+Getters：状态获取
+Mutations：触发同步事件
+Actions：提交mutation，可以包含异步操作
+
+正如上图所示，Vuex的数据总是“单向流动”
+
+用户访问页面并触发acti">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg">
 
 
@@ -333,11 +357,24 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
 
       
         <p><img src="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg" alt=""></p>
-<h2 id="Vuex-理解"><a href="#Vuex-理解" class="headerlink" title="Vuex 理解"></a>Vuex 理解</h2><h3 id="简单解释下："><a href="#简单解释下：" class="headerlink" title="简单解释下："></a>简单解释下：</h3><p>Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作</p>
-<p>Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。</p>
-<p>从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
-<p>注意事项</p>
+<h2 id="Vuex概要"><a href="#Vuex概要" class="headerlink" title="Vuex概要"></a>Vuex概要</h2><h3 id="简单解释："><a href="#简单解释：" class="headerlink" title="简单解释："></a>简单解释：</h3><p>Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作</p>
+<p>Vuex分成四个部分：</p>
+<ol>
+<li>State：单一状态树</li>
+<li>Getters：状态获取</li>
+<li>Mutations：触发同步事件</li>
+<li>Actions：提交mutation，可以包含异步操作</li>
+</ol>
+<p>正如上图所示，Vuex的数据总是“单向流动”</p>
 <ul>
+<li>用户访问页面并触发action</li>
+<li>action提交mutation事件</li>
+<li>mutation事件更改state状态</li>
+<li>state状态改变后更新页面(vue comptents)</li>
+</ul>
+<p>Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。</p>
+<h3 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h3><p>从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
+<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ul>
 <li><p>数据流都是单向的</p>
 </li>
 <li><p>组件能够调用 action</p>
@@ -356,7 +393,7 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
 <p>最简单的方式就是通过 Vue 中的计算属性(computed) 来将 store 中的状态映射为 Vue 的数据。但是当数据多时这种方法明显效率过低，所以 Vuex 中提供了 mapState 方法用于批量映射 store 中的状态。</p>
 <h3 id="mapState映射"><a href="#mapState映射" class="headerlink" title="mapState映射"></a>mapState映射</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import &#123; mapState &#125; <span class="keyword">from</span> 'Vuex';</div><div class="line"></div><div class="line">let app = new Vue(&#123;</div><div class="line">    el: '<span class="comment">#demo',</span></div><div class="line">    store,</div><div class="line">    data: &#123;</div><div class="line">        local: 'L'</div><div class="line">    &#125;,</div><div class="line">    computed: mapState(&#123;</div><div class="line">        <span class="keyword">state</span>A: <span class="keyword">state</span> =&gt; <span class="keyword">state</span>.<span class="keyword">state</span>A,</div><div class="line">        <span class="keyword">state</span>B: '<span class="keyword">state</span>B',</div><div class="line">        <span class="keyword">state</span>C(<span class="keyword">state</span>) &#123;</div><div class="line">            return <span class="keyword">state</span>.<span class="keyword">state</span>C + this.local;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>上例中，a. 可以通过 ES6 中的箭头函数进行数据的映射，b. 当计算属性的名称与 state 的属性名一致时可能直接通过字符串赋值，c. 当需要引用上下文中的 data 属性实，只能通过常规函数来使 this 生效。</p>
-<p>如果所有计算属性的名称都与 state 一致，可以在 mapState 中以数组的方式进行映射。如果 Vue 中已经存在计算属性，可以通过 ES6 的展开操作符 (…) 进行组合。</p>
+<p>如果所有计算属性的名称都与 state 一致，可以在 mapState 中以数组的方式进行映射。如果 Vue 中已经存在计算属性，可以通过 ES6 的对象展开运算符 (…) 进行组合。</p>
 <figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let app = new Vue(&#123;</div><div class="line">    el: '<span class="comment">#demo',</span></div><div class="line">    store,</div><div class="line">    computed: &#123;</div><div class="line">        local() &#123;</div><div class="line">             return 'Local';</div><div class="line">        &#125;,</div><div class="line">        ...mapState(['<span class="keyword">state</span>A', '<span class="keyword">state</span>B', '<span class="keyword">state</span>C'])</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p><strong> 在 Vuex 模块化中，state 是唯一会根据组合时模块的别名来添加层级的，后面的 getters、mutations 以及 actions 都是直接合并在 store 下。</strong></p>
 <p>例如，访问模块 a 中的 state，要通过 store.state.a，访问根 store 上申明的 state，依然是通过 store.state.xxx 直接访问。</p>
@@ -398,6 +435,23 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
 <blockquote>
 <p>有一点要注意的是，将 store 中的 state 绑定到 Vue 组件中的 computed 计算属性后，对 state 进行更改需要通过 mutation 或者 action，在 Vue 组件中直接进行赋值 (this.myState = ‘ABC’) 是不会生效的。</p>
 </blockquote>
+<h2 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h2><p>这个属性有点类似过滤器的作用，只不过它是新增的，有时候我们需要从 store 中的 state 中派生出一些状态，例如对列表进行过滤并计数：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  doneTodosCount () &#123;</div><div class="line">    return this.<span class="variable">$store</span><span class="selector-class">.state</span><span class="selector-class">.todos</span><span class="selector-class">.filter</span>(todo =&gt; todo.done)<span class="selector-class">.length</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="什么时候使用？"><a href="#什么时候使用？" class="headerlink" title="什么时候使用？"></a>什么时候使用？</h3><p>当需要对 store 中的数据进行处理，或者需要对处理后的数据在多个组件进行复用，就可以使用 Getters 来处理，Getters 也可以理解为 Vue 中的计算属性 (computed)。</p>
+<p>vuex 允许我们在 store 中定义『getters』（可以认为是 store 的计算属性）。Getters 接受 state 作为其第一个参数：</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let store = new Vuex.Store(&#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        nowDate: new Date()</div><div class="line">    &#125;,</div><div class="line">    getters: &#123;</div><div class="line">        dateFormat(<span class="keyword">state</span>, getters) &#123;</div><div class="line">            let date = <span class="keyword">state</span>.nowDate;</div><div class="line">            return `$&#123;date.getFullYear()&#125;-$&#123;date.getMonth()+<span class="number">1</span>&#125;-$&#123;date.getDate()&#125; / $&#123;date.getHours()&#125;:$&#123;date.getMinutes()&#125;`;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Getters 会暴露为 store.getters 对象：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.<span class="built_in">log</span>('The <span class="built_in">time</span> <span class="built_in">is</span> now:', store.getters.dateFormat); // The <span class="built_in">time</span> <span class="built_in">is</span> now: <span class="number">2017</span>-<span class="number">2</span>-<span class="number">10</span> / <span class="number">17</span>:<span class="number">28</span></div></pre></td></tr></table></figure>
+<p>Getters 也可以接受其他 getters 作为第二个参数：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">getters: &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  doneTodosCount: (state, getters) =&gt; &#123;</div><div class="line">    return getters<span class="selector-class">.doneTodos</span><span class="selector-class">.length</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">store<span class="selector-class">.getters</span><span class="selector-class">.doneTodosCount</span> <span class="comment">// -&gt; 1</span></div></pre></td></tr></table></figure>
+<p>我们可以很容易地在任何组件中使用它：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  doneTodosCount () &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.doneTodosCount</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="mapGetters-辅助函数"><a href="#mapGetters-辅助函数" class="headerlink" title="mapGetters 辅助函数"></a>mapGetters 辅助函数</h3><p>mapGetters 辅助函数仅仅是将 store 中的 getters 映射到局部计算属性，类似于mapState：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> default &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  computed: &#123;</div><div class="line">  <span class="comment">// 使用对象展开运算符将 getters 混入 computed 对象中</span></div><div class="line">    ...mapGetters([</div><div class="line">      <span class="string">'doneTodosCount'</span>,</div><div class="line">      <span class="string">'anotherGetter'</span>,</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    ])</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你想将一个 getter 属性另取一个名字，使用对象形式：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">mapGetters</span>(&#123;</div><div class="line">  <span class="comment">// 映射 this.doneCount 为 store.getters.doneTodosCount</span></div><div class="line">  <span class="attribute">doneCount</span>: <span class="string">'doneTodosCount'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>为了解决getters、mutations 以及 actions 都是直接合并在 store 下，所以就需要开发者一定要注意types命名</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * mulations 常量，根据页面组件来分组</div><div class="line"> * 命名方式：<span class="comment">[MODULE]</span>/<span class="comment">[ACTION]</span>_<span class="comment">[CONTAINER]</span>_<span class="comment">[FUNCTION]</span>_<span class="comment">[COMPONENT]</span>_<span class="comment">[STATE]</span></div><div class="line"> * MODULE: 模块名<span class="comment">[deposit]</span></div><div class="line"> * ACTION: 行为<span class="comment">[change, set, add...]</span></div><div class="line"> * <span class="keyword">CONTAINER</span>: 组件所在的父级容器或者所在页面</div><div class="line"> * FUNCTION: 组件表示的业务功能名</div><div class="line"> * COMPONENT: 组件<span class="comment">[input, dropdown...]</span></div><div class="line"> * STATE: 组件状态, 单一状态<span class="comment">[open, close, show...]</span></div><div class="line"> */</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -587,7 +641,7 @@ Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex-理解"><span class="nav-number">1.</span> <span class="nav-text">Vuex 理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单解释下："><span class="nav-number">1.1.</span> <span class="nav-text">简单解释下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State"><span class="nav-number">2.</span> <span class="nav-text">State</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明"><span class="nav-number">2.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapState映射"><span class="nav-number">2.2.</span> <span class="nav-text">mapState映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mutations"><span class="nav-number">3.</span> <span class="nav-text">Mutations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参方式"><span class="nav-number">3.1.</span> <span class="nav-text">传参方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mutations-需遵守-Vue-的响应规则"><span class="nav-number">4.</span> <span class="nav-text">Mutations 需遵守 Vue 的响应规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mutation-必须是同步函数"><span class="nav-number">5.</span> <span class="nav-text">mutation 必须是同步函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在组件中提交-Mutations"><span class="nav-number">6.</span> <span class="nav-text">在组件中提交 Mutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actions"><span class="nav-number">7.</span> <span class="nav-text">Actions</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex概要"><span class="nav-number">1.</span> <span class="nav-text">Vuex概要</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单解释："><span class="nav-number">1.1.</span> <span class="nav-text">简单解释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法："><span class="nav-number">1.2.</span> <span class="nav-text">用法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项："><span class="nav-number">1.3.</span> <span class="nav-text">注意事项：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State"><span class="nav-number">2.</span> <span class="nav-text">State</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明"><span class="nav-number">2.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapState映射"><span class="nav-number">2.2.</span> <span class="nav-text">mapState映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mutations"><span class="nav-number">3.</span> <span class="nav-text">Mutations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参方式"><span class="nav-number">3.1.</span> <span class="nav-text">传参方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mutations-需遵守-Vue-的响应规则"><span class="nav-number">4.</span> <span class="nav-text">Mutations 需遵守 Vue 的响应规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mutation-必须是同步函数"><span class="nav-number">5.</span> <span class="nav-text">mutation 必须是同步函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在组件中提交-Mutations"><span class="nav-number">6.</span> <span class="nav-text">在组件中提交 Mutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actions"><span class="nav-number">7.</span> <span class="nav-text">Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Getters"><span class="nav-number">8.</span> <span class="nav-text">Getters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候使用？"><span class="nav-number">8.1.</span> <span class="nav-text">什么时候使用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapGetters-辅助函数"><span class="nav-number">8.2.</span> <span class="nav-text">mapGetters 辅助函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间"><span class="nav-number">9.</span> <span class="nav-text">命名空间</span></a></li></ol></div>
             
           </div>
         </section>
