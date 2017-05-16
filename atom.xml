@@ -731,10 +731,10 @@
     <link href="http://meiminjun.github.io/vuex/"/>
     <id>http://meiminjun.github.io/vuex/</id>
     <published>2017-04-11T14:57:13.000Z</published>
-    <updated>2017-05-16T07:45:23.000Z</updated>
+    <updated>2017-05-16T07:52:55.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gy1fevgyafqesj20m80hht9k.jpg" alt=""></p>
-<h2 id="Vuex概要"><a href="#Vuex概要" class="headerlink" title="Vuex概要"></a>Vuex概要</h2><h3 id="简单解释："><a href="#简单解释：" class="headerlink" title="简单解释："></a>简单解释：</h3><p>Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作</p>
+<h2 id="Vuex概要"><a href="#Vuex概要" class="headerlink" title="Vuex概要"></a>Vuex概要</h2><h3 id="简单解释"><a href="#简单解释" class="headerlink" title="简单解释"></a>简单解释</h3><p>Vuex 使用 单一状态树,通俗理解就是一个应用的数据集合，可以想象为一个“前端数据库”，让其在各个页面上实现数据的共享，并且可操作</p>
 <p>Vuex分成四个部分：</p>
 <ol>
 <li>State：单一状态树</li>
@@ -750,8 +750,8 @@
 <li>state状态改变后更新页面(vue comptents)</li>
 </ul>
 <p>Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。</p>
-<h3 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h3><p>从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
-<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ul>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>从左到右，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
 <li><p>数据流都是单向的</p>
 </li>
 <li><p>组件能够调用 action</p>
