@@ -4,6 +4,49 @@
   
     
     <entry>
+      <title><![CDATA[javascript-数值判断]]></title>
+      <url>http://meiminjun.github.io/javascript-%E6%95%B0%E5%80%BC%E5%88%A4%E6%96%AD/</url>
+      <content type="html"><![CDATA[<h1 id="JavaScript中检测数值的方法"><a href="#JavaScript中检测数值的方法" class="headerlink" title="JavaScript中检测数值的方法"></a>JavaScript中检测数值的方法</h1><h2 id="typeof-最常用"><a href="#typeof-最常用" class="headerlink" title="typeof(最常用)"></a>typeof(最常用)</h2><p>在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> [] <span class="comment">// 'object'</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>typeof 的返回值是个字符串哦</p>
+</blockquote>
+<p>ps:以下typeof中是可用的判断类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "undefined"</span></div><div class="line"></div><div class="line">a = <span class="string">"hello world"</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "string"</span></div><div class="line"></div><div class="line">a = <span class="number">42</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "number"</span></div><div class="line"></div><div class="line">a = <span class="literal">true</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "boolean"</span></div><div class="line"></div><div class="line">a = <span class="literal">null</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "object" -- 奇怪的bug</span></div><div class="line"></div><div class="line">a = <span class="literal">undefined</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "undefined"</span></div><div class="line"></div><div class="line">a = &#123; <span class="attr">b</span>: <span class="string">"c"</span> &#125;;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "object"</span></div></pre></td></tr></table></figure>
+<p>那么我们怎么去判断一个数组类型呢？</p>
+<h2 id="instanceof操作符"><a href="#instanceof操作符" class="headerlink" title="instanceof操作符"></a>instanceof操作符</h2><p>这个操作符和JavaScript中面向对象有点关系，了解这个就先得了解JavaScript中的面向对象。因为这个操作符是检测对象的原型链是否指向构造函数的prototype对象的。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>];     </div><div class="line">alert(arr instanceof Array); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="对象的constructor属性"><a href="#对象的constructor属性" class="headerlink" title="对象的constructor属性"></a>对象的constructor属性</h2><p>除了instanceof，每个对象还有constructor的属性，利用它似乎也能进行Array的判断。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>];     </div><div class="line">alert(arr.constructor === Array); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>第2种和第3种方法貌似无懈可击，但是实际上还是有些漏洞的，当你在多个frame中来回穿梭的时候，这两种方法就亚历山大了。由于每个iframe都有一套自己的执行环境，跨frame实例化的对象彼此是不共享原型链的，因此导致上述检测代码失效!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);   <span class="comment">//创建iframe  </span></div><div class="line"><span class="built_in">document</span>.body.appendChild(iframe);   <span class="comment">//添加到body中  </span></div><div class="line">xArray = <span class="built_in">window</span>.frames[<span class="built_in">window</span>.frames.length<span class="number">-1</span>].Array;     </div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> xArray(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">// 声明数组[1,2,3]     </span></div><div class="line">  </div><div class="line">alert(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// false     </span></div><div class="line">  </div><div class="line">alert(arr.constructor === <span class="built_in">Array</span>); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h2 id="检测数组类型方法"><a href="#检测数组类型方法" class="headerlink" title="检测数组类型方法"></a>检测数组类型方法</h2><p>以上那些方法看上去无懈可击，但是终究会有些问题，接下来向大家提供一些比较不错的方法，可以说是无懈可击了。</p>
+<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h3><p>Object.prototype.toString的行为：首先，取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于”[object Array]”的字符串作为结果(看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”)。利用这 个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayFn</span> (<span class="params">o</span>) </span>&#123;    </div><div class="line"> <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o) === <span class="string">'[object Array]'</span>;     </div><div class="line">&#125;  </div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>];     </div><div class="line">  </div><div class="line">alert(isArrayFn(arr));<span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>call改变toString的this引用为待检测的对象，返回此对象的字符串表示，然后对比此字符串是否是’[object Array]’，以判断其是否是Array的实例。为什么不直接o.toString()?嗯，虽然Array继承自Object，也会有 toString方法，但是这个方法有可能会被改写而达不到我们的要求，而Object.prototype则是老虎的屁股，很少有人敢去碰它的，所以能一定程度保证其“纯洁性”：)</p>
+<p>　　JavaScript 标准文档中定义: [[Class]] 的值只可能是下面字符串中的一个： Arguments, Array, Boolean, Date, Error, Function, JSON, Math, Number, Object, RegExp, String.<br>　　<br>　　<br>　　这种方法在识别内置对象时往往十分有用，但对于自定义对象请不要使用这种方法。
+　　</p>
+<h3 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h3><p>　　ECMAScript5将Array.isArray()正式引入JavaScript，目的就是准确地检测一个值是否为数组。IE9+、 Firefox 4+、Safari 5+、Opera 10.5+和Chrome都实现了这个方法。但是在IE8之前的版本是不支持的。</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><p>综合以上考虑，当前最佳方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>];    </div><div class="line"><span class="keyword">var</span> arr2 = [&#123; <span class="attr">abac</span> : <span class="number">1</span>, <span class="attr">abc</span> : <span class="number">2</span> &#125;];    </div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayFn</span>(<span class="params">value</span>)</span>&#123;  </div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Array</span>.isArray === <span class="string">"function"</span>) &#123;  </div><div class="line">        <span class="keyword">return</span> <span class="built_in">Array</span>.isArray(value);      </div><div class="line">    &#125;<span class="keyword">else</span>&#123;  </div><div class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">"[object Array]"</span>;      </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">alert(isArrayFn(arr));<span class="comment">// true   </span></div><div class="line">alert(isArrayFn(arr2));<span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="判断JavaScript对象为null或者属性为空"><a href="#判断JavaScript对象为null或者属性为空" class="headerlink" title="判断JavaScript对象为null或者属性为空"></a>判断JavaScript对象为null或者属性为空</h2><p>首先说一下null 和 undefined 的区别</p>
+<p>对已声明但未初始化的和未声明的变量执行typeof，都返回”undefined”</p>
+<p>null表示一个空对象指针，typeof操作会返回”object”</p>
+<p>一般不显式的把变量的值设置为undefined，但null相反，对于将要保存对象的变量，应明确的让该变量赋值为null值作为初始化变量。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj;</div><div class="line">alert(obj);  //<span class="string">"undefined"</span></div><div class="line"><span class="attr">obj</span> = <span class="literal">null</span>;</div><div class="line">alert(typeof obj);  //<span class="string">"object"</span></div><div class="line">alert(<span class="attr">obj</span> == <span class="literal">null</span>);  //<span class="literal">true</span></div><div class="line"><span class="attr">bj</span> = &#123;&#125;;</div><div class="line">alert(<span class="attr">bj</span> == <span class="literal">null</span>);  //<span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>下面是两个判断空对象的函数</p>
+<ol>
+<li>检查原型继承的</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * 检测对象是否是空对象(不包含任何可读属性)。</div><div class="line"> * 方法既检测对象本身的属性，也检测从原型继承的属性(因此没有使hasOwnProperty)。</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmpty</span>(<span class="params">obj</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> name <span class="keyword">in</span> obj) </div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;;</div><div class="line">a.name = <span class="string">'realwall'</span>;</div><div class="line"><span class="built_in">console</span>.log(isEmpty(a));  <span class="regexp">//</span><span class="literal">false</span></div><div class="line"><span class="built_in">console</span>.log(isEmpty(&#123;&#125;));  <span class="regexp">//</span><span class="literal">true</span></div><div class="line"><span class="built_in">console</span>.log(isEmpty(<span class="literal">null</span>));  <span class="regexp">//</span><span class="literal">true</span></div><div class="line"><span class="regexp">//</span>注意参数为<span class="literal">null</span>时无语法错误，即虽然不能对<span class="literal">null</span>空指针对象添加属性，但使用<span class="keyword">for</span> <span class="keyword">in</span> 语句</div></pre></td></tr></table></figure>
+<ol>
+<li>不检查原型继承的</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> * 检测对象是否是空对象(不包含任何可读属性)。</div><div class="line"> * 方法只既检测对象本身的属性，不检测从原型继承的属性。</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmpty</span>(<span class="params">obj</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> name <span class="keyword">in</span> obj)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(name))</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[standard代码规范指南]]></title>
       <url>http://meiminjun.github.io/standard%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
       <content type="html"><![CDATA[<p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1ff6vedjfw7j30kz0o7t9v.jpg" alt=""></p>
@@ -12,12 +55,12 @@
 <li><strong>使用两个空格进行缩进</strong></li>
 </ul>
 <p>eslint: indent</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span></span> hello (<span class="keyword">name</span>) &#123;</div><div class="line">  console.<span class="built_in">log</span>(<span class="string">'hi'</span>, <span class="keyword">name</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hi'</span>, name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>除需要转义的情况外，字符串统一使用单引号</strong></li>
 </ul>
 <p>eslint: quotes</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.<span class="built_in">log</span>(<span class="string">'测试'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'测试'</span>)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要定义未使用的变量</strong></li>
 </ul>
@@ -31,7 +74,7 @@
 <li><strong>函数声明时括号与函数名间加空格</strong></li>
 </ul>
 <p>eslint: space-before-function-paren</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> <span class="params">(arg)</span> </span>&#123; ... &#125;   <span class="comment">// ✓ ok </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span><span class="params">(arg)</span> </span>&#123; ... &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; ... &#125;)      <span class="comment">// ✓ ok </span></div><div class="line">run(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123; ... &#125;)       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> (<span class="params">arg</span>) </span>&#123; ... &#125;   <span class="comment">// ✓ ok </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">arg</span>) </span>&#123; ... &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">run(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; ... &#125;)      <span class="comment">// ✓ ok </span></div><div class="line">run(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; ... &#125;)       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>始终使用 === 替代 ==</strong></li>
 </ul>
@@ -60,9 +103,9 @@
 <li><strong>多行 if 语句的的括号不能省</strong></li>
 </ul>
 <p>eslint: curly</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true) console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true) &#123;</div><div class="line">  console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">options</span>.quiet !== true)</div><div class="line">  console.<span class="built-in">log</span>(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (options.quiet !== <span class="literal">true</span>) <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">if</span> (options.quiet !== <span class="literal">true</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (options.quiet !== <span class="literal">true</span>)</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要丢掉异常处理中err参数</strong></li>
 </ul>
@@ -73,7 +116,7 @@
 <li><strong>使用浏览器全局变量时加上 window. 前缀</strong></li>
 </ul>
 <p>eslint: no-undef</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不允许有连续多行空行</strong></li>
 </ul>
@@ -84,12 +127,12 @@
 <li><strong>对于三元运算符 ? 和 : 与他们所负责的代码处于同一行</strong></li>
 </ul>
 <p>eslint: operator-linebreak</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development ? <span class="string">'localhost'</span> : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development</div><div class="line">  ? <span class="string">'localhost'</span></div><div class="line">  : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> location = env.development ?</div><div class="line">  <span class="string">'localhost'</span> :</div><div class="line">  <span class="string">'www.api.com'</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development ? <span class="string">'localhost'</span> : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> location = env.development</div><div class="line">  ? <span class="string">'localhost'</span></div><div class="line">  : <span class="string">'www.api.com'</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> location = env.development ?</div><div class="line">  <span class="string">'localhost'</span> :</div><div class="line">  <span class="string">'www.api.com'</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>每个 var 关键字单独声明一个变量</strong></li>
 </ul>
 <p>eslint: one-var</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>, verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>,</div><div class="line">    verbose = <span class="literal">true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span></div><div class="line"><span class="keyword">var</span> verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>, verbose = <span class="literal">true</span></div><div class="line"> </div><div class="line"><span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> silent = <span class="literal">true</span>,</div><div class="line">    verbose = <span class="literal">true</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>条件语句中赋值语句使用括号包起来。这样使得代码更加清晰可读，而不会认为是将条件判断语句的全等号（===）错写成了等号（=）</strong></li>
 </ul>
@@ -99,12 +142,12 @@
 <li><strong>单行代码块两边加空格</strong></li>
 </ul>
 <p>eslint: block-spacing</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> <span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> <span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>对于变量和函数名统一使用驼峰命名法</strong></li>
 </ul>
 <p>eslint: camelcase</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_function</span> <span class="params">()</span> </span>&#123; &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span> <span class="params">()</span> </span>&#123; &#125;     <span class="comment">// ✓ ok </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> my_var = <span class="string">'hello'</span>           <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> myVar = <span class="string">'hello'</span>            <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">my_function</span> (<span class="params"></span>) </span>&#123; &#125;    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span> (<span class="params"></span>) </span>&#123; &#125;     <span class="comment">// ✓ ok </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> my_var = <span class="string">'hello'</span>           <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">var</span> myVar = <span class="string">'hello'</span>            <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不允许有多余的行末逗号</strong></li>
 </ul>
@@ -119,7 +162,7 @@
 <li><strong>点号操作符须与属性需在同一行</strong></li>
 </ul>
 <p>eslint: dot-location</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.</div><div class="line">    <span class="built-in">log</span>(<span class="string">'hello'</span>)  <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">console</div><div class="line">.<span class="built-in">log</span>(<span class="string">'hello'</span>) <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.</div><div class="line">    log(<span class="string">'hello'</span>)  <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="built_in">console</span></div><div class="line">.log(<span class="string">'hello'</span>) <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>文件末尾留一空行</strong></li>
 </ul>
@@ -128,7 +171,7 @@
 <li><strong>函数调用时标识符与括号间不留间隔</strong></li>
 </ul>
 <p>eslint: func-call-spacing</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.<span class="built-in">log</span> (<span class="string">'hello'</span>) <span class="comment">// ✗ avoid </span></div><div class="line">console.<span class="built-in">log</span>(<span class="string">'hello'</span>)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log (<span class="string">'hello'</span>) <span class="comment">// ✗ avoid </span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>键值对当中冒号与值之间要留空白</strong></li>
 </ul>
@@ -138,7 +181,7 @@
 <li><strong>构造函数要以大写字母开头</strong></li>
 </ul>
 <p>eslint: new-cap</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animal</span> <span class="params">()</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> animal()    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> <span class="params">()</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal()    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animal</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> animal()    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal()    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>无参的构造函数调用时要带上括号</strong></li>
 </ul>
@@ -168,7 +211,7 @@
 <li>避免对类名重新赋值</li>
 </ul>
 <p>eslint: no-class-assign</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;&#125;</div><div class="line">Dog = <span class="string">'Fido'</span>    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;&#125;</div><div class="line">Dog = <span class="string">'Fido'</span>    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>避免修改使用 const 声明的变量</strong></li>
 </ul>
@@ -203,7 +246,7 @@
 <li>类中不要定义冗余的属性。</li>
 </ul>
 <p>eslint: no-dupe-class-members</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">  bark () &#123;&#125;</div><div class="line">  bark () &#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">  bark () &#123;&#125;</div><div class="line">  bark () &#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>对象字面量中不要定义重复的属性。</li>
 </ul>
@@ -218,7 +261,7 @@
 <li><strong>同一模块有多个导入时一次性写完</strong></li>
 </ul>
 <p>eslint: no-duplicate-imports</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; myFunc1 &#125; <span class="keyword">from</span> <span class="string">'module'</span></div><div class="line"><span class="keyword">import</span> &#123; myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span>          <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> &#123; myFunc1, myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span> <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; myFunc1 &#125; <span class="keyword">from</span> <span class="string">'module'</span></div><div class="line"><span class="keyword">import</span> &#123; myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span>          <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> &#123; myFunc1, myFunc2 &#125; <span class="keyword">from</span> <span class="string">'module'</span> <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>正则中不要使用空字符</strong></li>
 </ul>
@@ -248,17 +291,17 @@
 <li>避免多余的函数上下文绑定</li>
 </ul>
 <p>eslint: no-extra-bind</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> name = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.getName()</div><div class="line">&#125;.bind(user)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>避免不必要的布尔转换</li>
 </ul>
 <p>eslint: no-extra-boolean-cast</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (!!result) &#123;   <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (result) &#123;     <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (!!result) &#123;   <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> result = <span class="literal">true</span></div><div class="line"><span class="keyword">if</span> (result) &#123;     <span class="comment">// ✓ ok </span></div><div class="line">  <span class="comment">// ... </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>不要使用多余的括号包裹函数</li>
 </ul>
 <p>eslint: no-extra-parens</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myFunc = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;)   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myFunc = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;)   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> myFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>switch 一定要使用 break 来将条件分支正常中断</strong></li>
 </ul>
@@ -268,17 +311,17 @@
 <li><strong>不要省去小数点前面的0</strong></li>
 </ul>
 <p>eslint: no-floating-decimal</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> discount = <span class="number">.5</span>      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> discount = <span class="number">0.5</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> discount = <span class="number">.5</span>      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> discount = <span class="number">0.5</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>避免对声明过的函数重新赋值</li>
 </ul>
 <p>eslint: no-func-assign</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123; &#125;</div><div class="line">myFunc = myOtherFunc    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) </span>&#123; &#125;</div><div class="line">myFunc = myOtherFunc    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要对全局只读对象重新赋值</strong></li>
 </ul>
 <p>eslint: no-global-assign</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span> = &#123;&#125;     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span> = &#123;&#125;     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>注意隐式的 eval()</li>
 </ul>
@@ -288,7 +331,7 @@
 <li><strong>嵌套的代码块中禁止再定义函数</strong></li>
 </ul>
 <p>eslint: no-inner-declarations</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (authenticated) &#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setAuthUser</span> <span class="params">()</span> </span>&#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (authenticated) &#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setAuthUser</span> (<span class="params"></span>) </span>&#123;&#125;    <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>不要向 RegExp 构造器传入非法的正则表达式</li>
 </ul>
@@ -298,17 +341,17 @@
 <li>不要使用非法的空白符</li>
 </ul>
 <p>eslint: no-irregular-whitespace</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> </span>() <span class="comment">/*&lt;NBSP&gt;*/</span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) /*&lt;<span class="title">NBSP</span>&gt;*/</span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止使用 <strong>iterator</strong></li>
 </ul>
 <p>eslint: no-iterator</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo.prototype.__iterator__ = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Foo.prototype.__iterator__ = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>外部变量不要与对象属性重名</strong></li>
 </ul>
 <p>eslint: no-label-var</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> score = <span class="number">100</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span> <span class="params">()</span> </span>&#123;</div><div class="line">  score: <span class="number">50</span>         <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> score = <span class="number">100</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  score: <span class="number">50</span>         <span class="comment">// ✗ avoid </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>不要使用标签语句</li>
 </ul>
@@ -318,7 +361,7 @@
 <li>不要书写不必要的嵌套代码块。</li>
 </ul>
 <p>eslint: no-lone-blocks</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123;</div><div class="line">  &#123;                   <span class="comment">// ✗ avoid </span></div><div class="line">    myOtherFunc()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> <span class="params">()</span> </span>&#123;</div><div class="line">  myOtherFunc()       <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  &#123;                   <span class="comment">// ✗ avoid </span></div><div class="line">    myOtherFunc()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunc</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  myOtherFunc()       <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要混合使用空格与制表符作为缩进</strong></li>
 </ul>
@@ -342,7 +385,7 @@
 <li>禁止使用 Function 构造器。</li>
 </ul>
 <p>eslint: no-new-func</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'return a + b'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'return a + b'</span>)    <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止使用 Object 构造器。</li>
 </ul>
@@ -357,12 +400,12 @@
 <li>禁止使用 Symbol 构造器</li>
 </ul>
 <p>eslint: no-new-symbol</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> <span class="built_in">Symbol</span>(<span class="string">'foo'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> <span class="built_in">Symbol</span>(<span class="string">'foo'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止使用原始包装器</li>
 </ul>
 <p>eslint: no-new-wrappers</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">'hello'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> message = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)   <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>不要将全局对象的属性作为函数调用</li>
 </ul>
@@ -387,7 +430,7 @@
 <li>使用 getPrototypeOf 来替代 <strong>proto</strong></li>
 </ul>
 <p>eslint: no-proto</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = obj.__proto__               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.getPrototypeOf(obj)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = obj.__proto__               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.getPrototypeOf(obj)  <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要重复声明变量</strong></li>
 </ul>
@@ -397,7 +440,7 @@
 <li>正则中避免使用多个空格</li>
 </ul>
 <p>eslint: no-regex-spaces</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regexp = /test   <span class="keyword">value</span>/   <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> regexp = /test &#123;<span class="number">3</span>&#125;<span class="keyword">value</span>/  <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> regexp = /test <span class="keyword">value</span>/     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> regexp = <span class="regexp">/test   value/</span>   <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> regexp = <span class="regexp">/test &#123;3&#125;value/</span>  <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> regexp = <span class="regexp">/test value/</span>     <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>return 语句中的赋值必需有括号包裹</strong></li>
 </ul>
@@ -427,7 +470,7 @@
 <li>禁止使用稀疏数组（Sparse arrays）</li>
 </ul>
 <p>eslint: no-sparse-arrays</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fruits = [<span class="string">'apple'</span>,, <span class="string">'orange'</span>]       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fruits = [<span class="string">'apple'</span>,, <span class="string">'orange'</span>]       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要使用制表符</strong></li>
 </ul>
@@ -446,7 +489,7 @@
 <li>用 throw 抛错时，抛出 Error 对象而不是字符串</li>
 </ul>
 <p>eslint: no-throw-literal</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="string">'error'</span>               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">Error</span>(<span class="string">'error'</span>)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="string">'error'</span>               <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)    <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>行末不留空格</strong></li>
 </ul>
@@ -455,7 +498,7 @@
 <li><strong>不要使用 undefined 来初始化变量</strong></li>
 </ul>
 <p>eslint: no-undef-init</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let <span class="keyword">name</span> = undefined    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line">let <span class="keyword">name</span></div><div class="line"><span class="keyword">name</span> = <span class="string">'value'</span>          <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="literal">undefined</span>    <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> name</div><div class="line">name = <span class="string">'value'</span>          <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>循环语句中注意更新循环变量</li>
 </ul>
@@ -480,7 +523,7 @@
 <li>关系运算符的左值不要做取反操作</li>
 </ul>
 <p>eslint: no-unsafe-negation</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!key <span class="keyword">in</span> obj) &#123;&#125;       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (!key <span class="keyword">in</span> obj) &#123;&#125;       <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li>避免不必要的 .call() 和 .apply()</li>
 </ul>
@@ -490,7 +533,7 @@
 <li>避免使用不必要的计算值作对象属性。</li>
 </ul>
 <p>eslint: no-useless-computed-key</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123; [<span class="string">'name'</span>]: <span class="string">'John Doe'</span> &#125;   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> user = &#123; name: <span class="string">'John Doe'</span> &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123; [<span class="string">'name'</span>]: <span class="string">'John Doe'</span> &#125;   <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">const</span> user = &#123; <span class="attr">name</span>: <span class="string">'John Doe'</span> &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>禁止多余的构造器</li>
 </ul>
@@ -500,12 +543,12 @@
 <li>禁止不必要的转义</li>
 </ul>
 <p>eslint: no-useless-escape</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message = <span class="string">'Hell\o'</span>  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> message = <span class="string">'Hell\o'</span>  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>import, export 和解构操作中，禁止赋值到同名变量</strong></li>
 </ul>
 <p>eslint: no-useless-rename</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; <span class="built_in">config</span> as <span class="built_in">config</span> &#125; from <span class="string">'./config'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">import</span> &#123; <span class="built_in">config</span> &#125; from <span class="string">'./config'</span>               <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; config <span class="keyword">as</span> config &#125; <span class="keyword">from</span> <span class="string">'./config'</span>     <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">import</span> &#123; config &#125; <span class="keyword">from</span> <span class="string">'./config'</span>               <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>属性前面不要加空格</li>
 </ul>
@@ -525,7 +568,7 @@
 <li><strong>代码块中避免多余留白</strong></li>
 </ul>
 <p>eslint: padded-blocks</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">                            <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="keyword">const</span> name = getName()</div><div class="line"> </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">  <span class="keyword">const</span> name = getName()    <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">                            <span class="comment">// ✗ avoid </span></div><div class="line">  <span class="keyword">const</span> name = getName()</div><div class="line"> </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (user) &#123;</div><div class="line">  <span class="keyword">const</span> name = getName()    <span class="comment">// ✓ ok </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>展开运算符与它的表达式间不要留空白</li>
 </ul>
@@ -550,7 +593,7 @@
 <li><strong>一元运算符后面跟一个空格</strong></li>
 </ul>
 <p>eslint: space-unary-ops</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span>!admin        <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">typeof</span> !admin        <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span>!admin        <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">typeof</span> !admin        <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>注释首尾留空格</strong></li>
 </ul>
@@ -565,7 +608,7 @@
 <li>检查 NaN 的正确姿势是使用 isNaN()</li>
 </ul>
 <p>eslint: use-isnan</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="comment">(price === NaN)</span> &#123; &#125;      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> <span class="comment">(isNaN(price)</span>) &#123; &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (price === <span class="literal">NaN</span>) &#123; &#125;      <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">isNaN</span>(price)) &#123; &#125;       <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>用合法的字符串跟 typeof 进行比较操作</li>
 </ul>
@@ -575,12 +618,12 @@
 <li><strong>自执行匿名函数 (IIFEs) 使用括号包裹</strong></li>
 </ul>
 <p>eslint: wrap-iife</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;()     <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;())   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123; &#125;)()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;()     <span class="comment">// ✗ avoid </span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;())   <span class="comment">// ✓ ok </span></div><div class="line"><span class="keyword">const</span> getName = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;)()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>yield <em> 中的 </em> 前后都要有空格</li>
 </ul>
 <p>eslint: yield-star-spacing</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">yield</span>* increment()    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="built_in">yield</span> * increment()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">yield</span>* increment()    <span class="comment">// ✗ avoid </span></div><div class="line"><span class="keyword">yield</span> * increment()   <span class="comment">// ✓ ok</span></div></pre></td></tr></table></figure>
 <ul>
 <li>请书写优雅的条件语句（avoid Yoda conditions）。</li>
 </ul>
@@ -591,7 +634,7 @@
 <li>不要使用分号</li>
 </ul>
 <p>eslint: semi</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>);  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>)   <span class="comment">// ✓ ok </span></div><div class="line"><span class="built_in">window</span>.alert(<span class="string">'hi'</span>);  <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要使用 (, [, or ` 等作为一行的开始。在没有分号的情况下代码压缩后会导致报错，而坚持这一规范则可避免出错</strong></li>
 </ul>
@@ -772,7 +815,7 @@
 <p>我们可以很容易地在任何组件中使用它：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  doneTodosCount () &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.doneTodosCount</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="mapGetters-辅助函数"><a href="#mapGetters-辅助函数" class="headerlink" title="mapGetters 辅助函数"></a>mapGetters 辅助函数</h3><p>mapGetters 辅助函数仅仅是将 store 中的 getters 映射到局部计算属性，类似于mapState：</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> default &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  computed: &#123;</div><div class="line">  <span class="comment">// 使用对象展开运算符将 getters 混入 computed 对象中</span></div><div class="line">    ...mapGetters([</div><div class="line">      <span class="string">'doneTodosCount'</span>,</div><div class="line">      <span class="string">'anotherGetter'</span>,</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    ])</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  computed: &#123;</div><div class="line">  <span class="comment">// 使用对象展开运算符将 getters 混入 computed 对象中</span></div><div class="line">    ...mapGetters([</div><div class="line">      <span class="string">'doneTodosCount'</span>,</div><div class="line">      <span class="string">'anotherGetter'</span>,</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    ])</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果你想将一个 getter 属性另取一个名字，使用对象形式：</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">mapGetters</span>(&#123;</div><div class="line">  <span class="comment">// 映射 this.doneCount 为 store.getters.doneTodosCount</span></div><div class="line">  <span class="attribute">doneCount</span>: <span class="string">'doneTodosCount'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>为了解决getters、mutations 以及 actions 都是直接合并在 store 下，所以就需要开发者一定要注意types命名</p>
@@ -1512,30 +1555,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
-      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[chrome神器之postman]]></title>
       <url>http://meiminjun.github.io/chrome-postman/</url>
       <content type="html"><![CDATA[<h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
@@ -1569,6 +1588,30 @@
 <ul>
 <li>使用方法基本和”简易版”一样</li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[google之翻越长城]]></title>
+      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
 ]]></content>
     </entry>
     
@@ -1978,11 +2021,16 @@
     </entry>
     
     <entry>
-      <title><![CDATA[windows常用快捷键]]></title>
-      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
-<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
-<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
+      <title><![CDATA[Chrome常用设置]]></title>
+      <url>http://meiminjun.github.io/chrome%E5%BC%80%E5%8F%91/</url>
+      <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
+<p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
+<p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
+<p>win7:<br>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</p>
+<h2 id="跨域设置"><a href="#跨域设置" class="headerlink" title="跨域设置"></a>跨域设置</h2><p>老版本：</p>
+<p>–disable-web-security</p>
+<p>chrome49版本以后需加入：</p>
+<p>–disable-web-security –user-data-dir</p>
 ]]></content>
     </entry>
     
@@ -2000,16 +2048,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Chrome常用设置]]></title>
-      <url>http://meiminjun.github.io/chrome%E5%BC%80%E5%8F%91/</url>
-      <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
-<p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
-<p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
-<p>win7:<br>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</p>
-<h2 id="跨域设置"><a href="#跨域设置" class="headerlink" title="跨域设置"></a>跨域设置</h2><p>老版本：</p>
-<p>–disable-web-security</p>
-<p>chrome49版本以后需加入：</p>
-<p>–disable-web-security –user-data-dir</p>
+      <title><![CDATA[windows常用快捷键]]></title>
+      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
+<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
 ]]></content>
     </entry>
     
@@ -2136,74 +2179,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[浅谈javacript 笔记系列---静态属性和原型方法]]></title>
-      <url>http://meiminjun.github.io/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[浅谈javacript 笔记系列--- String 之slice]]></title>
-      <url>http://meiminjun.github.io/javascript-slice%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
-<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
-<p>提示和注释</p>
-<p>注释：您可使用负值从数组的尾部选取元素。</p>
-<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
-<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- Array 之splice]]></title>
       <url>http://meiminjun.github.io/javascript-Array-splice%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
@@ -2325,6 +2300,74 @@
 <p><a href="http://frontenddev.org/article/sublime-does-text-three-plug-ins-html-and-css-js-prettify.html" target="_blank" rel="external">sublime text 3 插件：HTML-CSS-JS Prettify</a>文中给出了解决方法，大家可以参考</p>
 <h2 id="我的快捷键配置汇总-首选项-gt-按键绑定-用户"><a href="#我的快捷键配置汇总-首选项-gt-按键绑定-用户" class="headerlink" title="我的快捷键配置汇总:(首选项&gt;按键绑定-用户):"></a>我的快捷键配置汇总:(首选项&gt;按键绑定-用户):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal"</span> &#125;,</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+alt+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal_project_folder"</span> &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"target"</span>: <span class="string">"browser"</span>, <span class="string">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[浅谈javacript 笔记系列---静态属性和原型方法]]></title>
+      <url>http://meiminjun.github.io/javacript%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[浅谈javacript 笔记系列--- String 之slice]]></title>
+      <url>http://meiminjun.github.io/javascript-slice%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>stringObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
+<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
+<p>提示和注释</p>
+<p>注释：您可使用负值从数组的尾部选取元素。</p>
+<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
+<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
@@ -2669,23 +2712,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[javascript之闭包]]></title>
-      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
-      <content type="html"><![CDATA[<ol>
-<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
-<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
-<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
-<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
-</ol>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
-<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
-<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[javascript之常用DOM操作]]></title>
       <url>http://meiminjun.github.io/javascript-dom/</url>
       <content type="html"><![CDATA[<p>这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法</p>
@@ -2742,6 +2768,23 @@
 <h2 id="删除和替换节点。"><a href="#删除和替换节点。" class="headerlink" title="删除和替换节点。"></a>删除和替换节点。</h2><h3 id="removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"><a href="#removeChild-由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。" class="headerlink" title="removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。"></a>removeChild();    由父元素调用，删除一个子节点。注意是直接父元素调用，删除直接子元素才有效，删除孙子元素就没有效果了。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var div1 = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">            div1.removeChild(document.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;    //注意到第二个P元素已经被移除了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
 <h3 id="replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"><a href="#replaceChild-删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点" class="headerlink" title="replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点"></a>replaceChild()    //删除一个子节点，并用一个新节点代替它，第一个参数为新建的节点，第二个节点为被替换的节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            var div1 = document.getElementById(<span class="string">"div1"</span>);</div><div class="line">            var span1 = document.createElement(<span class="string">"span"</span>);</div><div class="line">            span1.textContent = <span class="string">"我是一个新建的span"</span>;</div><div class="line">            div1.replaceChild(span1,document.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">        &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">        &lt;p id=<span class="string">"p2"</span>&gt;我是第二个P&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">  &lt;!-- 执行完成后HTML代码变为：</div><div class="line">  &lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">      &lt;p id=<span class="string">"p1"</span>&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;span&gt;我是一个新建的span&lt;/span&gt;    //留意到p2节点已经被替换为span1节点了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
 <h2 id="javascript操作元素CSS"><a href="#javascript操作元素CSS" class="headerlink" title="javascript操作元素CSS"></a>javascript操作元素CSS</h2><p>通过元素的style属性可以随意读取和设置元素的CSS样式，例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">            alert(document.getElementById(<span class="string">"div1"</span>).style.backgroundColor);</div><div class="line">            document.getElementById(<span class="string">"div1"</span>).style.backgroundColor = <span class="string">"yellow"</span>;</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=<span class="string">"div1"</span> style=<span class="string">"width:100px; height:100px; background-color:red"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript之闭包]]></title>
+      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
+      <content type="html"><![CDATA[<ol>
+<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
+<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
+<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
+<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
+<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
+<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
 ]]></content>
     </entry>
     
