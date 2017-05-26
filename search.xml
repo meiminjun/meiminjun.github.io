@@ -1512,6 +1512,30 @@
     </entry>
     
     <entry>
+      <title><![CDATA[google之翻越长城]]></title>
+      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[chrome神器之postman]]></title>
       <url>http://meiminjun.github.io/chrome-postman/</url>
       <content type="html"><![CDATA[<h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
@@ -1545,30 +1569,6 @@
 <ul>
 <li>使用方法基本和”简易版”一样</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
-      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
 ]]></content>
     </entry>
     
@@ -1978,6 +1978,15 @@
     </entry>
     
     <entry>
+      <title><![CDATA[windows常用快捷键]]></title>
+      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
+<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Chrome神器Vimium快捷键学习记录]]></title>
       <url>http://meiminjun.github.io/Chrome%E7%A5%9E%E5%99%A8Vimium%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg" alt=""></p>
@@ -2001,15 +2010,6 @@
 <p>–disable-web-security</p>
 <p>chrome49版本以后需加入：</p>
 <p>–disable-web-security –user-data-dir</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[windows常用快捷键]]></title>
-      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
-<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
-<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
 ]]></content>
     </entry>
     
@@ -2142,81 +2142,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[史上最强Sublime 笔记系列---精选插件和UI主题]]></title>
-      <url>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
-      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
-<p>这篇文章主要讲的是Sublime Text 3一些<code>高效率的插件</code>和<code>漂亮的主题</code>。</p>
-<ol>
-<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
-</li>
-<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
-</li>
-<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
-</li>
-<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
-</li>
-</ol>
-<p><strong>各位小伙伴们，还有没有你心目中<code>酷炫时尚</code>的插件呢？有的请留言哦！谢谢。。O(∩_∩)O</strong></p>
-<a id="more"></a>
-<hr>
-<h1 id="安装package-control插件-安装之后才能安装其他插件"><a href="#安装package-control插件-安装之后才能安装其他插件" class="headerlink" title="安装package control插件(安装之后才能安装其他插件)"></a>安装package control插件(安装之后才能安装其他插件)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), <span class="string">'wb'</span>).write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())</div></pre></td></tr></table></figure>
-<p>打开sublime text 3，按 ctrl+~或者菜单 View &gt; Show Console打开命令窗口，粘贴以上代码并回车即可。</p>
-<p>然后，<strong>ctrl + shift + p</strong>  下载相关插件<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f568lvwdzug20b606o40a.gif" alt=""></p>
-<h1 id="推荐插件-基本上都是插件官网前100名以内的插件"><a href="#推荐插件-基本上都是插件官网前100名以内的插件" class="headerlink" title="推荐插件(基本上都是插件官网前100名以内的插件)"></a>推荐插件(基本上都是插件官网前100名以内的插件)</h1><h2 id="1-JsFormat-javascript代码格式化"><a href="#1-JsFormat-javascript代码格式化" class="headerlink" title="1. JsFormat (javascript代码格式化)"></a>1. JsFormat (javascript代码格式化)</h2><blockquote>
-<p><strong> 默认快捷键：ctrl + shift + f </strong></p>
-</blockquote>
-<h2 id="2-Terminal-快速打开cmd"><a href="#2-Terminal-快速打开cmd" class="headerlink" title="2. Terminal (快速打开cmd)"></a>2. Terminal (快速打开cmd)</h2><h3 id="由于默认快捷键-ctrl-shift-t-会发生冲突-替换为：ctrl-shift-c"><a href="#由于默认快捷键-ctrl-shift-t-会发生冲突-替换为：ctrl-shift-c" class="headerlink" title="由于默认快捷键 ctrl + shift + t 会发生冲突,替换为：ctrl + shift + c"></a>由于默认快捷键 <code>ctrl + shift + t</code> 会发生冲突,替换为：ctrl + shift + c</h3><p>添加快捷键，如下:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="attr">"args"</span>: &#123;<span class="attr">"target"</span>: <span class="string">"browser"</span>, <span class="attr">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-docblockr-代码注释"><a href="#3-docblockr-代码注释" class="headerlink" title="3. docblockr(代码注释)"></a>3. <a href="https://packagecontrol.io/packages/DocBlockr" target="_blank" rel="external">docblockr</a>(代码注释)</h2><p><img src="/images/blogImg/2016/06/2016-06-22-01.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-02.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-03.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-04.gif" alt="docblockr"></p>
-<h2 id="4-SublimeTmpl-快速构建模板"><a href="#4-SublimeTmpl-快速构建模板" class="headerlink" title="4. SublimeTmpl(快速构建模板)"></a>4. <a href="https://packagecontrol.io/packages/SublimeTmpl" target="_blank" rel="external">SublimeTmpl</a>(快速构建模板)</h2><blockquote>
-<p><strong> 默认快捷键：</strong>   </p>
-<ul>
-<li><strong>ctrl+alt+h 生成html </strong> </li>
-<li><strong>ctrl+alt+j 生成javascript </strong></li>
-<li><strong>ctrl+alt+c 生成css </strong></li>
-<li><strong>ctrl+alt+p 生成php </strong></li>
-<li><strong>ctrl+alt+r 生成ruby </strong></li>
-<li><strong>ctrl+alt+shift+p 生成python </strong></li>
-</ul>
-</blockquote>
-<p>中文文档地址:<strong><a href="http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/" target="_blank" rel="external">http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/</a></strong></p>
-<h3 id="由于ctrl-alt-p-会发生冲突-暂时禁止"><a href="#由于ctrl-alt-p-会发生冲突-暂时禁止" class="headerlink" title="由于ctrl + alt + p 会发生冲突,暂时禁止"></a>由于<code>ctrl + alt + p</code> 会发生冲突,暂时禁止</h3><p>配置如下(首选项&gt;插件设置&gt;SublimeTmpl&gt;Settings-User):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"disable_keymap_actions"</span>: <span class="string">"php"</span>, // <span class="string">"all"</span>; <span class="string">"html,css"</span></div><div class="line">    <span class="string">"date_format"</span> : <span class="string">"%Y-%m-%d %H:%M:%S"</span>,</div><div class="line">    <span class="string">"attr"</span>: &#123;</div><div class="line">        <span class="string">"author"</span>: <span class="string">"Meiminjun"</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">"251222845@qq.com"</span>,</div><div class="line">        <span class="string">"link"</span>: <span class="string">"http://example.org"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="ctrl-alt-j-有可能会发生失效-所以我就切换成另外的快捷键"><a href="#ctrl-alt-j-有可能会发生失效-所以我就切换成另外的快捷键" class="headerlink" title="ctrl + alt + j 有可能会发生失效,所以我就切换成另外的快捷键"></a>ctrl + alt + j 有可能会发生失效,所以我就切换成另外的快捷键</h3><p>添加配置如下(首选项&gt;插件配置&gt;SublimeTmpl&gt;Key Bindings-User):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="5-BracketHighlighter-语法高亮"><a href="#5-BracketHighlighter-语法高亮" class="headerlink" title="5. BracketHighlighter(语法高亮)"></a>5. <a href="https://packagecontrol.io/packages/BracketHighlighter" target="_blank" rel="external">BracketHighlighter</a>(语法高亮)</h2><p><img src="/images/blogImg/2016/06/2016-06-22-05.png" alt="图片"></p>
-<h2 id="6-Markdown-Preview-Markdown-预览"><a href="#6-Markdown-Preview-Markdown-预览" class="headerlink" title="6. Markdown Preview(Markdown 预览)"></a>6. <a href="https://packagecontrol.io/packages/Markdown%20Preview" target="_blank" rel="external">Markdown Preview</a>(Markdown 预览)</h2><p>添加快捷键配置：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="attr">"args"</span>: &#123;<span class="attr">"target"</span>: <span class="string">"browser"</span>, <span class="attr">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="sublimeLinter-jshint-语法校验"><a href="#sublimeLinter-jshint-语法校验" class="headerlink" title="[sublimeLinter-jshint]:语法校验"></a>[sublimeLinter-jshint]:语法校验</h2><ul>
-<li>需先安装SublimeLinter</li>
-<li>安装Node.js </li>
-<li>在cmd中输入 npm install -g jshint,等待安装就好了</li>
-</ul>
-<p>安装成功后，重启就可以检测代码风格了</p>
-<p>当然还可以自定义校验规则，在项目目录下新建一个.jshintrc的配置文件<br>在其中使用JSON格式配置校验风格。</p>
-<p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//建议使用===，不使用时会有提示。</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"eqeqeq"</span>:<span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="sublimeLinter-elint"><a href="#sublimeLinter-elint" class="headerlink" title="sublimeLinter-elint"></a><a href="https://github.com/roadhump/SublimeLinter-eslint" target="_blank" rel="external">sublimeLinter-elint</a></h2><p>让sublime-text 支持es6和react</p>
-<p>详细说明：<a href="http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint" target="_blank" rel="external">http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint</a></p>
-<h2 id="HTML-CSS-JS-Prettify-代码格式化插件"><a href="#HTML-CSS-JS-Prettify-代码格式化插件" class="headerlink" title="HTML-CSS-JS Prettify(代码格式化插件)"></a><a href="https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify" target="_blank" rel="external">HTML-CSS-JS Prettify</a>(代码格式化插件)</h2><p>HTML-CSSS-JS Prettify插件使用的是node版的js-beautify，因此需要首先安装node，node的安装请自行搜索。<br>在node安装完成后，使用npm安装js-beautify，命令 npm install -g js-beautify<br>最后Ctrl+Shift+P输入Install Package，然后输入HTML-CSS-JS Prettify进行安装</p>
-<h3 id="HTML-CSS-JS-Prettify配置"><a href="#HTML-CSS-JS-Prettify配置" class="headerlink" title="HTML-CSS-JS Prettify配置"></a>HTML-CSS-JS Prettify配置</h3><p>HTML-CSS-JS Prettify配置可使用.jsbeautifyrc文件，js-beautify会在被优化代码文件的当前目录查找，如果找不到会向上级目录查找。<br>因此，可以在项目的根目录新建.jsbeautifyrc文件来配置js-beautify<br>贴一下我的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  // Details: https://github.com/victorporof/Sublime-HTMLPrettify<span class="comment">#using-your-own-jsbeautifyrc-options</span></div><div class="line">  // Documentation: https://github.com/einars/js-beautify/</div><div class="line">  <span class="string">"html"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"htm"</span>, <span class="string">"html"</span>, <span class="string">"xhtml"</span>, <span class="string">"shtml"</span>, <span class="string">"xml"</span>, <span class="string">"svg"</span>,<span class="string">"aspx"</span>,<span class="string">"jsp"</span>],</div><div class="line">    <span class="string">"brace_style"</span>: <span class="string">"collapse"</span>, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them <span class="built_in">where</span> they are</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_handlebars"</span>: <span class="literal">false</span>, // e.g. &#123;&#123;<span class="comment">#foo&#125;&#125;, &#123;&#123;/foo&#125;&#125;</span></div><div class="line">    <span class="string">"indent_inner_html"</span>: <span class="literal">false</span>, // Indent &lt;head&gt; and &lt;body&gt; sections</div><div class="line">    <span class="string">"indent_scripts"</span>: <span class="string">"keep"</span>, // [keep|separate|normal]</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"max_preserve_newlines"</span>: 0, // Maximum number of line breaks to be preserved <span class="keyword">in</span> one chunk (0 disables)</div><div class="line">    <span class="string">"preserve_newlines"</span>: <span class="literal">true</span>, // Whether existing line breaks before elements should be preserved (only works before elements, not inside tags or <span class="keyword">for</span> text)</div><div class="line">    <span class="string">"unformatted"</span>: [<span class="string">"a"</span>, <span class="string">"span"</span>, <span class="string">"img"</span>, <span class="string">"code"</span>, <span class="string">"pre"</span>, <span class="string">"sub"</span>, <span class="string">"sup"</span>, <span class="string">"em"</span>, <span class="string">"strong"</span>, <span class="string">"b"</span>, <span class="string">"i"</span>, <span class="string">"u"</span>, <span class="string">"strike"</span>, <span class="string">"big"</span>, <span class="string">"small"</span>, <span class="string">"pre"</span>, <span class="string">"h1"</span>, <span class="string">"h2"</span>, <span class="string">"h3"</span>, <span class="string">"h4"</span>, <span class="string">"h5"</span>, <span class="string">"h6"</span>], // List of tags that should not be reformatted</div><div class="line">    <span class="string">"wrap_line_length"</span>: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"css"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"css"</span>, <span class="string">"scss"</span>, <span class="string">"sass"</span>, <span class="string">"less"</span>],</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"newline_between_rules"</span>: <span class="literal">true</span>, // Add a new line after every css rule</div><div class="line">    <span class="string">"selector_separator"</span>: <span class="string">" "</span>,</div><div class="line">    <span class="string">"selector_separator_newline"</span>: <span class="literal">false</span> // Separate selectors with newline or not (e.g. <span class="string">"a,\nbr"</span> or <span class="string">"a, br"</span>)</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"js"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"js"</span>, <span class="string">"json"</span>, <span class="string">"jshintrc"</span>, <span class="string">"jsbeautifyrc"</span>, <span class="string">"csslintrc"</span>],</div><div class="line">    <span class="string">"brace_style"</span>: <span class="string">"collapse"</span>, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them <span class="built_in">where</span> they are</div><div class="line">    <span class="string">"break_chained_methods"</span>: <span class="literal">false</span>, // Break chained method calls across subsequent lines</div><div class="line">    <span class="string">"e4x"</span>: <span class="literal">false</span>, // Pass E4X xml literals through untouched</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_level"</span>: 0, // Initial indentation level</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"indent_with_tabs"</span>: <span class="literal">false</span>, // Indent with tabs, overrides `indent_size` and `indent_char`</div><div class="line">    <span class="string">"jslint_happy"</span>: <span class="literal">false</span>, // If <span class="literal">true</span>, <span class="keyword">then</span> jslint-stricter mode is enforced</div><div class="line">    <span class="string">"keep_array_indentation"</span>: <span class="literal">false</span>, // Preserve array indentation</div><div class="line">    <span class="string">"keep_function_indentation"</span>: <span class="literal">false</span>, // Preserve <span class="keyword">function</span> indentation</div><div class="line">    <span class="string">"max_preserve_newlines"</span>: 0, // Maximum number of line breaks to be preserved <span class="keyword">in</span> one chunk (0 disables)</div><div class="line">    <span class="string">"preserve_newlines"</span>: <span class="literal">true</span>, // Whether existing line breaks should be preserved</div><div class="line">    <span class="string">"space_after_anon_function"</span>: <span class="literal">false</span>, // Should the space before an anonymous <span class="keyword">function</span><span class="string">'s parens be added, "function()" vs "function ()"</span></div><div class="line">    "space_before_conditional": true, // Should the space before conditional statement be added, "if(true)" vs "if (true)"</div><div class="line">    "space_in_empty_paren": false, // Add padding spaces within empty paren, "f()" vs "f( )"</div><div class="line">    "space_in_paren": false, // Add padding spaces within paren, ie. f( a, b )</div><div class="line">    "unescape_strings": false, // Should printable characters in strings encoded in \xNN notation be unescaped, "example" vs "\x65\x78\x61\x6d\x70\x6c\x65"</div><div class="line">    "wrap_line_length": 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>主要的改动就是</p>
-<ul>
-<li>修改了”html”的”allowed_file_extensions”，增加了aspx和jsp的支持</li>
-<li>修改了”css”的”selector_separator_newline”，个人觉得没必要每个选择器都要占一行</li>
-<li>修改了”js”的”allowed_file_extensions”，增加了.csslintrc文件的支持</li>
-<li>修改了”html”、”css”、”js”的”indent_size”，我的代码缩进为2个空格</li>
-</ul>
-<h3 id="HTML-CSS-JS-Prettify使用"><a href="#HTML-CSS-JS-Prettify使用" class="headerlink" title="HTML-CSS-JS Prettify使用"></a>HTML-CSS-JS Prettify使用</h3><p>使用Ctrl+Shift+H，优化当前代码文件。<br>使用js文件测试一下，优化前<br><img src="https://segmentfault.com/img/bVsDMo" alt="图片"></p>
-<p>优化后<br><img src="https://segmentfault.com/img/bVsDMp" alt="图片"></p>
-<p>js-beautify对css的格式化，有个问题是，会在注释下面插入一行空白字符</p>
-<p>如下图，优化前<br><img src="https://segmentfault.com/img/bVsDMq" alt="图片"></p>
-<p>优化后<br><img src="https://segmentfault.com/img/bVsDMr" alt="图片"></p>
-<p><a href="http://frontenddev.org/article/sublime-does-text-three-plug-ins-html-and-css-js-prettify.html" target="_blank" rel="external">sublime text 3 插件：HTML-CSS-JS Prettify</a>文中给出了解决方法，大家可以参考</p>
-<h2 id="我的快捷键配置汇总-首选项-gt-按键绑定-用户"><a href="#我的快捷键配置汇总-首选项-gt-按键绑定-用户" class="headerlink" title="我的快捷键配置汇总:(首选项&gt;按键绑定-用户):"></a>我的快捷键配置汇总:(首选项&gt;按键绑定-用户):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal"</span> &#125;,</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+alt+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal_project_folder"</span> &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"target"</span>: <span class="string">"browser"</span>, <span class="string">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[浅谈javacript 笔记系列--- String 之slice]]></title>
       <url>http://meiminjun.github.io/javascript-slice%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
@@ -2324,6 +2249,81 @@
 <blockquote>
 <p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
 </blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[史上最强Sublime 笔记系列---精选插件和UI主题]]></title>
+      <url>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
+<p>这篇文章主要讲的是Sublime Text 3一些<code>高效率的插件</code>和<code>漂亮的主题</code>。</p>
+<ol>
+<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
+</li>
+<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
+</li>
+</ol>
+<p><strong>各位小伙伴们，还有没有你心目中<code>酷炫时尚</code>的插件呢？有的请留言哦！谢谢。。O(∩_∩)O</strong></p>
+<a id="more"></a>
+<hr>
+<h1 id="安装package-control插件-安装之后才能安装其他插件"><a href="#安装package-control插件-安装之后才能安装其他插件" class="headerlink" title="安装package control插件(安装之后才能安装其他插件)"></a>安装package control插件(安装之后才能安装其他插件)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), <span class="string">'wb'</span>).write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())</div></pre></td></tr></table></figure>
+<p>打开sublime text 3，按 ctrl+~或者菜单 View &gt; Show Console打开命令窗口，粘贴以上代码并回车即可。</p>
+<p>然后，<strong>ctrl + shift + p</strong>  下载相关插件<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f568lvwdzug20b606o40a.gif" alt=""></p>
+<h1 id="推荐插件-基本上都是插件官网前100名以内的插件"><a href="#推荐插件-基本上都是插件官网前100名以内的插件" class="headerlink" title="推荐插件(基本上都是插件官网前100名以内的插件)"></a>推荐插件(基本上都是插件官网前100名以内的插件)</h1><h2 id="1-JsFormat-javascript代码格式化"><a href="#1-JsFormat-javascript代码格式化" class="headerlink" title="1. JsFormat (javascript代码格式化)"></a>1. JsFormat (javascript代码格式化)</h2><blockquote>
+<p><strong> 默认快捷键：ctrl + shift + f </strong></p>
+</blockquote>
+<h2 id="2-Terminal-快速打开cmd"><a href="#2-Terminal-快速打开cmd" class="headerlink" title="2. Terminal (快速打开cmd)"></a>2. Terminal (快速打开cmd)</h2><h3 id="由于默认快捷键-ctrl-shift-t-会发生冲突-替换为：ctrl-shift-c"><a href="#由于默认快捷键-ctrl-shift-t-会发生冲突-替换为：ctrl-shift-c" class="headerlink" title="由于默认快捷键 ctrl + shift + t 会发生冲突,替换为：ctrl + shift + c"></a>由于默认快捷键 <code>ctrl + shift + t</code> 会发生冲突,替换为：ctrl + shift + c</h3><p>添加快捷键，如下:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="attr">"args"</span>: &#123;<span class="attr">"target"</span>: <span class="string">"browser"</span>, <span class="attr">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-docblockr-代码注释"><a href="#3-docblockr-代码注释" class="headerlink" title="3. docblockr(代码注释)"></a>3. <a href="https://packagecontrol.io/packages/DocBlockr" target="_blank" rel="external">docblockr</a>(代码注释)</h2><p><img src="/images/blogImg/2016/06/2016-06-22-01.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-02.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-03.gif" alt="docblockr"><br><img src="/images/blogImg/2016/06/2016-06-22-04.gif" alt="docblockr"></p>
+<h2 id="4-SublimeTmpl-快速构建模板"><a href="#4-SublimeTmpl-快速构建模板" class="headerlink" title="4. SublimeTmpl(快速构建模板)"></a>4. <a href="https://packagecontrol.io/packages/SublimeTmpl" target="_blank" rel="external">SublimeTmpl</a>(快速构建模板)</h2><blockquote>
+<p><strong> 默认快捷键：</strong>   </p>
+<ul>
+<li><strong>ctrl+alt+h 生成html </strong> </li>
+<li><strong>ctrl+alt+j 生成javascript </strong></li>
+<li><strong>ctrl+alt+c 生成css </strong></li>
+<li><strong>ctrl+alt+p 生成php </strong></li>
+<li><strong>ctrl+alt+r 生成ruby </strong></li>
+<li><strong>ctrl+alt+shift+p 生成python </strong></li>
+</ul>
+</blockquote>
+<p>中文文档地址:<strong><a href="http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/" target="_blank" rel="external">http://www.fantxi.com/blog/archives/sublime-template-engine-sublimetmpl/</a></strong></p>
+<h3 id="由于ctrl-alt-p-会发生冲突-暂时禁止"><a href="#由于ctrl-alt-p-会发生冲突-暂时禁止" class="headerlink" title="由于ctrl + alt + p 会发生冲突,暂时禁止"></a>由于<code>ctrl + alt + p</code> 会发生冲突,暂时禁止</h3><p>配置如下(首选项&gt;插件设置&gt;SublimeTmpl&gt;Settings-User):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"disable_keymap_actions"</span>: <span class="string">"php"</span>, // <span class="string">"all"</span>; <span class="string">"html,css"</span></div><div class="line">    <span class="string">"date_format"</span> : <span class="string">"%Y-%m-%d %H:%M:%S"</span>,</div><div class="line">    <span class="string">"attr"</span>: &#123;</div><div class="line">        <span class="string">"author"</span>: <span class="string">"Meiminjun"</span>,</div><div class="line">        <span class="string">"email"</span>: <span class="string">"251222845@qq.com"</span>,</div><div class="line">        <span class="string">"link"</span>: <span class="string">"http://example.org"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="ctrl-alt-j-有可能会发生失效-所以我就切换成另外的快捷键"><a href="#ctrl-alt-j-有可能会发生失效-所以我就切换成另外的快捷键" class="headerlink" title="ctrl + alt + j 有可能会发生失效,所以我就切换成另外的快捷键"></a>ctrl + alt + j 有可能会发生失效,所以我就切换成另外的快捷键</h3><p>添加配置如下(首选项&gt;插件配置&gt;SublimeTmpl&gt;Key Bindings-User):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="5-BracketHighlighter-语法高亮"><a href="#5-BracketHighlighter-语法高亮" class="headerlink" title="5. BracketHighlighter(语法高亮)"></a>5. <a href="https://packagecontrol.io/packages/BracketHighlighter" target="_blank" rel="external">BracketHighlighter</a>(语法高亮)</h2><p><img src="/images/blogImg/2016/06/2016-06-22-05.png" alt="图片"></p>
+<h2 id="6-Markdown-Preview-Markdown-预览"><a href="#6-Markdown-Preview-Markdown-预览" class="headerlink" title="6. Markdown Preview(Markdown 预览)"></a>6. <a href="https://packagecontrol.io/packages/Markdown%20Preview" target="_blank" rel="external">Markdown Preview</a>(Markdown 预览)</h2><p>添加快捷键配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="attr">"args"</span>: &#123;<span class="attr">"target"</span>: <span class="string">"browser"</span>, <span class="attr">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="sublimeLinter-jshint-语法校验"><a href="#sublimeLinter-jshint-语法校验" class="headerlink" title="[sublimeLinter-jshint]:语法校验"></a>[sublimeLinter-jshint]:语法校验</h2><ul>
+<li>需先安装SublimeLinter</li>
+<li>安装Node.js </li>
+<li>在cmd中输入 npm install -g jshint,等待安装就好了</li>
+</ul>
+<p>安装成功后，重启就可以检测代码风格了</p>
+<p>当然还可以自定义校验规则，在项目目录下新建一个.jshintrc的配置文件<br>在其中使用JSON格式配置校验风格。</p>
+<p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//建议使用===，不使用时会有提示。</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"eqeqeq"</span>:<span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="sublimeLinter-elint"><a href="#sublimeLinter-elint" class="headerlink" title="sublimeLinter-elint"></a><a href="https://github.com/roadhump/SublimeLinter-eslint" target="_blank" rel="external">sublimeLinter-elint</a></h2><p>让sublime-text 支持es6和react</p>
+<p>详细说明：<a href="http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint" target="_blank" rel="external">http://cheng.logdown.com/posts/2015/09/15/linting-react-jsx-and-es6-javascript-with-eslint</a></p>
+<h2 id="HTML-CSS-JS-Prettify-代码格式化插件"><a href="#HTML-CSS-JS-Prettify-代码格式化插件" class="headerlink" title="HTML-CSS-JS Prettify(代码格式化插件)"></a><a href="https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify" target="_blank" rel="external">HTML-CSS-JS Prettify</a>(代码格式化插件)</h2><p>HTML-CSSS-JS Prettify插件使用的是node版的js-beautify，因此需要首先安装node，node的安装请自行搜索。<br>在node安装完成后，使用npm安装js-beautify，命令 npm install -g js-beautify<br>最后Ctrl+Shift+P输入Install Package，然后输入HTML-CSS-JS Prettify进行安装</p>
+<h3 id="HTML-CSS-JS-Prettify配置"><a href="#HTML-CSS-JS-Prettify配置" class="headerlink" title="HTML-CSS-JS Prettify配置"></a>HTML-CSS-JS Prettify配置</h3><p>HTML-CSS-JS Prettify配置可使用.jsbeautifyrc文件，js-beautify会在被优化代码文件的当前目录查找，如果找不到会向上级目录查找。<br>因此，可以在项目的根目录新建.jsbeautifyrc文件来配置js-beautify<br>贴一下我的配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  // Details: https://github.com/victorporof/Sublime-HTMLPrettify<span class="comment">#using-your-own-jsbeautifyrc-options</span></div><div class="line">  // Documentation: https://github.com/einars/js-beautify/</div><div class="line">  <span class="string">"html"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"htm"</span>, <span class="string">"html"</span>, <span class="string">"xhtml"</span>, <span class="string">"shtml"</span>, <span class="string">"xml"</span>, <span class="string">"svg"</span>,<span class="string">"aspx"</span>,<span class="string">"jsp"</span>],</div><div class="line">    <span class="string">"brace_style"</span>: <span class="string">"collapse"</span>, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them <span class="built_in">where</span> they are</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_handlebars"</span>: <span class="literal">false</span>, // e.g. &#123;&#123;<span class="comment">#foo&#125;&#125;, &#123;&#123;/foo&#125;&#125;</span></div><div class="line">    <span class="string">"indent_inner_html"</span>: <span class="literal">false</span>, // Indent &lt;head&gt; and &lt;body&gt; sections</div><div class="line">    <span class="string">"indent_scripts"</span>: <span class="string">"keep"</span>, // [keep|separate|normal]</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"max_preserve_newlines"</span>: 0, // Maximum number of line breaks to be preserved <span class="keyword">in</span> one chunk (0 disables)</div><div class="line">    <span class="string">"preserve_newlines"</span>: <span class="literal">true</span>, // Whether existing line breaks before elements should be preserved (only works before elements, not inside tags or <span class="keyword">for</span> text)</div><div class="line">    <span class="string">"unformatted"</span>: [<span class="string">"a"</span>, <span class="string">"span"</span>, <span class="string">"img"</span>, <span class="string">"code"</span>, <span class="string">"pre"</span>, <span class="string">"sub"</span>, <span class="string">"sup"</span>, <span class="string">"em"</span>, <span class="string">"strong"</span>, <span class="string">"b"</span>, <span class="string">"i"</span>, <span class="string">"u"</span>, <span class="string">"strike"</span>, <span class="string">"big"</span>, <span class="string">"small"</span>, <span class="string">"pre"</span>, <span class="string">"h1"</span>, <span class="string">"h2"</span>, <span class="string">"h3"</span>, <span class="string">"h4"</span>, <span class="string">"h5"</span>, <span class="string">"h6"</span>], // List of tags that should not be reformatted</div><div class="line">    <span class="string">"wrap_line_length"</span>: 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"css"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"css"</span>, <span class="string">"scss"</span>, <span class="string">"sass"</span>, <span class="string">"less"</span>],</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"newline_between_rules"</span>: <span class="literal">true</span>, // Add a new line after every css rule</div><div class="line">    <span class="string">"selector_separator"</span>: <span class="string">" "</span>,</div><div class="line">    <span class="string">"selector_separator_newline"</span>: <span class="literal">false</span> // Separate selectors with newline or not (e.g. <span class="string">"a,\nbr"</span> or <span class="string">"a, br"</span>)</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"js"</span>: &#123;</div><div class="line">    <span class="string">"allowed_file_extensions"</span>: [<span class="string">"js"</span>, <span class="string">"json"</span>, <span class="string">"jshintrc"</span>, <span class="string">"jsbeautifyrc"</span>, <span class="string">"csslintrc"</span>],</div><div class="line">    <span class="string">"brace_style"</span>: <span class="string">"collapse"</span>, // [collapse|expand|end-expand|none] Put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line, or attempt to keep them <span class="built_in">where</span> they are</div><div class="line">    <span class="string">"break_chained_methods"</span>: <span class="literal">false</span>, // Break chained method calls across subsequent lines</div><div class="line">    <span class="string">"e4x"</span>: <span class="literal">false</span>, // Pass E4X xml literals through untouched</div><div class="line">    <span class="string">"end_with_newline"</span>: <span class="literal">false</span>, // End output with newline</div><div class="line">    <span class="string">"indent_char"</span>: <span class="string">" "</span>, // Indentation character</div><div class="line">    <span class="string">"indent_level"</span>: 0, // Initial indentation level</div><div class="line">    <span class="string">"indent_size"</span>: 2, // Indentation size</div><div class="line">    <span class="string">"indent_with_tabs"</span>: <span class="literal">false</span>, // Indent with tabs, overrides `indent_size` and `indent_char`</div><div class="line">    <span class="string">"jslint_happy"</span>: <span class="literal">false</span>, // If <span class="literal">true</span>, <span class="keyword">then</span> jslint-stricter mode is enforced</div><div class="line">    <span class="string">"keep_array_indentation"</span>: <span class="literal">false</span>, // Preserve array indentation</div><div class="line">    <span class="string">"keep_function_indentation"</span>: <span class="literal">false</span>, // Preserve <span class="keyword">function</span> indentation</div><div class="line">    <span class="string">"max_preserve_newlines"</span>: 0, // Maximum number of line breaks to be preserved <span class="keyword">in</span> one chunk (0 disables)</div><div class="line">    <span class="string">"preserve_newlines"</span>: <span class="literal">true</span>, // Whether existing line breaks should be preserved</div><div class="line">    <span class="string">"space_after_anon_function"</span>: <span class="literal">false</span>, // Should the space before an anonymous <span class="keyword">function</span><span class="string">'s parens be added, "function()" vs "function ()"</span></div><div class="line">    "space_before_conditional": true, // Should the space before conditional statement be added, "if(true)" vs "if (true)"</div><div class="line">    "space_in_empty_paren": false, // Add padding spaces within empty paren, "f()" vs "f( )"</div><div class="line">    "space_in_paren": false, // Add padding spaces within paren, ie. f( a, b )</div><div class="line">    "unescape_strings": false, // Should printable characters in strings encoded in \xNN notation be unescaped, "example" vs "\x65\x78\x61\x6d\x70\x6c\x65"</div><div class="line">    "wrap_line_length": 0 // Lines should wrap at next opportunity after this number of characters (0 disables)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>主要的改动就是</p>
+<ul>
+<li>修改了”html”的”allowed_file_extensions”，增加了aspx和jsp的支持</li>
+<li>修改了”css”的”selector_separator_newline”，个人觉得没必要每个选择器都要占一行</li>
+<li>修改了”js”的”allowed_file_extensions”，增加了.csslintrc文件的支持</li>
+<li>修改了”html”、”css”、”js”的”indent_size”，我的代码缩进为2个空格</li>
+</ul>
+<h3 id="HTML-CSS-JS-Prettify使用"><a href="#HTML-CSS-JS-Prettify使用" class="headerlink" title="HTML-CSS-JS Prettify使用"></a>HTML-CSS-JS Prettify使用</h3><p>使用Ctrl+Shift+H，优化当前代码文件。<br>使用js文件测试一下，优化前<br><img src="https://segmentfault.com/img/bVsDMo" alt="图片"></p>
+<p>优化后<br><img src="https://segmentfault.com/img/bVsDMp" alt="图片"></p>
+<p>js-beautify对css的格式化，有个问题是，会在注释下面插入一行空白字符</p>
+<p>如下图，优化前<br><img src="https://segmentfault.com/img/bVsDMq" alt="图片"></p>
+<p>优化后<br><img src="https://segmentfault.com/img/bVsDMr" alt="图片"></p>
+<p><a href="http://frontenddev.org/article/sublime-does-text-three-plug-ins-html-and-css-js-prettify.html" target="_blank" rel="external">sublime text 3 插件：HTML-CSS-JS Prettify</a>文中给出了解决方法，大家可以参考</p>
+<h2 id="我的快捷键配置汇总-首选项-gt-按键绑定-用户"><a href="#我的快捷键配置汇总-首选项-gt-按键绑定-用户" class="headerlink" title="我的快捷键配置汇总:(首选项&gt;按键绑定-用户):"></a>我的快捷键配置汇总:(首选项&gt;按键绑定-用户):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal"</span> &#125;,</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+alt+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal_project_folder"</span> &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"target"</span>: <span class="string">"browser"</span>, <span class="string">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
@@ -2669,6 +2669,23 @@
     </entry>
     
     <entry>
+      <title><![CDATA[javascript之闭包]]></title>
+      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
+      <content type="html"><![CDATA[<ol>
+<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
+<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
+<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
+<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
+<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
+<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript之常用DOM操作]]></title>
       <url>http://meiminjun.github.io/javascript-dom/</url>
       <content type="html"><![CDATA[<p>这里主要讲一下开发中经常用到的一些javascript 原生操作dom的方法</p>
@@ -2729,25 +2746,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[javascript之闭包]]></title>
-      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
-      <content type="html"><![CDATA[<ol>
-<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
-<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
-<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
-<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
-</ol>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
-<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
-<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[微信开发-朋友、朋友圈分享]]></title>
-      <url>http://meiminjun.github.io/wxProject/</url>
+      <url>http://meiminjun.github.io/wexin-share/</url>
       <content type="html"><![CDATA[<p>先看个效果图：<br><img src="/images/blogImg/weixin1227_1.jpg" alt="微信分享"></p>
 <p>目前来说，对于前端开发者来说想要自定义来让分享出去的文章有图标和标题有两种方式，一种是通过微信提供的sdk进行开发，另外一种是通过一些小方法来达到同样目的，下面就向大家介绍一下：</p>
 <a id="more"></a>
@@ -2800,7 +2800,7 @@
     
     <entry>
       <title><![CDATA[Hexo博客搭建]]></title>
-      <url>http://meiminjun.github.io/My-New-test/</url>
+      <url>http://meiminjun.github.io/hexo/</url>
       <content type="html"><![CDATA[<p>作为第一篇博客，我就写一些这个博客是怎么制作的吧！<br><img src="/images/blogImg/hexo-github.png" alt="这个是个图片"></p>
 <h2 id="Hexo是什么"><a href="#Hexo是什么" class="headerlink" title="Hexo是什么?"></a><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>是什么?</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
 <blockquote>
