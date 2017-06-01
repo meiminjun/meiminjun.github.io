@@ -4,6 +4,103 @@
   
     
     <entry>
+      <title><![CDATA[javascript深入浅出系列-Array 之 reduce]]></title>
+      <url>http://meiminjun.github.io/javascript-array-reduce/</url>
+      <content type="html"><![CDATA[<h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>reduce()方法对数组中的每个元素（从左到右）开始执行给定函数，构建一个最终返回值。reduce()是所有数组方法中最为复杂的一个。所有非IE6~8浏览器均支持该方法。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>array.reduce(callback, initialValue)</p>
+</blockquote>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>对每个数组元素执行的回调函数</td>
+</tr>
+<tr>
+<td>initialValue</td>
+<td>作为首次调用 callback 的第一个参数</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<p>reduce()方法中的 callback 回调函数默认支持 4 个参数。</p>
+<ul>
+<li>第 1 个(previousValue)： 上一次执行 callback 的返回值；</li>
+<li>第 2 个(currentValue): 数组中当前被处理的元素；</li>
+<li>第 3 个(index)： 当前被处理元素的索引值；</li>
+<li>第 4 个(array)： 调用reduce()方法的数组本身。</li>
+</ul>
+<p>再次注意：</p>
+<p>首次执行<code>callback</code> 函数时，如果指定了 <code>initialValue</code> ，则使用 <code>initialValue</code> 作为 <code>callback</code> 的第一个参数(<code>previousValue</code>)，数组中第一个元素作为第二个参数(<code>currentValue</code>)；<strong>并且第三个参数的值从0开始</strong></p>
+<p>如果没指定 <code>initialValue</code>，则用数组的第一个元素作为 <code>previousValue</code>，第二个元素作为 <code>currentValue</code>,<strong>并且第三个参数的值从1开始</strong></p>
+<p>如果数组为空并且没有提供 <code>initialValue</code>， 会抛出<code>TypeError</code>。如果数组仅有一个元素（无论位置如何）并且没有提供 <code>initialValue</code>， 或者有提供 <code>initialValue</code> 但是数组为空，那么此唯一值将被返回并且<strong>callback不会被执行</strong></p>
+<p>callback只会在已经赋值的索引上执行，对于那些已经被删除或者从未被赋值的索引不会执行。请看下面示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">delete</span> arr[<span class="number">2</span>];</div><div class="line"><span class="built_in">console</span>.log(arr);   <span class="comment">// [1, 2, undefined, 4, 5, 6]</span></div><div class="line"></div><div class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">String</span>(pre) + <span class="built_in">String</span>(cur) &#125;);  <span class="comment">// "12456"</span></div></pre></td></tr></table></figure>
+<p>每次的参数和返回值如下表：</p>
+<table>
+<thead>
+<tr>
+<th>reduce()迭代过程</th>
+<th>previousValue</th>
+<th>currentValue</th>
+<th>index</th>
+<th>array</th>
+<th>return value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第1次调用</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>12</td>
+</tr>
+<tr>
+<td>第2次调用</td>
+<td>12</td>
+<td>4</td>
+<td>3</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>124</td>
+</tr>
+<tr>
+<td>第3次调用</td>
+<td>124</td>
+<td>5</td>
+<td>4</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>1245</td>
+</tr>
+<tr>
+<td>第4次调用</td>
+<td>1245</td>
+<td>6</td>
+<td>5</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>12456</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>reduce()方法的返回值为任意类型，从数组的第一项开始，逐个遍历到最后，由 callback 函数构建一个最终返回值。</p>
+<p>reduce()不会改变原数组。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> total = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> a + b &#125;);     <span class="comment">// 10</span></div></pre></td></tr></table></figure>
+<p>给reduce()传入第二个参数 10 </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var total = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].reduce(function(a, b) &#123; return a + b &#125;, <span class="number">10</span>); <span class="comment">// 20</span></div></pre></td></tr></table></figure>
+<p>将数组扁平化</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var flattened = <span class="string">[[0, 1], [2, 3], [4, 5]]</span>.reduce(<span class="function"><span class="keyword">function</span><span class="params">(a, b)</span></span> &#123;</div><div class="line">    <span class="keyword">return</span> a.concat(b);</div><div class="line">&#125;);</div><div class="line">// flattened 为 [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<h2 id="兼容"><a href="#兼容" class="headerlink" title="兼容"></a>兼容</h2><p>把下面的代码插入到脚本的开头来解决低级IE的兼容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.reduce) &#123;</div><div class="line">  <span class="built_in">Array</span>.prototype.reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, opt_initialValue</span>)</span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="literal">null</span> === <span class="keyword">this</span> || <span class="string">'undefined'</span> === <span class="keyword">typeof</span> <span class="keyword">this</span>) &#123;</div><div class="line">      <span class="comment">// At the moment all modern browsers, that support strict mode, have</span></div><div class="line">      <span class="comment">// native implementation of Array.prototype.reduce. For instance, IE8</span></div><div class="line">      <span class="comment">// does not support strict mode, so this check is actually useless.</span></div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(</div><div class="line">          <span class="string">'Array.prototype.reduce called on null or undefined'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> callback) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(callback + <span class="string">' is not a function'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> index, value,</div><div class="line">        length = <span class="keyword">this</span>.length &gt;&gt;&gt; <span class="number">0</span>,</div><div class="line">        isValueSet = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="number">1</span> &lt; <span class="built_in">arguments</span>.length) &#123;</div><div class="line">      value = opt_initialValue;</div><div class="line">      isValueSet = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (index = <span class="number">0</span>; length &gt; index; ++index) &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.hasOwnProperty(index)) &#123;</div><div class="line">        <span class="keyword">if</span> (isValueSet) &#123;</div><div class="line">          value = callback(value, <span class="keyword">this</span>[index], index, <span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">          value = <span class="keyword">this</span>[index];</div><div class="line">          isValueSet = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!isValueSet) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Reduce of empty array with no initial value'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> value;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript深入浅出系列-常用-数值判断]]></title>
       <url>http://meiminjun.github.io/javascript-%E5%B8%B8%E7%94%A8-%E6%95%B0%E5%80%BC%E5%88%A4%E6%96%AD/</url>
       <content type="html"><![CDATA[<h1 id="JavaScript中检测数值的方法"><a href="#JavaScript中检测数值的方法" class="headerlink" title="JavaScript中检测数值的方法"></a>JavaScript中检测数值的方法</h1><h2 id="typeof-最常用"><a href="#typeof-最常用" class="headerlink" title="typeof(最常用)"></a>typeof(最常用)</h2><p>在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了</p>
@@ -1555,6 +1652,30 @@
     </entry>
     
     <entry>
+      <title><![CDATA[google之翻越长城]]></title>
+      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[chrome神器之postman]]></title>
       <url>http://meiminjun.github.io/chrome-postman/</url>
       <content type="html"><![CDATA[<h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
@@ -1588,30 +1709,6 @@
 <ul>
 <li>使用方法基本和”简易版”一样</li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
-      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
 ]]></content>
     </entry>
     
@@ -2179,6 +2276,55 @@
     </entry>
     
     <entry>
+      <title><![CDATA[javascript深入浅出系列-Array 之 splice]]></title>
+      <url>http://meiminjun.github.io/javascript-array-splice/</url>
+      <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td style="text-align:right">必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
+</tr>
+<tr>
+<td>howmany</td>
+<td style="text-align:right">必需。规定应该删除多少元素。必须是数字，但可以是 “0”。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
+</tr>
+<tr>
+<td>element1</td>
+<td style="text-align:right">可选。规定要添加到数组的新元素。从 index 所指的下标处开始插入。</td>
+</tr>
+<tr>
+<td>elementX</td>
+<td style="text-align:right">可选。可向数组添加若干元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果从 arrayObject 中删除了元素，则返回的是含有<strong>被删除</strong>的元素的数组。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
+<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
+<li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript深入浅出系列-Function 之 静态属性和原型方法]]></title>
       <url>http://meiminjun.github.io/javascript-function-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
@@ -2319,55 +2465,6 @@
 <p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
 <h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[javascript深入浅出系列-Array 之 splice]]></title>
-      <url>http://meiminjun.github.io/javascript-array-splice/</url>
-      <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>index</td>
-<td style="text-align:right">必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
-</tr>
-<tr>
-<td>howmany</td>
-<td style="text-align:right">必需。规定应该删除多少元素。必须是数字，但可以是 “0”。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
-</tr>
-<tr>
-<td>element1</td>
-<td style="text-align:right">可选。规定要添加到数组的新元素。从 index 所指的下标处开始插入。</td>
-</tr>
-<tr>
-<td>elementX</td>
-<td style="text-align:right">可选。可向数组添加若干元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果从 arrayObject 中删除了元素，则返回的是含有<strong>被删除</strong>的元素的数组。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
-<li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
-<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
-<li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
-<blockquote>
-<p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
-</blockquote>
-]]></content>
     </entry>
     
     <entry>

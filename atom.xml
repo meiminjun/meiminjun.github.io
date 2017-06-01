@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-05-27T06:38:50.000Z</updated>
+  <updated>2017-06-01T06:29:29.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -14,6 +14,117 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript深入浅出系列-Array 之 reduce</title>
+    <link href="http://meiminjun.github.io/javascript-array-reduce/"/>
+    <id>http://meiminjun.github.io/javascript-array-reduce/</id>
+    <published>2017-06-01T06:57:13.000Z</published>
+    <updated>2017-06-01T06:29:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>reduce()方法对数组中的每个元素（从左到右）开始执行给定函数，构建一个最终返回值。reduce()是所有数组方法中最为复杂的一个。所有非IE6~8浏览器均支持该方法。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>array.reduce(callback, initialValue)</p>
+</blockquote>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>对每个数组元素执行的回调函数</td>
+</tr>
+<tr>
+<td>initialValue</td>
+<td>作为首次调用 callback 的第一个参数</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<p>reduce()方法中的 callback 回调函数默认支持 4 个参数。</p>
+<ul>
+<li>第 1 个(previousValue)： 上一次执行 callback 的返回值；</li>
+<li>第 2 个(currentValue): 数组中当前被处理的元素；</li>
+<li>第 3 个(index)： 当前被处理元素的索引值；</li>
+<li>第 4 个(array)： 调用reduce()方法的数组本身。</li>
+</ul>
+<p>再次注意：</p>
+<p>首次执行<code>callback</code> 函数时，如果指定了 <code>initialValue</code> ，则使用 <code>initialValue</code> 作为 <code>callback</code> 的第一个参数(<code>previousValue</code>)，数组中第一个元素作为第二个参数(<code>currentValue</code>)；<strong>并且第三个参数的值从0开始</strong></p>
+<p>如果没指定 <code>initialValue</code>，则用数组的第一个元素作为 <code>previousValue</code>，第二个元素作为 <code>currentValue</code>,<strong>并且第三个参数的值从1开始</strong></p>
+<p>如果数组为空并且没有提供 <code>initialValue</code>， 会抛出<code>TypeError</code>。如果数组仅有一个元素（无论位置如何）并且没有提供 <code>initialValue</code>， 或者有提供 <code>initialValue</code> 但是数组为空，那么此唯一值将被返回并且<strong>callback不会被执行</strong></p>
+<p>callback只会在已经赋值的索引上执行，对于那些已经被删除或者从未被赋值的索引不会执行。请看下面示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">delete</span> arr[<span class="number">2</span>];</div><div class="line"><span class="built_in">console</span>.log(arr);   <span class="comment">// [1, 2, undefined, 4, 5, 6]</span></div><div class="line"></div><div class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur</span>)</span>&#123; <span class="keyword">return</span> <span class="built_in">String</span>(pre) + <span class="built_in">String</span>(cur) &#125;);  <span class="comment">// "12456"</span></div></pre></td></tr></table></figure>
+<p>每次的参数和返回值如下表：</p>
+<table>
+<thead>
+<tr>
+<th>reduce()迭代过程</th>
+<th>previousValue</th>
+<th>currentValue</th>
+<th>index</th>
+<th>array</th>
+<th>return value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第1次调用</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>12</td>
+</tr>
+<tr>
+<td>第2次调用</td>
+<td>12</td>
+<td>4</td>
+<td>3</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>124</td>
+</tr>
+<tr>
+<td>第3次调用</td>
+<td>124</td>
+<td>5</td>
+<td>4</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>1245</td>
+</tr>
+<tr>
+<td>第4次调用</td>
+<td>1245</td>
+<td>6</td>
+<td>5</td>
+<td>[1,2, undefined, 4,5,6]</td>
+<td>12456</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>reduce()方法的返回值为任意类型，从数组的第一项开始，逐个遍历到最后，由 callback 函数构建一个最终返回值。</p>
+<p>reduce()不会改变原数组。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> total = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> a + b &#125;);     <span class="comment">// 10</span></div></pre></td></tr></table></figure>
+<p>给reduce()传入第二个参数 10 </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var total = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>].reduce(function(a, b) &#123; return a + b &#125;, <span class="number">10</span>); <span class="comment">// 20</span></div></pre></td></tr></table></figure>
+<p>将数组扁平化</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var flattened = <span class="string">[[0, 1], [2, 3], [4, 5]]</span>.reduce(<span class="function"><span class="keyword">function</span><span class="params">(a, b)</span></span> &#123;</div><div class="line">    <span class="keyword">return</span> a.concat(b);</div><div class="line">&#125;);</div><div class="line">// flattened 为 [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<h2 id="兼容"><a href="#兼容" class="headerlink" title="兼容"></a>兼容</h2><p>把下面的代码插入到脚本的开头来解决低级IE的兼容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.reduce) &#123;</div><div class="line">  <span class="built_in">Array</span>.prototype.reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, opt_initialValue</span>)</span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="literal">null</span> === <span class="keyword">this</span> || <span class="string">'undefined'</span> === <span class="keyword">typeof</span> <span class="keyword">this</span>) &#123;</div><div class="line">      <span class="comment">// At the moment all modern browsers, that support strict mode, have</span></div><div class="line">      <span class="comment">// native implementation of Array.prototype.reduce. For instance, IE8</span></div><div class="line">      <span class="comment">// does not support strict mode, so this check is actually useless.</span></div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(</div><div class="line">          <span class="string">'Array.prototype.reduce called on null or undefined'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="string">'function'</span> !== <span class="keyword">typeof</span> callback) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(callback + <span class="string">' is not a function'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> index, value,</div><div class="line">        length = <span class="keyword">this</span>.length &gt;&gt;&gt; <span class="number">0</span>,</div><div class="line">        isValueSet = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="number">1</span> &lt; <span class="built_in">arguments</span>.length) &#123;</div><div class="line">      value = opt_initialValue;</div><div class="line">      isValueSet = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (index = <span class="number">0</span>; length &gt; index; ++index) &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.hasOwnProperty(index)) &#123;</div><div class="line">        <span class="keyword">if</span> (isValueSet) &#123;</div><div class="line">          value = callback(value, <span class="keyword">this</span>[index], index, <span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">          value = <span class="keyword">this</span>[index];</div><div class="line">          isValueSet = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!isValueSet) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Reduce of empty array with no initial value'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> value;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;定义和用法&quot;&gt;&lt;a href=&quot;#定义和用法&quot; class=&quot;headerlink&quot; title=&quot;定义和用法&quot;&gt;&lt;/a&gt;定义和用法&lt;/h2&gt;&lt;p&gt;reduce()方法对数组中的每个元素（从左到右）开始执行给定函数，构建一个最终返回值。reduce()是所有数组方
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript深入浅出系列-常用-数值判断</title>
@@ -1758,6 +1869,52 @@
   </entry>
   
   <entry>
+    <title>google之翻越长城</title>
+    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
+    <id>http://meiminjun.github.io/chrome-翻墙/</id>
+    <published>2016-08-18T07:54:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
+&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
+&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
+&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
+    
+  </entry>
+  
+  <entry>
     <title>chrome神器之postman</title>
     <link href="http://meiminjun.github.io/chrome-postman/"/>
     <id>http://meiminjun.github.io/chrome-postman/</id>
@@ -1811,52 +1968,6 @@
       <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
     
       <category term="postman" scheme="http://meiminjun.github.io/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>google之翻越长城</title>
-    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
-    <id>http://meiminjun.github.io/chrome-翻墙/</id>
-    <published>2016-08-18T07:54:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
-&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
-&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
-&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
-    
-      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
     
   </entry>
   
@@ -2200,52 +2311,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意， Object.assign 会跳过那些值为 null 或 undefined 的源对象。&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/categories/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
-    
-      <category term="es-2015" scheme="http://meiminjun.github.io/tags/es-2015/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript深入浅出系列-Object 之 create</title>
-    <link href="http://meiminjun.github.io/javascript-object-create/"/>
-    <id>http://meiminjun.github.io/javascript-object-create/</id>
-    <published>2016-07-26T00:57:13.000Z</published>
-    <updated>2017-05-27T06:12:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="javascript-之-object-create的方法介绍和示例"><a href="#javascript-之-object-create的方法介绍和示例" class="headerlink" title="javascript 之 object-create的方法介绍和示例"></a>javascript 之 object-create的方法介绍和示例</h1><h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="external">Object.create()</a></h2><p>Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
-<p>Object.create(proto, [ propertiesObject ])</p>
-</blockquote>
-<p>proto：一个对象，作为新创建对象的原型。。</p>
-<p>propertiesObject：可选。该参数对象是一组属性与值，该对象的属性名称将是新创建的对象的属性名称，值是属性描述符（这些属性描述符的结构与Object.defineProperties()的第二个参数一样）。注意：该参数对象不能是 undefined，另外只有该对象中自身拥有的可枚举的属性才有效，也就是说该对象的原型链上属性是无效的。</p>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>如果 proto 参数不是 null 或一个对象值，则抛出一个 TypeError 异常。</p>
-<a id="more"></a>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
-<li>使用Object.create实现类式继承</li>
-</ul>
-<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Shape - superclass</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = <span class="number">0</span>;</div><div class="line">  <span class="keyword">this</span>.y = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Shape.prototype.move = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x += x;</div><div class="line">    <span class="keyword">this</span>.y += y;</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">"Shape moved."</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Rectangle - subclass</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rectangle</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  Shape.call(<span class="keyword">this</span>); <span class="comment">//call super constructor.</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Rectangle.prototype = <span class="built_in">Object</span>.create(Shape.prototype);</div><div class="line"></div><div class="line"><span class="built_in">var</span> <span class="built_in">rect</span> = <span class="keyword">new</span> Rectangle();</div><div class="line"></div><div class="line"><span class="built_in">rect</span> <span class="keyword">instanceof</span> Rectangle <span class="comment">//true.</span></div><div class="line"><span class="built_in">rect</span> <span class="keyword">instanceof</span> Shape <span class="comment">//true.</span></div><div class="line"></div><div class="line"><span class="built_in">rect</span>.move(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">//Outputs, "Shape moved."</span></div></pre></td></tr></table></figure>
-<ul>
-<li>使用Object.create 的 propertyObject 参数</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o;</div><div class="line"></div><div class="line"><span class="comment">// 创建一个原型为null的空对象</span></div><div class="line">o = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line"></div><div class="line"></div><div class="line">o = &#123;&#125;;</div><div class="line"><span class="comment">// 以字面量方式创建的空对象就相当于:</span></div><div class="line">o = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);</div><div class="line"></div><div class="line"></div><div class="line">o = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype, &#123;</div><div class="line">  <span class="comment">// foo会成为所创建对象的数据属性</span></div><div class="line">  foo: &#123; <span class="attr">writable</span>:<span class="literal">true</span>, <span class="attr">configurable</span>:<span class="literal">true</span>, <span class="attr">value</span>: <span class="string">"hello"</span> &#125;,</div><div class="line">  <span class="comment">// bar会成为所创建对象的访问器属性</span></div><div class="line">  bar: &#123;</div><div class="line">    <span class="attr">configurable</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">10</span> &#125;,</div><div class="line">    <span class="attr">set</span>: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"Setting `o.bar` to"</span>, value) &#125;</div><div class="line">&#125;&#125;)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">o = <span class="keyword">new</span> Constructor();</div><div class="line"><span class="comment">// 上面的一句就相当于:</span></div><div class="line">o = <span class="built_in">Object</span>.create(Constructor.prototype);</div><div class="line"><span class="comment">// 当然,如果在Constructor函数中有一些初始化代码,Object.create不能执行那些代码</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 创建一个以另一个空对象为原型,且拥有一个属性p的对象</span></div><div class="line">o = <span class="built_in">Object</span>.create(&#123;&#125;, &#123; <span class="attr">p</span>: &#123; <span class="attr">value</span>: <span class="number">42</span> &#125; &#125;)</div><div class="line"></div><div class="line"><span class="comment">// 省略了的属性特性默认为false,所以属性p是不可写,不可枚举,不可配置的:</span></div><div class="line">o.p = <span class="number">24</span></div><div class="line">o.p</div><div class="line"><span class="comment">//42</span></div><div class="line"></div><div class="line">o.q = <span class="number">12</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> o) &#123;</div><div class="line">   <span class="built_in">console</span>.log(prop)</div><div class="line">&#125;</div><div class="line"><span class="comment">//"q"</span></div><div class="line"></div><div class="line"><span class="keyword">delete</span> o.p</div><div class="line"><span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="comment">//创建一个可写的,可枚举的,可配置的属性p</span></div><div class="line">o2 = <span class="built_in">Object</span>.create(&#123;&#125;, &#123; <span class="attr">p</span>: &#123; <span class="attr">value</span>: <span class="number">42</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span> &#125; &#125;);</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;javascript-之-object-create的方法介绍和示例&quot;&gt;&lt;a href=&quot;#javascript-之-object-create的方法介绍和示例&quot; class=&quot;headerlink&quot; title=&quot;javascript 之 object-create的方法介绍和示例&quot;&gt;&lt;/a&gt;javascript 之 object-create的方法介绍和示例&lt;/h1&gt;&lt;h2 id=&quot;Object-create&quot;&gt;&lt;a href=&quot;#Object-create&quot; class=&quot;headerlink&quot; title=&quot;Object.create()&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create&quot;&gt;Object.create()&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。&lt;/p&gt;
-&lt;h3 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;Object.create(proto, [ propertiesObject ])&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;proto：一个对象，作为新创建对象的原型。。&lt;/p&gt;
-&lt;p&gt;propertiesObject：可选。该参数对象是一组属性与值，该对象的属性名称将是新创建的对象的属性名称，值是属性描述符（这些属性描述符的结构与Object.defineProperties()的第二个参数一样）。注意：该参数对象不能是 undefined，另外只有该对象中自身拥有的可枚举的属性才有效，也就是说该对象的原型链上属性是无效的。&lt;/p&gt;
-&lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;如果 proto 参数不是 null 或一个对象值，则抛出一个 TypeError 异常。&lt;/p&gt;
     
     </summary>
     
