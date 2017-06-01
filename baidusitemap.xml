@@ -5,11 +5,11 @@
     
   <url>
     <loc>http://meiminjun.github.io/javascript-%E7%BC%96%E5%86%99%E7%8E%B0%E4%BB%A3Javascript%E4%BB%A3%E7%A0%81/</loc>
-    <lastmod>2017-06-01T11:01:57.000Z</lastmod>
+    <lastmod>2017-06-01T11:27:08.000Z</lastmod>
     <data>
         <display>
         <title>javascript深入浅出系列-es6-编写现代Javascript代码</title>
-        <pubTime>2017-06-01T01:50:13.000Z</pubTime>
+        <pubTime>2017-06-01T11:50:13.000Z</pubTime>
         
         <tag>javascript</tag>
          
@@ -296,18 +296,16 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/SublimeText-vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://meiminjun.github.io/SublimeText-%E6%88%91%E7%9A%84%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2017-04-28T10:55:37.000Z</lastmod>
     <data>
         <display>
-        <title>史上最强Sublime 笔记系列---vim常用命令笔记</title>
-        <pubTime>2016-07-31T03:30:13.000Z</pubTime>
+        <title>史上最强Sublime 笔记系列---我的常用配置</title>
+        <pubTime>2016-06-22T07:57:14.000Z</pubTime>
         
         <tag>工具</tag>
          
         <tag>sublime</tag>
-         
-        <tag>vim</tag>
          
          
            
@@ -339,6 +337,27 @@
 
     
   <url>
+    <loc>http://meiminjun.github.io/vue-router/</loc>
+    <lastmod>2017-04-28T10:55:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>vue-router 三种加载方式速度评测</title>
+        <pubTime>2017-04-12T14:57:13.000Z</pubTime>
+        
+        <tag>webpack</tag>
+         
+        <tag>vue</tag>
+         
+        <tag>vue-router</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
     <lastmod>2017-04-28T10:55:37.000Z</lastmod>
     <data>
@@ -355,6 +374,25 @@
              
               <breadCrumb title="工具" url="http://meiminjun.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/</loc>
+    <lastmod>2017-04-28T10:55:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>ionic2菜鸟学习笔记《二》</title>
+        <pubTime>2016-08-03T15:57:13.000Z</pubTime>
+        
+        <tag>ionic2</tag>
+         
+        <tag>angular2</tag>
+         
+         
+           
         </display>
     </data>
     </url>
@@ -383,56 +421,18 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/vue-router/</loc>
+    <loc>http://meiminjun.github.io/SublimeText-vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2017-04-28T10:55:37.000Z</lastmod>
     <data>
         <display>
-        <title>vue-router 三种加载方式速度评测</title>
-        <pubTime>2017-04-12T14:57:13.000Z</pubTime>
-        
-        <tag>webpack</tag>
-         
-        <tag>vue</tag>
-         
-        <tag>vue-router</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/</loc>
-    <lastmod>2017-04-28T10:55:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>ionic2菜鸟学习笔记《二》</title>
-        <pubTime>2016-08-03T15:57:13.000Z</pubTime>
-        
-        <tag>ionic2</tag>
-         
-        <tag>angular2</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/SublimeText-%E6%88%91%E7%9A%84%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2017-04-28T10:55:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>史上最强Sublime 笔记系列---我的常用配置</title>
-        <pubTime>2016-06-22T07:57:14.000Z</pubTime>
+        <title>史上最强Sublime 笔记系列---vim常用命令笔记</title>
+        <pubTime>2016-07-31T03:30:13.000Z</pubTime>
         
         <tag>工具</tag>
          
         <tag>sublime</tag>
+         
+        <tag>vim</tag>
          
          
            
@@ -568,14 +568,72 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/chrome-vimium/</loc>
+    <loc>http://meiminjun.github.io/%E5%B8%B8%E7%94%A8npm%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2016-12-19T03:44:48.000Z</lastmod>
     <data>
         <display>
-        <title>Chrome神器Vimium快捷键学习记录</title>
+        <title>npm 模块管理器</title>
+        <pubTime>2016-07-13T03:57:13.000Z</pubTime>
+        
+        <tag>npm</tag>
+         
+         
+           
+             
+              <breadCrumb title="tool" url="http://meiminjun.github.io/categories/tool/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/chrome-postman/</loc>
+    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>chrome神器之postman</title>
+        <pubTime>2016-08-18T07:54:13.000Z</pubTime>
+        
+        <tag>chrome</tag>
+         
+        <tag>postman</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</loc>
+    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>google之翻越长城</title>
+        <pubTime>2016-08-18T07:54:13.000Z</pubTime>
+        
+        <tag>chrome</tag>
+         
+        <tag>google</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/chrome-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</loc>
+    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Chrome常用设置</title>
         <pubTime>2016-07-09T13:57:13.000Z</pubTime>
         
-        <tag>Vimium</tag>
+        <tag>chrome</tag>
          
          
            
@@ -588,19 +646,59 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/hexo/</loc>
+    <loc>http://meiminjun.github.io/javascript-%E4%B8%A4%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/</loc>
     <lastmod>2016-12-19T03:44:48.000Z</lastmod>
     <data>
         <display>
-        <title>Hexo博客搭建</title>
-        <pubTime>2015-12-19T17:55:53.000Z</pubTime>
+        <title>浅谈javacript 笔记系列--- 继承与原型链</title>
+        <pubTime>2016-07-26T10:57:13.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
-        <tag>博客</tag>
+        <tag>javascript</tag>
          
          
            
+             
+              <breadCrumb title="javascript" url="http://meiminjun.github.io/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/markdown%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Markdown 笔记</title>
+        <pubTime>2016-06-21T11:57:13.000Z</pubTime>
+        
+        <tag>markdown</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>git常用命令清单</title>
+        <pubTime>2016-07-24T13:57:13.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+        <tag>github</tag>
+         
+         
+           
+             
+              <breadCrumb title="tool" url="http://meiminjun.github.io/categories/tool/"/>
+          
         </display>
     </data>
     </url>
@@ -649,14 +747,16 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/%E5%B8%B8%E7%94%A8npm%E5%91%BD%E4%BB%A4/</loc>
+    <loc>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
     <lastmod>2016-12-19T03:44:48.000Z</lastmod>
     <data>
         <display>
-        <title>npm 模块管理器</title>
-        <pubTime>2016-07-13T03:57:13.000Z</pubTime>
+        <title>windows常用快捷键</title>
+        <pubTime>2016-07-09T13:57:13.000Z</pubTime>
         
-        <tag>npm</tag>
+        <tag>快捷键</tag>
+         
+        <tag>windows</tag>
          
          
            
@@ -669,20 +769,17 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/chrome-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</loc>
+    <loc>http://meiminjun.github.io/7%E6%9C%88%E4%BB%BD-TODO/</loc>
     <lastmod>2016-12-19T03:44:48.000Z</lastmod>
     <data>
         <display>
-        <title>Chrome常用设置</title>
-        <pubTime>2016-07-09T13:57:13.000Z</pubTime>
+        <title>7月份要做的事情</title>
+        <pubTime>2016-06-22T07:57:13.000Z</pubTime>
         
-        <tag>chrome</tag>
+        <tag>计划</tag>
          
          
            
-             
-              <breadCrumb title="chrome" url="http://meiminjun.github.io/categories/chrome/"/>
-          
         </display>
     </data>
     </url>
@@ -709,20 +806,39 @@
 
     
   <url>
-    <loc>http://meiminjun.github.io/javascript-%E4%B8%A4%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/</loc>
+    <loc>http://meiminjun.github.io/chrome-vimium/</loc>
     <lastmod>2016-12-19T03:44:48.000Z</lastmod>
     <data>
         <display>
-        <title>浅谈javacript 笔记系列--- 继承与原型链</title>
-        <pubTime>2016-07-26T10:57:13.000Z</pubTime>
+        <title>Chrome神器Vimium快捷键学习记录</title>
+        <pubTime>2016-07-09T13:57:13.000Z</pubTime>
         
-        <tag>javascript</tag>
+        <tag>Vimium</tag>
          
          
            
              
-              <breadCrumb title="javascript" url="http://meiminjun.github.io/categories/javascript/"/>
+              <breadCrumb title="chrome" url="http://meiminjun.github.io/categories/chrome/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://meiminjun.github.io/hexo/</loc>
+    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo博客搭建</title>
+        <pubTime>2015-12-19T17:55:53.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>博客</tag>
+         
+         
+           
         </display>
     </data>
     </url>
@@ -740,122 +856,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/markdown%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>Markdown 笔记</title>
-        <pubTime>2016-06-21T11:57:13.000Z</pubTime>
-        
-        <tag>markdown</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/7%E6%9C%88%E4%BB%BD-TODO/</loc>
-    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>7月份要做的事情</title>
-        <pubTime>2016-06-22T07:57:13.000Z</pubTime>
-        
-        <tag>计划</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</loc>
-    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>google之翻越长城</title>
-        <pubTime>2016-08-18T07:54:13.000Z</pubTime>
-        
-        <tag>chrome</tag>
-         
-        <tag>google</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/chrome-postman/</loc>
-    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>chrome神器之postman</title>
-        <pubTime>2016-08-18T07:54:13.000Z</pubTime>
-        
-        <tag>chrome</tag>
-         
-        <tag>postman</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
-    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>windows常用快捷键</title>
-        <pubTime>2016-07-09T13:57:13.000Z</pubTime>
-        
-        <tag>快捷键</tag>
-         
-        <tag>windows</tag>
-         
-         
-           
-             
-              <breadCrumb title="tool" url="http://meiminjun.github.io/categories/tool/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://meiminjun.github.io/%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2016-12-19T03:44:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>git常用命令清单</title>
-        <pubTime>2016-07-24T13:57:13.000Z</pubTime>
-        
-        <tag>git</tag>
-         
-        <tag>github</tag>
-         
-         
-           
-             
-              <breadCrumb title="tool" url="http://meiminjun.github.io/categories/tool/"/>
-          
         </display>
     </data>
     </url>
