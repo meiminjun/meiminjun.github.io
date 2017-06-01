@@ -13,3 +13,5 @@ Disallow: /fancybox/
 
 Sitemap: http://meiminjun.github.io/sitemap.xml
 Sitemap: http://meiminjun.github.io/baidusitemap.xml
+Sitemap: https://meiminjun.github.io/sitemap.xml
+Sitemap: https://meiminjun.github.io/baidusitemap.xml
