@@ -127,6 +127,77 @@
   </entry>
   
   <entry>
+    <title>javascript深入浅出系列-es6-编写现代Javascript代码</title>
+    <link href="http://meiminjun.github.io/javascript-%E7%BC%96%E5%86%99%E7%8E%B0%E4%BB%A3Javascript%E4%BB%A3%E7%A0%81/"/>
+    <id>http://meiminjun.github.io/javascript-编写现代Javascript代码/</id>
+    <published>2017-06-01T01:50:13.000Z</published>
+    <updated>2017-06-01T11:01:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>原文： <a href="https://dev.to/scastiel/writing-modern-javascript-code" target="_blank" rel="external">https://dev.to/scastiel/writing-modern-javascript-code</a></p>
+<h1 id="编写现代Javascript代码"><a href="#编写现代Javascript代码" class="headerlink" title="编写现代Javascript代码"></a>编写现代Javascript代码</h1><p>记得以前Javascript还处于是一种改变页面元素的语言？这些日子已经过去了，每种语言随着时间的推移而发展，我们使用它们也是如此，看看你一两年前写的代码：你不感到羞愧吗？如果是，这篇帖子就是写给你的<br>🙂</p>
+<p>在这篇文章里，我会尝试这里列出一些很好的做法，使您的JavaScript代码更容易编写，阅读和维护</p>
+<h1 id="使用可以格式化代码的linter"><a href="#使用可以格式化代码的linter" class="headerlink" title="使用可以格式化代码的linter"></a>使用可以格式化代码的linter</h1><p>第一个建议是使用一个代码linter,他会检查你的每一行代码是否遵守统一规则，特别是几个开发人员协同开发一个项目的时候：缩减，括号中的空格，将==替换为===…</p>
+<p>但更重要的是，尽可能让您的linter自动修复您的代码。 ESLint非常好（使用–fix选项），它与所有主要的IDE集成，可以在保存时自动修复文件。</p>
+<p>您也可以使用更为专注于格式化的“漂亮”，而不是检查，但结果基本相同😉</p>
+<p>下一点将帮助你选择你的linter使用的规则:</p>
+<h1 id="为你的linter使用现代规则"><a href="#为你的linter使用现代规则" class="headerlink" title="为你的linter使用现代规则"></a>为你的linter使用现代规则</h1><p>如果您想知道您的代码需要什么规则，这里有一个提示:StandardJS.<br>这是一个非常严格的linter,不会在规则中给您任何选择，但是它们中的每一个都越来越被社区所承认。下面是一些例子:</p>
+<ul>
+<li>使用2空格缩进(我曾经使用4个空格,但实际上使用2是相当不错)</li>
+<li>没有分号</li>
+<li>在关键字(如if)和花括号后加空格</li>
+<li>and <a href="https://standardjs.com/rules-zhcn.html" target="_blank" rel="external">a lot more</a>.</li>
+</ul>
+<h1 id="使用ES2015-新特性"><a href="#使用ES2015-新特性" class="headerlink" title="使用ES2015 +新特性"></a>使用ES2015 +新特性</h1><p>如果你用JavaScript开发,你还没有听说过ES2015 +(或ES6 ES7…)特性。这是不可或缺的了:</p>
+<ul>
+<li>箭头函数：编写函数可以像 x =&gt; x * 2 是非常有用的函数式编程</li>
+<li>类：停止使用原型函数，类更酷（但是不要滥用,JavaScript比任何面向对象的语言都要好得多）</li>
+<li>使用数组和对象进行操作</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function doSomething() &#123;</div><div class="line">  const <span class="selector-tag">a</span> = doSomethingElse()</div><div class="line">  const <span class="selector-tag">b</span> = doSomethingWithA(a)</div><div class="line">  const otherResults = &#123; c: <span class="string">'😺'</span>, d: <span class="string">'🐶'</span> &#125;</div><div class="line">  return &#123; <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, ..<span class="selector-class">.otherResults</span> &#125; <span class="comment">// 相当于 &#123; a: a, b: b，c: '😺', d: '🐶' &#125;</span></div><div class="line">&#125;</div><div class="line">const &#123; <span class="selector-tag">a</span>, c, ..<span class="selector-class">.rest</span> &#125; = doSomething() <span class="comment">// 同样适用于数组</span></div><div class="line"><span class="comment">// `rest` 相当于 &#123; b: ..., d: '🐶' &#125;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>使用更容易的使用的async/await:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> getValueForA()</div><div class="line">  <span class="keyword">const</span> b = <span class="keyword">await</span> getValueForBFromA(a)</div><div class="line">  <span class="keyword">const</span> [c, d] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([</div><div class="line">    <span class="comment">// parallel execution</span></div><div class="line">    getValueForC(), getValueForDFromB(b)</div><div class="line">  ])</div><div class="line">  <span class="keyword">const</span> total = <span class="keyword">await</span> calculateTotal(a, b, c, d)</div><div class="line">  <span class="keyword">return</span> total / <span class="number">1000</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们怎样使用这些特性呢？我的一篇文章给你一些建议（顺便说一下,与最新版本的Node.js,你可能不需要babel就可以使用最新的一些特性）</p>
+<h1 id="使用函数式编程"><a href="#使用函数式编程" class="headerlink" title="使用函数式编程"></a>使用函数式编程</h1><p>现在，函数式编程已经取得了很大的成功，不仅仅是在JavaScript中。这是什么原因呢?它使代码更加可预测、更安全、更确定，并且在使用时更容易维护。以下是一些简单的建议:</p>
+<p>首先，停止使用for循环，在大多数情况下你不需要他们，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [&#123; <span class="attr">name</span>: <span class="string">'first'</span>, <span class="attr">value</span>: <span class="number">13</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'second'</span>, <span class="attr">value</span>: <span class="number">7</span> &#125;]</div><div class="line"></div><div class="line"><span class="comment">// 以前:</span></div><div class="line"><span class="keyword">const</span> res = &#123;&#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">  <span class="keyword">const</span> calculatedValue = arr[i].value * <span class="number">10</span></div><div class="line">  <span class="keyword">if</span> (calculatedValue &gt; <span class="number">100</span>) &#123;</div><div class="line">    res[arr[i].name] = calculatedValue</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 更好:</span></div><div class="line"><span class="keyword">const</span> res = arr</div><div class="line">  .map(<span class="function"><span class="params">elem</span> =&gt;</span> (&#123; <span class="attr">name</span>: elem.name, <span class="attr">calculatedValue</span>: elem.value * <span class="number">10</span> &#125;))</div><div class="line">  .filter(<span class="function"><span class="params">elem</span> =&gt;</span> elem.calculatedValue &gt; <span class="number">100</span>)</div><div class="line">  .reduce(<span class="function">(<span class="params">acc, elem</span>) =&gt;</span> (&#123;</div><div class="line">    [elem.name]: calculatedValue,</div><div class="line">    ...acc</div><div class="line">  &#125;), &#123;&#125;)</div></pre></td></tr></table></figure>
+<p>好吧，我承认这是一个非常极端的例子，如果你不经常使用函数式编程的情况下，他看起来会非常的复杂，也许我们可以这样简化一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> enrichElementWithCalculatedValue =</div><div class="line">  <span class="function"><span class="params">elem</span> =&gt;</span> (&#123; <span class="attr">name</span>: elem.name, <span class="attr">calculatedValue</span>: elem.value * <span class="number">10</span> &#125;)</div><div class="line"><span class="keyword">const</span> filterElementsByValue = <span class="function"><span class="params">value</span> =&gt;</span></div><div class="line">  elem =&gt; elem.calculatedValue &gt; value</div><div class="line"><span class="keyword">const</span> aggregateElementInObject = <span class="function">(<span class="params">acc, elem</span>) =&gt;</span> (&#123;</div><div class="line">  [elem.name]: calculatedValue,</div><div class="line">  ...acc</div><div class="line">&#125;)</div><div class="line"><span class="keyword">const</span> res = arr</div><div class="line">  .map(enrichElementWithCalculatedValue)</div><div class="line">  .filter(filterElementsByValue(<span class="number">100</span>))</div><div class="line">  .reduce(aggregateElementInObject, &#123;&#125;)</div></pre></td></tr></table></figure>
+<p>这里我们定义了三个函数基本上就是它们的名字</p>
+<p>第二:创建局部函数(即使是在现有函数中)，无需注释就可以记录代码。</p>
+<p>注意，三个局部函数不修改它们执行的上下文。没有外部变量被修改,没有被其他方法被调用，<br>他们称为纯函数在函数式编程中。他们有一些巨大的优势:</p>
+<ul>
+<li>它们是易测试的，因为从给定的参数来说，只有一个可能的结果，即使我们把函数多调用几次;</li>
+<li>无论应用程序的实际状态如何，它们都可以提供相同的结果;</li>
+<li>在函数调用之前和之后，应用程序状态保持不变。</li>
+</ul>
+<p>所以我的第三条建议是:多使用纯函数!</p>
+<h1 id="最后还有一些其他的建议"><a href="#最后还有一些其他的建议" class="headerlink" title="最后还有一些其他的建议"></a>最后还有一些其他的建议</h1><ul>
+<li>经常使用异步代码，多使用promise，查看带有<a href="http://reactivex.io/rxjs/" target="_blank" rel="external">RxJS</a>的观察效果(<a href="http://reactivex.io/learnrx/" target="_blank" rel="external">有一个关于函数编程的很好的教程，可以测试你的函数式编程</a>)</li>
+<li>编写测试代码!应该是显而易见的，但是我知道很多项目都有未经测试的代码，尽管测试JavaScript(前端或后端)并不像看起来那么困难。</li>
+<li>使用语言的新特性：例如停止使用<code>arr.indexOf(elem) !== -1</code> 赞成使用<code>arr.includes(elem)</code></li>
+<li>多阅读技术文章：<a href="https://www.reddit.com/r/javascript/" target="_blank" rel="external">JavaScript subreddit</a>是了解生态系统中最酷的实践的一个很好的来源</li>
+<li>哦，最后，我能给你最好的建议是：总是重构你的代码！改进你一年前写的模块？借此机会使用<code>const</code>代替<code>var</code>，使用<code>箭头函数</code>或者<code>async/await</code>来简化代码…总之用最好的代码进行工作!😉</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文： &lt;a href=&quot;https://dev.to/scastiel/writing-modern-javascript-code&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://dev.to/scastiel/writing-moder
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
+    
+      <category term="es-2015" scheme="http://meiminjun.github.io/tags/es-2015/"/>
+    
+      <category term="linter" scheme="http://meiminjun.github.io/tags/linter/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript深入浅出系列-常用-数值判断</title>
     <link href="http://meiminjun.github.io/javascript-%E5%B8%B8%E7%94%A8-%E6%95%B0%E5%80%BC%E5%88%A4%E6%96%AD/"/>
     <id>http://meiminjun.github.io/javascript-常用-数值判断/</id>
@@ -1869,52 +1940,6 @@
   </entry>
   
   <entry>
-    <title>google之翻越长城</title>
-    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
-    <id>http://meiminjun.github.io/chrome-翻墙/</id>
-    <published>2016-08-18T07:54:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
-&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
-&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
-&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
-    
-      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
-    
-  </entry>
-  
-  <entry>
     <title>chrome神器之postman</title>
     <link href="http://meiminjun.github.io/chrome-postman/"/>
     <id>http://meiminjun.github.io/chrome-postman/</id>
@@ -1968,6 +1993,52 @@
       <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
     
       <category term="postman" scheme="http://meiminjun.github.io/tags/postman/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>google之翻越长城</title>
+    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
+    <id>http://meiminjun.github.io/chrome-翻墙/</id>
+    <published>2016-08-18T07:54:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
+&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
+&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
+&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
     
   </entry>
   
@@ -2264,62 +2335,6 @@
     
     
       <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript深入浅出系列-Object 之 assign</title>
-    <link href="http://meiminjun.github.io/javascript-object-assign/"/>
-    <id>http://meiminjun.github.io/javascript-object-assign/</id>
-    <published>2016-07-26T01:57:14.000Z</published>
-    <updated>2017-05-27T06:12:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="javascript-之-object-assign-的方法介绍和示例"><a href="#javascript-之-object-assign-的方法介绍和示例" class="headerlink" title="javascript 之 object-assign 的方法介绍和示例"></a>javascript 之 object-assign 的方法介绍和示例</h1><h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="external">Object.assign()</a></h2><p>Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
-<p>Object.assign(target, …sources)</p>
-</blockquote>
-<p>target：目标对象。</p>
-<p>sources：任意多个对象</p>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>目标对象会被返回。</p>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象身上。该方法使用源对象的 [ [ Get ] ] 和目标对象的 [ [ Set ] ]，所以它会调用相关 getter 和 setter。因此，它分配属性不仅仅是复制或定义新的属性。如果合并源包含了 getter，那么该方法就不适合将新属性合并到原型里。假如是拷贝属性定义到原型里，包括它们的可枚举性，那么应该使用 Object.getOwnPropertyDescriptor() 和 Object.defineProperty() 。</p>
-<p>String类型和 Symbol 类型的属性都会被拷贝。</p>
-<p>注意，在属性拷贝过程中可能会产生异常，比如目标对象的某个只读属性和源对象的某个属性同名，这时该方法会抛出一个 TypeError 异常，拷贝过程中断，已经拷贝成功的属性不会受到影响，还未拷贝的属性将不会再被拷贝。</p>
-<blockquote>
-<p>注意， Object.assign 会跳过那些值为 null 或 undefined 的源对象。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>复制一个object</p>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="comment">&#123; a: 1 &#125;</span>;</div><div class="line"><span class="keyword">var</span> <span class="keyword">copy</span> = Object.assign(<span class="comment">&#123;&#125;</span>, obj);</div><div class="line">console.log(<span class="keyword">copy</span>); <span class="comment">// &#123; a: 1 &#125;</span></div></pre></td></tr></table></figure>
-<p>合并 objects</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o1 = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</div><div class="line"><span class="keyword">var</span> o2 = &#123; <span class="attr">b</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> o3 = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.assign(o1, o2, o3);</div><div class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// &#123; a: 1, b: 2, c: 3 &#125;</span></div><div class="line"><span class="built_in">console</span>.log(o1);  <span class="comment">// &#123; a: 1, b: 2, c: 3 &#125;, 注意目标对象自身也会改变。</span></div></pre></td></tr></table></figure>
-<p>继承属性和不可枚举属性是不能拷贝的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(&#123;<span class="attr">foo</span>: <span class="number">1</span>&#125;, &#123; <span class="comment">// foo 是个继承属性。</span></div><div class="line">    bar: &#123;</div><div class="line">        <span class="attr">value</span>: <span class="number">2</span>  <span class="comment">// bar 是个不可枚举属性。</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">baz</span>: &#123;</div><div class="line">        <span class="attr">value</span>: <span class="number">3</span>,</div><div class="line">        <span class="attr">enumerable</span>: <span class="literal">true</span>  <span class="comment">// baz 是个自身可枚举属性。</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> copy = <span class="built_in">Object</span>.assign(&#123;&#125;, obj);</div><div class="line"><span class="built_in">console</span>.log(copy); <span class="comment">// &#123; baz: 3 &#125;</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;javascript-之-object-assign-的方法介绍和示例&quot;&gt;&lt;a href=&quot;#javascript-之-object-assign-的方法介绍和示例&quot; class=&quot;headerlink&quot; title=&quot;javascript 之 object-assign 的方法介绍和示例&quot;&gt;&lt;/a&gt;javascript 之 object-assign 的方法介绍和示例&lt;/h1&gt;&lt;h2 id=&quot;Object-assign&quot;&gt;&lt;a href=&quot;#Object-assign&quot; class=&quot;headerlink&quot; title=&quot;Object.assign()&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign&quot;&gt;Object.assign()&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。&lt;/p&gt;
-&lt;h3 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;Object.assign(target, …sources)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;target：目标对象。&lt;/p&gt;
-&lt;p&gt;sources：任意多个对象&lt;/p&gt;
-&lt;h3 id=&quot;返回值&quot;&gt;&lt;a href=&quot;#返回值&quot; class=&quot;headerlink&quot; title=&quot;返回值&quot;&gt;&lt;/a&gt;返回值&lt;/h3&gt;&lt;p&gt;目标对象会被返回。&lt;/p&gt;
-&lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象身上。该方法使用源对象的 [ [ Get ] ] 和目标对象的 [ [ Set ] ]，所以它会调用相关 getter 和 setter。因此，它分配属性不仅仅是复制或定义新的属性。如果合并源包含了 getter，那么该方法就不适合将新属性合并到原型里。假如是拷贝属性定义到原型里，包括它们的可枚举性，那么应该使用 Object.getOwnPropertyDescriptor() 和 Object.defineProperty() 。&lt;/p&gt;
-&lt;p&gt;String类型和 Symbol 类型的属性都会被拷贝。&lt;/p&gt;
-&lt;p&gt;注意，在属性拷贝过程中可能会产生异常，比如目标对象的某个只读属性和源对象的某个属性同名，这时该方法会抛出一个 TypeError 异常，拷贝过程中断，已经拷贝成功的属性不会受到影响，还未拷贝的属性将不会再被拷贝。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注意， Object.assign 会跳过那些值为 null 或 undefined 的源对象。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/categories/javascript/"/>
-    
-    
-      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
-    
-      <category term="es-2015" scheme="http://meiminjun.github.io/tags/es-2015/"/>
     
   </entry>
   

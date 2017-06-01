@@ -101,6 +101,59 @@
     </entry>
     
     <entry>
+      <title><![CDATA[javascript深入浅出系列-es6-编写现代Javascript代码]]></title>
+      <url>http://meiminjun.github.io/javascript-%E7%BC%96%E5%86%99%E7%8E%B0%E4%BB%A3Javascript%E4%BB%A3%E7%A0%81/</url>
+      <content type="html"><![CDATA[<p>原文： <a href="https://dev.to/scastiel/writing-modern-javascript-code" target="_blank" rel="external">https://dev.to/scastiel/writing-modern-javascript-code</a></p>
+<h1 id="编写现代Javascript代码"><a href="#编写现代Javascript代码" class="headerlink" title="编写现代Javascript代码"></a>编写现代Javascript代码</h1><p>记得以前Javascript还处于是一种改变页面元素的语言？这些日子已经过去了，每种语言随着时间的推移而发展，我们使用它们也是如此，看看你一两年前写的代码：你不感到羞愧吗？如果是，这篇帖子就是写给你的<br>🙂</p>
+<p>在这篇文章里，我会尝试这里列出一些很好的做法，使您的JavaScript代码更容易编写，阅读和维护</p>
+<h1 id="使用可以格式化代码的linter"><a href="#使用可以格式化代码的linter" class="headerlink" title="使用可以格式化代码的linter"></a>使用可以格式化代码的linter</h1><p>第一个建议是使用一个代码linter,他会检查你的每一行代码是否遵守统一规则，特别是几个开发人员协同开发一个项目的时候：缩减，括号中的空格，将==替换为===…</p>
+<p>但更重要的是，尽可能让您的linter自动修复您的代码。 ESLint非常好（使用–fix选项），它与所有主要的IDE集成，可以在保存时自动修复文件。</p>
+<p>您也可以使用更为专注于格式化的“漂亮”，而不是检查，但结果基本相同😉</p>
+<p>下一点将帮助你选择你的linter使用的规则:</p>
+<h1 id="为你的linter使用现代规则"><a href="#为你的linter使用现代规则" class="headerlink" title="为你的linter使用现代规则"></a>为你的linter使用现代规则</h1><p>如果您想知道您的代码需要什么规则，这里有一个提示:StandardJS.<br>这是一个非常严格的linter,不会在规则中给您任何选择，但是它们中的每一个都越来越被社区所承认。下面是一些例子:</p>
+<ul>
+<li>使用2空格缩进(我曾经使用4个空格,但实际上使用2是相当不错)</li>
+<li>没有分号</li>
+<li>在关键字(如if)和花括号后加空格</li>
+<li>and <a href="https://standardjs.com/rules-zhcn.html" target="_blank" rel="external">a lot more</a>.</li>
+</ul>
+<h1 id="使用ES2015-新特性"><a href="#使用ES2015-新特性" class="headerlink" title="使用ES2015 +新特性"></a>使用ES2015 +新特性</h1><p>如果你用JavaScript开发,你还没有听说过ES2015 +(或ES6 ES7…)特性。这是不可或缺的了:</p>
+<ul>
+<li>箭头函数：编写函数可以像 x =&gt; x * 2 是非常有用的函数式编程</li>
+<li>类：停止使用原型函数，类更酷（但是不要滥用,JavaScript比任何面向对象的语言都要好得多）</li>
+<li>使用数组和对象进行操作</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function doSomething() &#123;</div><div class="line">  const <span class="selector-tag">a</span> = doSomethingElse()</div><div class="line">  const <span class="selector-tag">b</span> = doSomethingWithA(a)</div><div class="line">  const otherResults = &#123; c: <span class="string">'😺'</span>, d: <span class="string">'🐶'</span> &#125;</div><div class="line">  return &#123; <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, ..<span class="selector-class">.otherResults</span> &#125; <span class="comment">// 相当于 &#123; a: a, b: b，c: '😺', d: '🐶' &#125;</span></div><div class="line">&#125;</div><div class="line">const &#123; <span class="selector-tag">a</span>, c, ..<span class="selector-class">.rest</span> &#125; = doSomething() <span class="comment">// 同样适用于数组</span></div><div class="line"><span class="comment">// `rest` 相当于 &#123; b: ..., d: '🐶' &#125;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>使用更容易的使用的async/await:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> getValueForA()</div><div class="line">  <span class="keyword">const</span> b = <span class="keyword">await</span> getValueForBFromA(a)</div><div class="line">  <span class="keyword">const</span> [c, d] = <span class="keyword">await</span> <span class="built_in">Promise</span>.all([</div><div class="line">    <span class="comment">// parallel execution</span></div><div class="line">    getValueForC(), getValueForDFromB(b)</div><div class="line">  ])</div><div class="line">  <span class="keyword">const</span> total = <span class="keyword">await</span> calculateTotal(a, b, c, d)</div><div class="line">  <span class="keyword">return</span> total / <span class="number">1000</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们怎样使用这些特性呢？我的一篇文章给你一些建议（顺便说一下,与最新版本的Node.js,你可能不需要babel就可以使用最新的一些特性）</p>
+<h1 id="使用函数式编程"><a href="#使用函数式编程" class="headerlink" title="使用函数式编程"></a>使用函数式编程</h1><p>现在，函数式编程已经取得了很大的成功，不仅仅是在JavaScript中。这是什么原因呢?它使代码更加可预测、更安全、更确定，并且在使用时更容易维护。以下是一些简单的建议:</p>
+<p>首先，停止使用for循环，在大多数情况下你不需要他们，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr = [&#123; <span class="attr">name</span>: <span class="string">'first'</span>, <span class="attr">value</span>: <span class="number">13</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'second'</span>, <span class="attr">value</span>: <span class="number">7</span> &#125;]</div><div class="line"></div><div class="line"><span class="comment">// 以前:</span></div><div class="line"><span class="keyword">const</span> res = &#123;&#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">  <span class="keyword">const</span> calculatedValue = arr[i].value * <span class="number">10</span></div><div class="line">  <span class="keyword">if</span> (calculatedValue &gt; <span class="number">100</span>) &#123;</div><div class="line">    res[arr[i].name] = calculatedValue</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 更好:</span></div><div class="line"><span class="keyword">const</span> res = arr</div><div class="line">  .map(<span class="function"><span class="params">elem</span> =&gt;</span> (&#123; <span class="attr">name</span>: elem.name, <span class="attr">calculatedValue</span>: elem.value * <span class="number">10</span> &#125;))</div><div class="line">  .filter(<span class="function"><span class="params">elem</span> =&gt;</span> elem.calculatedValue &gt; <span class="number">100</span>)</div><div class="line">  .reduce(<span class="function">(<span class="params">acc, elem</span>) =&gt;</span> (&#123;</div><div class="line">    [elem.name]: calculatedValue,</div><div class="line">    ...acc</div><div class="line">  &#125;), &#123;&#125;)</div></pre></td></tr></table></figure>
+<p>好吧，我承认这是一个非常极端的例子，如果你不经常使用函数式编程的情况下，他看起来会非常的复杂，也许我们可以这样简化一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> enrichElementWithCalculatedValue =</div><div class="line">  <span class="function"><span class="params">elem</span> =&gt;</span> (&#123; <span class="attr">name</span>: elem.name, <span class="attr">calculatedValue</span>: elem.value * <span class="number">10</span> &#125;)</div><div class="line"><span class="keyword">const</span> filterElementsByValue = <span class="function"><span class="params">value</span> =&gt;</span></div><div class="line">  elem =&gt; elem.calculatedValue &gt; value</div><div class="line"><span class="keyword">const</span> aggregateElementInObject = <span class="function">(<span class="params">acc, elem</span>) =&gt;</span> (&#123;</div><div class="line">  [elem.name]: calculatedValue,</div><div class="line">  ...acc</div><div class="line">&#125;)</div><div class="line"><span class="keyword">const</span> res = arr</div><div class="line">  .map(enrichElementWithCalculatedValue)</div><div class="line">  .filter(filterElementsByValue(<span class="number">100</span>))</div><div class="line">  .reduce(aggregateElementInObject, &#123;&#125;)</div></pre></td></tr></table></figure>
+<p>这里我们定义了三个函数基本上就是它们的名字</p>
+<p>第二:创建局部函数(即使是在现有函数中)，无需注释就可以记录代码。</p>
+<p>注意，三个局部函数不修改它们执行的上下文。没有外部变量被修改,没有被其他方法被调用，<br>他们称为纯函数在函数式编程中。他们有一些巨大的优势:</p>
+<ul>
+<li>它们是易测试的，因为从给定的参数来说，只有一个可能的结果，即使我们把函数多调用几次;</li>
+<li>无论应用程序的实际状态如何，它们都可以提供相同的结果;</li>
+<li>在函数调用之前和之后，应用程序状态保持不变。</li>
+</ul>
+<p>所以我的第三条建议是:多使用纯函数!</p>
+<h1 id="最后还有一些其他的建议"><a href="#最后还有一些其他的建议" class="headerlink" title="最后还有一些其他的建议"></a>最后还有一些其他的建议</h1><ul>
+<li>经常使用异步代码，多使用promise，查看带有<a href="http://reactivex.io/rxjs/" target="_blank" rel="external">RxJS</a>的观察效果(<a href="http://reactivex.io/learnrx/" target="_blank" rel="external">有一个关于函数编程的很好的教程，可以测试你的函数式编程</a>)</li>
+<li>编写测试代码!应该是显而易见的，但是我知道很多项目都有未经测试的代码，尽管测试JavaScript(前端或后端)并不像看起来那么困难。</li>
+<li>使用语言的新特性：例如停止使用<code>arr.indexOf(elem) !== -1</code> 赞成使用<code>arr.includes(elem)</code></li>
+<li>多阅读技术文章：<a href="https://www.reddit.com/r/javascript/" target="_blank" rel="external">JavaScript subreddit</a>是了解生态系统中最酷的实践的一个很好的来源</li>
+<li>哦，最后，我能给你最好的建议是：总是重构你的代码！改进你一年前写的模块？借此机会使用<code>const</code>代替<code>var</code>，使用<code>箭头函数</code>或者<code>async/await</code>来简化代码…总之用最好的代码进行工作!😉</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript深入浅出系列-常用-数值判断]]></title>
       <url>http://meiminjun.github.io/javascript-%E5%B8%B8%E7%94%A8-%E6%95%B0%E5%80%BC%E5%88%A4%E6%96%AD/</url>
       <content type="html"><![CDATA[<h1 id="JavaScript中检测数值的方法"><a href="#JavaScript中检测数值的方法" class="headerlink" title="JavaScript中检测数值的方法"></a>JavaScript中检测数值的方法</h1><h2 id="typeof-最常用"><a href="#typeof-最常用" class="headerlink" title="typeof(最常用)"></a>typeof(最常用)</h2><p>在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了</p>
@@ -1652,30 +1705,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
-      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[chrome神器之postman]]></title>
       <url>http://meiminjun.github.io/chrome-postman/</url>
       <content type="html"><![CDATA[<h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
@@ -1709,6 +1738,30 @@
 <ul>
 <li>使用方法基本和”简易版”一样</li>
 </ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[google之翻越长城]]></title>
+      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
 ]]></content>
     </entry>
     
@@ -2118,15 +2171,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[windows常用快捷键]]></title>
-      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
-<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
-<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Chrome常用设置]]></title>
       <url>http://meiminjun.github.io/chrome-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
@@ -2137,6 +2181,15 @@
 <p>–disable-web-security</p>
 <p>chrome49版本以后需加入：</p>
 <p>–disable-web-security –user-data-dir</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[windows常用快捷键]]></title>
+      <url>http://meiminjun.github.io/window%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<h1 id="windows-常用快捷键"><a href="#windows-常用快捷键" class="headerlink" title="windows 常用快捷键"></a>windows 常用快捷键</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>删除： ctrl +　d<br>新建文件夹： ctrl + shift + d<br>返回上层目录： backspace</p>
+<h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><p>锁屏： win + l<br>运行界面： win + r<br>快速打开文件系统： win + e<br>Win + D：显示桌面。<br>Win + space：显示桌面<br>Win + M：最小化所有窗口。<br>Win + SHIFT + M：还原最小化窗口到桌面上。<br>Win + E：打开我的电脑<br>Win + F：搜索文件或文件夹。</p>
+<h2 id="Windows-Explorer相关快捷键"><a href="#Windows-Explorer相关快捷键" class="headerlink" title="Windows Explorer相关快捷键"></a>Windows Explorer相关快捷键</h2><p>Alt+D 选中地址栏（搭配Clover 的ctrl+t 新建标签  非常不错）<br>Ctrl+E 选中搜索框（定位到搜索框）<br>Ctrl+N 打开新窗口<br>Ctrl+Shift+N 新建文件夹</p>
 ]]></content>
     </entry>
     
@@ -2276,6 +2329,123 @@
     </entry>
     
     <entry>
+      <title><![CDATA[javascript深入浅出系列-Function 之 静态属性和原型方法]]></title>
+      <url>http://meiminjun.github.io/javascript-function-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript深入浅出系列-Array 之 splice]]></title>
+      <url>http://meiminjun.github.io/javascript-array-splice/</url>
+      <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td style="text-align:right">必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
+</tr>
+<tr>
+<td>howmany</td>
+<td style="text-align:right">必需。规定应该删除多少元素。必须是数字，但可以是 “0”。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
+</tr>
+<tr>
+<td>element1</td>
+<td style="text-align:right">可选。规定要添加到数组的新元素。从 index 所指的下标处开始插入。</td>
+</tr>
+<tr>
+<td>elementX</td>
+<td style="text-align:right">可选。可向数组添加若干元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果从 arrayObject 中删除了元素，则返回的是含有<strong>被删除</strong>的元素的数组。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
+<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
+<li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript深入浅出系列-String 之 slice]]></title>
+      <url>http://meiminjun.github.io/javascript-string-slice/</url>
+      <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>stringObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
+<blockquote>
+<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
+<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
+<p>arrayObject.slice(start,end)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
+</tr>
+<tr>
+<td>end</td>
+<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
+<p>提示和注释</p>
+<p>注释：您可使用负值从数组的尾部选取元素。</p>
+<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
+<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---精选插件和UI主题]]></title>
       <url>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
@@ -2347,123 +2517,6 @@
 <p>优化后<br><img src="https://segmentfault.com/img/bVsDMr" alt="图片"></p>
 <p><a href="http://frontenddev.org/article/sublime-does-text-three-plug-ins-html-and-css-js-prettify.html" target="_blank" rel="external">sublime text 3 插件：HTML-CSS-JS Prettify</a>文中给出了解决方法，大家可以参考</p>
 <h2 id="我的快捷键配置汇总-首选项-gt-按键绑定-用户"><a href="#我的快捷键配置汇总-首选项-gt-按键绑定-用户" class="headerlink" title="我的快捷键配置汇总:(首选项&gt;按键绑定-用户):"></a>我的快捷键配置汇总:(首选项&gt;按键绑定-用户):</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal"</span> &#125;,</div><div class="line">  &#123; <span class="string">"keys"</span>: [<span class="string">"ctrl+shift+alt+c"</span>], <span class="string">"command"</span>: <span class="string">"open_terminal_project_folder"</span> &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"ctrl+alt+s"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"sublime_tmpl"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"type"</span>: <span class="string">"js"</span>&#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;<span class="string">"target"</span>: <span class="string">"browser"</span>, <span class="string">"parser"</span>:<span class="string">"markdown"</span>&#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[javascript深入浅出系列-Function 之 静态属性和原型方法]]></title>
-      <url>http://meiminjun.github.io/javascript-function-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> A<span class="built_in">test</span>(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new A<span class="built_in">test</span>(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[javascript深入浅出系列-String 之 slice]]></title>
-      <url>http://meiminjun.github.io/javascript-string-slice/</url>
-      <content type="html"><![CDATA[<h1 id="javascript-字符串中的slice-方法介绍和示例"><a href="#javascript-字符串中的slice-方法介绍和示例" class="headerlink" title="javascript 字符串中的slice 方法介绍和示例"></a>javascript 字符串中的slice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>stringObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（<strong>不包括 end</strong>）为止的所有字符。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 提取从位置 6 开始的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6));  // happy world!</div><div class="line"></div><div class="line">// 提取从位置 6 到位置 11 的所有字符</div><div class="line">var str=<span class="string">"Hello happy world!"</span></div><div class="line">document.write(str.slice(6,11)) // happy</div></pre></td></tr></table></figure>
-<h1 id="javascript-数组中的slice-的用法"><a href="#javascript-数组中的slice-的用法" class="headerlink" title="javascript 数组中的slice 的用法"></a>javascript 数组中的slice 的用法</h1><h2 id="定义和用法-1"><a href="#定义和用法-1" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.slice(start,end)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>start</td>
-<td style="text-align:right">必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td>end</td>
-<td style="text-align:right">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。</p>
-<p>提示和注释</p>
-<p>注释：您可使用负值从数组的尾部选取元素。</p>
-<p>注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="传递一个参数"><a href="#传递一个参数" class="headerlink" title="传递一个参数"></a>传递一个参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"George"</span></div><div class="line">arr[<span class="number">1</span>] = <span class="string">"John"</span></div><div class="line">arr[<span class="number">2</span>] = <span class="string">"Thomas"</span></div><div class="line"></div><div class="line"><span class="built_in">document</span>.write(arr + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// George,John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr.slice(<span class="number">1</span>) + <span class="string">"&lt;br /&gt;"</span>) <span class="comment">// John,Thomas</span></div><div class="line"><span class="built_in">document</span>.write(arr)   <span class="comment">// George,John,Thomas</span></div></pre></td></tr></table></figure>
-<h3 id="传递两个参数"><a href="#传递两个参数" class="headerlink" title="传递两个参数"></a>传递两个参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var arr = new Array(6)</div><div class="line">arr[0] = <span class="string">"George"</span></div><div class="line">arr[1] = <span class="string">"John"</span></div><div class="line">arr[2] = <span class="string">"Thomas"</span></div><div class="line">arr[3] = <span class="string">"James"</span></div><div class="line">arr[4] = <span class="string">"Adrew"</span></div><div class="line">arr[5] = <span class="string">"Martin"</span></div><div class="line"></div><div class="line">document.write(arr + <span class="string">"&lt;br /&gt;"</span>)  </div><div class="line">// George,John,Thomas,James,Adrew,Martin</div><div class="line"></div><div class="line">document.write(arr.slice(2,4) + <span class="string">"&lt;br /&gt;"</span>)</div><div class="line">// Thomas,James</div><div class="line"></div><div class="line">document.write(arr)</div><div class="line">// George,John,Thomas,James,Adrew,Martin</div></pre></td></tr></table></figure>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[javascript深入浅出系列-Array 之 splice]]></title>
-      <url>http://meiminjun.github.io/javascript-array-splice/</url>
-      <content type="html"><![CDATA[<h1 id="javascript-中的splice-方法介绍和示例"><a href="#javascript-中的splice-方法介绍和示例" class="headerlink" title="javascript 中的splice 方法介绍和示例"></a>javascript 中的splice 方法介绍和示例</h1><h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><blockquote>
-<p>arrayObject.splice(index,howmany,element1,…..,elementX)</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>index</td>
-<td style="text-align:right">必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</td>
-</tr>
-<tr>
-<td>howmany</td>
-<td style="text-align:right">必需。规定应该删除多少元素。必须是数字，但可以是 “0”。如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</td>
-</tr>
-<tr>
-<td>element1</td>
-<td style="text-align:right">可选。规定要添加到数组的新元素。从 index 所指的下标处开始插入。</td>
-</tr>
-<tr>
-<td>elementX</td>
-<td style="text-align:right">可选。可向数组添加若干元素。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果从 arrayObject 中删除了元素，则返回的是含有<strong>被删除</strong>的元素的数组。</p>
-<blockquote>
-<p>注释：请注意，splice() 方法与 slice() 方法的作用是不同的，<strong>splice() 方法会直接对数组进行修改。影响原有数组</strong> </p>
-</blockquote>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
-<li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
-<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
-<li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
-<blockquote>
-<p>说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除</p>
-</blockquote>
 ]]></content>
     </entry>
     
@@ -2832,23 +2885,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[javascript深入浅出系列-闭包]]></title>
-      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
-      <content type="html"><![CDATA[<ol>
-<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
-<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
-<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
-<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
-</ol>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
-<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
-<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[javascript深入浅出系列-常用DOM操作]]></title>
       <url>http://meiminjun.github.io/javascript-dom/</url>
       <content type="html"><![CDATA[<p>这里主要讲一下开发中经常用到的一些javascript原生操作dom的方法</p>
@@ -2915,6 +2951,23 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> div1 = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</div><div class="line">            <span class="keyword">var</span> span1 = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);</div><div class="line">            span1.textContent = <span class="string">"我是一个新建的span"</span>;</div><div class="line">            div1.replaceChild(span1,<span class="built_in">document</span>.getElementById(<span class="string">"p2"</span>));</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p1"</span>&gt;</span>我是第一个P<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p2"</span>&gt;</span>我是第二个P<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="comment">&lt;!-- 执行完成后HTML代码变为：</span></div><div class="line">  &lt;div id="div1"&gt;</div><div class="line">      &lt;p id="p1"&gt;我是第一个P&lt;/p&gt;</div><div class="line">      &lt;span&gt;我是一个新建的span&lt;/span&gt;    //留意到p2节点已经被替换为span1节点了</div><div class="line">  &lt;/div&gt;</div><div class="line">  --&gt;</div></pre></td></tr></table></figure>
 <h2 id="javascript操作元素CSS"><a href="#javascript操作元素CSS" class="headerlink" title="javascript操作元素CSS"></a>javascript操作元素CSS</h2><p>通过元素的style属性可以随意读取和设置元素的CSS样式，例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            alert(<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.backgroundColor);</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.backgroundColor = <span class="string">"yellow"</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span> <span class="attr">style</span>=<span class="string">"width:100px; height:100px; background-color:red"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript深入浅出系列-闭包]]></title>
+      <url>http://meiminjun.github.io/javascript-%E9%97%AD%E5%8C%85/</url>
+      <content type="html"><![CDATA[<ol>
+<li>闭包最常用的方式就是返回一个内联函数（何为内联函数？就是在函数内部声明的函数）；</li>
+<li>在JavaScript中有作用域和执行环境的问题，在函数内部的变量在函数外部是无法访问的，在函数内部却可以得到全局变量。由于种种原因，我们有时候需要得到函数内部的变量，可是用常规方法是得不到的，这时我们就可以创建一个闭包，用来在外部访问这个变量。</li>
+<li>闭包的用途 主要就是上一点提到的读取函数内部变量，还有一个作用就是可以使这些变量一直保存在内存中。</li>
+<li>使用闭包要注意，由于变量被保存在内存中，所以会对内存造成消耗，所以不能滥用闭包。解决方法是 在退出函数之前，将不使用的局部变量全部删除。</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;闭包&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">'btn'</span> value=<span class="string">"点击我"</span>&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        // 闭包</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">          　　var n = 999;</div><div class="line">          　　<span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">           　　 alert(n+=1);</div><div class="line">         　　 &#125;</div><div class="line">         　　 <span class="built_in">return</span> f1;</div><div class="line">        　　&#125;</div><div class="line">        　　var result = f();</div><div class="line">        　　result(); // 1000</div><div class="line">        　　result(); // 1001</div><div class="line">        　　result(); // 1002</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过将一个方法或者属性声明为私用的，可以让对象的实现细节对其他对象保密以降低对象之间的耦合程度，可以保持数据的完整性并对其修改方式加以约束，这样可以是代码更可靠，更易于调试。封装是面向对象的设计的基石。</p>
+<p>尽管JavaScript是一门面向对象的语言，可它并不具备将成员声明为公用或私用的任何内部机制，所以我们只能自己想办法实现这种特性。下面还是通过一套完整的代码去分析，介绍什么是私有属性和方法，什么是特权属性和方法，什么是公有属性和方法，什么是公有静态属性和方法。</p>
+<p><strong>私有属性和方法：</strong><br>函数有作用域，在函数内用var 关键字声明的变量在外部无法访问，私有属性和方法本质就是你希望在对象外部无法访问的变量。<br><strong>特权属性和方法：</strong><br>创建属性和方法时使用的this关键字，因为这些方法定义在构造器的作用域中，所以它们可以访问到私有属性和方法；只有那些需要直接访问私有成员的方法才应该被设计为特权方法。<br><strong>共有属性和方法：</strong><br>直接链在prototype上的属性和方法，不可以访问构造器内的私有成员，可以访问特权成员，子类会继承所有的共有方法。<br><strong>共有静态属性和方法：</strong><br>最好的理解方式就是把它想象成一个命名空间，实际上相当于把构造器作为命名空间来使用。</p>
 ]]></content>
     </entry>
     
