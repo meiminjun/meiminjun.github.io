@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-06-01T11:27:08.000Z</updated>
+  <updated>2017-06-02T01:29:29.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>javascript深入浅出系列-es6-编写现代Javascript代码</title>
     <link href="http://meiminjun.github.io/javascript-%E7%BC%96%E5%86%99%E7%8E%B0%E4%BB%A3Javascript%E4%BB%A3%E7%A0%81/"/>
     <id>http://meiminjun.github.io/javascript-编写现代Javascript代码/</id>
-    <published>2017-06-01T11:50:13.000Z</published>
-    <updated>2017-06-01T11:27:08.000Z</updated>
+    <published>2017-06-01T11:20:13.000Z</published>
+    <updated>2017-06-02T01:29:29.000Z</updated>
     
     <content type="html"><![CDATA[<p>原文： <a href="https://dev.to/scastiel/writing-modern-javascript-code" target="_blank" rel="external">https://dev.to/scastiel/writing-modern-javascript-code</a></p>
 <h1 id="编写现代Javascript代码"><a href="#编写现代Javascript代码" class="headerlink" title="编写现代Javascript代码"></a>编写现代Javascript代码</h1><p>记得以前Javascript还处于是一种改变页面元素的语言？这些日子已经过去了，每种语言随着时间的推移而发展，我们使用它们也是如此，看看你一两年前写的代码：你不感到羞愧吗？如果是，这篇帖子就是写给你的<br>🙂</p>
@@ -1940,6 +1940,52 @@
   </entry>
   
   <entry>
+    <title>google之翻越长城</title>
+    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
+    <id>http://meiminjun.github.io/chrome-翻墙/</id>
+    <published>2016-08-18T07:54:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
+&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
+&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
+&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
+    
+  </entry>
+  
+  <entry>
     <title>chrome神器之postman</title>
     <link href="http://meiminjun.github.io/chrome-postman/"/>
     <id>http://meiminjun.github.io/chrome-postman/</id>
@@ -1993,52 +2039,6 @@
       <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
     
       <category term="postman" scheme="http://meiminjun.github.io/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>google之翻越长城</title>
-    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
-    <id>http://meiminjun.github.io/chrome-翻墙/</id>
-    <published>2016-08-18T07:54:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
-&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
-&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
-&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
-    
-      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
     
   </entry>
   
