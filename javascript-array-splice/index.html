@@ -139,7 +139,7 @@ arrayObject.splice(index,howmany,element1,…..,elementX)
 
 index
 必需。规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组">
-<meta property="og:updated_time" content="2017-05-27T01:36:16.000Z">
+<meta property="og:updated_time" content="2017-06-09T06:55:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript深入浅出系列-Array 之 splice">
 <meta name="twitter:description" content="javascript 中的splice 方法介绍和示例定义和用法javascript 中的 splice 方法很强大, splice() 方法用于插入、删除或替换数组的元素。
@@ -402,7 +402,7 @@ index
 </blockquote>
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
 <li>删除：用于删除元素，两个参数，第一个参数（要删除第一项的位置），第二个参数（要删除的项数）</li>
-<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（其实位置），第二个参数（0），第三个参数（插入的项）</li>
+<li>插入：向数组指定位置插入任意项元素。三个参数，第一个参数（起始位置），第二个参数（0），第三个参数（插入的项）</li>
 <li>替换：向数组指定位置插入任意项元素，同时删除任意数量的项，三个参数。第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var lang = [<span class="string">"php"</span>,<span class="string">"java"</span>,<span class="string">"javascript"</span>];</div><div class="line">//删除</div><div class="line">var removed = lang.splice(1,1);</div><div class="line">alert(lang); //php,javascript</div><div class="line">alert(removed); //java ,返回删除的项</div><div class="line">//插入(第二个元素为0的时候)</div><div class="line">var insert = lang.splice(0,0,<span class="string">"asp"</span>); //从第0个位置开始插入</div><div class="line">alert(insert); //返回空数组</div><div class="line">alert(lang); //asp,php,javascript</div><div class="line">//替换</div><div class="line">var replace = lang.splice(1,1,<span class="string">"c#"</span>,<span class="string">"ruby"</span>); //删除一项，插入两项</div><div class="line">alert(lang); //asp,c<span class="comment">#,ruby</span></div><div class="line">alert(replace); //php,返回删除的项</div></pre></td></tr></table></figure>
@@ -439,16 +439,16 @@ index
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SublimeText-常用插件和主题/" rel="next" title="史上最强Sublime 笔记系列---精选插件和UI主题">
-                <i class="fa fa-chevron-left"></i> 史上最强Sublime 笔记系列---精选插件和UI主题
+              <a href="/javascript-function-静态方法/" rel="next" title="javascript深入浅出系列-Function 之 静态属性和原型方法">
+                <i class="fa fa-chevron-left"></i> javascript深入浅出系列-Function 之 静态属性和原型方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/javascript-function-静态方法/" rel="prev" title="javascript深入浅出系列-Function 之 静态属性和原型方法">
-                javascript深入浅出系列-Function 之 静态属性和原型方法 <i class="fa fa-chevron-right"></i>
+              <a href="/SublimeText-常用快捷键/" rel="prev" title="史上最强Sublime 笔记系列---常用快捷键">
+                史上最强Sublime 笔记系列---常用快捷键 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -517,7 +517,7 @@ index
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
