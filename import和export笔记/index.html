@@ -109,31 +109,25 @@
 
 <meta name="description" content="彻底搞清楚javascript中的require和export
 为什么有模块概念理想情况下，开发者只需要实现核心的业务逻辑，其他都可以加载别人已经写好的模块。
-但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。
-require时代Javascript社区做了很多努力，在现有的运行环境中，实现”模块”的效果。
-原始">
+但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="彻底搞清楚javascript中的require、import和export">
 <meta property="og:url" content="http://meiminjun.github.io/import和export笔记/index.html">
 <meta property="og:site_name" content="Mr.Jason'Blog">
 <meta property="og:description" content="彻底搞清楚javascript中的require和export
 为什么有模块概念理想情况下，开发者只需要实现核心的业务逻辑，其他都可以加载别人已经写好的模块。
-但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。
-require时代Javascript社区做了很多努力，在现有的运行环境中，实现”模块”的效果。
-原始">
+但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcgy1fh7u9d2ixbj308c08bdfs.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fh7n4us7v0j30dw043aa0.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcgy1fh7u7byz4xj30dh06e75d.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcgy1fh7u5xcnw7j305k046wed.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fh7uc992vaj30go0a074e.jpg">
-<meta property="og:updated_time" content="2017-07-04T08:09:59.000Z">
+<meta property="og:updated_time" content="2017-07-04T08:12:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="彻底搞清楚javascript中的require、import和export">
 <meta name="twitter:description" content="彻底搞清楚javascript中的require和export
 为什么有模块概念理想情况下，开发者只需要实现核心的业务逻辑，其他都可以加载别人已经写好的模块。
-但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。
-require时代Javascript社区做了很多努力，在现有的运行环境中，实现”模块”的效果。
-原始">
+但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。">
 <meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tKfTcgy1fh7u9d2ixbj308c08bdfs.jpg">
 
 
@@ -347,6 +341,7 @@ require时代Javascript社区做了很多努力，在现有的运行环境中，
         <h1 id="彻底搞清楚javascript中的require和export"><a href="#彻底搞清楚javascript中的require和export" class="headerlink" title="彻底搞清楚javascript中的require和export"></a>彻底搞清楚javascript中的require和export</h1><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fh7u9d2ixbj308c08bdfs.jpg" alt=""></p>
 <h2 id="为什么有模块概念"><a href="#为什么有模块概念" class="headerlink" title="为什么有模块概念"></a>为什么有模块概念</h2><p>理想情况下，开发者只需要实现核心的业务逻辑，其他都可以加载别人已经写好的模块。</p>
 <p>但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。</p>
+<a id="more"></a>
 <h2 id="require时代"><a href="#require时代" class="headerlink" title="require时代"></a>require时代</h2><p>Javascript社区做了很多努力，在现有的运行环境中，实现”模块”的效果。</p>
 <h3 id="原始写法"><a href="#原始写法" class="headerlink" title="原始写法"></a>原始写法</h3><p>模块就是实现特定功能的一组方法。<br>只要把不同的函数（以及记录状态的变量）简单地放在一起，就算是一个模块。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　<span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　<span class="comment">//...　　</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
