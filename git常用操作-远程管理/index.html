@@ -105,22 +105,13 @@
 
 
 
-<meta name="description" content="git常用操作之远程管理与分支管理远程管理
-克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git
-
-要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
-
-关联后，使用命令git push -u origin master第一次推送m">
+<meta name="description" content="git常用操作之远程管理与分支管理远程管理 克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git  要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；  关联后，使用命令git push -u origin master第一次推送m">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git常用操作-远程管理与分支管理">
 <meta property="og:url" content="http://meiminjun.github.io/git常用操作-远程管理/index.html">
-<meta property="og:site_name" content="Mr.Jason'Blog">
-<meta property="og:description" content="git常用操作之远程管理与分支管理远程管理
-克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git
-
-要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
-
-关联后，使用命令git push -u origin master第一次推送m">
+<meta property="og:site_name" content="Mr.Jason&#39;Blog">
+<meta property="og:description" content="git常用操作之远程管理与分支管理远程管理 克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git  要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；  关联后，使用命令git push -u origin master第一次推送m">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1fb1upo5iqkj208d047q2w.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/69a9ed59gw1fb1uriy9a3j20a706h74a.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/69a9ed59gw1fb1ut2uf8qj20dq06hmx7.jpg">
@@ -130,12 +121,7 @@
 <meta property="og:updated_time" content="2017-01-04T01:53:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用操作-远程管理与分支管理">
-<meta name="twitter:description" content="git常用操作之远程管理与分支管理远程管理
-克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git
-
-要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
-
-关联后，使用命令git push -u origin master第一次推送m">
+<meta name="twitter:description" content="git常用操作之远程管理与分支管理远程管理 克隆远程库， git clone git@github.com:meiminjun/meiminjun.github.io.git  要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；  关联后，使用命令git push -u origin master第一次推送m">
 <meta name="twitter:image" content="http://ww3.sinaimg.cn/large/69a9ed59gw1fb1upo5iqkj208d047q2w.jpg">
 
 
@@ -384,7 +370,7 @@
 <p>现在，我们把test分支的工作成果合并到master分支上：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">merge</span> <span class="keyword">test</span></div><div class="line">Updating <span class="number">967984</span>f..ecc13e5</div><div class="line"><span class="keyword">Fast</span>-forward</div><div class="line"> git/branch.js           | <span class="number">1</span> +</div></pre></td></tr></table></figure>
 <p>git merge命令用于合并指定分支到当前分支。合并后，再查看里面的内容，就可以看到，和test分支的最新提交是完全一样的。</p>
-<p>合并完成后，就可以放心地删除dev分支了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="_">-d</span> <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
+<p>合并完成后，就可以放心地删除dev分支了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -d <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意删除只能删除其他分支，不能删除当前分支</p>
 </blockquote>

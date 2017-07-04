@@ -105,34 +105,17 @@
 
 
 
-<meta name="description" content="JavaScript中检测数值的方法typeof(最常用)在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了
-1typeof [] // &apos;object&apos;
-
-typeof 的返回值是个字符串哦
-
-ps:以下typeof中是可用的判断类型
-1234567891011121314151617181920var a;typeof a;				/">
+<meta name="description" content="JavaScript中检测数值的方法typeof(最常用)在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了 1typeof [] // &apos;object&apos;  typeof 的返回值是个字符串哦  ps:以下typeof中是可用的判断类型 1234567891011121314151617181920var a;typeof a;				/">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript深入浅出系列-常用-数值判断">
 <meta property="og:url" content="http://meiminjun.github.io/javascript-常用-数值判断/index.html">
-<meta property="og:site_name" content="Mr.Jason'Blog">
-<meta property="og:description" content="JavaScript中检测数值的方法typeof(最常用)在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了
-1typeof [] // &apos;object&apos;
-
-typeof 的返回值是个字符串哦
-
-ps:以下typeof中是可用的判断类型
-1234567891011121314151617181920var a;typeof a;				/">
+<meta property="og:site_name" content="Mr.Jason&#39;Blog">
+<meta property="og:description" content="JavaScript中检测数值的方法typeof(最常用)在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了 1typeof [] // &apos;object&apos;  typeof 的返回值是个字符串哦  ps:以下typeof中是可用的判断类型 1234567891011121314151617181920var a;typeof a;				/">
 <meta property="og:updated_time" content="2017-05-27T06:38:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript深入浅出系列-常用-数值判断">
-<meta name="twitter:description" content="JavaScript中检测数值的方法typeof(最常用)在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了
-1typeof [] // &apos;object&apos;
-
-typeof 的返回值是个字符串哦
-
-ps:以下typeof中是可用的判断类型
-1234567891011121314151617181920var a;typeof a;				/">
+<meta name="twitter:description" content="JavaScript中检测数值的方法typeof(最常用)在很多时候我们都需要对一个值进行判断，用的最多的就是typeof，而当判断array的时候，这个方法则不管用了 1typeof [] // &apos;object&apos;  typeof 的返回值是个字符串哦  ps:以下typeof中是可用的判断类型 1234567891011121314151617181920var a;typeof a;				/">
 
 
 
@@ -348,7 +331,7 @@ ps:以下typeof中是可用的判断类型
 <p>typeof 的返回值是个字符串哦</p>
 </blockquote>
 <p>ps:以下typeof中是可用的判断类型</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "undefined"</span></div><div class="line"></div><div class="line">a = <span class="string">"hello world"</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "string"</span></div><div class="line"></div><div class="line">a = <span class="number">42</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "number"</span></div><div class="line"></div><div class="line">a = <span class="literal">true</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "boolean"</span></div><div class="line"></div><div class="line">a = <span class="literal">null</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "object" -- 奇怪的bug</span></div><div class="line"></div><div class="line">a = <span class="literal">undefined</span>;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "undefined"</span></div><div class="line"></div><div class="line">a = &#123; <span class="attr">b</span>: <span class="string">"c"</span> &#125;;</div><div class="line"><span class="keyword">typeof</span> a;				<span class="comment">// "object"</span></div></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var a;</div><div class="line">typeof a;				// <span class="string">"undefined"</span></div><div class="line"></div><div class="line">a = <span class="string">"hello world"</span>;</div><div class="line">typeof a;				// <span class="string">"string"</span></div><div class="line"></div><div class="line">a = 42;</div><div class="line">typeof a;				// <span class="string">"number"</span></div><div class="line"></div><div class="line">a = true;</div><div class="line">typeof a;				// <span class="string">"boolean"</span></div><div class="line"></div><div class="line">a = null;</div><div class="line">typeof a;				// <span class="string">"object"</span> -- 奇怪的bug</div><div class="line"></div><div class="line">a = undefined;</div><div class="line">typeof a;				// <span class="string">"undefined"</span></div><div class="line"></div><div class="line">a = &#123; b: <span class="string">"c"</span> &#125;;</div><div class="line">typeof a;				// <span class="string">"object"</span></div></pre></td></tr></table></figure>
 <p>那么我们怎么去判断一个数组类型呢？</p>
 <h2 id="instanceof操作符"><a href="#instanceof操作符" class="headerlink" title="instanceof操作符"></a>instanceof操作符</h2><p>这个操作符和JavaScript中面向对象有点关系，了解这个就先得了解JavaScript中的面向对象。因为这个操作符是检测对象的原型链是否指向构造函数的prototype对象的。</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>];     </div><div class="line">alert(arr instanceof Array); <span class="comment">// true</span></div></pre></td></tr></table></figure>

@@ -105,31 +105,17 @@
 
 
 
-<meta name="description" content="javascript 之 object-create的方法介绍和示例Object.create()Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。
-语法
-Object.create(proto, [ propertiesObject ])
-
-proto：一个对象，作为新创建对象的原型。。
-propertiesObject：可选。该参数对象是一组属性与值，该对象的属性">
+<meta name="description" content="javascript 之 object-create的方法介绍和示例Object.create()Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。 语法 Object.create(proto, [ propertiesObject ])  proto：一个对象，作为新创建对象的原型。。 propertiesObject：可选。该参数对象是一组属性与值，该对象的属性">
+<meta name="keywords" content="javascript,es-2015">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript深入浅出系列-Object 之 create">
 <meta property="og:url" content="http://meiminjun.github.io/javascript-object-create/index.html">
-<meta property="og:site_name" content="Mr.Jason'Blog">
-<meta property="og:description" content="javascript 之 object-create的方法介绍和示例Object.create()Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。
-语法
-Object.create(proto, [ propertiesObject ])
-
-proto：一个对象，作为新创建对象的原型。。
-propertiesObject：可选。该参数对象是一组属性与值，该对象的属性">
+<meta property="og:site_name" content="Mr.Jason&#39;Blog">
+<meta property="og:description" content="javascript 之 object-create的方法介绍和示例Object.create()Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。 语法 Object.create(proto, [ propertiesObject ])  proto：一个对象，作为新创建对象的原型。。 propertiesObject：可选。该参数对象是一组属性与值，该对象的属性">
 <meta property="og:updated_time" content="2017-05-27T06:12:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript深入浅出系列-Object 之 create">
-<meta name="twitter:description" content="javascript 之 object-create的方法介绍和示例Object.create()Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。
-语法
-Object.create(proto, [ propertiesObject ])
-
-proto：一个对象，作为新创建对象的原型。。
-propertiesObject：可选。该参数对象是一组属性与值，该对象的属性">
+<meta name="twitter:description" content="javascript 之 object-create的方法介绍和示例Object.create()Object.create() 方法创建一个拥有指定原型和若干个指定属性的对象。 语法 Object.create(proto, [ propertiesObject ])  proto：一个对象，作为新创建对象的原型。。 propertiesObject：可选。该参数对象是一组属性与值，该对象的属性">
 
 
 
@@ -369,7 +355,7 @@ propertiesObject：可选。该参数对象是一组属性与值，该对象的�
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
 <li>使用Object.create实现类式继承</li>
 </ul>
-<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Shape - superclass</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = <span class="number">0</span>;</div><div class="line">  <span class="keyword">this</span>.y = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Shape.prototype.move = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x += x;</div><div class="line">    <span class="keyword">this</span>.y += y;</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">"Shape moved."</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Rectangle - subclass</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rectangle</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  Shape.call(<span class="keyword">this</span>); <span class="comment">//call super constructor.</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Rectangle.prototype = <span class="built_in">Object</span>.create(Shape.prototype);</div><div class="line"></div><div class="line"><span class="built_in">var</span> <span class="built_in">rect</span> = <span class="keyword">new</span> Rectangle();</div><div class="line"></div><div class="line"><span class="built_in">rect</span> <span class="keyword">instanceof</span> Rectangle <span class="comment">//true.</span></div><div class="line"><span class="built_in">rect</span> <span class="keyword">instanceof</span> Shape <span class="comment">//true.</span></div><div class="line"></div><div class="line"><span class="built_in">rect</span>.move(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">//Outputs, "Shape moved."</span></div></pre></td></tr></table></figure>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Shape - superclass</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = <span class="number">0</span>;</div><div class="line">  <span class="keyword">this</span>.y = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Shape.prototype.move = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x += x;</div><div class="line">    <span class="keyword">this</span>.y += y;</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">"Shape moved."</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Rectangle - subclass</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rectangle</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  Shape.call(<span class="keyword">this</span>); <span class="comment">//call super constructor.</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Rectangle.prototype = <span class="built_in">Object</span>.create(Shape.prototype);</div><div class="line"></div><div class="line"><span class="keyword">var</span> <span class="built_in">rect</span> = <span class="keyword">new</span> Rectangle();</div><div class="line"></div><div class="line"><span class="built_in">rect</span> <span class="keyword">instanceof</span> Rectangle <span class="comment">//true.</span></div><div class="line"><span class="built_in">rect</span> <span class="keyword">instanceof</span> Shape <span class="comment">//true.</span></div><div class="line"></div><div class="line"><span class="built_in">rect</span>.move(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">//Outputs, "Shape moved."</span></div></pre></td></tr></table></figure>
 <ul>
 <li>使用Object.create 的 propertyObject 参数</li>
 </ul>

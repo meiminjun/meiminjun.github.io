@@ -105,19 +105,17 @@
 
 
 
-<meta name="description" content="常用配置解析（这里以vue脚手架生成为例）输入(entry)123entry: &amp;#123;  app: &apos;./src/main.js&apos;&amp;#125;
-输出(output)12345output: &amp;#123;  path: path.resolve(__dirname, &apos;./dist&apos;),  // 文件构建完成后的生成目录  publicPath: &apos;/dist/&apos;,	// build.js相对">
+<meta name="description" content="常用配置解析（这里以vue脚手架生成为例）输入(entry)123entry: &amp;#123;  app: &apos;./src/main.js&apos;&amp;#125; 输出(output)12345output: &amp;#123;  path: path.resolve(__dirname, &apos;./dist&apos;),  // 文件构建完成后的生成目录  publicPath: &apos;/dist/&apos;,	// build.js相对">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack配置解析">
 <meta property="og:url" content="http://meiminjun.github.io/webpack/index.html">
-<meta property="og:site_name" content="Mr.Jason'Blog">
-<meta property="og:description" content="常用配置解析（这里以vue脚手架生成为例）输入(entry)123entry: &amp;#123;  app: &apos;./src/main.js&apos;&amp;#125;
-输出(output)12345output: &amp;#123;  path: path.resolve(__dirname, &apos;./dist&apos;),  // 文件构建完成后的生成目录  publicPath: &apos;/dist/&apos;,	// build.js相对">
+<meta property="og:site_name" content="Mr.Jason&#39;Blog">
+<meta property="og:description" content="常用配置解析（这里以vue脚手架生成为例）输入(entry)123entry: &amp;#123;  app: &apos;./src/main.js&apos;&amp;#125; 输出(output)12345output: &amp;#123;  path: path.resolve(__dirname, &apos;./dist&apos;),  // 文件构建完成后的生成目录  publicPath: &apos;/dist/&apos;,	// build.js相对">
 <meta property="og:updated_time" content="2017-04-28T10:56:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack配置解析">
-<meta name="twitter:description" content="常用配置解析（这里以vue脚手架生成为例）输入(entry)123entry: &amp;#123;  app: &apos;./src/main.js&apos;&amp;#125;
-输出(output)12345output: &amp;#123;  path: path.resolve(__dirname, &apos;./dist&apos;),  // 文件构建完成后的生成目录  publicPath: &apos;/dist/&apos;,	// build.js相对">
+<meta name="twitter:description" content="常用配置解析（这里以vue脚手架生成为例）输入(entry)123entry: &amp;#123;  app: &apos;./src/main.js&apos;&amp;#125; 输出(output)12345output: &amp;#123;  path: path.resolve(__dirname, &apos;./dist&apos;),  // 文件构建完成后的生成目录  publicPath: &apos;/dist/&apos;,	// build.js相对">
 
 
 
@@ -431,7 +429,7 @@
 <p>mangle: 通过设置except数组来防止指定变量被改变<br>sourceMap: 生成SourceMap文件，会导致编译过程变慢，默认true<br>test/include/exclude: 使用一个或多个正则表达式来过滤要处理的文件<br>compressor: 压缩配置项</p>
 <h3 id="webpack-ProvidePlugin"><a href="#webpack-ProvidePlugin" class="headerlink" title="webpack.ProvidePlugin"></a>webpack.ProvidePlugin</h3><p>定义标识符，当遇到指定标识符的时候，自动加载模块。</p>
 <p>在下面例子中，无需在module中引入jquery，即可使用$方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.ProvidePlugin(&#123;</div><div class="line">  <span class="attr">$</span>: <span class="string">"jquery"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">new webpack.ProvidePlugin(&#123;</div><div class="line"><span class="meta">  $</span><span class="bash">: <span class="string">"jquery"</span></span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="webpack-optimize-CommonsChunkPlugin"><a href="#webpack-optimize-CommonsChunkPlugin" class="headerlink" title="webpack.optimize.CommonsChunkPlugin"></a>webpack.optimize.CommonsChunkPlugin</h3><p>提取代码中的公共模块，然后将公共模块打包到一个独立的文件中，以便在其他的入口和模块中使用。</p>
 <blockquote>
 <p>不要忘记在html中单独引入抽离出来的公共模块。</p>
