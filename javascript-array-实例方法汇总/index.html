@@ -92,8 +92,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Mr.Jason'Blog" type="application/atom+xml" />
 
@@ -121,7 +119,7 @@ join()join方法以参数作为">
 toString()toString()返回数组的字符串形式,注意，该方法不改变原数组
 12var arr = [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]arr.toString(); // 1,2,3
 join()join方法以参数作为">
-<meta property="og:updated_time" content="2017-06-12T07:11:25.000Z">
+<meta property="og:updated_time" content="2017-06-23T07:39:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript深入浅出系列-Array 之 实例方法汇总">
 <meta name="twitter:description" content="valueOf()valueOf()返回数组本身
@@ -511,6 +509,18 @@ join()join方法以参数作为">
 <p>注意，如果数组中包含NaN，这两个方法不适用，即无法确定数组成员是否包含NaN</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="literal">NaN</span>].indexOf(<span class="literal">NaN</span>) <span class="comment">// -1</span></div><div class="line">[<span class="literal">NaN</span>].lastIndexOf(<span class="literal">NaN</span>) <span class="comment">// -1</span></div></pre></td></tr></table></figure>
 <p>这是因为这两个方法内部，使用严格相等运算符（===）进行比较，而NaN是唯一一个不等于自身的值</p>
+<h1 id="from"><a href="#from" class="headerlink" title="from()"></a>from()</h1><p>Array.from() 方法从一个类似数组或可迭代的对象中重新创建一个新的数组实例，<strong>注意：返回一个新数组，原数组不变</strong></p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> bar = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>];</div><div class="line"><span class="keyword">var</span> i = <span class="type">Array</span>.<span class="keyword">from</span>(bar); // [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</div><div class="line">bar === i // <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="type">Array</span>.<span class="keyword">from</span>('foo');</div><div class="line">// [<span class="string">"f"</span>, <span class="string">"o"</span>, <span class="string">"o"</span>]</div></pre></td></tr></table></figure>
+<p>将NodeList 转化成 Array</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> divs = <span class="built_in">Array</span>.from(<span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>));</div><div class="line"></div><div class="line"><span class="comment">// Array[232] (every DIV on the page)</span></div></pre></td></tr></table></figure>
+<p>将 arguments 转化成 Array</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">something</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">  <span class="comment">// Array['yes', 1, &#123;&#125;]</span></div><div class="line">&#125;</div><div class="line">something(<span class="string">'yes'</span>, <span class="number">1</span>, &#123;&#125;);</div></pre></td></tr></table></figure>
+<p>将 String 转化成 Array</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Array.from(<span class="string">'JavaScript'</span>); <span class="regexp">//</span> 很像<span class="string">'JavaScript'</span>.split(<span class="string">''</span>)</div><div class="line"></div><div class="line"><span class="regexp">//</span> [<span class="string">"J"</span>, <span class="string">"a"</span>, <span class="string">"v"</span>, <span class="string">"a"</span>, <span class="string">"S"</span>, <span class="string">"c"</span>, <span class="string">"r"</span>, <span class="string">"i"</span>, <span class="string">"p"</span>, <span class="string">"t"</span>]</div></pre></td></tr></table></figure>
+<p>与箭头函数搭配使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span>.from([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], x =&gt; x + x);      </div><div class="line"><span class="comment">// [2, 4, 6]</span></div><div class="line"></div><div class="line"><span class="keyword">Array</span>.from(&#123;length: <span class="number">5</span>&#125;, (v, i) =&gt; i);</div><div class="line"><span class="comment">// [0, 1, 2, 3, 4]</span></div></pre></td></tr></table></figure>
+<p>from 方法的第二个参数为可选参数，如果指定了该参数，则最后生成的数组会经过该函数的加工处理后再返回</p>
+<p>如果传入第三个参数，执行第二个参数时，改变this 的指向</p>
 <h1 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h1><p>上面这些数组方法之中，有不少返回的还是数组，所以可以链式使用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> users = [</div><div class="line">  &#123;<span class="attr">name</span>: <span class="string">'tom'</span>, <span class="attr">email</span>: <span class="string">'tom@example.com'</span>&#125;,</div><div class="line">  &#123;<span class="attr">name</span>: <span class="string">'peter'</span>, <span class="attr">email</span>: <span class="string">'peter@example.com'</span>&#125;</div><div class="line">];</div><div class="line"></div><div class="line">users</div><div class="line">.map(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> user.email;</div><div class="line">&#125;)</div><div class="line">.filter(<span class="function"><span class="keyword">function</span> (<span class="params">email</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="regexp">/^t/</span>.test(email);</div><div class="line">&#125;)</div><div class="line">.forEach(alert);</div><div class="line"><span class="comment">// 弹出tom@example.com</span></div></pre></td></tr></table></figure>
 <h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>改变的原数组的几个方法，除此之外都不是：</p>
@@ -538,6 +548,7 @@ join()join方法以参数作为">
 <li>reduceRight()</li>
 <li>indexOf()</li>
 <li>lastIndexOf()</li>
+<li>from()</li>
 </ul>
 
       
@@ -576,6 +587,10 @@ join()join方法以参数作为">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/import和export笔记/" rel="prev" title="彻底搞清楚javascript中的require、import和export">
+                彻底搞清楚javascript中的require、import和export <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -643,7 +658,7 @@ join()join方法以参数作为">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -660,7 +675,7 @@ join()join方法以参数作为">
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -716,7 +731,7 @@ join()join方法以参数作为">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#valueOf-NaN"><span class="nav-number">1.</span> <span class="nav-text">valueOf()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#toString-NaN"><span class="nav-number">2.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">3.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat"><span class="nav-number">4.</span> <span class="nav-text">concat()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#push"><span class="nav-number">5.</span> <span class="nav-text">push()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pop"><span class="nav-number">6.</span> <span class="nav-text">pop()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shift"><span class="nav-number">7.</span> <span class="nav-text">shift()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unshift"><span class="nav-number">8.</span> <span class="nav-text">unshift()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reverse"><span class="nav-number">9.</span> <span class="nav-text">reverse()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#slice"><span class="nav-number">10.</span> <span class="nav-text">slice()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splice"><span class="nav-number">11.</span> <span class="nav-text">splice()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sort"><span class="nav-number">12.</span> <span class="nav-text">sort()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#map"><span class="nav-number">13.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forEach"><span class="nav-number">14.</span> <span class="nav-text">forEach()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#filter"><span class="nav-number">15.</span> <span class="nav-text">filter()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-，every"><span class="nav-number">16.</span> <span class="nav-text">some()，every()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reduce-，reduceRight"><span class="nav-number">17.</span> <span class="nav-text">reduce()，reduceRight()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexOf-lastIndexOf"><span class="nav-number">18.</span> <span class="nav-text">indexOf(),lastIndexOf()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链式调用"><span class="nav-number">19.</span> <span class="nav-text">链式调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">20.</span> <span class="nav-text">注意点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#valueOf-NaN"><span class="nav-number">1.</span> <span class="nav-text">valueOf()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#toString-NaN"><span class="nav-number">2.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">3.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concat"><span class="nav-number">4.</span> <span class="nav-text">concat()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#push"><span class="nav-number">5.</span> <span class="nav-text">push()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pop"><span class="nav-number">6.</span> <span class="nav-text">pop()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shift"><span class="nav-number">7.</span> <span class="nav-text">shift()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unshift"><span class="nav-number">8.</span> <span class="nav-text">unshift()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reverse"><span class="nav-number">9.</span> <span class="nav-text">reverse()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#slice"><span class="nav-number">10.</span> <span class="nav-text">slice()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#splice"><span class="nav-number">11.</span> <span class="nav-text">splice()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sort"><span class="nav-number">12.</span> <span class="nav-text">sort()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#map"><span class="nav-number">13.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forEach"><span class="nav-number">14.</span> <span class="nav-text">forEach()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#filter"><span class="nav-number">15.</span> <span class="nav-text">filter()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#some-，every"><span class="nav-number">16.</span> <span class="nav-text">some()，every()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reduce-，reduceRight"><span class="nav-number">17.</span> <span class="nav-text">reduce()，reduceRight()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#indexOf-lastIndexOf"><span class="nav-number">18.</span> <span class="nav-text">indexOf(),lastIndexOf()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#from"><span class="nav-number">19.</span> <span class="nav-text">from()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链式调用"><span class="nav-number">20.</span> <span class="nav-text">链式调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">21.</span> <span class="nav-text">注意点</span></a></li></ol></div>
             
           </div>
         </section>

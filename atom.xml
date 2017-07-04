@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-06-12T07:11:25.000Z</updated>
+  <updated>2017-07-04T08:09:59.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -16,11 +16,218 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>彻底搞清楚javascript中的require、import和export</title>
+    <link href="http://meiminjun.github.io/import%E5%92%8Cexport%E7%AC%94%E8%AE%B0/"/>
+    <id>http://meiminjun.github.io/import和export笔记/</id>
+    <published>2017-07-04T12:20:13.000Z</published>
+    <updated>2017-07-04T08:09:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="彻底搞清楚javascript中的require和export"><a href="#彻底搞清楚javascript中的require和export" class="headerlink" title="彻底搞清楚javascript中的require和export"></a>彻底搞清楚javascript中的require和export</h1><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fh7u9d2ixbj308c08bdfs.jpg" alt=""></p>
+<h2 id="为什么有模块概念"><a href="#为什么有模块概念" class="headerlink" title="为什么有模块概念"></a>为什么有模块概念</h2><p>理想情况下，开发者只需要实现核心的业务逻辑，其他都可以加载别人已经写好的模块。</p>
+<p>但是，Javascript不是一种模块化编程语言，在es6以前，它是不支持”类”（class），所以也就没有”模块”（module）了。</p>
+<h2 id="require时代"><a href="#require时代" class="headerlink" title="require时代"></a>require时代</h2><p>Javascript社区做了很多努力，在现有的运行环境中，实现”模块”的效果。</p>
+<h3 id="原始写法"><a href="#原始写法" class="headerlink" title="原始写法"></a>原始写法</h3><p>模块就是实现特定功能的一组方法。<br>只要把不同的函数（以及记录状态的变量）简单地放在一起，就算是一个模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　<span class="comment">//...</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">m2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　<span class="comment">//...　　</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的函数m1()和m2()，组成一个模块。使用的时候，直接调用就行了。</p>
+<p>这种做法的缺点很明显：”污染”了全局变量，无法保证不与其他模块发生变量名冲突，而且模块成员之间看不出直接关系。</p>
+<h3 id="对象写法"><a href="#对象写法" class="headerlink" title="对象写法"></a>对象写法</h3><p>为了解决上面的缺点，可以把模块写成一个对象，所有的模块成员都放到这个对象里面</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> module1 = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;</div><div class="line">  <span class="attr">_count</span> : <span class="number">0</span>,</div><div class="line">　<span class="attr">m1</span> : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">　　<span class="comment">//...</span></div><div class="line">　&#125;,</div><div class="line">　<span class="attr">m2</span> : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">　　<span class="comment">//...</span></div><div class="line">　&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上面的函数m1()和m2(），都封装在module1对象里。使用的时候，就是调用这个对象的属性</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">module<span class="number">1.</span><span class="name">m1</span><span class="comment">()</span>;</div></pre></td></tr></table></figure>
+<p>这样的写法会暴露所有模块成员，内部状态可以被外部改写。比如，外部代码可以直接改变内部计数器的值。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">module._<span class="built_in">count</span> = <span class="number">1</span><span class="comment">;</span></div></pre></td></tr></table></figure>
+<h3 id="立即执行函数写法"><a href="#立即执行函数写法" class="headerlink" title="立即执行函数写法"></a>立即执行函数写法</h3><p>使用”立即执行函数”（Immediately-Invoked Function Expression，IIFE），可以达到不暴露私有成员的目的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">module</span> = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> m1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(_count)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> m2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(_count + <span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">m1</span>: m1,</div><div class="line">        <span class="attr">m2</span>: m2</div><div class="line">    &#125;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>使用上面的写法，外部代码无法读取内部的_count变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　<span class="built_in">console</span>.info(<span class="built_in">module</span>._count); <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p>module就是Javascript模块的基本写法。</p>
+<h2 id="主流模块规范"><a href="#主流模块规范" class="headerlink" title="主流模块规范"></a>主流模块规范</h2><p>在es6以前，还没有提出一套官方的规范,从社区和框架推广程度而言,目前通行的javascript模块规范有两种：CommonJS 和 AMD</p>
+<h3 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h3><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fh7n4us7v0j30dw043aa0.jpg" alt=""></p>
+<p>2009年，美国程序员Ryan Dahl创造了node.js项目，将javascript语言用于服务器端编程。</p>
+<p>这标志”Javascript模块化编程”正式诞生。前端的复杂程度有限，没有模块也是可以的，但是在服务器端，一定要有模块，与操作系统和其他应用程序互动，否则根本没法编程。</p>
+<p>node编程中最重要的思想之一就是模块，而正是这个思想，让JavaScript的大规模工程成为可能。模块化编程在js界流行，也是基于此，随后在浏览器端，requirejs和seajs之类的工具包也出现了，可以说在对应规范下，require统治了ES6之前的所有模块化编程，即使现在，在ES6 module被完全实现之前，还是这样。</p>
+<p>在CommonJS中,暴露模块使用module.exports和exports，很多人不明白暴露对象为什么会有两个,后面会介绍区别</p>
+<p>在CommonJS中，有一个全局性方法require()，用于加载模块。假定有一个数学模块math.js，就可以像下面这样加载。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</div></pre></td></tr></table></figure>
+<p>然后，就可以调用模块提供的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">　<span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</div><div class="line">　math.add(<span class="number">2</span>,<span class="number">3</span>); <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<p>正是由于CommonJS 使用的require方式的推动，才有了后面的AMD、CMD 也采用的require方式来引用模块的风格</p>
+<h3 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h3><p><img src="https://ww1.sinaimg.cn/large/006tKfTcgy1fh7u7byz4xj30dh06e75d.jpg" alt=""></p>
+<p>有了服务器端模块以后，很自然地，大家就想要客户端模块。而且最好两者能够兼容，一个模块不用修改，在服务器和浏览器都可以运行。</p>
+<p>但是，由于一个重大的局限，使得CommonJS规范不适用于浏览器环境。还是上一节的代码，如果在浏览器中运行，会有一个很大的问题</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">math</span> = <span class="built_in">require</span>(<span class="string">'math'</span>);</div><div class="line"><span class="built_in">math</span>.add(<span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<p>第二行math.add(2, 3)，在第一行require(‘math’)之后运行，因此必须等math.js加载完成。也就是说，如果加载时间很长，整个应用就会停在那里等。</p>
+<p>这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。<br>因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是AMD规范诞生的背景。</p>
+<p>AMD是”Asynchronous Module Definition”的缩写，意思就是”异步模块定义”。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。</p>
+<p>模块必须采用特定的define()函数来定义。</p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">define</span>(<span class="section">id</span>?, dependencies?, factory)</div></pre></td></tr></table></figure>
+<ul>
+<li>id:字符串，模块名称(可选)</li>
+<li>dependencies: 是我们要载入的依赖模块(可选)，使用相对路径。,注意是数组格式</li>
+<li>factory: 工厂方法，返回一个模块函数</li>
+</ul>
+<p>如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// math.js</span></div><div class="line">　　define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">　　　　<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>)</span>&#123;</div><div class="line">　　　　　　<span class="keyword">return</span> x+y;</div><div class="line">　　　　&#125;;</div><div class="line">　　　　<span class="keyword">return</span> &#123;</div><div class="line">　　　　　　<span class="attr">add</span>: add</div><div class="line">　　　　&#125;;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
+<p>如果这个模块还依赖其他模块，那么define()函数的第一个参数，必须是一个数组，指明该模块的依赖性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">define([<span class="string">'Lib'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">Lib</span>)</span>&#123;</div><div class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">　　　　　　Lib.doSomething();</div><div class="line">　　　　&#125;</div><div class="line">　　　　<span class="keyword">return</span> &#123;</div><div class="line">　　　　　　<span class="attr">foo</span> : foo</div><div class="line">　　　　&#125;;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
+<p>当require()函数加载上面这个模块的时候，就会先加载Lib.js文件。</p>
+<p>AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span>([<span class="class"><span class="keyword">module</span>], <span class="title">callback</span>);</span></div></pre></td></tr></table></figure>
+<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。如果将前面的代码改写成AMD形式，就是下面这样：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>([<span class="string">'math'</span>], <span class="function"><span class="keyword">function</span> <span class="params">(math)</span></span> &#123;</div><div class="line">　<span class="built_in">math</span>.add(<span class="number">2</span>, <span class="number">3</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>math.add()与math模块加载不是同步的，浏览器不会发生假死。所以很显然，AMD比较适合浏览器环境。</p>
+<p>目前，主要有两个Javascript库实现了AMD规范：<a href="http://requirejs.org/" target="_blank" rel="external">require.js</a>和<a href="http://cujojs.com/" target="_blank" rel="external">curl.js</a>。</p>
+<h3 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h3><p><img src="https://ww2.sinaimg.cn/large/006tKfTcgy1fh7u5xcnw7j305k046wed.jpg" alt=""></p>
+<p>CMD (Common Module Definition), 是seajs推崇的规范，CMD则是依赖就近，用的时候再require。它写起来是这样的：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(<span class="name">function</span>(<span class="name">require</span>, exports, module) &#123;</div><div class="line">   var clock = require('clock')<span class="comment">;</span></div><div class="line">   clock.start()<span class="comment">;</span></div><div class="line">&#125;)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>CMD与AMD一样，也是采用特定的define()函数来定义,用require方式来引用模块</p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">define</span>(<span class="section">id</span>?, dependencies?, factory)</div></pre></td></tr></table></figure>
+<ul>
+<li>id:字符串，模块名称(可选)</li>
+<li>dependencies: 是我们要载入的依赖模块(可选)，使用相对路径。,注意是数组格式</li>
+<li>factory: 工厂方法，返回一个模块函数</li>
+</ul>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">define(<span class="string">'hello'</span>, [<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span><span class="params">(<span class="keyword">require</span>, exports, <span class="keyword">module</span>)</span> <span class="comment">&#123;</span></span></div><div class="line"></div><div class="line">  // 模块代码</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">define(<span class="function"><span class="keyword">function</span><span class="params">(<span class="keyword">require</span>, exports, <span class="keyword">module</span>)</span> <span class="comment">&#123;</span></span></div><div class="line">  // 模块代码</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：带 id 和 dependencies 参数的 define 用法不属于 CMD 规范，而属于 Modules/Transport 规范。</p>
+</blockquote>
+<h2 id="CMD与AMD区别"><a href="#CMD与AMD区别" class="headerlink" title="CMD与AMD区别"></a>CMD与AMD区别</h2><p>AMD和CMD最大的区别是对依赖模块的执行时机处理不同，而不是加载的时机或者方式不同，二者皆为异步加载模块。</p>
+<p>AMD依赖前置，js可以方便知道依赖模块是谁，立即加载；</p>
+<p>而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略。</p>
+<h2 id="现阶段的标准"><a href="#现阶段的标准" class="headerlink" title="现阶段的标准"></a>现阶段的标准</h2><p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fh7uc992vaj30go0a074e.jpg" alt=""></p>
+<p>ES6标准发布后，module成为标准，标准使用是以export指令导出接口，以import引入模块，但是在我们一贯的node模块中，我们依然采用的是CommonJS规范，使用require引入模块，使用module.exports导出接口。</p>
+<h2 id="export导出模块"><a href="#export导出模块" class="headerlink" title="export导出模块"></a>export导出模块</h2><p>export语法声明用于导出函数、对象、指定文件（或模块）的原始值。</p>
+<blockquote>
+<p>注意：在node中使用的是exports,不要混淆了</p>
+</blockquote>
+<p>export有两种模块导出方式：<strong>命名式导出（名称导出）</strong>和<strong>默认导出（定义式导出）</strong>，命名式导出每个模块可以多个，而默认导出每个模块仅一个。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> &#123; name1, name2, …, nameN &#125;;</div><div class="line"><span class="keyword">export</span> &#123; variable1 <span class="keyword">as</span> name1, variable2 <span class="keyword">as</span> name2, …, nameN &#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1, name2, …, nameN; <span class="comment">// also var</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1 = …, name2 = …, …, nameN; <span class="comment">// also var, const</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> expression;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">…</span>) </span>&#123; … &#125; <span class="comment">// also class, function*</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">name1</span>(<span class="params">…</span>) </span>&#123; … &#125; <span class="comment">// also class, function*</span></div><div class="line"><span class="keyword">export</span> &#123; name1 <span class="keyword">as</span> <span class="keyword">default</span>, … &#125;;</div><div class="line"></div><div class="line"><span class="keyword">export</span> * <span class="keyword">from</span> …;</div><div class="line"><span class="keyword">export</span> &#123; name1, name2, …, nameN &#125; <span class="keyword">from</span> …;</div><div class="line"><span class="keyword">export</span> &#123; import1 <span class="keyword">as</span> name1, import2 <span class="keyword">as</span> name2, …, nameN &#125; <span class="keyword">from</span> …;</div></pre></td></tr></table></figure>
+<ul>
+<li>name1… nameN－导出的“标识符”。导出后，可以通过这个“标识符”在另一个模块中使用import引用</li>
+<li>default－设置模块的默认导出。设置后import不通过“标识符”而直接引用默认导入</li>
+<li>－继承模块并导出继承模块所有的方法和属性</li>
+<li>as－重命名导出“标识符”</li>
+<li>from－从已经存在的模块、脚本文件…导出</li>
+</ul>
+<h3 id="命名式导出"><a href="#命名式导出" class="headerlink" title="命名式导出"></a>命名式导出</h3><p>模块可以通过export前缀关键词声明导出对象，导出对象可以是多个。这些导出对象用名称进行区分，称之为命名式导出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> &#123; myFunction &#125;; <span class="comment">// 导出一个已定义的函数</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="built_in">Math</span>.sqrt(<span class="number">2</span>); <span class="comment">// 导出一个常量</span></div></pre></td></tr></table></figure>
+<p>我们可以使用*和from关键字来实现的模块的继承：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'article'</span>;</div></pre></td></tr></table></figure>
+<p>模块导出时，可以指定模块的导出成员。导出成员可以认为是类中的公有对象，而非导出成员可以认为是类中的私有对象：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">name</span> = <span class="string">'IT笔录'</span>;</div><div class="line"><span class="keyword">var</span> domain = <span class="string">'http://itbilu.com'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="comment">&#123;name, domain&#125;</span>; <span class="comment">// 相当于导出</span></div><div class="line"><span class="comment">&#123;name:name,domain:domain&#125;</span></div></pre></td></tr></table></figure>
+<p>模块导出时，我们可以使用as关键字对导出成员进行重命名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'IT笔录'</span>;</div><div class="line"><span class="keyword">var</span> domain = <span class="string">'http://itbilu.com'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;name <span class="keyword">as</span> siteName, domain&#125;;</div></pre></td></tr></table></figure>
+<p>注意，下面的语法有严重错误的情况：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误演示</span></div><div class="line"><span class="keyword">export</span> <span class="number">1</span>; <span class="comment">// 绝对不可以</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line"><span class="keyword">export</span> a;</div></pre></td></tr></table></figure></p>
+<p>export在导出接口的时候，必须与模块内部的变量具有一一对应的关系。直接导出1没有任何意义，也不可能在import的时候有一个变量与之对应</p>
+<p><code>export a</code>虽然看上去成立，但是a的值是一个数字，根本无法完成解构，因此必须写成<code>export {a}</code>的形式。<strong>即使a被赋值为一个function，也是不允许的</strong>。而且，大部分风格都建议，模块中最好在末尾用一个export导出所有的接口，例如：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export &#123;<span class="function"><span class="keyword">fun</span> <span class="keyword">as</span> <span class="keyword">default</span>,a,b,c&#125;;</span></div></pre></td></tr></table></figure>
+<h3 id="默认导出"><a href="#默认导出" class="headerlink" title="默认导出"></a>默认导出</h3><p>默认导出也被称做定义式导出。命名式导出可以导出多个值，但在在import引用时，也要使用相同的名称来引用相应的值。而默认导出每个导出只有一个单一值，这个输出可以是一个函数、类或其它类型的值，这样在模块import导入时也会很容易引用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// 可以导出一个函数</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span>()</span>&#123;&#125;; <span class="comment">// 也可以出一个类</span></div></pre></td></tr></table></figure>
+<h3 id="命名式导出与默认导出"><a href="#命名式导出与默认导出" class="headerlink" title="命名式导出与默认导出"></a>命名式导出与默认导出</h3><p>默认导出可以理解为另一种形式的命名导出，默认导出可以认为是使用了default名称的命名导出。</p>
+<p>下面两种导出方式是等价的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> D = <span class="number">123</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> D;</div><div class="line"><span class="keyword">export</span> &#123; D <span class="keyword">as</span> <span class="keyword">default</span> &#125;;</div></pre></td></tr></table></figure>
+<h3 id="export使用示例"><a href="#export使用示例" class="headerlink" title="export使用示例"></a>export使用示例</h3><p>使用名称导出一个模块时：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// "my-module.js" 模块</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">cube</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x * x * x;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Math</span>.PI + <span class="built_in">Math</span>.SQRT2;</div><div class="line"><span class="keyword">export</span> &#123; foo &#125;;</div></pre></td></tr></table></figure>
+<p>在另一个模块（脚本文件）中，我们可以像下面这样引用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; cube, foo &#125; <span class="keyword">from</span> <span class="string">'my-module'</span>;</div><div class="line"><span class="built_in">console</span>.log(cube(<span class="number">3</span>)); <span class="comment">// 27</span></div><div class="line"><span class="built_in">console</span>.log(foo);    <span class="comment">// 4.555806215962888</span></div></pre></td></tr></table></figure>
+<p>使用默认导出一个模块时：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// "my-module.js"模块</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x * x * x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在另一个模块（脚本文件）中，我们可以像下面这样引用，相对名称导出来说使用更为简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引用 "my-module.js"模块</span></div><div class="line"><span class="keyword">import</span> cube <span class="keyword">from</span> <span class="string">'my-module'</span>;</div><div class="line"><span class="built_in">console</span>.log(cube(<span class="number">3</span>)); <span class="comment">// 27</span></div></pre></td></tr></table></figure>
+<h2 id="import引入模块"><a href="#import引入模块" class="headerlink" title="import引入模块"></a>import引入模块</h2><p>import语法声明用于从已导出的模块、脚本中导入函数、对象、指定文件（或模块）的原始值。</p>
+<p>import模块导入与export模块导出功能相对应，也存在两种模块导入方式：命名式导入（名称导入）和默认导入（定义式导入）。</p>
+<blockquote>
+<p>import的语法跟require不同，而且import必须放在文件的最开始，且前面不允许有其他逻辑代码，这和其他所有编程语言风格一致。</p>
+</blockquote>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> defaultMember from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="keyword">name</span> from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> &#123; member &#125; from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> &#123; member <span class="keyword">as</span> alias &#125; from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> &#123; member1 , member2 &#125; from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> &#123; member1 , member2 <span class="keyword">as</span> alias2 , [...] &#125; from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> defaultMember, &#123; member [ , [...] ] &#125; from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> defaultMember, * <span class="keyword">as</span> <span class="keyword">name</span> from <span class="string">"module-name"</span>;</div><div class="line"><span class="keyword">import</span> <span class="string">"module-name"</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>name－从将要导入模块中收到的导出值的名称</li>
+<li>member, memberN－从导出模块，导入指定名称的多个成员</li>
+<li>defaultMember－从导出模块，导入默认导出成员</li>
+<li>alias, aliasN－别名，对指定导入成员进行的重命名</li>
+<li>module-name－要导入的模块。是一个文件名</li>
+<li>as－重命名导入成员名称（“标识符”）</li>
+<li>from－从已经存在的模块、脚本文件等导入</li>
+</ul>
+<h3 id="命名式导入"><a href="#命名式导入" class="headerlink" title="命名式导入"></a>命名式导入</h3><p>我们可以通过指定名称，就是将这些成员插入到当作用域中。导出时，可以导入单个成员或多个成员：</p>
+<p><strong>注意，花括号里面的变量与export后面的变量一一对应</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;myMember&#125; <span class="keyword">from</span> <span class="string">"my-module"</span>;</div><div class="line"><span class="keyword">import</span> &#123;foo, bar&#125; <span class="keyword">from</span> <span class="string">"my-module"</span>;</div></pre></td></tr></table></figure>
+<p>通过*符号，我们可以导入模块中的全部属性和方法。当导入模块全部导出内容时，就是将导出模块（’my-module.js’）所有的导出绑定内容，插入到当前模块（’myModule’）的作用域中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> myModule <span class="keyword">from</span> <span class="string">"my-module"</span>;</div></pre></td></tr></table></figure>
+<p>导入模块对象时，也可以使用as对导入成员重命名，以方便在当前模块内使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;reallyReallyLongModuleMemberName <span class="keyword">as</span> shortName&#125; <span class="keyword">from</span> <span class="string">"my-module"</span>;</div></pre></td></tr></table></figure>
+<p>导入多个成员时，同样可以使用别名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;reallyReallyLongModuleMemberName <span class="keyword">as</span> shortName, anotherLongModuleName <span class="keyword">as</span> short&#125; <span class="keyword">from</span> <span class="string">"my-module"</span>;</div></pre></td></tr></table></figure>
+<p>导入一个模块，但不进行任何绑定：</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">"my-module"</span>;</div></pre></td></tr></table></figure>
+<h3 id="默认导入"><a href="#默认导入" class="headerlink" title="默认导入"></a>默认导入</h3><p>在模块导出时，可能会存在默认导出。同样的，在导入时可以使用import指令导出这些默认值。</p>
+<p>直接导入默认值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> myDefault <span class="keyword">from</span> <span class="string">"my-module"</span>;</div></pre></td></tr></table></figure>
+<p>也可以在命名空间导入和名称导入中，同时使用默认导入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> myDefault, * <span class="keyword">as</span> myModule <span class="keyword">from</span> <span class="string">"my-module"</span>; <span class="comment">// myModule 做为命名空间使用</span></div><div class="line">或</div><div class="line"></div><div class="line"><span class="keyword">import</span> myDefault, &#123;foo, bar&#125; <span class="keyword">from</span> <span class="string">"my-module"</span>; <span class="comment">// 指定成员导入</span></div></pre></td></tr></table></figure>
+<h3 id="import使用示例"><a href="#import使用示例" class="headerlink" title="import使用示例"></a>import使用示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// --file.js--</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getJSON</span>(<span class="params">url, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </div><div class="line">    callback(<span class="keyword">this</span>.responseText) </div><div class="line">  &#125;;</div><div class="line">  xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</div><div class="line">  xhr.send();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getUsefulContents</span>(<span class="params">url, callback</span>) </span>&#123;</div><div class="line">  getJSON(url, data =&gt; callback(<span class="built_in">JSON</span>.parse(data)));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// --main.js--</span></div><div class="line"><span class="keyword">import</span> &#123; getUsefulContents &#125; <span class="keyword">from</span> <span class="string">"file"</span>;</div><div class="line">getUsefulContents(<span class="string">"http://itbilu.com"</span>, data =&gt; &#123;</div><div class="line">  doSomethingUseful(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="default关键字"><a href="#default关键字" class="headerlink" title="default关键字"></a>default关键字</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// d.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// 等效于：</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">export</span> &#123;a <span class="keyword">as</span> <span class="keyword">default</span>&#125;;</div></pre></td></tr></table></figure>
+<p>在import的时候，可以这样用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> a <span class="keyword">from</span> <span class="string">'./d'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 等效于，或者说就是下面这种写法的简写，是同一个意思</span></div><div class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> a&#125; <span class="keyword">from</span> <span class="string">'./d'</span>;</div></pre></td></tr></table></figure>
+<p>这个语法糖的好处就是import的时候，可以省去花括号{}。</p>
+<p>简单的说，如果import的时候，你发现某个变量没有花括号括起来（没有*号），那么你在脑海中应该把它还原成有花括号的as语法。</p>
+<p>所以，下面这种写法你也应该理解了吧：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> $,&#123;<span class="keyword">each</span>,map&#125; <span class="keyword">from</span> <span class="string">'jquery'</span>;</div></pre></td></tr></table></figure>
+<p>import后面第一个$是{defalut as $}的替代写法。</p>
+<h2 id="as关键字"><a href="#as关键字" class="headerlink" title="as关键字"></a>as关键字</h2><p>as简单的说就是取一个别名,export中可以用，import中其实可以用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a.js</span></div><div class="line"><span class="keyword">var</span> a = function() &#123;&#125;;</div><div class="line">export &#123;a <span class="keyword">as</span> <span class="function"><span class="keyword">fun</span>&#125;;</span></div><div class="line"></div><div class="line"><span class="comment">// b.js</span></div><div class="line"><span class="keyword">import</span> &#123;<span class="function"><span class="keyword">fun</span> <span class="keyword">as</span> a&#125; from './a';</span></div><div class="line">a();</div></pre></td></tr></table></figure>
+<p>上面这段代码，export的时候，对外提供的接口是fun，它是a.js内部a这个函数的别名，但是在模块外面，认不到a，只能认到fun。</p>
+<p>import中的as就很简单，就是你在使用模块里面的方法的时候，给这个方法取一个别名，好在当前的文件里面使用。之所以是这样，是因为有的时候不同的两个模块可能通过相同的接口，比如有一个c.js也通过了fun这个接口：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// c.js</span></div><div class="line">export function <span class="function"><span class="title">fun</span><span class="params">()</span></span> &#123;&#125;;</div></pre></td></tr></table></figure>
+<p>如果在b.js中同时使用a和c这两个模块，就必须想办法解决接口重名的问题，as就解决了。</p>
+<h2 id="CommonJS中module-exports-与-exports的区别"><a href="#CommonJS中module-exports-与-exports的区别" class="headerlink" title="CommonJS中module.exports 与 exports的区别"></a>CommonJS中module.exports 与 exports的区别</h2><p><strong>Module.exports</strong> </p>
+<blockquote>
+<p>The module.exports object is created by the Module system. Sometimes this is not acceptable; many want their module to be an instance of some class. To do this, assign the desired export object to module.exports. Note that assigning the desired object to exports will simply rebind the local exports variable, which is probably not what you want to do.</p>
+<p>译文：module.exports对象是由模块系统创建的。 有时这是难以接受的；许多人希望他们的模块成为某个类的实例。 为了实现这个，需要将期望导出的对象赋值给module.exports。 注意，将期望的对象赋值给exports会简单地重新绑定到本地exports变量上，这可能不是你想要的。</p>
+</blockquote>
+<p><strong>Module.exports</strong></p>
+<blockquote>
+<p>The exports variable is available within a module’s file-level scope, and is assigned the value of module.exports before the module is evaluated. It allows a shortcut, so that module.exports.f = … can be written more succinctly as exports.f = …. However, be aware that like any variable, if a new value is assigned to exports, it is no longer bound to module.exports:</p>
+<p>译文：exports变量是在模块的文件级别作用域内有效的，它在模块被执行前被赋于 module.exports 的值。它有一个快捷方式，以便 module.exports.f = … 可以被更简洁地写成exports.f = …。 注意，就像任何变量，如果一个新的值被赋值给exports，它就不再绑定到module.exports(其实是exports.属性会自动挂载到没有命名冲突的module.exports.属性)</p>
+</blockquote>
+<p>从<a href="http://nodejs.cn/api/modules.html#modules_module_exports" target="_blank" rel="external">Api文档</a>上面的可以看出，从require导入方式去理解，关键有两个变量(全局变量module.exports，局部变量exports)、一个返回值(module.exports)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">require</span>(<span class="params">...</span>) </span>&#123;  </div><div class="line">  <span class="keyword">var</span> <span class="built_in">module</span> = &#123; <span class="attr">exports</span>: &#123;&#125; &#125;;</div><div class="line">  <span class="function">(<span class="params">(<span class="built_in">module</span>, exports</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// 你的被引入代码 Start</span></div><div class="line">    <span class="comment">// var exports = module.exports = &#123;&#125;; (默认都有的)</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">some_func</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">    exports = some_func;</div><div class="line">    <span class="comment">// 此时，exports不再挂载到module.exports，</span></div><div class="line">    <span class="comment">// export将导出&#123;&#125;默认对象</span></div><div class="line">    <span class="built_in">module</span>.exports = some_func;</div><div class="line">    <span class="comment">// 此时，这个模块将导出some_func对象，覆盖exports上的some_func    </span></div><div class="line">     <span class="comment">// 你的被引入代码 End</span></div><div class="line">  &#125;)(<span class="built_in">module</span>, <span class="built_in">module</span>.exports);</div><div class="line"> <span class="comment">// 不管是exports还是module.exports，最后返回的还是module.exports </span></div><div class="line">  <span class="keyword">return</span> <span class="built_in">module</span>.exports;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>demo.js:</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(exports); <span class="comment">// &#123;&#125;  </span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports);  <span class="comment">// &#123;&#125;  </span></div><div class="line"><span class="built_in">console</span>.log(exports === <span class="built_in">module</span>.exports);    <span class="comment">// true  </span></div><div class="line"><span class="built_in">console</span>.log(exports == <span class="built_in">module</span>.exports);        <span class="comment">// true  </span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">module</span>);</div><div class="line">/**</div><div class="line"> Module &#123;</div><div class="line">  id: <span class="string">'.'</span>,</div><div class="line">  exports: &#123;&#125;,</div><div class="line">  parent: <span class="literal">null</span>,</div><div class="line">  filename: <span class="string">'/Users/larben/Desktop/demo.js'</span>,</div><div class="line">  loaded: <span class="literal">false</span>,</div><div class="line">  children: [],</div><div class="line">  paths:</div><div class="line">   [ <span class="string">'/Users/larben/Desktop/node_modules'</span>,</div><div class="line">     <span class="string">'/Users/larben/node_modules'</span>,</div><div class="line">     <span class="string">'/Users/node_modules'</span>,</div><div class="line">     <span class="string">'/node_modules'</span> ] &#125;</div><div class="line"> *<span class="regexp">/</span></div></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<ol>
+<li>每个js文件一创建，都有一个var exports = module.exports = {},使exports和module.exports都指向一个空对象。</li>
+<li>module.exports和exports所指向的内存地址相同</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;彻底搞清楚javascript中的require和export&quot;&gt;&lt;a href=&quot;#彻底搞清楚javascript中的require和export&quot; class=&quot;headerlink&quot; title=&quot;彻底搞清楚javascript中的require和expor
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://meiminjun.github.io/tags/javascript/"/>
+    
+      <category term="es-2015" scheme="http://meiminjun.github.io/tags/es-2015/"/>
+    
+      <category term="require" scheme="http://meiminjun.github.io/tags/require/"/>
+    
+      <category term="import" scheme="http://meiminjun.github.io/tags/import/"/>
+    
+      <category term="export" scheme="http://meiminjun.github.io/tags/export/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript深入浅出系列-Array 之 实例方法汇总</title>
     <link href="http://meiminjun.github.io/javascript-array-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/"/>
     <id>http://meiminjun.github.io/javascript-array-实例方法汇总/</id>
     <published>2017-06-23T13:57:13.000Z</published>
-    <updated>2017-06-12T07:11:25.000Z</updated>
+    <updated>2017-06-23T07:39:51.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h1><p><strong>valueOf()</strong>返回数组本身</p>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>]</div><div class="line">arr.valueOf();  // (<span class="number">3</span>) [<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>]</div></pre></td></tr></table></figure>
@@ -195,6 +402,18 @@
 <p>注意，如果数组中包含NaN，这两个方法不适用，即无法确定数组成员是否包含NaN</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="literal">NaN</span>].indexOf(<span class="literal">NaN</span>) <span class="comment">// -1</span></div><div class="line">[<span class="literal">NaN</span>].lastIndexOf(<span class="literal">NaN</span>) <span class="comment">// -1</span></div></pre></td></tr></table></figure>
 <p>这是因为这两个方法内部，使用严格相等运算符（===）进行比较，而NaN是唯一一个不等于自身的值</p>
+<h1 id="from"><a href="#from" class="headerlink" title="from()"></a>from()</h1><p>Array.from() 方法从一个类似数组或可迭代的对象中重新创建一个新的数组实例，<strong>注意：返回一个新数组，原数组不变</strong></p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> bar = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>];</div><div class="line"><span class="keyword">var</span> i = <span class="type">Array</span>.<span class="keyword">from</span>(bar); // [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</div><div class="line">bar === i // <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="type">Array</span>.<span class="keyword">from</span>('foo');</div><div class="line">// [<span class="string">"f"</span>, <span class="string">"o"</span>, <span class="string">"o"</span>]</div></pre></td></tr></table></figure>
+<p>将NodeList 转化成 Array</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> divs = <span class="built_in">Array</span>.from(<span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>));</div><div class="line"></div><div class="line"><span class="comment">// Array[232] (every DIV on the page)</span></div></pre></td></tr></table></figure>
+<p>将 arguments 转化成 Array</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">something</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</div><div class="line"></div><div class="line">  <span class="comment">// Array['yes', 1, &#123;&#125;]</span></div><div class="line">&#125;</div><div class="line">something(<span class="string">'yes'</span>, <span class="number">1</span>, &#123;&#125;);</div></pre></td></tr></table></figure>
+<p>将 String 转化成 Array</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Array.from(<span class="string">'JavaScript'</span>); <span class="regexp">//</span> 很像<span class="string">'JavaScript'</span>.split(<span class="string">''</span>)</div><div class="line"></div><div class="line"><span class="regexp">//</span> [<span class="string">"J"</span>, <span class="string">"a"</span>, <span class="string">"v"</span>, <span class="string">"a"</span>, <span class="string">"S"</span>, <span class="string">"c"</span>, <span class="string">"r"</span>, <span class="string">"i"</span>, <span class="string">"p"</span>, <span class="string">"t"</span>]</div></pre></td></tr></table></figure>
+<p>与箭头函数搭配使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span>.from([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], x =&gt; x + x);      </div><div class="line"><span class="comment">// [2, 4, 6]</span></div><div class="line"></div><div class="line"><span class="keyword">Array</span>.from(&#123;length: <span class="number">5</span>&#125;, (v, i) =&gt; i);</div><div class="line"><span class="comment">// [0, 1, 2, 3, 4]</span></div></pre></td></tr></table></figure>
+<p>from 方法的第二个参数为可选参数，如果指定了该参数，则最后生成的数组会经过该函数的加工处理后再返回</p>
+<p>如果传入第三个参数，执行第二个参数时，改变this 的指向</p>
 <h1 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h1><p>上面这些数组方法之中，有不少返回的还是数组，所以可以链式使用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> users = [</div><div class="line">  &#123;<span class="attr">name</span>: <span class="string">'tom'</span>, <span class="attr">email</span>: <span class="string">'tom@example.com'</span>&#125;,</div><div class="line">  &#123;<span class="attr">name</span>: <span class="string">'peter'</span>, <span class="attr">email</span>: <span class="string">'peter@example.com'</span>&#125;</div><div class="line">];</div><div class="line"></div><div class="line">users</div><div class="line">.map(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> user.email;</div><div class="line">&#125;)</div><div class="line">.filter(<span class="function"><span class="keyword">function</span> (<span class="params">email</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="regexp">/^t/</span>.test(email);</div><div class="line">&#125;)</div><div class="line">.forEach(alert);</div><div class="line"><span class="comment">// 弹出tom@example.com</span></div></pre></td></tr></table></figure>
 <h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>改变的原数组的几个方法，除此之外都不是：</p>
@@ -222,6 +441,7 @@
 <li>reduceRight()</li>
 <li>indexOf()</li>
 <li>lastIndexOf()</li>
+<li>from()</li>
 </ul>
 ]]></content>
     
@@ -2162,52 +2382,6 @@
   </entry>
   
   <entry>
-    <title>google之翻越长城</title>
-    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
-    <id>http://meiminjun.github.io/chrome-翻墙/</id>
-    <published>2016-08-18T07:54:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
-&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
-&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
-&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
-    
-      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
-    
-  </entry>
-  
-  <entry>
     <title>chrome神器之postman</title>
     <link href="http://meiminjun.github.io/chrome-postman/"/>
     <id>http://meiminjun.github.io/chrome-postman/</id>
@@ -2261,6 +2435,52 @@
       <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
     
       <category term="postman" scheme="http://meiminjun.github.io/tags/postman/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>google之翻越长城</title>
+    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
+    <id>http://meiminjun.github.io/chrome-翻墙/</id>
+    <published>2016-08-18T07:54:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
+&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
+&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
+&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
     
   </entry>
   
@@ -2452,63 +2672,6 @@
       <category term="ionic2" scheme="http://meiminjun.github.io/tags/ionic2/"/>
     
       <category term="angular2" scheme="http://meiminjun.github.io/tags/angular2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>史上最强Sublime 笔记系列---vim常用命令笔记</title>
-    <link href="http://meiminjun.github.io/SublimeText-vim%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/"/>
-    <id>http://meiminjun.github.io/SublimeText-vim常用命令笔记/</id>
-    <published>2016-07-31T03:30:13.000Z</published>
-    <updated>2017-04-28T10:55:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg" alt=""></p>
-<p>这篇文章主要讲的Sublime Text 3 的<strong>vim</strong>命令说明，勤加练习之后，方可解放你的双手</p>
-<a id="more"></a>
-<ol>
-<li><p><strong> <a href="/SublimeText-常用快捷键/">史上最强Sublime 笔记系列—常用快捷键</a>(持续更新中。。。) </strong></p>
-</li>
-<li><p><strong> <a href="/SublimeText-常用插件和主题/">史上最强Sublime 笔记系列—精选插件和UI主题</a>(持续更新中。。。) </strong></p>
-</li>
-<li><p><strong> <a href="/SublimeText-我的常用配置/">史上最强Sublime 笔记系列—我的常用配置</a>(持续更新中。。。)  </strong></p>
-</li>
-<li><p><strong> <a href="/SublimeText-vim常用命令笔记/">史上最强Sublime 笔记系列—vim常用命令</a>(持续更新中。。。)  </strong></p>
-</li>
-</ol>
-<h2 id="sulimeText-的vim模式"><a href="#sulimeText-的vim模式" class="headerlink" title="sulimeText 的vim模式"></a>sulimeText 的vim模式</h2><p>sublime 默认是禁用vim模式的</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>: [<span class="string">"Vintage"</span>]</div></pre></td></tr></table></figure>
-<p>开启vim模式要配置成：</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>: [<span class="string">""</span>]</div></pre></td></tr></table></figure>
-<p>在用户配置中：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"vintage_start_in_command_mode"</span>: <span class="literal">true</span> <span class="comment">//启动时，开启vim命令模式</span></div></pre></td></tr></table></figure>
-<p>在用户快捷键中添加配置(进入vim模式)：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"keys"</span>: [<span class="string">"j"</span>, <span class="string">"j"</span>],</div><div class="line">    <span class="attr">"command"</span>: <span class="string">"exit_insert_mode"</span>,</div><div class="line">    <span class="attr">"context"</span>:</div><div class="line">    [</div><div class="line">        &#123; <span class="attr">"key"</span>: <span class="string">"setting.command_mode"</span>, <span class="attr">"operand"</span>: <span class="literal">false</span> &#125;,</div><div class="line">        &#123; <span class="attr">"key"</span>: <span class="string">"setting.is_widget"</span>, <span class="attr">"operand"</span>: <span class="literal">false</span> &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="vim-sublime命令（必记）"><a href="#vim-sublime命令（必记）" class="headerlink" title="vim-sublime命令（必记）"></a>vim-sublime命令（必记）</h2><p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6kg9eegv9j20e703w74s.jpg" alt=""></p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">// 启动命令</div><div class="line">jj → 进入命令行模式(必须配置好上面的操作)</div><div class="line">i → <span class="symbol">Insert</span> 模式</div><div class="line"></div><div class="line">//选取</div><div class="line">v 开启选取模式，关闭选取模式</div><div class="line"></div><div class="line"></div><div class="line">// 简单的移动光标</div><div class="line">w →移动光标到下一个单词的词首</div><div class="line">e →移动光标到下一个单词结尾</div><div class="line">b →移动光标到上一个单词的词首</div><div class="line">k 向上移动</div><div class="line">j 向下移动</div><div class="line">h 向左移动光标</div><div class="line">l 向右移动光标</div><div class="line"><span class="number">10</span>l 向右移动<span class="number">10</span>个字符（依此类推）</div><div class="line"><span class="number">0</span> → 数字零，到行头</div><div class="line">$ → 到本行行尾</div><div class="line">gg → 到顶部</div><div class="line"><span class="symbol">G</span>  → 到尾部</div><div class="line"><span class="symbol">H</span> →移动光标到屏幕的首行.</div><div class="line"><span class="symbol">M</span> →移动光标到屏幕的中间一行.</div><div class="line"><span class="symbol">L</span> → 移动光标到屏幕的尾行.</div><div class="line"></div><div class="line"></div><div class="line">n空格(n代表数字) → 光标向右移动n个字符</div><div class="line"></div><div class="line"><span class="symbol">H</span>/<span class="symbol">M</span>/<span class="symbol">L</span>:分别顶部、中间、和底部</div><div class="line"></div><div class="line">[相对于光标滚屏]</div><div class="line">”zt“、”zz“和”zb“:把光标所在行移动窗口的顶端、中间或底部</div><div class="line"></div><div class="line">// 各种插入 </div><div class="line">i → 在光标前输入</div><div class="line"><span class="symbol">I</span> → 在当前行首插入</div><div class="line">a → 在光标后插入</div><div class="line"><span class="symbol">A</span> → 在当前行尾插入</div><div class="line">o → 在当前行后插入一个新行</div><div class="line"><span class="symbol">O</span> → 在当前行前插入一个新行</div><div class="line">cw → 替换从光标所在位置后到一个单词结尾的字符</div><div class="line"></div><div class="line">// 删除</div><div class="line">x →删除当前光标所在的一个字符。</div><div class="line"><span class="symbol">X</span> →删除前一个字符</div><div class="line">nx(n代表数字) → 向后删除n个字符</div><div class="line">cc → 删除一行并进入插入模式。(更常用一些)</div><div class="line">dd → 删除当前行（还有剪切功能）</div><div class="line"><span class="symbol">D</span> → 删除当前字符到后面的所有字符(如果后面没有字符，则向前删除)</div><div class="line">ndd(n代表数字) → 删除n行</div><div class="line">d1G → 删除光标所在行到第一行的所有数据</div><div class="line">dG → 删除光标以后所有行数据</div><div class="line"></div><div class="line">// 拷贝、粘贴</div><div class="line"><span class="symbol">P</span> → 粘贴(p/<span class="symbol">P</span>都可以，p是表示在当前位置之后，<span class="symbol">P</span>表示在当前位置之前)</div><div class="line">yw  → 表示拷贝从当前光标到光标所在单词结尾的内容.</div><div class="line">dw  → 表示删除从当前光标到光标所在单词结尾的内容.</div><div class="line">y0  → 表示拷贝从当前光标到光标所在行首的内容.</div><div class="line">d0  → 表示删除从当前光标到光标所在行首的内容.</div><div class="line">y$  → 表示拷贝从当前光标到光标所在行尾的内容.</div><div class="line">d$/<span class="symbol">D</span>  → 表示删除从当前光标到光标所在行尾的内容.</div><div class="line">yfa → 表示拷贝从当前光标到光标后面的第一个a字符之间的内容.</div><div class="line">dfa → 表示删除从当前光标到光标后面的第一个a字符之间的内容.</div><div class="line">yy → 拷贝当前行当行</div><div class="line">dd → 表示删除光标所在行.</div><div class="line"></div><div class="line">yG →复制光标所在行到最后一行的所有数据</div><div class="line">yj →复制光标当前行和其下一行，共两行</div><div class="line">yk →复制光标当前行和其上一行，共两行</div><div class="line"><span class="symbol">J</span> →将光标所在行与下一行的数据结合成一行 </div><div class="line"><span class="number">3</span>p → 粘贴文本<span class="number">3</span>次</div><div class="line">. → 重复上一个命令—— <span class="number">100</span> “desu “.</div><div class="line"><span class="number">3.</span> → 重复 <span class="number">3</span> 次 “desu” (注意：不是 <span class="number">300</span>，你看，<span class="symbol">VIM</span>多聪明啊).</div><div class="line"></div><div class="line">//匹配括号移动</div><div class="line"><span class="comment">% → 匹配括号移动，包括 (, &#123;, [. （陈皓注：你需要把光标先移到括号上）</span></div><div class="line">* 和 # → 匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）</div><div class="line">/word → 在光标之后查找word字符串  word的字符串（陈皓注：如果搜索出多个匹配，可按n键到下一个，按shift+n到上一个）</div><div class="line">?word → 在光标之前查找word字符串   </div><div class="line"></div><div class="line">// 回退</div><div class="line">u → 回退</div><div class="line"></div><div class="line">// 打开/保存/退出/改变文件</div><div class="line">:w → 存盘</div><div class="line"><span class="symbol">ZZ</span> → 快速保存退出</div></pre></td></tr></table></figure>
-<h2 id="移动到指定字符"><a href="#移动到指定字符" class="headerlink" title="[ 移动到指定字符 ]"></a>[ 移动到指定字符 ]</h2><p>上面的命令都是行间移动(除h, l外)，也就是从当前行移动到另外一行。如果我们想在当前行内快速移动，可以使用f, t, F, T命令。</p>
-<p>“f“命令移动到光标右边的指定字符上，例如，”fx“，会把移动到光标右边的第一个’x’字符上。”F“命令则反方向查找，也就是移动到光标左边的指定字符上。(<strong>这个更常用</strong>)</p>
-<p>“t“命令和”f“命令的区别在于，它移动到光标右边的指定字符之前。例如，”tx“会移动到光标右边第一个’x’字符的前面。”T“命令是”t“命令的反向版本，它移动到光标右边的指定字符之后。</p>
-<p>这四个命令只在当前行中移动光标，光标不会跨越回车换行符。</p>
-<p>可以在命令前面使用数字，表示倍数。例如，”3fx“表示移动到光标右边的第3个’x’字符上。</p>
-<p>“;“命令重复前一次输入的f, t, F, T命令，而”,“命令会反方向重复前一次输入的f, t, F, T命令。这两个命令前也可以使用数字来表示倍数。</p>
-<p>更多请参考：<br><a href="http://coolshell.cn/articles/5426.html" target="_blank" rel="external">http://coolshell.cn/articles/5426.html</a><br><a href="http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html" target="_blank" rel="external">http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html</a><br><a href="http://easwy.com/blog/archives/advanced-vim-skills-basic-move-method/" target="_blank" rel="external">http://easwy.com/blog/archives/advanced-vim-skills-basic-move-method/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/69a9ed59gw1f6cyydkhdjj20sd0hsabg.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这篇文章主要讲的Sublime Text 3 的&lt;strong&gt;vim&lt;/strong&gt;命令说明，勤加练习之后，方可解放你的双手&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具" scheme="http://meiminjun.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="http://meiminjun.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="sublime" scheme="http://meiminjun.github.io/tags/sublime/"/>
-    
-      <category term="vim" scheme="http://meiminjun.github.io/tags/vim/"/>
     
   </entry>
   
