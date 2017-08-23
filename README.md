@@ -14,8 +14,6 @@
 curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=meiminjun.github.io&token=qdkA29iGaFLKdAFv" 
 -->
 
-
-
 # 技术日记
 
 * 2015-11-20 [Hello World](http://meiminjun.github.io/hello-world)
