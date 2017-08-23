@@ -112,6 +112,7 @@
 <meta property="og:url" content="http://meiminjun.github.io/standard代码规范/index.html">
 <meta property="og:site_name" content="Mr.Jason&#39;Blog">
 <meta property="og:description" content="使用standard代码风格规则说明（116条）">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcgy1ff6vedjfw7j30kz0o7t9v.jpg">
 <meta property="og:updated_time" content="2017-05-12T02:16:27.000Z">
 <meta name="twitter:card" content="summary">
@@ -509,7 +510,7 @@
 <li><strong>不要使用 debugger</strong></li>
 </ul>
 <p>eslint: no-debugger</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sum (<span class="selector-tag">a</span>, b) &#123;</div><div class="line">  debugger      <span class="comment">// ✗ avoid </span></div><div class="line">  return <span class="selector-tag">a</span> + <span class="selector-tag">b</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sum (<span class="selector-tag">a</span>, b) &#123;</div><div class="line">  debugger      <span class="comment">// ✗ avoid </span></div><div class="line">  return <span class="selector-tag">a</span> + b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><strong>不要对变量使用 delete 操作</strong></li>
 </ul>
@@ -634,7 +635,7 @@
 <li>不要使用标签语句</li>
 </ul>
 <p>eslint: no-labels</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">label</span><span class="bash">:</span></div><div class="line">  while (true) &#123;</div><div class="line">    break <span class="keyword">label</span><span class="bash">     // ✗ avoid </span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">label</span><span class="bash">:</span></div><div class="line"><span class="bash">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span></div><div class="line"><span class="bash">    <span class="built_in">break</span> label     // ✗ avoid </span></div><div class="line"><span class="bash">  &#125;</span></div></pre></td></tr></table></figure>
 <ul>
 <li>不要书写不必要的嵌套代码块。</li>
 </ul>
@@ -653,7 +654,7 @@
 <li>不要使用多行字符串。</li>
 </ul>
 <p>eslint: no-multi-str</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">message</span> = <span class="string">'Hello \</span></div><div class="line">                 world'     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">message</span> = <span class="string">'Hello \</span></div><div class="line"><span class="string">                 world'</span>     <span class="comment">// ✗ avoid</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>new 创建对象实例后需要赋值给变量</strong></li>
 </ul>
