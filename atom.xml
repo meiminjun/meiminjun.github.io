@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://meiminjun.github.io/"/>
-  <updated>2017-07-04T08:29:24.000Z</updated>
+  <updated>2017-08-23T02:29:22.000Z</updated>
   <id>http://meiminjun.github.io/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git常用笔记-思维导图</title>
+    <link href="http://meiminjun.github.io/xmind-git/"/>
+    <id>http://meiminjun.github.io/xmind-git/</id>
+    <published>2017-08-23T12:20:13.000Z</published>
+    <updated>2017-08-23T02:29:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="./git.svg" width="100%" height="100%"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;./git.svg&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://meiminjun.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>彻底搞清楚javascript中的require、import和export</title>
@@ -2345,7 +2367,7 @@
 <p>突然，你发现新增的代码有点问题你想回退到之前版本</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure>
 <p>你可以发现，Git会告诉你，git checkout – file可以丢弃工作区的修改：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- man.js</span></div></pre></td></tr></table></figure>
 <p>命令git checkout – man.js意思就是，把man.js文件在工作区的修改全部撤销，这里有两种情况：</p>
 <p>一种是man.js自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
 <p>一种是man.js已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
@@ -2357,7 +2379,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> man.js</div></pre></td></tr></table></figure>
 <p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
 <p>再用git status查看一下，现在暂存区是干净的，工作区有修改：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        modified:   man.js</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure></p>
-<p>如果想丢弃工作区的修改,则继续<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure></p>
+<p>如果想丢弃工作区的修改,则继续<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- man.js</span></div></pre></td></tr></table></figure></p>
 <p>小结：</p>
 <p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
 <p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
@@ -2369,7 +2391,7 @@
 <p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">rm</span> <span class="keyword">man</span>.js</div><div class="line"><span class="keyword">rm</span> 'git/<span class="keyword">man</span>.js'</div><div class="line">git commit -<span class="keyword">m</span> <span class="string">"remove man.js"</span></div><div class="line">feature/git学习 8a1abac] remove <span class="keyword">man</span>.js</div><div class="line"> 1 <span class="keyword">file</span> changed, 1 deletion(-)</div><div class="line"> delete mode 100644 git/<span class="keyword">man</span>.js</div></pre></td></tr></table></figure></p>
 <p>文件就从版本库中被删除了。</p>
 <p>另一种情况，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--</span> <span class="selector-tag">man</span><span class="selector-class">.js</span></div></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="comment">-- man.js</span></div></pre></td></tr></table></figure>
 <p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
 ]]></content>
     
@@ -2381,52 +2403,6 @@
     
     
       <category term="git" scheme="http://meiminjun.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>google之翻越长城</title>
-    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
-    <id>http://meiminjun.github.io/chrome-翻墙/</id>
-    <published>2016-08-18T07:54:13.000Z</published>
-    <updated>2016-12-19T03:44:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
-&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
-&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
-&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
-    
-      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
     
   </entry>
   
@@ -2488,6 +2464,52 @@
   </entry>
   
   <entry>
+    <title>google之翻越长城</title>
+    <link href="http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/"/>
+    <id>http://meiminjun.github.io/chrome-翻墙/</id>
+    <published>2016-08-18T07:54:13.000Z</published>
+    <updated>2016-12-19T03:44:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;先上图&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;a href=&quot;#翻墙你能干嘛呢？&quot; class=&quot;headerlink&quot; title=&quot;翻墙你能干嘛呢？&quot;&gt;&lt;/a&gt;翻墙你能干嘛呢？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;查询到最优质的知识和技能（比百度强大的多）&lt;/li&gt;
+&lt;li&gt;可以facebook、YouTube(这个比土豆、优酷资源大的多)&lt;/li&gt;
+&lt;li&gt;对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）&lt;/li&gt;
+&lt;li&gt;喜欢看各种电影的同学，哎，不说了。。太多了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="chrome" scheme="http://meiminjun.github.io/tags/chrome/"/>
+    
+      <category term="google" scheme="http://meiminjun.github.io/tags/google/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ionic2菜鸟学习笔记《二》</title>
     <link href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/"/>
     <id>http://meiminjun.github.io/ionic2学习笔记《二》/</id>
@@ -2533,141 +2555,6 @@
     
       &lt;p&gt;&lt;a href=&quot;http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/&quot;&gt;ionic2菜鸟学习笔记《一》&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a
-    
-    </summary>
-    
-    
-      <category term="ionic2" scheme="http://meiminjun.github.io/tags/ionic2/"/>
-    
-      <category term="angular2" scheme="http://meiminjun.github.io/tags/angular2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ionic2菜鸟学习笔记《一》</title>
-    <link href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/"/>
-    <id>http://meiminjun.github.io/ionic2学习笔记《一》/</id>
-    <published>2016-08-01T07:57:13.000Z</published>
-    <updated>2017-04-28T10:55:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/">ionic2菜鸟学习笔记《一》</a></p>
-<p><a href="http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/">ionic2菜鸟学习笔记《二》</a></p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
-<li>nodeV5版本以上(官方推荐)</li>
-<li>cordova</li>
-<li><a href="http://www.androiddevtools.cn/" target="_blank" rel="external">android 开发环境（jdk,android SDK,eclipse或者android studio）</a></li>
-</ul>
-<h2 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h2><blockquote>
-<p>npm install -g ionic@beta</p>
-</blockquote>
-<h2 id="创建一个项目"><a href="#创建一个项目" class="headerlink" title="创建一个项目"></a>创建一个项目</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ionic start MyFirstIonicApp <span class="params">--v2</span>  <span class="string">//</span>注意，当从github下载的zip下载完成之后一直停留了很久，就停止（可能是国内被墙的缘故）</div><div class="line"></div><div class="line">并直接</div><div class="line"><span class="keyword">cd</span> MyFirstIonicApp </div><div class="line"></div><div class="line">npm install </div><div class="line"></div><div class="line">ionic serve</div></pre></td></tr></table></figure>
-<h2 id="在设备中打开"><a href="#在设备中打开" class="headerlink" title="在设备中打开"></a>在设备中打开</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">npm install -g cordova</div><div class="line"></div><div class="line">ionic platform <span class="keyword">add</span><span class="bash"> ios</span></div><div class="line"></div><div class="line">ionic platform <span class="keyword">add</span><span class="bash"> android</span></div><div class="line"></div><div class="line">ionic <span class="keyword">run</span><span class="bash"> android</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="新建一个page"><a href="#新建一个page" class="headerlink" title="新建一个page"></a>新建一个page</h1><p>进入项目目录：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g page NewPage  <span class="string">//</span> 新建立一个页面</div></pre></td></tr></table></figure></p>
-<p>会出现：</p>
-<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f862gmtxj20av05hq3j.jpg" alt=""></p>
-<p>控制台提示一句话：</p>
-<p>Don’t forget to add an import for new-page.scss in app\themes\app.core.scss:</p>
-<p>@import “..\pages\new-page\new-page.scss”;</p>
-<p>在项目中找到:./app/theme/app.core.scss这个文件</p>
-<p>在里面新增加一句：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">"../pages/new-page/new-page.scss"</span>;</div></pre></td></tr></table></figure></p>
-<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6f89ew5mbj20b20440ta.jpg" alt=""></p>
-<p>现在，我们就新建了一个页面，在.pages/目录下面会看到new-page文件夹，这个就是新增的页面</p>
-<p>我们找到new-page.html中写一些代码:</p>
-<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f8i8omj1j208g07fglz.jpg" alt=""></p>
-<p>找到./app/pages/new-page/new-page.ts文件，将类名NewPagePage改为”NewPage”;</p>
-<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6i5w4qu2hj20fd0d7q5m.jpg" alt=""></p>
-<p>找到./app/app.ts ，修改app.ts页面的入口文件</p>
-<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6f8kvt5acj20eg09j767.jpg" alt=""></p>
-<p>命令行输入：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure></p>
-<p>成功了！<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f8mj6wi2j20hn08waan.jpg" alt=""></p>
-<p><strong>恭喜你成功跨入第一步，万事开头难！</strong></p>
-<h1 id="新建自定义组件"><a href="#新建自定义组件" class="headerlink" title="新建自定义组件"></a>新建自定义组件</h1><p>ionic官网有很多组件</p>
-<blockquote>
-<p>地址：<a href="http://ionicframework.com/docs/v2/components/#overview" target="_blank" rel="external">http://ionicframework.com/docs/v2/components/#overview</a></p>
-</blockquote>
-<p>进入项目目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g component NewComponent  <span class="string">//</span> 新建立组件</div></pre></td></tr></table></figure></p>
-<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6f9a9jv32j20dj03kt8z.jpg" alt=""></p>
-<p>目录中会新增一个components，其中会生成一个new-component的组件目录</p>
-<p><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6f9ou0tyij207h05j0t0.jpg" alt=""></p>
-<p>编辑new-component里面的内容，找到../app/components/new-component/new-component.html, 修改其中的内容为：</p>
-<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6f9rwt6wnj209r0axwfc.jpg" alt=""></p>
-<p>找到../app/components/new-component/new-component.ts, 修改其中的内容为：<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6faetaj5pj20bj077wfi.jpg" alt=""></p>
-<p>在你需要这个组件的页面中添加组件，这里以之前的new-page页面为例<br>找到./pages/new-page/new-page.ts,在其中添加：</p>
-<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6fag344v9j20el0bvjtz.jpg" alt=""></p>
-<p>将组件插入到html中，找到./pages/new-page/new-page.html,添加：</p>
-<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6faj20um3j20bx0810ta.jpg" alt=""></p>
-<p><strong>注意：看下./app.ts中是不是</strong><br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6famcp1knj20co098ta9.jpg" alt=""></p>
-<p>启动项目：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure>
-<p>大功告成：</p>
-<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fakrgsiej20b006odfv.jpg" alt=""></p>
-<h1 id="生成pipe"><a href="#生成pipe" class="headerlink" title="生成pipe"></a>生成pipe</h1><p>pipe类似于一个过滤器，将渲染页面的数据进行过滤，例如：<br>后端传递给我门的数据时{value：”hello”},前端展示的时候要讲hello 转换为HELLO WORLD</p>
-<p>下面是一个生成pipe的例子：</p>
-<p>进入项目，新建一个pipe：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g pipe NewPipe</div></pre></td></tr></table></figure></p>
-<p>之后会生成一个pipes文件目录，如图：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fepp1dqgj205k04w74c.jpg" alt=""></p>
-<p>打开pipes/NewPipes.ts,修改其中的transform方法</p>
-<p><img src="http://ww2.sinaimg.cn/large/69a9ed59gw1f6fetuwrufj20ba09vq4a.jpg" alt=""></p>
-<p>在../app/pages/new-page/new-page.ts中引入这个pipe</p>
-<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6feyqp9e9j20bb0ap40e.jpg" alt=""></p>
-<p>在./pages/new-page/new-age.html中增加字符显示：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6ff3nnhq3j20ac0c9wfr.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6frhuup6pj20am07rq3p.jpg" alt=""></p>
-<p>注意在./pipes/NewPipe中设置的NewPipe对应的new-page.html中对应的要一致<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6frm44yk7j206q08pjs2.jpg" alt=""></p>
-<p>运行命令：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure></p>
-<p>成功显示：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6fs6yoyoqj208l08i3ym.jpg" alt=""></p>
-<h1 id="号"><a href="#号" class="headerlink" title="*号"></a>*号</h1><p>在ionic2页面中会出现*，如：</p>
-<h2 id="号的第一种情况-if语句-："><a href="#号的第一种情况-if语句-：" class="headerlink" title="*号的第一种情况(if语句)："></a>*号的第一种情况(if语句)：</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngIf</span>=<span class="string">"someValue"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>表示的意思指：</p>
-<blockquote>
-<p>如果someValue的值为true,则显示</p><p></p>,否则不显示<p></p><p></p>
-</blockquote>
-<h2 id="号的第二种情况-for循环-："><a href="#号的第二种情况-for循环-：" class="headerlink" title="*号的第二种情况(for循环)："></a>*号的第二种情况(for循环)：</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngFor</span>=<span class="string">"let item of items"</span>&gt;</span></span><span class="template-variable">&#123;&#123;item.value&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>表示的意思指：</p>
-<blockquote>
-<p>获取一个列表items，并遍历其中的元素item，然后显示这个元素的value属性的值</p>
-</blockquote>
-<h2 id="号的第三种情况-switch语句"><a href="#号的第三种情况-switch语句" class="headerlink" title="*号的第三种情况(switch语句)"></a>*号的第三种情况(switch语句)</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngSwitch</span>]=<span class="string">"paragraphNumber"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchWhen</span>=<span class="string">"1"</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchWhen</span>=<span class="string">"2"</span>&gt;</span>Paragraph 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchWhen</span>=<span class="string">"3"</span>&gt;</span>Paragraph 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span> *<span class="attr">ngSwitchDefault</span>&gt;</span>Paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>表示的意思指：</p>
-<p>paragraphNumber=1时，显示: Paragraph 1</p>
-<p>paragraphNumber=2时，显示: Paragraph 2</p>
-<p>依次类推</p>
-<p>默认显示：Paragraph</p>
-<h1 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h1><p>Provider是一种为App提供数据源请求的方式</p>
-<p>举个栗子：</p>
-<p>请求地址：<a href="https://www.reddit.com/r/gifs/top/.json?limit=10&amp;sort=hot" target="_blank" rel="external">https://www.reddit.com/r/gifs/top/.json?limit=10&amp;sort=hot</a> </p>
-<p>获取Json格式的数据，并在程序启动的时候，在控制台打印获取的数据信息：</p>
-<p>进入项目，新建一个provider：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> <span class="built_in">cd</span> MyFirstIonicApp</div><div class="line"></div><div class="line">ionic g provider NewProvider</div></pre></td></tr></table></figure></p>
-<p>在目录中会新增一个目录，如下：<br><img src="http://ww3.sinaimg.cn/large/69a9ed59gw1f6fswjsg79j206i05kdg1.jpg" alt=""></p>
-<p>然后修改.providers/new-provider/new-provider.ts中的代码</p>
-<p>默认接受的是json数据</p>
-<p><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ft1nrnabj20gi06swh7.jpg" alt=""></p>
-<p>在需要的页面中调用，这里我们在之前的new-page.ts这个页面渲染时打印出来</p>
-<p>修改代码：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6fti8h1ukj20i30gntc9.jpg" alt=""></p>
-<p>启动项目：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ionic serve</span></div></pre></td></tr></table></figure></p>
-<p>成功返回：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ftgl1mgbj20em09sgmd.jpg" alt=""></p>
-<p>最后截一下几个示例写完的整个目录方便大家对照：<br><img src="http://ww4.sinaimg.cn/large/69a9ed59gw1f6ftw2nocuj20560fat9j.jpg" alt=""></p>
-<p>今天先写到这里。。2016-08-02-23-25</p>
-<p>后续会有持续更新，敬请期待！</p>
-<h1 id="ng2权威资料"><a href="#ng2权威资料" class="headerlink" title="ng2权威资料"></a>ng2权威资料</h1><p>中文官方：<a href="https://angular.cn/docs/ts/latest/quickstart.html" target="_blank" rel="external">https://angular.cn/docs/ts/latest/quickstart.html</a></p>
-<p>官方网站：<a href="http://a2.hubwiz.com/docs/ts/latest/" target="_blank" rel="external">http://a2.hubwiz.com/docs/ts/latest/</a></p>
-<h1 id="ionic2权威资料"><a href="#ionic2权威资料" class="headerlink" title="ionic2权威资料"></a>ionic2权威资料</h1><p><a href="https://github.com/driftyco/ionic" target="_blank" rel="external">https://github.com/driftyco/ionic</a></p>
-<p><a href="http://ionicframework.com/docs/v2/getting-started/tutorial/" target="_blank" rel="external">http://ionicframework.com/docs/v2/getting-started/tutorial/</a></p>
-<h3 id="ionic2组件"><a href="#ionic2组件" class="headerlink" title="ionic2组件"></a>ionic2组件</h3><p><a href="http://ionicframework.com/docs/v2/components/#overview" target="_blank" rel="external">http://ionicframework.com/docs/v2/components/#overview</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%B8%80%E3%80%8B/&quot;&gt;ionic2菜鸟学习笔记《一》&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://meiminjun.github.io/ionic2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%8A%E4%BA%8C%E3%80%8B/&quot;&gt;ionic2菜鸟学习笔记《二》&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h1&gt;&lt;h2 id=&quot;环境要求&quot;&gt;&lt;a href=&quot;#环境要求&quot; class=&quot;headerlink&quot; title=&quot;环境要求&quot;&gt;&lt;/a&gt;环境要求&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;nodeV5版本以上(官方推荐)&lt;/li&gt;
-&lt;li&gt;cordova&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.androiddevtools.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 开发环境（jdk,android SDK,eclipse或者android studio）&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;安装命令&quot;&gt;&lt;a href=&quot;#安装命令&quot; class=&quot;headerlink&quot; title=&quot;安装命令&quot;&gt;&lt;/a&gt;安装命令&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;npm install -g ionic@beta&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;创建一个项目&quot;&gt;&lt;a href=&quot;#创建一个项目&quot; class=&quot;headerlink&quot; title=&quot;创建一个项目&quot;&gt;&lt;/a&gt;创建一个项目&lt;/h2&gt;&lt;figure class=&quot;highlight jboss-cli&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;ionic start MyFirstIonicApp &lt;span class=&quot;params&quot;&gt;--v2&lt;/span&gt;  &lt;span class=&quot;string&quot;&gt;//&lt;/span&gt;注意，当从github下载的zip下载完成之后一直停留了很久，就停止（可能是国内被墙的缘故）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;并直接&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;cd&lt;/span&gt; MyFirstIonicApp &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;npm install &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ionic serve&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;在设备中打开&quot;&gt;&lt;a href=&quot;#在设备中打开&quot; class=&quot;headerlink&quot; title=&quot;在设备中打开&quot;&gt;&lt;/a&gt;在设备中打开&lt;/h2&gt;&lt;figure class=&quot;highlight dockerfile&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g cordova&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ionic platform &lt;span class=&quot;keyword&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; ios&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ionic platform &lt;span class=&quot;keyword&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; android&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ionic &lt;span class=&quot;keyword&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; android&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
