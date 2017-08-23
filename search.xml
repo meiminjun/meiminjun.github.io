@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[git常用笔记-思维导图]]></title>
       <url>http://meiminjun.github.io/xmind-git/</url>
-      <content type="html"><![CDATA[<p><img src="./git.svg" width="100%" height="100%"></p>
+      <content type="html"><![CDATA[<p><img src="../images/blogimg/git.svg" width="100%" height="100%"></p>
 ]]></content>
       
         
@@ -2280,6 +2280,40 @@
     </entry>
     
     <entry>
+      <title><![CDATA[google之翻越长城]]></title>
+      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
+      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
+<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
+<li>查询到最优质的知识和技能（比百度强大的多）</li>
+<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
+<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
+<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
+</ul>
+<a id="more"></a>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
+<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
+<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
+</blockquote>
+<p>替换位置：</p>
+<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
+<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
+<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
+<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
+<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> chrome </tag>
+            
+            <tag> google </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[chrome神器之postman]]></title>
       <url>http://meiminjun.github.io/chrome-postman/</url>
       <content type="html"><![CDATA[<h2 id="postman简介"><a href="#postman简介" class="headerlink" title="postman简介"></a>postman简介</h2><p>这个是一个接口调试神器（<strong>前端开发必备</strong>），不用再每次运行app再来调试接口，任意修改入参，方便与后端人员联调。</p>
@@ -2321,40 +2355,6 @@
             <tag> chrome </tag>
             
             <tag> postman </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[google之翻越长城]]></title>
-      <url>http://meiminjun.github.io/chrome-%E7%BF%BB%E5%A2%99/</url>
-      <content type="html"><![CDATA[<p>先上图<br><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f6y0m99wxqj20qj0fomzi.jpg" alt=""></p>
-<h2 id="翻墙你能干嘛呢？"><a href="#翻墙你能干嘛呢？" class="headerlink" title="翻墙你能干嘛呢？"></a>翻墙你能干嘛呢？</h2><ul>
-<li>查询到最优质的知识和技能（比百度强大的多）</li>
-<li>可以facebook、YouTube(这个比土豆、优酷资源大的多)</li>
-<li>对于前端开发者来说，可以直接通过chrome调试android的webview（用过的人都知道比safari强大的多）</li>
-<li>喜欢看各种电影的同学，哎，不说了。。太多了</li>
-</ul>
-<a id="more"></a>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>链接: <a href="http://pan.baidu.com/s/1sliXC4l" target="_blank" rel="external">http://pan.baidu.com/s/1sliXC4l</a> 密码: wsny (不行就用下面的)<br>链接：<a href="http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b" target="_blank" rel="external">http://share.weiyun.com/13800b0a86b3dcf10f986903d131d31b</a> （密码：sEKu）</p>
-<h2 id="替换host文件"><a href="#替换host文件" class="headerlink" title="替换host文件"></a>替换host文件</h2><blockquote>
-<p><strong>注意：替换之前先备份一下你的hosts文件</strong></p>
-</blockquote>
-<p>替换位置：</p>
-<p>Windows系统hosts位于 C:\Windows\System32\drivers\etc\hosts</p>
-<p>Android（安卓）系统hosts位于 /system/etc/hosts</p>
-<p>Mac（苹果电脑）系统hosts跟Linux一样位于 /etc/hosts（找不到的自行百度）</p>
-<h2 id="重启chrome-就可以了"><a href="#重启chrome-就可以了" class="headerlink" title="重启chrome 就可以了"></a>重启chrome 就可以了</h2><p>鉴于国内长城封锁的很死，对.com 的 google还是走不了的</p>
-<p>一般走香港的google<br><a href="https://www.google.com.hk/?gws_rd=ssl" target="_blank" rel="external">https://www.google.com.hk/?gws_rd=ssl</a></p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> chrome </tag>
-            
-            <tag> google </tag>
             
         </tags>
         
@@ -2880,6 +2880,34 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Chrome常用设置]]></title>
+      <url>http://meiminjun.github.io/chrome-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
+<p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
+<p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
+<p>win7:<br>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</p>
+<h2 id="跨域设置"><a href="#跨域设置" class="headerlink" title="跨域设置"></a>跨域设置</h2><p>老版本：</p>
+<p>–disable-web-security</p>
+<p>chrome49版本以后需加入：</p>
+<p>–disable-web-security –user-data-dir</p>
+]]></content>
+      
+        <categories>
+            
+            <category> chrome </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> chrome </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Chrome神器Vimium快捷键学习记录]]></title>
       <url>http://meiminjun.github.io/chrome-vimium/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f5nohpact9j20m40glq77.jpg" alt=""></p>
@@ -2926,34 +2954,6 @@
             <tag> 快捷键 </tag>
             
             <tag> windows </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Chrome常用设置]]></title>
-      <url>http://meiminjun.github.io/chrome-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</url>
-      <content type="html"><![CDATA[<h2 id="本地导入书签-避免那种傻瓜式导入会另建立一个文件夹"><a href="#本地导入书签-避免那种傻瓜式导入会另建立一个文件夹" class="headerlink" title="本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)"></a>本地导入书签(避免那种傻瓜式导入会另建立一个文件夹)</h2><p>当更新到最新版本的chrome时候，经常要导入以前版本的chrome书签</p>
-<p>以下是本地bookmark地址，直接替换到你新的chrome对应的安装包位置就可以生效</p>
-<p>xp/2003:<br>C:\Documents and Settings\Administrator\Local Settings\Application Data\Google\Chrome\User Data\Default\Bookmarks</p>
-<p>win7:<br>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</p>
-<h2 id="跨域设置"><a href="#跨域设置" class="headerlink" title="跨域设置"></a>跨域设置</h2><p>老版本：</p>
-<p>–disable-web-security</p>
-<p>chrome49版本以后需加入：</p>
-<p>–disable-web-security –user-data-dir</p>
-]]></content>
-      
-        <categories>
-            
-            <category> chrome </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> chrome </tag>
             
         </tags>
         
@@ -3112,20 +3112,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[javascript深入浅出系列-Function 之 静态属性和原型方法]]></title>
-      <url>http://meiminjun.github.io/javascript-function-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
-      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> Atest(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new Atest(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
-      
-        
-        <tags>
-            
-            <tag> javascript </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[史上最强Sublime 笔记系列---精选插件和UI主题]]></title>
       <url>http://meiminjun.github.io/SublimeText-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E4%B8%BB%E9%A2%98/</url>
       <content type="html"><![CDATA[<p><img src="http://ww1.sinaimg.cn/large/69a9ed59gw1f56cg7zmfvj20hm08kdhc.jpg" alt=""></p>
@@ -3211,6 +3197,20 @@
             <tag> 工具 </tag>
             
             <tag> sublime </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript深入浅出系列-Function 之 静态属性和原型方法]]></title>
+      <url>http://meiminjun.github.io/javascript-function-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="静态属性和原型方法"><a href="#静态属性和原型方法" class="headerlink" title="静态属性和原型方法"></a>静态属性和原型方法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">// 对象构造函数  </div><div class="line"><span class="keyword">function</span> Atest(name)&#123;  </div><div class="line">  //私有属性，只能在对象构造函数内部使用  </div><div class="line">  var className = <span class="string">"Atest"</span>;  </div><div class="line">  //公有属性,在对象实例化后调用  </div><div class="line">  this.name = name;  </div><div class="line">  //对象方法  </div><div class="line">  this.hello = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">    alert(this.name);  </div><div class="line">    alert(this.msg());//使用原型方法扩充的方法可以在类内部使用  </div><div class="line">    alert(this.sex);//使用原型方法扩充的属性可以在类内部使用  </div><div class="line">    alert(Atest.age);//静态属性调用时格式为[对象.静态属性]  </div><div class="line">  &#125;  </div><div class="line">&#125;  </div><div class="line">//类方法 (实际是静态方法直接调用) 位置：Person类的外部 语法格式：类名称.方法名称 = <span class="keyword">function</span>([参数...])&#123; 语句行; &#125;  </div><div class="line">Atest.Run = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我是类方法 Run"</span>);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//原型方法  </div><div class="line">Atest.prototype.msg = <span class="function"><span class="title">function</span></span>()&#123;  </div><div class="line">  alert(<span class="string">"我的名字是："</span>+this.name);//如果原型方法当作静态方法直接调用时，this.name无法被调用  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">//公有静态属性 在类的外部  </div><div class="line">Atest.age = 20;//公有静态属性不能使用 【this.属性】，只能使用 【对象.属性】 调用  </div><div class="line"></div><div class="line">//原型属性，当作是类内部的属性使用【this.原型属性】，也可以当成公有静态属性使用【对象.prototype.原型属性】  </div><div class="line">Atest.prototype.sex = <span class="string">"男"</span>;  </div><div class="line"></div><div class="line">Atest.Run(); //类方法也是静态方法，可以直接使用 【对象.静态方法()】  </div><div class="line">Atest.prototype.msg();//原型方法当成静态方法使用时【对象.prototype.方法()】   </div><div class="line">alert(Atest.prototype.sex);//原型属性当作静态属性使用时【对象.prototype.方法()】  </div><div class="line">var a = new Atest(<span class="string">"zhangsan"</span>);//对象方法和原型方法需要实例化对象后才可以使用  </div><div class="line">a.hello();//对象方法必须实例化对象  </div><div class="line">a.msg();//原型方法必须实例化对象  </div><div class="line">alert(a.age);//错误，公有静态属性只能使用 【对象.属性】调用  </div><div class="line"></div><div class="line">//ps:尽量将方法定义为原型方法，原型方法避免了每次调用构造函数时对属性或方法的构造，节省空间,创建对象快.</div></pre></td></tr></table></figure>]]></content>
+      
+        
+        <tags>
+            
+            <tag> javascript </tag>
             
         </tags>
         
