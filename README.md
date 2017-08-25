@@ -112,6 +112,7 @@ curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.
 	- [ ] 学会提问：批判性思维指南
 	- [ ] 男人来自火星 女人来自金星
 	- [ ] [你不知道的javascript](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
+	- [ ] 乌合之众
 
 ## 2018
 
