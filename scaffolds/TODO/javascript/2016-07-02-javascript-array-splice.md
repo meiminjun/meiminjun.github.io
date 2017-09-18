@@ -37,16 +37,20 @@ javascript 中的 splice 方法很强大, splice() 方法用于插入、删除�
 var lang = ["php","java","javascript"];
 //删除
 var removed = lang.splice(1,1);
-alert(lang); //php,javascript
-alert(removed); //java ,返回删除的项
+console.log(lang); // ["php","javascript"]
+console.log(removed); // ["java"] ,返回删除的项
+
 //插入(第二个元素为0的时候)
+var lang = ["php","java","javascript"];
 var insert = lang.splice(0,0,"asp"); //从第0个位置开始插入
-alert(insert); //返回空数组
-alert(lang); //asp,php,javascript
+console.log(insert); // 返回[]
+console.log(lang); // ["asp", "php", "java", "javascript"]
+
 //替换
-var replace = lang.splice(1,1,"c#","ruby"); //删除一项，插入两项
-alert(lang); //asp,c#,ruby
-alert(replace); //php,返回删除的项
+var lang = ["php","java","javascript"];
+var replace = lang.splice(1, 1, "c#", "ruby"); // 删除一项，插入两项
+console.log(lang); // ["php", "c#", "ruby", "javascript"]
+console.log(replace); // ["java"]
 ```
 
-> 说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除
+> 说明: splice 第二个参数为 0 代表插入 或者 大于0 的为删除/替换
