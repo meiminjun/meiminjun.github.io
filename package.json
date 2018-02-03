@@ -7,10 +7,10 @@
   },
   "scripts": {
     "c": "hexo clean",
-    "d": "node & hexo d"
+    "d": "hexo clean && hexo d"
   },
   "dependencies": {
-    "hexo": "^3.1.0",
+    "hexo": "^3.3.8",
     "hexo-deployer-git": "^0.2.0",
     "hexo-generator-archive": "^0.1.2",
     "hexo-generator-baidu-sitemap": "^0.1.2",
